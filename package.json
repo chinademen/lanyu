@@ -1,0 +1,15 @@
+{
+  "name": "lanyu",
+  "version": "1.0.0",
+  "description": "lanyu's package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ly",
+    "lanyu"
+  ],
+  "author": "lanyu",
+  "license": "ISC"
+}
