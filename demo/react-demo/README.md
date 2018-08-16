@@ -2,9 +2,9 @@
 
 ##### windows项目启动
   
-  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo
-    启动
-        npm i
+  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo \n
+    启动  \n
+        npm i \n
         npm start
 
 
