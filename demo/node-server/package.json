@@ -1,0 +1,16 @@
+{
+    "name": "ant",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "node main.js"
+    },
+    "dependencies": {
+        "body-parser": "latest",
+        "express": "latest",
+        "gd-bmp": "^1.2.4",
+        "moment": "^2.22.2",
+        "morgan": "latest",
+        "mysql": "latest",
+        "url": "^0.11.0"
+    }
+}
