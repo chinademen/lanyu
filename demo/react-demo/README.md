@@ -8,7 +8,7 @@
         npm start </br>
 
 
-  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/react-demo </br>
+  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/node-server </br>
     启动 </br>
         npm i </br>
         npm run dev </br>   
