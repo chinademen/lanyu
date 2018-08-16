@@ -2,16 +2,16 @@
 
 ##### windows项目启动
   
-  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo \n
-    启动  \n
-        npm i \n
-        npm start
+  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo </br>
+    启动 </br>
+        npm i </br>
+        npm start </br>
 
 
-  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/react-demo
-    启动
-        npm i
-        npm run dev   
+  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/react-demo </br>
+    启动 </br>
+        npm i </br>
+        npm run dev </br>   
 
 
 ##### linux项目部署发布(这里使用nginx)
