@@ -109,7 +109,7 @@
         
     
         
-#####  三、 项目依赖的选择和安装
+###  三、 项目依赖的选择和安装
     项目选择淘宝的 ant 框架
     1. 安装yarn 
         npm install -g create-react-app yarn
@@ -248,7 +248,7 @@
         less": "^2.7.3,    
         
         
-#####  四、代码实现步骤
+###  四、代码实现步骤
     1. 根节点
     /src/index.js
         import React from 'react';
