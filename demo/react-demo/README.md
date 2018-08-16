@@ -1,5 +1,42 @@
 ##### 此项目为spa项目
 
+##### windows项目启动
+  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo
+    启动
+        npm i
+        npm start
+
+
+  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/react-demo
+    启动
+        npm i
+        npm run dev   
+
+
+##### linux项目部署发布(这里使用nginx)
+  nginx.conf
+    server {
+      listen       80;
+      server_name  localhost;
+
+      access_log logs/localhost main;
+      root /www/app/react-demo/;
+
+      # 静态资源缓存时间
+      location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css|mp3|mp4|word|xlsx|xls)$ {
+          expires 5m;
+      }
+
+      # 服务端代理
+      location  /api {
+          proxy_set_header   Host             $host;
+          proxy_set_header   X-Real-IP        $remote_addr;
+          proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+          proxy_pass   http://localhost:9000/api;
+      }
+  }
+
+
 ##### 一、 create-react-app项目初始化
     1. 安装脚手架
         npm i -g create-react-app
@@ -365,34 +402,3 @@
             redux控制状态管理
             saga用于增强状态管理(比如异步操作)
         
-##### 七、 windows项目启动
-  react项目启动
-    npm i
-    npm start
-  node服务端启动
-    npm i
-    npm run dev   
-
-
-##### 六、 linux项目部署发布(这里使用nginx)
-  nginx.conf
-    server {
-      listen       80;
-      server_name  localhost;
-
-      access_log logs/localhost main;
-      root /www/app/react-demo/;
-
-      # 静态资源缓存时间
-      location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css|mp3|mp4|word|xlsx|xls)$ {
-          expires 5m;
-      }
-
-      # 服务端代理
-      location  /api {
-          proxy_set_header   Host             $host;
-          proxy_set_header   X-Real-IP        $remote_addr;
-          proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
-          proxy_pass   http://localhost:9000/api;
-      }
-  }
