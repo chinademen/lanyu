@@ -1,6 +1,6 @@
 {
   "name": "lanyu",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "lanyu's package",
   "main": "index.js",
   "scripts": {
