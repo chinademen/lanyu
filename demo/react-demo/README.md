@@ -1,19 +1,20 @@
-##### 此项目为spa项目
+### 此项目为spa项目
 
-##### windows项目启动
-  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo
-    启动
-        npm i
-        npm start
-
-
-  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/react-demo
-    启动
-        npm i
-        npm run dev   
+### windows项目启动
+  
+  react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo </br>
+    启动 </br>
+        npm i </br>
+        npm start </br>
 
 
-##### linux项目部署发布(这里使用nginx)
+  node服务端 https://github.com/l511407563/lanyu/tree/master/demo/react-demo </br>
+    启动 </br>
+        npm i </br>
+        npm run dev </br>   
+
+
+### linux项目部署发布(这里使用nginx)
   nginx.conf
     server {
       listen       80;
@@ -37,7 +38,7 @@
   }
 
 
-##### 一、 create-react-app项目初始化
+### 一、 create-react-app项目初始化
     1. 安装脚手架
         npm i -g create-react-app
         
@@ -90,7 +91,7 @@
         /vscode
         ./vscode
     
-#####  二、 react项目架构
+###  二、 react项目架构
     /public 
         index.html    主页面
     /src 
@@ -108,7 +109,7 @@
         
     
         
-#####  三、 项目依赖的选择和安装
+###  三、 项目依赖的选择和安装
     项目选择淘宝的 ant 框架
     1. 安装yarn 
         npm install -g create-react-app yarn
@@ -247,7 +248,7 @@
         less": "^2.7.3,    
         
         
-#####  四、代码实现步骤
+###  四、代码实现步骤
     1. 根节点
     /src/index.js
         import React from 'react';
@@ -402,3 +403,4 @@
             redux控制状态管理
             saga用于增强状态管理(比如异步操作)
         
+        (...未完待续)
