@@ -1,6 +1,6 @@
-##### 此项目为spa项目
+### 此项目为spa项目
 
-##### windows项目启动
+### windows项目启动
   
   react项目 https://github.com/l511407563/lanyu/tree/master/demo/react-demo </br>
     启动 </br>
@@ -14,7 +14,7 @@
         npm run dev </br>   
 
 
-##### linux项目部署发布(这里使用nginx)
+### linux项目部署发布(这里使用nginx)
   nginx.conf
     server {
       listen       80;
@@ -38,7 +38,7 @@
   }
 
 
-##### 一、 create-react-app项目初始化
+### 一、 create-react-app项目初始化
     1. 安装脚手架
         npm i -g create-react-app
         
@@ -91,7 +91,7 @@
         /vscode
         ./vscode
     
-#####  二、 react项目架构
+###  二、 react项目架构
     /public 
         index.html    主页面
     /src 
