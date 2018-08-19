@@ -16,8 +16,8 @@ export function* verrifyWork(params) {
 
 export function* loginWork(params) {
     const response = yield call(userLogin, params.payload);
+    document.getElementsByClassName('LAY-user-get-vercode')[0].src = `/api/getVerify?time=${new Date().getTime()}`; // 登录请求完刷新验证码
     if (!response) return;
-    
     if (response.status == 1) {
         yield put({
             type: CHANGE_USERLOGIN,

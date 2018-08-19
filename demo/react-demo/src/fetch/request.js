@@ -69,10 +69,10 @@ service.interceptors.response.use(
 
         // 统一post提交的提示信息
         if (data.status === 1) {
-            if (method.toLocaleUpperCase() === 'POST') message.success('操作成功！');
+            if (method.toLocaleUpperCase() === 'POST') message.success(data.message);
             return data;
         } else {
-            message.error('操作失败');
+            message.error(data.message);
         }
     },
     error => {

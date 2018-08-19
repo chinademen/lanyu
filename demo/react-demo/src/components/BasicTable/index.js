@@ -43,8 +43,8 @@ class BasicTable extends PureComponent {
 
   render() {
     const { selectedRowKeys } = this.state;
-    const { data: { result, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType } = this.props;
-    // 项目约定返回的表格数据 result [] 
+    const { data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType } = this.props;
+    // 项目约定返回的表格数据 list [] 
     
     const pagination = {
         pageNo,      // 当前页码
@@ -94,7 +94,7 @@ class BasicTable extends PureComponent {
           loading={loading}
           rowKey={rowKey || 'key'}
           rowSelection={!rowType ? rowSelection : null}
-          dataSource={result}
+          dataSource={list}
           columns={columns}
           scroll={{ x: scroll || 1500 }}
           size="small"

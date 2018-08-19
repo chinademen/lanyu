@@ -54,7 +54,7 @@ export function createOption(params) {
 
 // 给表格数据添加key
 export function listAddKey(data) {
-    data.result.map((a, i) => a.key = i);
+    data.list.map((a, i) => a.key = i);
 }
 
 // 时间戳转换成  yyyy-MM-dd HH:MM:SS 格式

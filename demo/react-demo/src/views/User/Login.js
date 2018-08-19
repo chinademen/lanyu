@@ -31,7 +31,6 @@ class LoginPage extends PureComponent {
           payload: values
         });
       });
-      this.fleshVercode();
     }
 
     // 刷新验证码

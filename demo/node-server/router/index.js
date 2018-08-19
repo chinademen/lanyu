@@ -2,13 +2,22 @@
 const path = require('path');
 // 第三方模块
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const util = require('../util/util');
+const redis = require('redis');
 // 项目模块
 const sql = require('../mysql/index');
-// 导入模拟数据
-const menuData = require('../api/login');
 
 const app = express();
+
 const router = express.Router();
+// redis配置参数
+var redis_config = {
+    "host": "127.0.0.1",
+    "port": 6379
+};
+var redisClient = redis.createClient(redis_config);
 
 // 验证码生成
 var BMP24 = require('gd-bmp').BMP24;
@@ -78,16 +87,55 @@ router.get('/api/getVerify', (req, res) => {
 // 登录(静态数据)
 router.post('/api/user/login', (req, res) => {
     const { userAccount, userPassword, validCode } = req.body;
-    // 用户名密码校验
-    if (userAccount == 'admin' && userPassword == '698d51a19d8a121ce581499d7b701668') {
+    // 判断用户名密码验证码sessionId校验是否通过
+    sql(`SELECT * FROM memberinfo WHERE userAccount="${userAccount}" AND userPassword="${userPassword}"; SELECT * FROM menu;`, {}, (err, data) => {
+        // 用户名密码校验
+        if (data[0].length == 0) {
+            res.json({ status: -1, message: '账号密码错误', data: null });
+            return;
+        }
+        // 验证码校验
         if (validCode.toLowerCase() == imgStr.toLowerCase()) {
             // 清空验证码
             imgStr = '';
-            // 登录成功
+            // 存储session
+            req.session.userAccount = userAccount;
+            // 用户信息
+            let userInfo = JSON.parse(JSON.stringify(data[0]));
+            // 生成目录树
+            let menu = JSON.parse(JSON.stringify(data[1]));
+            let menusData = [];
+            menu.forEach(item => {
+                const { pid } = item;
+                // 一级目录
+                if (pid === 0) {
+                    item.children = [];
+                    menusData.push(item);
+                } else {
+                    menusData.forEach(a => {
+                        if (a.resourceId == pid) {
+                            a.children.push(item);
+                        }
+                    });
+                }
+            });
+            // 拼装当前用户信息
+            const info = {
+                currentCompanyName: userInfo[0].currentCompanyName,
+                userAccount: userInfo[0].userAccount,
+                userName: userInfo[0].userName,
+                info1: userInfo[0].info1,
+                info2: userInfo[0].info2,
+                balance: userInfo[0].balance,
+            };
+            // 返回body
             res.json({
                 status: 1,
-                message: '成功',
-                data: menuData
+                message: '登录成功',
+                data: {
+                    menusData,
+                    ...info
+                }
             });
         } else {
             res.json({
@@ -95,15 +143,10 @@ router.post('/api/user/login', (req, res) => {
                 message: '验证码错误',
                 data: null
             });
-        }
-       
-    } else {
-        res.json({
-            status: -1,
-            message: '账号密码错误',
-            data: null
-        });
-    }
+        } 
+        
+    });
+    
 });
 
 // 登出
@@ -114,35 +157,22 @@ router.get('/api/user/logout', (req, res) => {
     });
 });
 
-// 登录(数据库登录)
-// router.post('/member/login', (req, res) => {
-//     const { userName, password, type } = req.body;
-//     if (userName && password) {
-//         sql('SELECT * FROM userinfo', (err, data) => {
-//             // 用户名密码校验
-//             var iNow = Array.prototype.some.call(data, function (a, i, arr) {
-//                 // 登录成功
-//                 userName === a.username && password === a.password && res.json({
-//                     code: 200,
-//                     message: '成功',
-//                     data: memberLogin,
-//                 });
-//                 return (userName == a.username && password == a.password);
-//             });
-//             if (!iNow) {
-//                 res.json({
-//                     status: -1,
-//                     msg: '账号密码错误'
-//                 });
-//             }
-//         });
-//     } else {
-//         res.json({
-//             status: -1,
-//             msg: '请输入账号密码'
-//         });
-//     }
-// });
+// 会员信息列表
+router.get('/api/member/memberList', (req, res) => {
+    logout(req, res) && util.tablePaging(req, res, sql, 'memberinfo');
+});
 
+
+// 统一判断session是否过期
+function logout(req, res) {
+    if (!req.session.userAccount) {
+        res.json({
+            status: 401,
+            message: '登录过期'
+        });
+        return false;
+    }
+    return true;
+}
 
 module.exports = router;

@@ -96,7 +96,7 @@ class Basic extends PureComponent {
   render() {
     const { history: {location: {pathname}}, login: { userAccount, currentCompanyName, info1, info2, menusData } } = this.props;
     const { collapsed } = this.state;
-
+   
     // 方法
     const parentMethods = {
         toggle: this.toggle,

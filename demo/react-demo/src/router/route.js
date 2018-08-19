@@ -3,7 +3,7 @@
 // 首页
 import HomePage from '@/views/HomePage/HomePage';
 
-// 员工管理
+// 会员管理
 import MemberInfo from '@/views/Member/MemberInfo';
 import MemberWork from '@/views/Member/MemberWork';
 
@@ -27,14 +27,14 @@ export const routerConfig = {
         component: HomePage,
         name: ['首页'],
     },
-    // 员工管理
+    // 会员管理
     '/views/member/info': {
         component: MemberInfo,
-        name: ['员工管理', '员工信息列表'],
+        name: ['会员管理', '会员信息列表'],
     },
     '/views/member/work': {
         component: MemberWork,
-        name: ['员工管理', '员工出勤详情'],
+        name: ['会员管理', '会员出勤详情'],
     },
     // 产品管理
     '/views/product/medical': {

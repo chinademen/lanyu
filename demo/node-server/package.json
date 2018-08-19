@@ -6,11 +6,17 @@
     },
     "dependencies": {
         "body-parser": "latest",
+        "co": "^4.6.0",
+        "co-redis": "^2.1.1",
+        "connect-redis": "^3.3.3",
+        "cookie-parser": "^1.4.3",
         "express": "latest",
+        "express-session": "^1.15.6",
         "gd-bmp": "^1.2.4",
         "moment": "^2.22.2",
         "morgan": "latest",
         "mysql": "latest",
+        "redis": "^2.8.0",
         "url": "^0.11.0"
     }
 }

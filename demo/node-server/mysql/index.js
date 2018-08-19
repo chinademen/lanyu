@@ -7,10 +7,11 @@ const mysql = require('mysql');
 module.exports = (sql, value, callback) => {
     let config = mysql.createConnection({
         host: 'localhost',
-        user: 'test',
+        user: 'root',
         password: '123456',
         port: '3306',
-        database: 'test'
+        database: 'game',
+        multipleStatements: true,       // 可以同时执行多条sql语句
     });
 
     config.connect((err) => {

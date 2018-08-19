@@ -15,7 +15,7 @@ class MemberWork extends PureComponent {
       
         return (
             <div>
-                员工出勤详情
+                会员出勤详情
             </div>
         );
     }

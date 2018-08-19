@@ -24,8 +24,8 @@ class SiderMenu extends PureComponent {
     getNavMenuItems = menusData => {
         if (menusData == null) return;
         return menusData.map(item => {
-        const menuDom = this.getSubMenuOrItem(item);
-        return menuDom;
+            const menuDom = this.getSubMenuOrItem(item);
+            return menuDom;
         });
     }
 
@@ -60,10 +60,11 @@ class SiderMenu extends PureComponent {
 
     //  创建无子节点的Menu.Item
     getMenuItemPath = item => {
-       const itemPath = item.resourceUrl;
+       const { resourceUrl } = item;
+       if (!resourceUrl) return;
         return (
             <Link 
-                to={itemPath} 
+                to={resourceUrl} 
                 replace
             >
                 {/* <Icon type={item.iconUrl} /> */}
