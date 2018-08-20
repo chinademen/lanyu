@@ -4,6 +4,8 @@ import { listAddKey } from '@/util/format';
 export const CHANGE_MEMBERLIST = 'CHANGE_MEMBERLIST';   
 // 和后台的数据交互的action   
 export const MEMBER_MEMBERLIST = 'MEMBER_MEMBERLIST';   // 会员信息列表
+export const MEMBER_ADDMEMBER = 'MEMBER_ADDMEMBER';     // 新增会员
+export const MEMBER_EDITMEMBER = 'MEMBER_EDITMEMBER';   // 修改会员
 
 // 3. 定义reducer
 // 初始化state

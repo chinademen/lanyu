@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Card, Upload, Button, Icon, message } from 'antd';
-import { MEMBER_MEMBERLIST } from '@/redux/reducers/member';
+import { Card, Upload, Button, Icon, message, Form, Dropdown, Menu } from 'antd';
+import { MEMBER_MEMBERLIST, MEMBER_ADDMEMBER, MEMBER_EDITMEMBER } from '@/redux/reducers/member';
 import BasicTable from '@/components/BasicTable';
 import { timeFormat, moneyFormat } from '@/util/format';
+import './MemberInfo.less';
+import AddMember from './AddMember';    // 新增会员
+import EditMember from './EditMember';    // 修改会员信息
 
 const getValue = obj =>
     Object.keys(obj)
@@ -16,14 +19,21 @@ const initPage = {
     pageSize: 10
 };
 
+const Action = {
+    add: 'add',
+    edit: 'edit',
+};
+
+@Form.create()
 class MemberInfo extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            modalVisible: false, // 弹窗开关
-            expandForm: false,   // 搜索表单开关
-            selectedRows: [],    // 被选中行数据
-            formValues: {},      // 表单数据
+            addModalVisible: false,     // 新增会员弹窗开关
+            editModalVisible: false,    // 修改会员弹窗开关
+            expandForm: false,          // 搜索表单开关
+            selectedRows: [],           // 被选中行数据
+            formValues: {},             // 表单数据
         };
     }
 
@@ -72,9 +82,58 @@ class MemberInfo extends PureComponent {
         });
     }
 
+    // Modal开关
+    handleModalVisible = (action, flag) => {
+        const params = `${action}ModalVisible`;
+        this.setState({
+            [params]: !!flag
+        });
+    }
+
+    // 提交数据
+    handleAllCommit = (action, fields) => {
+        if (action === 'add') {
+            this.props.dispatch({
+                type: MEMBER_ADDMEMBER,
+                payload: fields,
+                callback: (res) => {
+                    if (!res) return;
+                    this.renderTable();
+                }
+            });
+        }
+
+        if (action === 'edit') {
+            this.props.dispatch({
+                type: MEMBER_EDITMEMBER,
+                payload: fields,
+                callback: (res) => {
+                    if (!res) return;
+                    this.renderTable();
+                }
+            });
+        }
+
+        this.handleModalVisible(action, false);
+    }
+
+    // 更多操作
+    handleMenuClick = e => {
+        const { selectedRows } = this.state;
+        if (!selectedRows || selectedRows.length > 1) {
+            message.error('一次只能修改单个会员信息');
+            return;
+        }   
+        switch (e.key) {
+            case 'edit': 
+                this.handleModalVisible(Action.edit, true);
+                break;
+        }
+    }
+
     render() {
         const { data } = this.props;
-        const { selectedRows } = this.state;
+        const { selectedRows, addModalVisible, editModalVisible } = this.state;
         const columns = [
             {
                 title: '会员ID',
@@ -114,18 +173,54 @@ class MemberInfo extends PureComponent {
                 align: 'center',
                 render: val => timeFormat(val),
             },
+            {
+                title: '所在公司',
+                dataIndex: 'currentCompanyName',
+                key: 'currentCompanyName',
+                align: 'center',
+                render: val => val || '-',
+            }
         ];
       
+        // Modal公用方法参数
+        const modalProps = {
+            handleAllCommit: this.handleAllCommit,
+            handleModalVisible: this.handleModalVisible,
+        };
+
+        // 更多操作
+        const menu = (
+            <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
+                <Menu.Item key="edit">修改会员信息</Menu.Item>
+            </Menu>
+        );
+
         return (
-            <Card>
-                <BasicTable 
-                    bordered 
-                    columns={columns} 
-                    data={data} 
-                    selectedRows={selectedRows}
-                    onSelectRow={this.handleSelectRows}
-                    onChange={this.handleBasicTableChange}
-                />
+            <Card bordered={false}>
+                <div className="tableList">
+                    <div className="tableListOperator">   
+                        <Button type="primary" onClick={() => this.handleModalVisible(Action.add, true)}>新增会员</Button>
+                        {selectedRows.length > 0 && (
+                            <span>
+                                <Dropdown overlay={menu}>
+                                    <Button style={{ marginLeft: 8 }}>
+                                        更多操作 <Icon type="down" />
+                                    </Button>
+                                </Dropdown>
+                            </span>
+                        )}
+                    </div>
+                    <BasicTable 
+                        bordered 
+                        columns={columns} 
+                        data={data} 
+                        selectedRows={selectedRows}
+                        onSelectRow={this.handleSelectRows}
+                        onChange={this.handleBasicTableChange}
+                    />
+                </div>
+                <AddMember {...modalProps} modalVisible={addModalVisible} />
+                <EditMember {...modalProps} modalVisible={editModalVisible} selectedRows={selectedRows}/>
             </Card>
         );
     }

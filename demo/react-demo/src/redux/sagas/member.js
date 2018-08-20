@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { memberList } from '@/services/member';
+import { memberList, addMember, editMember } from '@/services/member';
 import { CHANGE_MEMBERLIST } from '../reducers/member';
 
 // worker saga  数据处理
@@ -10,4 +10,16 @@ export function* memberListWork(params) {
         type: CHANGE_MEMBERLIST,
         payload: response.data,
     });
+}
+
+export function* addMemberWork(params) {
+    const response = yield call(addMember, params.payload);
+    if (!response) return;
+    params.callback(response);
+}
+
+export function* editMemberWork(params) {
+    const response = yield call(editMember, params.payload);
+    if (!response) return;
+    params.callback(response);
 }

@@ -8,3 +8,19 @@ export function memberList(params) {
         method: 'GET'
     });
 }
+
+// 新增会员
+export function addMember(params) {
+    return request(api.member.addMember, {
+        method: 'POST',
+        data: params
+    });
+}
+
+// 修改会员信息
+export function editMember(params) {
+    return request(api.member.editMember, {
+        method: 'POST',
+        data: params
+    });
+}

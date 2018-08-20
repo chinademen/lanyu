@@ -3,8 +3,8 @@ import { takeEvery, takeLatest } from 'redux-saga';
 import { LOGIN_GETVERIFY, LOGIN_USERLOGIN, LOGIN_USERLOGOUT } from '../reducers/login';
 import { verrifyWork, loginWork, logoutWork } from './login';
 // member
-import { MEMBER_MEMBERLIST } from '../reducers/member';
-import { memberListWork } from './member';
+import { MEMBER_MEMBERLIST, MEMBER_ADDMEMBER, MEMBER_EDITMEMBER } from '../reducers/member';
+import { memberListWork, addMemberWork, editMemberWork } from './member';
 
 // wacther saga
 function* watch() {
@@ -15,6 +15,8 @@ function* watch() {
 
         // member
         yield takeLatest(MEMBER_MEMBERLIST, memberListWork);
+        yield takeLatest(MEMBER_ADDMEMBER, addMemberWork);
+        yield takeLatest(MEMBER_EDITMEMBER, editMemberWork);
 }
 
 // root saga
