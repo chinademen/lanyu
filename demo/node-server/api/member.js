@@ -63,9 +63,9 @@ const addMember = (req, res) => {
 // 修改会员信息
 const editMember = (req, res) => {
     if (util.logout(req, res)) {
-        const { userName, userPassword, level, balance, currentCompanyName, id } = req.body;
-        const updateStr = `UPDATE memberinfo set userName = ?, userPassword = ?, level = ?, balance = ?, currentCompanyName = ? WHERE id = ?`;
-        sql(updateStr, [userName, userPassword, level, balance, currentCompanyName || '暂无公司', id], (err, data) => {
+        const { userName, level, balance, currentCompanyName, id } = req.body;
+        const updateStr = `UPDATE memberinfo set userName = ?, level = ?, balance = ?, currentCompanyName = ? WHERE id = ?`;
+        sql(updateStr, [userName, level, balance, currentCompanyName || '暂无公司', id], (err, data) => {
             res.json({
                 status: 1,
                 message: '修改会员成功'
