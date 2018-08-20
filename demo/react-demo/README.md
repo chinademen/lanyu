@@ -13,7 +13,13 @@
         npm i </br>
         npm run dev </br>   
 
-
+  新增redis管理session
+  
+  新增mysql存储数据管理会员表 (所有表放置在/doc/*.sql)
+    数据库(game)
+        menu(目录表)
+        memberinfo(会员信息表)
+            
 ### linux项目部署发布(这里使用nginx)
   nginx.conf
     server {
