@@ -1,5 +1,6 @@
 import { call, put } from 'redux-saga/effects';
-import { memberList, addMember, editMember } from '@/services/member';
+// import { memberList, addMember, editMember } from '@/services/member';   // axios
+import { memberList, addMember, editMember } from '@/services/fetchtmember';  // fetch
 import { CHANGE_MEMBERLIST } from '../reducers/member';
 
 // worker saga  数据处理

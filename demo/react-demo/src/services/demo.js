@@ -1,3 +1,4 @@
+// 演示各种数据类型提交方式
 import request from '@/fetch/request';
 import api from '@/config/api';
 import { objToStr } from '@/util/format';

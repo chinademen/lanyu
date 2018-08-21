@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.8.1",
     "axios": "^0.18.0",
+    "isomorphic-fetch": "^2.2.1",
     "less": "^2.7.3",
     "md5": "^2.2.1",
     "react": "^16.4.2",

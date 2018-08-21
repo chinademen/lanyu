@@ -4,7 +4,9 @@ const checkout = require('../util/checkout');
 
 // 会员信息列表
 const memberList = (req, res) => {
-    util.logout(req, res) && util.tablePaging(req, res, sql, 'memberinfo', ['id', 'userAccount', 'userName', 'level', 'balance', 'registTime', 'currentCompanyName']);
+    setTimeout(() => {
+        util.logout(req, res) && util.tablePaging(req, res, sql, 'memberinfo', ['id', 'userAccount', 'userName', 'level', 'balance', 'registTime', 'currentCompanyName']);
+    }, 10000);
 }
 
 // 新增会员

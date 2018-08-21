@@ -43,11 +43,11 @@ function toFormData(config) {
 // request拦截器
 service.interceptors.request.use(
     config => {
-        // 登录使用FormData格式  其余方法使用json格式  提交数据使用multipart/form-data提交
+        // FormData格式  其余方法使用json格式  提交数据使用multipart/form-data提交
         if (config.dataType === 'FormData') {
             toFormData(config);
         }
-
+        
         // 这里设置请求头字段,  比如所有请求携带 Authorization
         // config.headers.Authorization = xxx.Authorization;
         

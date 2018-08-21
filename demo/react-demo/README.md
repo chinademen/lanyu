@@ -1,4 +1,5 @@
 ### 此项目为spa项目
+    相关技术栈 react react-router redux saga axios fecth node session redis mysql
 
 ### windows项目启动
   

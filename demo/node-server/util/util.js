@@ -3,7 +3,7 @@ const logout = (req, res) => {
     if (!req.session.userAccount) {
         res.json({
             status: 401,
-            message: '登录过期'
+            message: '会话已过期'
         });
         return false;
     }
