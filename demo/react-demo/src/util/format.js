@@ -107,3 +107,10 @@ export function moneyFormat(amount) {
 export function yesOrNo(value) {
     return value = value == 1 ? (<span style={{color: "#0cdc1e"}}>是</span>) : (<span style={{color: "#f5222d"}}>否</span>);
 }
+
+// 获取字符串中最后一个 / 后面的内容
+export function getFileName(url) {
+    if (!url) return;
+    var index = url.lastIndexOf('\/');
+    return url.substring(index + 1, url.length);
+}

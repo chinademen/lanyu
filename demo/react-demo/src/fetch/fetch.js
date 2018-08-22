@@ -12,15 +12,12 @@ message.config({
 
 // 处理状态码
 function checkStatus(response) {
-    // console.log('response: ', response);
     if (response.status >= 200 && response.status < 300) {
         return response;
     }
 }
 
 export default function request(url, options) {
-    
-    // console.log('options: ', options);
     // 设置 cookie可以跨域
     options.credentials = 'include';
 
@@ -42,7 +39,7 @@ export default function request(url, options) {
     const xhr = Promise.race([
         fetch(url, options),        
         new Promise((resolve, reject) => {
-            setTimeout(() => reject(new Error('请求链接超时')), 5000)  // 设置超时时间
+            setTimeout(() => reject(new Error('请求链接超时')), 15000)  // 设置超时时间
         })
     ]);
 

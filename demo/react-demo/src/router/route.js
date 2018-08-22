@@ -16,6 +16,9 @@ import ProductSport from '@/views/Product/ProductSport';
 import PriceList from '@/views/Price/PriceList';
 import PriceSet from '@/views/Price/PriceSet';
 
+// 网站管理
+import WebSet from '@/views/Web/WebSet';
+
 /**
  * @desc 路由配置
  * @param  {[Objcet]}  component  [路由对应的模块]
@@ -58,4 +61,9 @@ export const routerConfig = {
         component: PriceSet,
         name: ['价格管理', '价格设置'],
     },
+    // 网站管理
+    '/views/web/set': {
+        component: WebSet,
+        name: ['网站管理', '网站设置'],
+    }
 };

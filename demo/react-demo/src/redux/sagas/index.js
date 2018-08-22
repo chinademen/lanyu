@@ -5,6 +5,9 @@ import { verrifyWork, loginWork, logoutWork } from './login';
 // member
 import { MEMBER_MEMBERLIST, MEMBER_ADDMEMBER, MEMBER_EDITMEMBER } from '../reducers/member';
 import { memberListWork, addMemberWork, editMemberWork } from './member';
+// web
+import { WEB_UPLOADCOMPANYLOGO } from '../reducers/web';
+import { uploadCompanyLogoWork } from './web';
 
 // wacther saga
 function* watch() {
@@ -17,6 +20,9 @@ function* watch() {
         yield takeLatest(MEMBER_MEMBERLIST, memberListWork);
         yield takeLatest(MEMBER_ADDMEMBER, addMemberWork);
         yield takeLatest(MEMBER_EDITMEMBER, editMemberWork);
+
+        // web
+        yield takeLatest(WEB_UPLOADCOMPANYLOGO, uploadCompanyLogoWork);
 }
 
 // root saga

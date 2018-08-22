@@ -2,6 +2,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
 // 第三方模块
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -33,7 +34,7 @@ app.use(session({           // session
 }));
 
 // 输出日志
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'));
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'));
 app.use(morgan('common', { stream: accessLogStream }));
 
 // 兼容json数据
@@ -48,6 +49,9 @@ app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
+// 设置静态资源路径     访问例子: http://localhost:9000/images/w.jpg
+app.use(express.static(path.join(__dirname, 'public')));
 
 // 路由
 app.use('/', require('./router/index'));

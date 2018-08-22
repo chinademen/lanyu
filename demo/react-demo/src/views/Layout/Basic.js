@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Layout, message } from 'antd';
 import { Route, Switch } from 'react-router-dom';
 import './Basic.less';
-import logo from '@/favicon.ico';
 import { opStorage } from '@/util/util';
 import { CHANGE_USERLOGIN, LOGIN_USERLOGOUT } from '@/redux/reducers/login';
 import { routerConfig } from '@/router/route';
@@ -22,6 +21,7 @@ class Basic extends PureComponent {
   state = {
     userAccount: null,        // 当前登录用户
     currentCompanyName: null, // 当前公司名称
+    companyLogo: null,        // 当前公司LOGO  
     info1: 0,                 
     info2: 0, 
     menusData: [],            // 侧边栏目录树
@@ -94,7 +94,7 @@ class Basic extends PureComponent {
   };
 
   render() {
-    const { history: {location: {pathname}}, login: { userAccount, currentCompanyName, info1, info2, menusData } } = this.props;
+    const { history: {location: {pathname}}, login: { userAccount, currentCompanyName, companyLogo, info1, info2, menusData } } = this.props;
     const { collapsed } = this.state;
    
     // 方法
@@ -105,9 +105,9 @@ class Basic extends PureComponent {
     };
     // 属性
     const parentProps = {
-      logo,
       userAccount,
       currentCompanyName,
+      companyLogo,
       menusData,
       collapsed,
       pathname,

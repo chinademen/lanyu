@@ -39,8 +39,7 @@ class SiderMenu extends PureComponent {
                     <SubMenu  title={
                         item.iconUrl ? (
                         <span>
-                            {/* <Icon type={item.iconUrl}> */}
-                            <Icon type="user" />
+                            <Icon type={item.iconUrl} />
                             <span>{item.resourceName}</span>
                         </span>
                         ) : ( item.resourceName )
@@ -67,15 +66,14 @@ class SiderMenu extends PureComponent {
                 to={resourceUrl} 
                 replace
             >
-                {/* <Icon type={item.iconUrl} /> */}
-                <Icon type="user" />
+                <Icon type={item.iconUrl} />
                 <span>{item.resourceName}</span>
             </Link>
         );
     }
 
     render() {
-        const { currentCompanyName, logo, menusData, collapsed } = this.props;
+        const { currentCompanyName, companyLogo, menusData, collapsed } = this.props;
         const { openKeys } = this.state;
 
         return (
@@ -86,7 +84,7 @@ class SiderMenu extends PureComponent {
         >
           <div className="logo" key="logo">
             <Link to="/" replace>
-                <img src={logo} alt="logo" />
+                <img src={companyLogo} alt="logo" />
                 {collapsed || <h1>{ currentCompanyName }</h1>}
             </Link>
           </div>

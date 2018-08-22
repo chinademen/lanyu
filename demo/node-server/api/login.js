@@ -12,10 +12,6 @@ const login = (req, res) => {
         }
         // 验证码校验
         if (validCode.toLowerCase() == global.imgStr.toLowerCase()) {
-            // 清空验证码
-            global.imgStr = '';
-            // 存储session
-            req.session.userAccount = userAccount;
             // 用户信息
             let userInfo = JSON.parse(JSON.stringify(data[0]));
             // 生成目录树
@@ -35,23 +31,25 @@ const login = (req, res) => {
                     });
                 }
             });
-            // 拼装当前用户信息
-            const info = {
-                currentCompanyName: userInfo[0].currentCompanyName,
-                userAccount: userInfo[0].userAccount,
-                userName: userInfo[0].userName,
-                info1: userInfo[0].info1,
-                info2: userInfo[0].info2,
-                balance: userInfo[0].balance,
-            };
-            // 返回body
-            res.json({
-                status: 1,
-                message: '登录成功',
-                data: {
-                    menusData,
-                    ...info
-                }
+            const { currentCompanyName, userAccount, userName, info1, info2, balance } = userInfo[0];
+            sql(`SELECT * FROM company WHERE companyName="${currentCompanyName}";`, {}, (err2, data2) => {
+                data2 = JSON.parse(JSON.stringify(data2));
+                const { companyId, companyLogo } = data2[0];
+                 // 清空验证码
+                global.imgStr = '';
+                // 存储session
+                req.session.userAccount = userAccount;
+                // 拼装当前用户信息 和公司信息
+                const info = { currentCompanyName, userAccount, userName, info1, info2, balance, companyId, companyLogo };
+                // 返回body
+                res.json({
+                    status: 1,
+                    message: '登录成功',
+                    data: {
+                        menusData,
+                        ...info
+                    }
+                });
             });
         } else {
             res.json({

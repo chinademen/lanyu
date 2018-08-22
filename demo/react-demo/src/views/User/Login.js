@@ -46,7 +46,7 @@ class LoginPage extends PureComponent {
             <Meta
               className="header"
               avatar={<Avatar src="../../favicon.ico" />}
-              title="管理系统DEMO"
+              title="游戏管理平台"
             />
             <a href="javascript:;">账号密码登录</a>
             <Card className="content" bordered={false}>

@@ -274,7 +274,8 @@
         npm start
     
     2. 按项目需求配置axios/fetch
-    /src/fetch/request.js  // 代码省略
+    
+    2.1 axios请求   /src/fetch/request.js
     
         axios请求使用方法详解：
     
@@ -359,6 +360,18 @@
         解决办法：
             改为1或者3的提交方式
     
+    
+    2.2 fetch请求   /src/fetch/fetch.js
+        fetch请求使用方法详解:
+
+        项目中三种常用数据处理:
+            1. application/x-www-form-urlencoded 表单默认提交
+
+            2. multipart/form-data 上传文件
+
+            3. application/json json格式
+
+            
     
     3. 配置路由
         /router/index.js    返回总路由    

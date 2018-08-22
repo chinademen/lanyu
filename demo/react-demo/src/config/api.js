@@ -11,4 +11,8 @@ export default {
         addMember: '/api/member/addMember',     // 新增会员
         editMember: '/api/member/editMember',   // 修改会员
     },
+    // 网站管理
+    web: {
+        uploadCompanyLogo: '/api/web/webSet',         // 网站设置
+    },
 }

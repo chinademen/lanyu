@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
-// import { getVerify, userLogin, userLogout } from '@/services/login';        // axios
-import { getVerify, userLogin, userLogout } from '@/services/fetchtlogin';     // fetch
+import { getVerify, userLogin, userLogout } from '@/services/login';        // axios
+// import { getVerify, userLogin, userLogout } from '@/services/fetchtlogin';     // fetch
 import { CHANGE_GETVERIFY, CHANGE_USERLOGIN } from '../reducers/login';
 import { opStorage } from '@/util/util';
 import createHistory from 'history/createHashHistory';
