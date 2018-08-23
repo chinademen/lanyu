@@ -27,11 +27,13 @@ class WebSet extends PureComponent {
 
     // 上传公司LOGO
     handleUpload = () => {
+        const { companyId } = this.props.login;
         const { fileList } = this.state;
         // 组装FormData数据
         const formData = new FormData();
         fileList.forEach(file => {
-            formData.append('file', file);
+            formData.append('file', file);              //  修改的文件
+            formData.append('companyId', companyId);    //  修改文件的公司ID
         });
         
         // 上传中
@@ -120,9 +122,10 @@ class WebSet extends PureComponent {
 }
 
 const mapStateToProps = (state) => {
-    const { login } = state;
+    const { login, web } = state;
     return ({
-      login
+      login,
+      web
     });
 }
   

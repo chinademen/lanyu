@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Upload, Button, Icon, message } from 'antd';
+import './PlaneGame.less';
 
-class MemberWork extends PureComponent {
+class PlaneGame extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,10 +16,10 @@ class MemberWork extends PureComponent {
       
         return (
             <div>
-                会员出勤详情
+                飞机大战
             </div>
         );
     }
 }
 
-export default MemberWork;
+export default PlaneGame;
