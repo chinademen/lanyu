@@ -1,0 +1,134 @@
+@import '~antd/lib/style/themes/default.less';
+.game {
+    width: 850px;
+    margin: auto;
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+
+    // canvas
+    #cas {
+        display: block;
+        width: 700px;
+        border: 1px solid;
+        margin-left: 0;
+        background-color: #000
+    }
+
+    .showBg {
+        background-color: transparent !important;
+    }
+
+    // 提示信息
+    .showSomething {
+        position: fixed;
+        left: 220px;
+        top: 180px;
+    }
+
+    // 移动背景
+    .movebg {
+        width: 700px;
+        height: 200%;
+        background: url(http://localhost:9000/images/plane/bg_1_1.jpg);
+        background-size: 100% 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-animation: bganimate 10s infinite linear;
+        animation: bganimate 10s infinite linear;
+        -moz-animation: bganimate 10s infinite linear;
+        z-index: -1;
+    }
+
+    #point {
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        top: 0px;
+        color: #FFF;
+        font: 20px "微软雅黑";
+        display: none;
+    }
+
+    // 游戏开始按钮
+    #gameStart {
+        position: absolute;
+        width: 700px;
+        height: 90px;
+        text-align: center;
+        color: #FFF;
+        font: 20px "微软雅黑";
+        top: 50%;
+        display: none;
+
+        #gs-start {
+            display: inline-block;
+            width: 180px;
+            height: 60px;
+            background-color: #CCC;
+            color: #000;
+            cursor: pointer;
+            line-height: 52px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            border: 5px solid #FFF;
+        }
+
+        #gs-start:hover {
+            color: #f00;
+        }
+    }
+
+    // 按钮
+    .btn {
+        position: absolute;
+        display: block;
+        right: 0;
+        width: 140px;
+    }
+
+    #startgod {
+        top: 0px;
+    }
+
+    #god {
+        top: 50px;
+    }
+
+    #verygod {
+        top: 100px;
+    }
+
+    #pretygod {
+        top: 150px;
+    }
+
+    #nogod {
+        top: 200px;
+    }
+   
+}
+
+// 背景动画
+@-webkit-keyframes bganimate {
+    from {
+        -webkit-transform: translateY(-50%);
+    }
+    to {
+        -webkit-transform: translateY(0);
+    }
+}
+
+@-moz-keyframes bganimate {
+    from {
+        -webkit-transform: translateY(-50%);
+    }
+    to {
+        -webkit-transform: translateY(0);
+    }
+}
