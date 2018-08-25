@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50640
 File Encoding         : 65001
 
-Date: 2018-08-20 20:29:49
+Date: 2018-08-24 21:19:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,12 +33,12 @@ CREATE TABLE `memberinfo` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `userAccount` (`userAccount`),
   UNIQUE KEY `userAccount_2` (`userAccount`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of memberinfo
 -- ----------------------------
-INSERT INTO `memberinfo` VALUES ('1', 'admin', '总管理员', '2018-08-18 22:22:33', '一级', '8888.00', '', '暂无公司', '66', '99');
+INSERT INTO `memberinfo` VALUES ('1', 'admin', '总管理员', '2018-08-18 22:22:33', '一级', '666888.00', '698d51a19d8a121ce581499d7b701668', '微软', '66', '99');
 INSERT INTO `memberinfo` VALUES ('2', 'admin2', '总管理员2', '2018-08-18 22:23:08', '一级', '99999999.00', '698d51a19d8a121ce581499d7b701668', '微软', '5', '88');
 INSERT INTO `memberinfo` VALUES ('3', 'zhangsan', '张三', '2018-08-19 12:09:32', '二级', '88888.00', '698d51a19d8a121ce581499d7b701668', '微软', '55', '7');
 INSERT INTO `memberinfo` VALUES ('4', 'lisi', '李四', '2018-08-19 12:10:17', '二级', '88888.00', '698d51a19d8a121ce581499d7b701668', '微软', '5', '22');
@@ -68,3 +68,4 @@ INSERT INTO `memberinfo` VALUES ('29', 'adai', '阿呆', '2018-08-20 18:42:57', 
 INSERT INTO `memberinfo` VALUES ('30', 'mahuateng', '麻花藤', '2018-08-20 19:10:32', '二级', '0.00', '698d51a19d8a121ce581499d7b701668', '暂无公司', null, null);
 INSERT INTO `memberinfo` VALUES ('31', 'mayun', '马芸', '2018-08-20 19:16:09', '二级', '0.00', '698d51a19d8a121ce581499d7b701668', '阿里妈妈', null, null);
 INSERT INTO `memberinfo` VALUES ('32', 'jingdong', '刘东强', '2018-08-20 19:17:20', '二级', '0.00', '698d51a19d8a121ce581499d7b701668', '京西', null, null);
+INSERT INTO `memberinfo` VALUES ('33', 'amao333', '猫爷', '2018-08-21 18:42:54', '二级', '0.00', '698d51a19d8a121ce581499d7b701668', '暂无公司', null, null);

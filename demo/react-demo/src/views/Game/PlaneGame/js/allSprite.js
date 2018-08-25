@@ -1,3 +1,4 @@
+import { datas } from './data';
 // 飞机尺寸
 export let planWidth = 24;
 export let planHeight = 24;
@@ -390,7 +391,7 @@ export const misslePainter = {
   paint: function(sprite, ctx) {
     if (sprite.isgood) {
       var img = new Image();
-      img.src = 'http://localhost:9000/images/plane/plasma.png';
+      img.src = datas[1];
       ctx.drawImage(
         img,
         -missleWidth / 2 + 1,
@@ -487,7 +488,7 @@ export const badPlanBehavior = [
 export const badPlanPainter = {
   paint: function(sprite, ctx) {
     var img = new Image();
-    img.src = 'http://localhost:9000/images/plane/ship.png';
+    img.src = datas[2];
     switch (sprite.badKind) {
       case 1:
       ctx.drawImage(

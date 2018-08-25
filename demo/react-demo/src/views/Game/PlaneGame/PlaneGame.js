@@ -369,27 +369,29 @@ class PlaneGame extends PureComponent {
     
     // 飞机移动函数
     keyHandle(e, result) {
-        switch (e.keyCode) {
-            //case 88:myplan.fire = result;
-            //break;
-            case 90:
-            myplan.rotateLeft = result;
-            break;
-            case 67:
-            myplan.rotateRight = result;
-            break;
-            case 37:
-            myplan.toLeft = result;
-            break;
-            case 38:
-            myplan.toTop = result;
-            break;
-            case 39:
-            myplan.toRight = result;
-            break;
-            case 40:
-            myplan.toBottom = result;
-            break;
+        if (myplan) {
+            switch (e.keyCode) {
+                //case 88:myplan.fire = result;
+                //break;
+                case 90:
+                myplan.rotateLeft = result;
+                break;
+                case 67:
+                myplan.rotateRight = result;
+                break;
+                case 37:
+                myplan.toLeft = result;
+                break;
+                case 38:
+                myplan.toTop = result;
+                break;
+                case 39:
+                myplan.toRight = result;
+                break;
+                case 40:
+                myplan.toBottom = result;
+                break;
+            }
         }
     }
 
@@ -427,7 +429,6 @@ class PlaneGame extends PureComponent {
     
 
     render() {
-        console.log(this.props);
         return (
             <div className="game">
 
