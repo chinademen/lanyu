@@ -13,12 +13,6 @@ const getValue = obj =>
     .map(key => obj[key])
     .join(',');
 
-// 初始化分页参数
-const initPage = {
-    pageNo: 1,
-    pageSize: 10
-};
-
 const Action = {
     add: 'add',
     edit: 'edit',
@@ -29,6 +23,10 @@ class MemberInfo extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            initPage: {             // 分页条件
+                pageNo: 1,   
+                pageSize: 10, 
+            },
             addModalVisible: false,     // 新增会员弹窗开关
             editModalVisible: false,    // 修改会员弹窗开关
             expandForm: false,          // 搜索表单开关
@@ -41,8 +39,13 @@ class MemberInfo extends PureComponent {
         this.renderTable();
     }
 
+    // 将子组件表格挂载到当前组件上, 让当前组件可以执行table组件中的所有方法
+    onRef = (ref) => {
+        this.childTable = ref;
+    }
+
     // 表格渲染
-    renderTable = (params = initPage) => {
+    renderTable = (params = this.state.initPage) => {
         this.props.dispatch({
             type: MEMBER_MEMBERLIST,
             payload: params
@@ -59,10 +62,15 @@ class MemberInfo extends PureComponent {
           return newObj;
         }, {});
     
-        const params = {
-            // 分页参数
+        // 保存当前分页参数
+        const initPage = {
             pageNo: pagination.current,
-            pageSize: pagination.pageSize,
+            pageSize: pagination.pageSize
+        }
+        this.setState({ initPage });
+
+        const params = {
+          ...initPage,  // 分页参数
           ...formValues, // 表单数据
           ...filters,    // 过滤器
         };
@@ -73,6 +81,48 @@ class MemberInfo extends PureComponent {
 
         // 表格切换查询
         this.renderTable(params);
+    };
+
+    // 查询
+    handleSearch = e => {
+        e.preventDefault();
+        const { form } = this.props;
+        form.validateFields((err, fieldsValue) => {
+            if (err) return;
+            // const { startTime, endTime } = this.state;
+            // if (startTime !== null) fieldsValue.startTime = moment(startTime).format('YYYY-MM-DD hh:mm:ss');
+            // if (endTime !== null) fieldsValue.endTime = moment(endTime).format('YYYY-MM-DD hh:mm:ss');
+            const values = {
+                ...fieldsValue, // 查询表单的input值
+                updatedAt: fieldsValue.updatedAt && fieldsValue.updatedAt.valueOf(),
+            };
+
+            // 更新查询条件formValues
+            this.setState({
+                formValues: values,
+            });
+
+            // 重置分页条件-页码
+            let { initPage } = this.state;
+            initPage.pageNo = 1;
+            const params = {
+                ...initPage,
+                ...fieldsValue
+            };
+            this.renderTable(params);
+
+        });
+    }
+
+    // 重置表单数据
+    handleFormReset = () => {
+        const { form } = this.props;
+        form.resetFields();
+        // this.timeIsChange('startTime', null);
+        // this.timeIsChange('endTime', null);
+        this.setState({
+            formValues: {},
+        });
     };
 
     // 修改选中行的数据
@@ -98,6 +148,7 @@ class MemberInfo extends PureComponent {
                 payload: fields,
                 callback: (res) => {
                     if (!res) return;
+                    this.childTable.cleanSelectedKeys();
                     this.renderTable();
                 }
             });
@@ -109,6 +160,7 @@ class MemberInfo extends PureComponent {
                 payload: fields,
                 callback: (res) => {
                     if (!res) return;
+                    this.childTable.cleanSelectedKeys();
                     this.renderTable();
                 }
             });
@@ -125,7 +177,7 @@ class MemberInfo extends PureComponent {
             return;
         }   
         switch (e.key) {
-            case 'edit': 
+            case 'edit':
                 this.handleModalVisible(Action.edit, true);
                 break;
         }
@@ -217,6 +269,7 @@ class MemberInfo extends PureComponent {
                         selectedRows={selectedRows}
                         onSelectRow={this.handleSelectRows}
                         onChange={this.handleBasicTableChange}
+                        onRef={this.onRef}
                     />
                 </div>
                 <AddMember {...modalProps} modalVisible={addModalVisible} />

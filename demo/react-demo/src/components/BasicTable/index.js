@@ -11,6 +11,11 @@ class BasicTable extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    // 执行父组件的方法, 返回组件实例
+    this.props.onRef(this)
+  }
+
   componentWillReceiveProps(nextProps) {
     // clean state
     if(nextProps.selectedRows){
@@ -43,7 +48,7 @@ class BasicTable extends PureComponent {
 
   render() {
     const { selectedRowKeys } = this.state;
-    const { data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType } = this.props;
+    const { initPage, data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType } = this.props;
     // 项目约定返回的表格数据 list [] 
     
     const pagination = {
@@ -52,6 +57,9 @@ class BasicTable extends PureComponent {
         totalPage,   // 总页数
         total: totalRecord, // 总数据
     };
+
+    // 控件的当前页码同步
+    if (initPage) pagination.current = initPage.pageNo;
 
     // 分页的配置项 
     const paginationProps = {
