@@ -13,7 +13,8 @@ class BasicTable extends PureComponent {
 
   componentDidMount() {
     // 执行父组件的方法, 返回组件实例
-    this.props.onRef(this)
+    const { onRef } = this.props;
+    if (onRef) onRef(this);
   }
 
   componentWillReceiveProps(nextProps) {
