@@ -11,7 +11,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 const redisStore = require('connect-redis')(session);
 const sessionStore = new redisStore({ 
-    host: '192.168.28.9',
+    host: 'localhost',
     port: 6379,
     db: 0,                  // 使用第0个数据库
     // pass: 123456,        // 数据库密码 默认无

@@ -1,8 +1,8 @@
 export const datas = [
-	"http://192.168.28.9:9000/images/plane/explosion.png",
-	"http://192.168.28.9:9000/images/plane/plasma.png",
-	"http://192.168.28.9:9000/images/plane/ship.png",
-    "http://192.168.28.9:9000/images/plane/bg_1_1.jpg",
+	"http://localhost:9000/images/plane/explosion.png",
+	"http://localhost:9000/images/plane/plasma.png",
+	"http://localhost:9000/images/plane/ship.png",
+    "http://localhost:9000/images/plane/bg_1_1.jpg",
 ]
 
 // 飞机爆炸显示
