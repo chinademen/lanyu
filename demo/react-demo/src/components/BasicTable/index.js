@@ -49,7 +49,7 @@ class BasicTable extends PureComponent {
 
   render() {
     const { selectedRowKeys } = this.state;
-    const { initPage, data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType } = this.props;
+    const { initPage, data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType, getFooter } = this.props;
     // 项目约定返回的表格数据 list [] 
     
     const pagination = {
@@ -116,6 +116,7 @@ class BasicTable extends PureComponent {
           size="small"
           pagination={paginationProps}
           onChange={this.handleTableChange}
+          footer={getFooter ? () => getFooter() : null}
         />
       </div>
     );
