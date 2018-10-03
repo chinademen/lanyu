@@ -26,7 +26,6 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.

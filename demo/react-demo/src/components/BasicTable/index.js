@@ -66,7 +66,14 @@ class BasicTable extends PureComponent {
     const paginationProps = {
       showSizeChanger: true,
       showQuickJumper: true,
-      showTotal: (total, range) => `${range[0]}-${range[1]} 共 ${total} 记录`,
+      showTotal: (total, range) => {
+        return (
+          <Fragment>
+            <span className="remark">备注：xxxxxx</span>
+            <span>{`${range[0]}-${range[1]} 共 ${total} 记录`}</span>
+          </Fragment>
+        )
+      },
       ...pagination,
     };
    
