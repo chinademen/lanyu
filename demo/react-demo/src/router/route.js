@@ -6,6 +6,9 @@ import HomePage from '@/views/HomePage/HomePage';
 // 会员管理
 import MemberInfo from '@/views/Member/MemberInfo';
 
+// 高阶组件运用
+import CreateTab from '@/views/CreateTab/CreateTab'; 
+
 // 网站管理
 import WebSet from '@/views/Web/WebSet';
 
@@ -27,6 +30,10 @@ export const routerConfig = {
     '/views/member/info': {
         component: MemberInfo,
         name: ['会员管理', '会员信息列表'],
+    },
+    '/views/member/tabs': {
+        component: CreateTab,
+        name: ['会员管理', '高阶组件运用'],
     },
     // 网站管理
     '/views/web/set': {

@@ -1,7 +1,7 @@
 // 表格组件
 import React, { PureComponent, Fragment } from 'react';
 import { Table, Alert } from 'antd';
-import styles from './index.less';
+import './index.less';
 
 class BasicTable extends PureComponent {
   constructor(props) {
@@ -82,7 +82,7 @@ class BasicTable extends PureComponent {
       selectedRowKeys,
       onChange: this.handleRowSelectChange,
       getCheckboxProps: record => ({  // 禁用
-        defaultChecked: record.checked == 'true', // 默认被选中的checkbox
+        defaultChecked: record.checked === 'true', // 默认被选中的checkbox
         disabled: record.disabled,  // 默认被禁用的按钮
       }),
       type: rowSelectionType || "checkbox", // 表格默认多选, 可设置为"radio"
@@ -112,7 +112,7 @@ class BasicTable extends PureComponent {
           rowSelection={!rowType ? rowSelection : null}
           dataSource={list}
           columns={columns}
-          scroll={{ x: scroll || 1500 }}
+          // scroll={{ x: scroll || 1500 }}
           size="small"
           pagination={paginationProps}
           onChange={this.handleTableChange}
