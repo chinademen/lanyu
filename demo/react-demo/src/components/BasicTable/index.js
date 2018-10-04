@@ -1,7 +1,7 @@
 // 表格组件
 import React, { PureComponent, Fragment } from 'react';
 import { Table, Alert } from 'antd';
-import './index.less';
+import styles from './index.less';
 
 class BasicTable extends PureComponent {
   constructor(props) {
@@ -69,7 +69,7 @@ class BasicTable extends PureComponent {
       showTotal: (total, range) => {
         return (
           <Fragment>
-            <span className="remark">备注：xxxxxx</span>
+            <span className="remark">备注：这是表格的备注...</span>
             <span>{`${range[0]}-${range[1]} 共 ${total} 记录`}</span>
           </Fragment>
         )
