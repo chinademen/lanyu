@@ -1,0 +1,126 @@
+<!Doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="描述">
+	<title>Smultron</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+	<header class="pageHeader">
+		<nav class="headNav">
+			<div class="layout">
+				<div class="logo"></div>
+				<a href="javascript:;" id="navTrigger1"></a>
+				<div class="menu">
+					<ul>
+						<li>
+							<a href="#">
+								<span data-hover="首页">首页</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span data-hover="我们的产品">我们的产品</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span data-hover="公司团队">公司团队</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span data-hover="联系我们">联系我们</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+	</header>
+	<main>
+		<section id="banner" class="banner sectioner clearfix">
+			<div class="bannerMap">
+				<div id="getMap"></div>
+			</div>
+		</section>
+		<section id="whatwedo" class="whatwedo sectioner clearfix">
+			<article class="whatwedo-item front-end">
+				<div class="layout">
+					<i class="icon"></i>
+					<div class="txt">
+						<h3>FRONT-END DEVELOPMENT</h3>
+						<p>In a struggle for exceptional UX we tend to win the hearts of your clients with modern weaponry: GRUNTs,
+							PREPROS’, SASS and LESS. Our code is always on pair with project’s parameters and works perfectly fine on mobile
+							and desktop platforms. The priority is aesthetics and full compatibility. Effective extras, like parallaxes and
+							3D roll-overs, are always an option. Fresh and clear front is a calling card of a modern company – it creates
+							positive first impression and is a big leap towards winning user’s commitment.
+						</p>
+						<ul>
+							<li>HTML5</li>
+							<li>CSS3</li>
+							<li>JQUERY</li>
+							<li>RWD</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+			<article class="whatwedo-item back-end">
+				<div class="layout">
+					<i class="icon"></i>
+					<div class="txt">
+						<h3>BACK-END DEVELOPMENT</h3>
+						<p>In a struggle for exceptional UX we tend to win the hearts of your clients with modern weaponry: GRUNTs,
+							PREPROS’, SASS and LESS. Our code is always on pair with project’s parameters and works perfectly fine on mobile
+							and desktop platforms. The priority is aesthetics and full compatibility. Effective extras, like parallaxes and
+							3D roll-overs, are always an option. Fresh and clear front is a calling card of a modern company – it creates
+							positive first impression and is a big leap towards winning user’s commitment.
+						</p>
+						<ul>
+							<li>HTML5</li>
+							<li>CSS3</li>
+							<li>JQUERY</li>
+							<li>RWD</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+		</section>
+	</main>
+	<footer class="pageFooter">
+		<div class="layout">
+			<div class="logo3">
+				<strong></strong>
+				<span>© 2016 - All rights reserved</span>
+			</div>
+			<div class="middle-icon"></div>
+			<div class="link">
+				<div>
+					Our offer
+					<a href="#"></a>
+				</div>
+				<div>
+					pdfFind us at:
+					<a href="#"></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div id="awwwards">
+		<a href="javascript:;"></a>
+	</div>
+	<script>
+		var tabs = document.querySelectorAll('.menu li');
+		var banner = document.getElementById('banner');
+		tabs.forEach(function (a, i) {
+			a.addEventListener('click', function () {
+				banner.style.display = i === 0 ? 'block' : 'none';
+			});
+		});
+		
+	</script>
+</body>
+</html>

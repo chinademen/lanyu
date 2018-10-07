@@ -16,7 +16,7 @@ class HomePage extends PureComponent {
       
         return (
             <div>
-                ??
+                首页
             </div>
         );
     }
