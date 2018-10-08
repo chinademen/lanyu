@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minmum-scale=1.0,maxmum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="Keywords" content="关键词">
 	<meta name="Description" content="描述">
 	<title>Smultron</title>
@@ -14,113 +16,199 @@
 		<nav class="headNav">
 			<div class="layout">
 				<div class="logo"></div>
-				<a href="javascript:;" id="navTrigger1"></a>
+				<div class="logoinfo">
+					<span>Savitar</span><span>tech</span>
+					<span>萨维塔科技</span>
+				</div>
 				<div class="menu">
 					<ul>
 						<li>
 							<a href="#">
-								<span data-hover="首页">首页</span>
+								<span class="menu-title" data-hover="网站首页">网站首页</span>
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<span data-hover="我们的产品">我们的产品</span>
+								<span class="menu-title" data-hover="平台公告" data-title="platfrom-bulletin">平台公告</span>
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<span data-hover="公司团队">公司团队</span>
+								<span class="menu-title" data-hover="关于我们" data-title="about-us">关于我们</span>
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<span data-hover="联系我们">联系我们</span>
+								<span class="menu-title" data-hover="联系我们" data-title="contact-us">联系我们</span>
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 	</header>
-	<main>
+	<!-- 主页内容 -->
+	<main id="homePage">
+		<section id="message-container" class="banner sectioner clearfix">
+			<p id="message">平台维护公告：本站2018年5月1日23:00-24:00服务器例行维护，届时可能暂时无法登录，请广大用户知悉！</p>
+		</section>
 		<section id="banner" class="banner sectioner clearfix">
 			<div class="bannerMap">
 				<div id="getMap"></div>
 			</div>
 		</section>
-		<section id="whatwedo" class="whatwedo sectioner clearfix">
-			<article class="whatwedo-item front-end">
+		<section id="introduce" class="introduce sectioner clearfix">
+			<article class="introduce-item front-end">
 				<div class="layout">
 					<i class="icon"></i>
 					<div class="txt">
-						<h3>FRONT-END DEVELOPMENT</h3>
-						<p>In a struggle for exceptional UX we tend to win the hearts of your clients with modern weaponry: GRUNTs,
-							PREPROS’, SASS and LESS. Our code is always on pair with project’s parameters and works perfectly fine on mobile
-							and desktop platforms. The priority is aesthetics and full compatibility. Effective extras, like parallaxes and
-							3D roll-overs, are always an option. Fresh and clear front is a calling card of a modern company – it creates
-							positive first impression and is a big leap towards winning user’s commitment.
-						</p>
+						<h3>彩票内容分发优势</h3>
 						<ul>
-							<li>HTML5</li>
-							<li>CSS3</li>
-							<li>JQUERY</li>
-							<li>RWD</li>
+							<li>
+								<span>极致体验</span>
+								全新封装彩票内容API模式、新平台快速接入、效率更高、体验更好
+							</li>
+							<li>
+								<span>种类丰富</span>
+								丰富的游戏种类，新彩种、新玩法实时更新
+							</li>
+							<li>
+								<span>专业高效</span>
+								专业的技术团队、多元化运营模式，投资负担小，让厅主利益最大化
+							</li>
+							<li>
+								<span>多端支持</span>
+								多端系统支持，支持电脑及任意移动端，让娱乐随时随地
+							</li>
 						</ul>
 					</div>
 				</div>
 			</article>
-			<article class="whatwedo-item back-end">
+			<article class="introduce-item introduce-left back-end">
 				<div class="layout">
 					<i class="icon"></i>
 					<div class="txt">
-						<h3>BACK-END DEVELOPMENT</h3>
-						<p>In a struggle for exceptional UX we tend to win the hearts of your clients with modern weaponry: GRUNTs,
-							PREPROS’, SASS and LESS. Our code is always on pair with project’s parameters and works perfectly fine on mobile
-							and desktop platforms. The priority is aesthetics and full compatibility. Effective extras, like parallaxes and
-							3D roll-overs, are always an option. Fresh and clear front is a calling card of a modern company – it creates
-							positive first impression and is a big leap towards winning user’s commitment.
+						<h3>丰富的彩种  多样化的玩法</h3>
+						<p class="title">
+							平台自运营以来，旗下拥有及其丰富的彩票种类，大体可分为高频彩种、低频彩种、快3系列、11选5系列、30秒彩系列
 						</p>
-						<ul>
-							<li>HTML5</li>
-							<li>CSS3</li>
-							<li>JQUERY</li>
-							<li>RWD</li>
-						</ul>
+						<p>
+							热门彩票如：重庆时时彩、北京PK10、腾讯分分彩、新疆时时彩、瑞典1分彩、河内一分彩、广东11选5、加拿大30秒...等几十种热门彩票，
+							大而全的平台设计，囊括所有彩种，为玩家提供最为便捷的游戏体验
+						</p>
+					</div>
+				</div>
+			</article>
+			<article class="introduce-item mobileApp">
+				<div class="layout">
+					<i class="icon"></i>
+					<div class="txt">
+						<h3>第三方充提</h3>
+						<p class="title">
+							支持银行卡、支付宝、财付通等多平台支持，充提高效、安全无后顾之忧
+						</p>
 					</div>
 				</div>
 			</article>
 		</section>
 	</main>
+	<!-- 主页内容 end -->
+	<!-- 其他页面内容 -->
+	<main id="otherPages">
+		<div class="layout clearfix">
+			<i class="icon"></i>
+			<div id="platfrom-bulletin" class="txt">
+				<div class="title">平台公告</div>
+				<ul class="bulletin-container">
+					<li class="bulletin-item">
+						<em>维护公告</em>
+						<span>本站2018年5月1日23:00-24:00服务器例行维护，届时可能暂时无法登录，请广大用户知悉！</span> 
+						<span>2018-04-30</span>
+					</li>
+					<li class="bulletin-item">
+						<em>版本更新</em>
+						<span>本站2018年5月1日23:00-24:00版本更新，届时可能暂时无法登录，请广大用户知悉！</span>
+						<span>2018-03-30</span>
+					</li>
+					<li class="bulletin-item">
+						<em>维护公告</em>
+						<span>本站2018年5月1日23:00-24:00服务器例行维护，届时可能暂时无法登录，请广大用户知悉！</span>
+						<span>2018-04-30</span>
+					</li>
+					<li class="bulletin-item">
+						<em>维护公告</em>
+						<span>本站2018年5月1日23:00-24:00服务器例行维护，届时可能暂时无法登录，请广大用户知悉！</span>
+						<span>2018-04-30</span>
+					</li>
+					<li class="bulletin-item">
+						<em>版本更新</em>
+						<span>本站2018年5月1日23:00-24:00版本更新，届时可能暂时无法登录，请广大用户知悉！</span> 
+						<span>2018-04-30</span>
+					</li>
+					<li class="paganation">
+						<div id="arrow_left">
+							<div id="arrow_left_l"></div>
+							<div id="arrow_left_r"></div>
+						</div>
+						<span class="page-control">1</span>
+						<span class="page-control">2</span>
+						<span class="page-control">3</span>
+						<span class="page-control">4</span>
+						<div id="arrow_right">
+							<div id="arrow_right_r"></div>
+							<div id="arrow_right_l"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="contact-us" class="txt">
+				<p class="title">联系我们</p>
+				<span>1111111111111</span>
+			</div>
+			<div id="about-us" class="txt">
+				<p class="title">关于我们</p>
+				<span>1111111111111</span>
+			</div>
+		</div>
+	</main>
+	<!-- 其他页面内容 end -->
 	<footer class="pageFooter">
 		<div class="layout">
-			<div class="logo3">
-				<strong></strong>
-				<span>© 2016 - All rights reserved</span>
+			<div class="footer-top clearfix">
+				<ul class="about">
+					<li>
+						<em>萨维塔科技</em> 
+						<span>About Savitartech</span>
+					</li>
+					<li>萨维塔科技公司是一家集游戏研发，彩票分发和运营于一体的娱乐公司。</li>
+					<li>作为行业的挑战者和引领者，我们始终将品牌信誉作为发展的第一要务，在游戏选择、产品设计以及运营服务的创</li>
+					<li>新上从未妥协。我们坚信，实力让情怀落地，厚积薄发才能给用户带来最极致的游戏体验。</li>
+				</ul>
+				<ul class="waring">
+					<li>郑重提示：彩票有风险，投注需谨慎，未满18周岁的青少年禁止购买</li>
+					<li>Copyright © 2018 萨维塔科技 版权所有</li>
+					<li>IPC备案编号：xxxxxxxxxx</li>
+					<li>Email：599930350@qq.com</li>
+				</ul>
 			</div>
-			<div class="middle-icon"></div>
-			<div class="link">
-				<div>
-					Our offer
-					<a href="#"></a>
-				</div>
-				<div>
-					pdfFind us at:
-					<a href="#"></a>
-				</div>
+			<div class="footer-bottom clearfix">
+				<ul class="partner">
+					<li>合作伙伴：</li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+				</ul>
+				<ul class="duty">
+					<li>博彩责任：</li>
+					<li><i class="icon"></i></li>
+					<li><i class="icon"></i></li>
+				</ul>
 			</div>
 		</div>
 	</footer>
-	<div id="awwwards">
-		<a href="javascript:;"></a>
-	</div>
-	<script>
-		var tabs = document.querySelectorAll('.menu li');
-		var banner = document.getElementById('banner');
-		tabs.forEach(function (a, i) {
-			a.addEventListener('click', function () {
-				banner.style.display = i === 0 ? 'block' : 'none';
-			});
-		});
-		
-	</script>
+	<script src="js/index.js"></script>
 </body>
 </html>
