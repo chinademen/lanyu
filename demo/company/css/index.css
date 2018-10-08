@@ -213,11 +213,51 @@ div.main-menu ul.menu li a span {
 	max-width:960px;
 	margin:auto;
 }
-.bannerMap {
+/* .bannerMap {
 	width: 100%;
 	height: 560px;
 	background: url('../images/首页通栏banner.png') no-repeat 0 0;
 	background-size: 100% 100%;
+} */
+#banner {
+	position: relative;
+}
+#bannerMap {
+	overflow: hidden;
+	width: 100%;
+	height: 560px;
+}
+#bannerMap img {
+	position: absolute;
+	width: 100%;
+	height: 560px;
+	transition: opacity 1s;
+}
+#bannerMap img.on {
+	opacity: 1;
+	z-index: 1;
+}
+#bannerTab {
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	bottom: 20px;
+	width: 82px;
+	height: 14px;
+	margin-left: -40px;
+}
+#bannerTab ul li {
+	float: left;
+	width: 14px;
+	height: 14px;
+	border-radius: 100%;
+	background: #818181;
+	margin:0 3px;
+	cursor: pointer;
+	transition: 1s;
+}
+#bannerTab ul li.on {
+	background: #f60;
 }
 /*end banner*/
 
