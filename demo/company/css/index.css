@@ -222,6 +222,32 @@ div.main-menu ul.menu li a span {
 #banner {
 	position: relative;
 }
+#bannerArrow {
+	display: none;
+	z-index: 9999;
+	position: absolute;
+	top: 50%;
+	margin-top: -35px;
+	width: 100%;
+	padding: 0 150px;
+	box-sizing: border-box;
+}
+#bannerArrow i.banner_arrow:nth-of-type(1) {
+	width: 70px;
+	height: 70px;
+	background: url("../images/arrow_left.png") no-repeat 0 0;
+	background-size: 100% 100%;
+	float: left;
+}
+#bannerArrow i.banner_arrow:nth-of-type(2) {
+	width: 70px;
+	height: 70px;
+	background: url("../images/arrow_right.png") no-repeat 0 0;
+	background-size: 100% 100%;
+}
+#bannerArrow i.banner_arrow:hover {
+	cursor: pointer;
+}
 #bannerMap {
 	overflow: hidden;
 	width: 100%;
@@ -378,10 +404,10 @@ main .introduce:before {
 	font-size: 24px;
 	font-weight: bold;
 }
-#otherPages .contact-us, #otherPages .about-us {
+#otherPages #contact-us, #otherPages #about-us {
 	display: none;
 }
-/* 选项卡 start */
+/* 平台公告 start */
 #otherPages .bulletin-container {
 	padding: 0 50px;
 }
@@ -493,14 +519,70 @@ main .introduce:before {
 	background: #FEB13D;
 }
 /* 分页 end */
-/* 选项卡 end */
+/* 平台公告 end */
+/* 关于我们 start */
+#about-us .container {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 50px 45px;
+}
+#about-us .container li {
+	font-size: 16px;
+	margin-bottom: 40px;
+}
+/* 关于我们 end */
+/* 联系我们 start */
+#contact-us .container {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 150px 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+#contact-us i.icon {
+	position: relative;
+	width: 112px;
+	height: 100px;
+	display: block;
+	left: 50%;
+	margin-left: -56px;
+	background: url("../images/email.png") no-repeat 0 0;
+	background-size: 100% 100%;
+}
+#contact-us .qq-box {
+	text-align: center;
+}
+#contact-us i.icon-qq {
+	width: 25px;
+	height: 25px;
+	margin-right: 15px;
+	display: inline-block;
+	background: url("../images/QQ.png") no-repeat 0 0;
+	background-size: 100% 100%;
+}
+#contact-us .container a:nth-of-type(1) {
+	display: inline-block;
+}
+#contact-us .container a {
+	position: relative;
+	display: block;
+	top: -3px;
+	font-size: 24px;
+	margin-bottom: 20px;
+	text-align: center;
+	color: #479FF8;
+}
+/* 联系我们 end */
 /* otherPages end*/
 
 /* footer start */
 .pageFooter {
 	width:100%;
 	position: relative;
-	background-color: #232329;
+	background-color: #111;
     color: #999;
 }
 .pageFooter .layout {
@@ -544,14 +626,27 @@ main .introduce:before {
 	float: left;
 }
 .pageFooter .footer-bottom li {
-	margin-left: 15px;
+	text-align: left;
 }
-.pageFooter .footer-bottom i {
+.pageFooter .footer-bottom li:nth-of-type(1) {
 	width: 82px;
 	height: 20px;
-	background: url("../images/icon/ico-footer.png") no-repeat;
 	line-height: 20px;
 	display: inline-block;
+}
+.pageFooter .footer-bottom .partner i {
+	width: 600px;
+	height: 40px;
+	background: url("../images/ico-footer1.png") no-repeat 0 0;
+	background-size: 100% 100%; 
+	margin-top: -10px;
+}
+.pageFooter .footer-bottom .duty i {
+	width: 70px;
+	height: 30px;
+	background: url("../images/ico-footer2.png") no-repeat 0 0;
+	background-size: 100% 100%; 
+	margin-top: -4px;
 }
 .link {
 	display:block;
@@ -607,11 +702,11 @@ main .introduce:before {
 
 /* 手机 */
 @media only screen and (max-width: 650px) {
-	#homePage {
+	/* #homePage {
 		display:none;
-	}
+	} */
 	#navTrigger {
-		left:0px !important;
+		left: 0px !important;
 	}
 }
 

@@ -36,11 +36,22 @@ window.onload = function () {
     });
 
     // 轮播
-    var bannerTab = document.getElementById("bannerTab"), // 轮播控件
+    var banner = document.getElementById('banner'),
+        bannerArrow = document.getElementById('bannerArrow'),
+        bannerArrowI = document.getElementsByClassName('banner_arrow');
+        bannerTab = document.getElementById("bannerTab"), // 轮播控件
         bannerLi = bannerTab.getElementsByTagName("li"), // 轮播按钮
         bannerImg = document.getElementById("bannerMap").getElementsByTagName("img"), // 轮播图片
         length = bannerLi.length,
+        iLength = bannerArrowI.length;
         _bannerIndex = 0;
+
+    banner.onmouseover = function () {
+        bannerArrow.style.display = 'block';
+    }
+    banner.onmouseout = function () {
+        bannerArrow.style.display = 'none';
+    }
 
     for (var i = 0; i < length; i++) {
         (function(i){
@@ -55,6 +66,27 @@ window.onload = function () {
             };
         })(i);
     }
+    for (var i = 0; i < iLength; i++) {
+        (function(i){
+            bannerArrowI[i].onclick = function () {
+                if ( _bannerIndex !== i ){
+                    bannerLi[_bannerIndex].classList.remove("on");
+                    bannerImg[_bannerIndex].classList.remove("on");
+                    _bannerIndex = i;
+                    bannerLi[_bannerIndex].classList.add("on");
+                    bannerImg[_bannerIndex].classList.add("on");
+                }
+            };
+        })(i);
+    }
+
+    // bannerArrowI[0].onclick = function () {
+
+    // }
+
+    // bannerArrowI[1].onclick = function () {
+        
+    // }
 
     // 分页
     var paganation = document.getElementsByClassName('paganation')[0], // 分页容器
@@ -77,39 +109,39 @@ window.onload = function () {
         });
 
         // 分页左按钮
-        pageLeft.addEventListener('click', function () {
-            pageBtn.forEach(function (a, i) {
-                var c = getComputedStyle(a, null).backgroundColor;
-                a.style.backgroundColor = '#fff';
-                if ('rgba(0, 0, 0, 0)' !== c) {
-                    if (_btnIndex === 0) {
-                        _btnIndex = 3;
-                    } else {
-                        console.log(_btnIndex);
-                        _btnIndex--;
-                    }
-                }
-            });
-            // console.log(_btnIndex, pageBtn[_btnIndex]);
-            pageBtn[_btnIndex].style.backgroundColor = '#FEB13D';
-        });
+        // pageLeft.addEventListener('click', function () {
+        //     pageBtn.forEach(function (a, i) {
+        //         var c = getComputedStyle(a, null).backgroundColor;
+        //         a.style.backgroundColor = '#fff';
+        //         if ('rgba(0, 0, 0, 0)' !== c) {
+        //             if (_btnIndex === 0) {
+        //                 _btnIndex = 3;
+        //             } else {
+        //                 console.log(_btnIndex);
+        //                 _btnIndex--;
+        //             }
+        //         }
+        //     });
+        //     // console.log(_btnIndex, pageBtn[_btnIndex]);
+        //     pageBtn[_btnIndex].style.backgroundColor = '#FEB13D';
+        // });
 
         // 分页右按钮
-        pageRight.addEventListener('click', function () {
-            pageBtn.forEach(function (a, i) {
-                var c = getComputedStyle(a, null).backgroundColor;
-                a.style.backgroundColor = '#fff';
-                if ('rgba(0, 0, 0, 0)' !== c) {
-                    if (_btnIndex === 3) {
-                        _btnIndex = 0;
-                    } else {
-                        _btnIndex++;
-                    }
-                }
-            });
-            console.log(_btnIndex);
-            pageBtn[_btnIndex].style.backgroundColor = '#FEB13D';
-        });
+        // pageRight.addEventListener('click', function () {
+        //     pageBtn.forEach(function (a, i) {
+        //         var c = getComputedStyle(a, null).backgroundColor;
+        //         a.style.backgroundColor = '#fff';
+        //         if ('rgba(0, 0, 0, 0)' !== c) {
+        //             if (_btnIndex === 3) {
+        //                 _btnIndex = 0;
+        //             } else {
+        //                 _btnIndex++;
+        //             }
+        //         }
+        //     });
+        //     console.log(_btnIndex);
+        //     pageBtn[_btnIndex].style.backgroundColor = '#FEB13D';
+        // });
     })(_btnIndex)
     
 
