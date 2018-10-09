@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Card, Upload, Button, Icon, message, Form, Dropdown, Menu } from 'antd';
+import { Card, Upload, Button, Icon, message, Form, Dropdown, Menu, Tag } from 'antd';
 import { MEMBER_MEMBERLIST, MEMBER_ADDMEMBER, MEMBER_EDITMEMBER } from '@/redux/reducers/member';
 import BasicTable from '@/components/BasicTable';
 import { timeFormat, moneyFormat } from '@/util/format';
 import './MemberInfo.less';
 import AddMember from './AddMember';    // 新增会员
 import EditMember from './EditMember';    // 修改会员信息
+import Details from './Details';    // 详情
+import Recharge from './Recharge';  // 充值
+import Draw from './Draw';  // 取款
 
 const getValue = obj =>
     Object.keys(obj)
@@ -32,6 +35,8 @@ class MemberInfo extends PureComponent {
             expandForm: false,          // 搜索表单开关
             selectedRows: [],           // 被选中行数据
             formValues: {},             // 表单数据
+            componentKey: 1,            // 判断组件的key
+            recode: {},                 // 当前编辑行的数据
         };
     }
 
@@ -183,9 +188,34 @@ class MemberInfo extends PureComponent {
         }
     }
 
+    // 更新当前组件Key
+    changeKey = (componentKey, recode) => {
+        this.setState({ 
+            componentKey,
+            recode
+        });
+    }
+
+    // 切换组件页面
+    changeComponent = params => {
+        const { componentKey } = params;
+        const componentArr = {
+            'Details': <Details {...params} />,
+            'Recharge': <Recharge {...params} />,
+            'Draw': <Draw {...params} />
+        };
+        return componentArr[componentKey];
+    }
+
     render() {
         const { data } = this.props;
-        const { selectedRows, addModalVisible, editModalVisible } = this.state;
+        const { selectedRows, addModalVisible, editModalVisible, componentKey, recode } = this.state;
+        const params = {
+            componentKey,
+            recode,
+            changeKey: this.changeKey
+        };
+
         const columns = [
             {
                 title: '会员ID',
@@ -231,6 +261,20 @@ class MemberInfo extends PureComponent {
                 key: 'currentCompanyName',
                 align: 'center',
                 render: val => val || '-',
+            },
+            {
+                title: '操作',
+                key: 'opration',
+                align: 'center',
+                render: (text, recode) => {
+                    return (
+                        <span>
+                            <Tag color="blue" key="Details" onClick={() => this.changeKey('Details', recode)}>详情</Tag>
+                            <Tag color="blue" key="Recharge" onClick={() => this.changeKey('Recharge', recode)}>充值</Tag>
+                            <Tag color="blue" key="Draw" onClick={() => this.changeKey('Draw', recode)}>提款</Tag>
+                        </span>
+                    )
+                }
             }
         ];
 
@@ -248,7 +292,7 @@ class MemberInfo extends PureComponent {
         );
 
         return (
-            <Card bordered={false}>
+            componentKey === 1 && <Card bordered={false}>
                 <div className="tableList">
                     <div className="tableListOperator">
                         <Button type="primary" onClick={() => this.handleModalVisible(Action.add, true)}>新增会员</Button>
@@ -274,7 +318,7 @@ class MemberInfo extends PureComponent {
                 </div>
                 <AddMember {...modalProps} modalVisible={addModalVisible} />
                 <EditMember {...modalProps} modalVisible={editModalVisible} selectedRows={selectedRows} />
-            </Card>
+            </Card> || this.changeComponent(params)
         );
     }
 }
