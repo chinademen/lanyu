@@ -4,7 +4,7 @@ window.onload = function () {
         homePage = document.getElementById('homePage'), // 主页内容
         otherPages = document.getElementById('otherPages'); // 其他页面
    
-    // 目录切换
+    // 导航
     tabs.forEach(function (a, i) {
         a.addEventListener('click', function () {
             var _this = this.querySelector('span');
@@ -56,6 +56,7 @@ window.onload = function () {
         })(i);
     }
 
+    // 分页
     var paganation = document.getElementsByClassName('paganation')[0], // 分页容器
         pageBtn = otherPages.querySelectorAll('.page-control'), // 分页按钮
         pageLeft = document.querySelector('#arrow_left'), // 分页左按钮
