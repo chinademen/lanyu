@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
 import { Form, Input, Button, Card, Icon, Avatar } from 'antd';
 import md5 from "md5";
 import './Login.less';
@@ -14,10 +16,22 @@ class LoginPage extends PureComponent {
         this.state = {
        
         };
+        // 风门, 防同一秒内多次触发同一事件
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClickThrottled = throttle(this.handleSubmit, 1000);
+        // 防抖动
+        this.handleChange = this.handleChange.bind(this);
+        this.emitChangeDebounce = debounce(this.emitChange, 250);
     }
 
     componentDidMount() {
 
+    }
+
+    // 组件被完成后, 清理handleClickThrottled
+    // 在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如穿件的定时器或者添加的事件监听器。
+    componentWillUnMount() {
+      this.handleClickThrottled.cancel();
     }
 
     // 登入
@@ -50,7 +64,7 @@ class LoginPage extends PureComponent {
             />
             <a href="javascript:;">账号密码登录</a>
             <Card className="content" bordered={false}>
-              <Form onSubmit={this.handleSubmit} className="login-form">
+              <Form onSubmit={this.handleClickThrottled} className="login-form">
                 <FormItem>
                   {getFieldDecorator('userAccount', {
                     rules: [{ required: true, max: 15, message: '管理员账号为6-15位 数字+字母' }],
