@@ -258,6 +258,16 @@ main .introduce:before {
 	content:'';
 	display:table;
 }
+#toAbout {
+	font-size: 16px;
+    color: #007aff;
+    position: absolute;
+	right: 10px; 
+	padding-top: 5px;
+}
+#toAbout:hover {
+	cursor: pointer;
+}
 .introduce-item {
 	min-height:200px;
 	padding:80px 0;
@@ -273,8 +283,8 @@ main .introduce:before {
 	text-align:center;
 }
 .introduce-item .layout i.icon {
-	width:224px;
-	height:200px;
+	width: 270px;
+	height: 260px;
 	display:inline-block;
 	background:url("../images/彩票内容.png") no-repeat 0 0;
 	background-size: 100% 100%;
@@ -282,6 +292,7 @@ main .introduce:before {
 .introduce-item .layout h3 {
 	font-size:22px;
 	font-size:2.2rem;
+	padding: 10px 0;
 }
 .introduce-item .layout p {
 	font-size:14px;
@@ -297,6 +308,20 @@ main .introduce:before {
 }
 .mobileApp .layout .title {
 	font-weight: 100;
+}
+.mobileApp p {
+	color: #007aff;
+	padding-bottom: 5px;
+}
+.mobileApp p:hover {
+	cursor: pointer;
+}
+.mobileApp p em {
+	font-size: 40px;
+	padding-right: 5px;
+}
+.mobileApp p span {
+	position: absolute;
 }
 .introduce-item  .layout .txt {
 	padding-top: 2.6rem; 
@@ -317,12 +342,12 @@ main .introduce:before {
 	content:'';
 }
 .back-end .layout i.icon {
-	width:200px;
+	width: 270px;
 	background:url("../images/第三方游戏.png") no-repeat 0 0;
 	background-size: 100% 100%;
 }
 .mobileApp .layout i.icon {
-	width:181px;
+	width: 270px;
 	background:url("../images/第三方充值.png") no-repeat 0 0;
 	background-size: 100% 100%;
 }
@@ -694,6 +719,7 @@ main .introduce:before {
 		position: absolute;
 		top: 0;
 		right: 50%;
+		/* left: 0; */
 		margin-right: 158px;
 	}
 	.introduce-left i.icon {

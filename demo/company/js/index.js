@@ -13,6 +13,7 @@ $(document).ready(function () {
             $('#homePage').hide();
             $('#otherPages').show();
             $('#' + $(this).find('span').data('title')).show();
+            console.log('#' + $(this).find('span').data('title'));
         }
     });
 
@@ -37,5 +38,31 @@ $(document).ready(function () {
         // preloadImages: false,
         // 懒加载图片
         // lazyLoading: true,
+    });
+
+    // 更多跳转到关于我们
+    $('#toAbout').on('click', function () {
+        $('.menu').find('span').css({'color': '#fff'});
+        $('#about-title').css({'color': '#E44E27'});
+        $('#otherPages .txt').hide();
+        $('#homePage').hide();
+        $('#otherPages').show();
+        $('#about-us').show();
+        $('html , body').animate({scrollTop: 0},'slow');
+    });
+
+    // 跳转到平台公告
+    $('.mobileApp p').on('click', function () {
+        $('.menu').find('span').css({'color': '#fff'});
+        $('#platfrom-title').css({'color': '#E44E27'});
+        $('#homePage').hide();
+        $('#otherPages').show();
+        $('#platfrom-bulletin').show();
+        $('html , body').animate({scrollTop: 0},'slow');
+    });
+
+    $('.page-control').on('click', function () {
+        $(this).siblings().css({'background-color': '#fff'});
+        $(this).css({'background-color': '#FEB13D'});
     });
 });
