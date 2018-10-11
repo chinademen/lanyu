@@ -20,8 +20,8 @@ class LoginPage extends PureComponent {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClickThrottled = throttle(this.handleSubmit, 1000);
         // 防抖动
-        this.handleChange = this.handleChange.bind(this);
-        this.emitChangeDebounce = debounce(this.emitChange, 250);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.emitChangeDebounce = debounce(this.emitChange, 250);
     }
 
     componentDidMount() {
