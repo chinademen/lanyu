@@ -46,6 +46,16 @@
 
 
 ### 一、 create-react-app项目初始化
+
+    步骤名称 | 相关命令
+    ---|---
+    1. 安装脚手架 | npm i -g create-react-app
+    2. 创建项目并进入项目目录 | cd create-app-demo
+    3. 初始化react项目 | create-react-app react-demo
+    4. 进入项目 && 运行项目 | cd react-demo && npm run start
+    5. 打包项目 | npm run build
+    6. 生成webpack的配置文件 | npm run eject
+
     1. 安装脚手架
         npm i -g create-react-app
         
