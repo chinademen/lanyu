@@ -1,6 +1,7 @@
 import React from 'react';
 import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/zh-cn'; // 时间组件中文
 import { HashRouter as Router, Route, Switch, Link, NavLink, Redirect } from 'react-router-dom';
 import createHistory from 'history/createHashHistory';
 // 登录页面

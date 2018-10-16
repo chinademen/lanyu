@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Card, Upload, Button, Icon, message, Form, Dropdown, Menu, Tag } from 'antd';
+import { Card, Button, Icon, message, Form, Dropdown, Menu, Tag, DatePicker } from 'antd';
 import { MEMBER_MEMBERLIST, MEMBER_ADDMEMBER, MEMBER_EDITMEMBER } from '@/redux/reducers/member';
 import BasicTable from '@/components/BasicTable';
 import { timeFormat, moneyFormat } from '@/util/format';
@@ -11,6 +11,7 @@ import Details from './Details';    // 详情
 import Recharge from './Recharge';  // 充值
 import Draw from './Draw';  // 取款
 
+const { RangePicker } = DatePicker;
 const getValue = obj =>
     Object.keys(obj)
         .map(key => obj[key])
