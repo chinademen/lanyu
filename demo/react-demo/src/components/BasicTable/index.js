@@ -49,8 +49,13 @@ class BasicTable extends PureComponent {
 
   render() {
     const { selectedRowKeys } = this.state;
-    const { initPage, data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType, getFooter } = this.props;
+    let { initPage, data: { list, pageNo, pageSize, totalPage, totalRecord }, loading, columns, rowKey, scroll, rowSelectionType, rowType, getFooter } = this.props;
     // 项目约定返回的表格数据 list [] 
+    
+    // 将mobx等处理过的 observableArray数组 转换成 原生数组 Array
+    if (list instanceof Object && !(Array.isArray(list))) {
+      list = Array.prototype.slice.call(list);
+    }
     
     const pagination = {
         pageNo,      // 当前页码
