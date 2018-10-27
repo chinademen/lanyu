@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Provider } from 'mobx-react';
+import Loadable from 'react-loadable';
+import Loading from '@/components/Loading';
+import stores from './stores';
+import './index.less';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const LoadableComponent = Loadable({
+    loader: () => import('./router'),
+    loading: Loading,
+});
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+ReactDOM.render(
+    <Provider {...stores}>
+        <LoadableComponent />
+    </Provider>,
+    document.getElementById('root')
+);
+
 serviceWorker.unregister();

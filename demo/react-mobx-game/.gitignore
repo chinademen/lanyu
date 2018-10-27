@@ -2,6 +2,10 @@
 
 # dependencies
 /node_modules
+/dist
+/vscode
+./vscode
+/build
 
 # testing
 /coverage
