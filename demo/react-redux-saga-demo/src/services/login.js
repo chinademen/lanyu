@@ -1,0 +1,25 @@
+import request from '@/fetch/request';
+import api from '@/config/api';
+import { objToStr } from '@/util/format';
+
+// 获取验证码
+export function getVerify(params) {
+    return request(api.login.getVerify, {
+        method: 'GET'
+    });
+}
+
+// 登录
+export function userLogin(params) {
+    return request(api.login.userLogin, {
+        method: 'POST',
+        data: params
+    });
+}
+
+// 登出
+export function userLogout(params) {
+    return request(api.login.userLogout, {
+        method: 'GET'
+    }); 
+}
