@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '@/index.less';
+import '@/index.less';
 
 export default class Header extends Component {
     constructor(props) {
@@ -9,8 +9,8 @@ export default class Header extends Component {
 
     render() {
         return (
-            <div className={styles.header}>
-                <div className={styles.headerContainer}>
+            <div className="header">
+                <div className="headerContainer">
 
                 </div>
             </div>

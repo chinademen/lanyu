@@ -283,7 +283,7 @@ module.exports = {
             exclude: cssModuleRegex,
             use: getStyleLoaders({
               importLoaders: 1,
-              modules: true,
+              // modules: true,
               javascriptEnabled: true,
             }),
           },
