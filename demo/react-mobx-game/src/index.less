@@ -54,3 +54,129 @@ body {
   }
 }
 
+// lottery
+.lottery_container {
+  width: 876px;
+  height: 500px;
+  padding: 5px 10px;
+  margin: 100px auto;
+  border: 1px solid #ddd;
+  // background: #ddd;
+  :global {
+    .ant-tab-nav-container {
+      border-radius: 6px;
+    }
+    // 外层
+    .ant-tabs-nav-wrap {
+      background: #444659;
+    }
+    .ant-tabs-tab {
+      background: #444659;
+      color: #fff;
+    }
+    .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+      background: #444659;
+      border: 0;
+    }
+    // 选中
+    .ant-tabs-tab-active {
+      background: #eee !important;
+      color: #000 !important;
+      border-radius: 6px;
+    }
+    // 左
+    .ant-tabs-tab-prev {
+      background: #444659;
+      left: 720px;
+      text-align: left;
+      width: 95px;
+      z-index: 11;
+      border-radius: 6px;
+      height: 39px;
+      &::before {
+        content: '更多玩法';
+        display: inline-block;
+        width: 93px;
+        line-height: 40px;
+        vertical-align: middle;
+        color: #de602f;
+      }
+      .ant-tabs-tab-prev-icon {
+        margin-left: 26px;
+        color: #de602f;
+      }
+    }
+    // 右
+    .ant-tabs-tab-next {
+      background: #444659;
+      left: 720px;
+      text-align: left;
+      width: 95px;
+      z-index: 11;
+      border-radius: 6px;
+      color: #fff;
+      height: 39px;
+      &::before {
+        content: '更多玩法';
+        display: inline-block;
+        width: 93px;
+        line-height: 40px;
+        vertical-align: middle;
+      }
+      .ant-tabs-tab-next-icon {
+        margin-left: 26px;
+      }
+    }
+    // 滚动条
+    .ant-tabs-nav-container-scrolling {
+      padding-left: 0;
+    }
+    // 隐藏禁用的箭头
+    .ant-tabs-tab-btn-disabled {
+      display: none;
+    }
+  }
+
+  // 玩法群
+  .playGroup {
+    .playMethods {
+      display: inline-block;
+      width: 80px;
+      height: 25px;
+    }
+    .playMethodName {
+      display: inline-block;
+      padding: 0 5px;
+      background: #ddd;
+      border-radius: 5px;
+      margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .selectZone {
+    .row {
+      padding: 35px;
+    }
+    .title {
+      height: 35px;
+      line-height: 35px;
+    }
+    .balls {
+      display: inline-block;
+      border: 1px solid #d3d0c9;
+      background: #ddd;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      margin-right: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
