@@ -1,0 +1,628 @@
+html,
+body,
+:global(#root) {
+  height: 100%;
+}
+
+:global(.ant-layout) {
+  min-height: 100%;
+}
+
+/* 清浮动 */ 
+.clearfix:after{
+	content:'';
+	display:block;
+	width:100%;
+	clear:both;
+	height:0;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+}
+
+// 公用加载
+.loading {
+  width: 100%;
+  height: 100%;
+  margin: 100px auto;
+  .ant-spin-spinning {
+    width: 100%;
+  }
+}
+
+.globalSpin {
+  width: 100%;
+  margin: 40px 0 !important;
+}
+
+// temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
+:global {
+  .ant-spin-container {
+    overflow: visible !important;
+  }
+}
+
+#root {
+  position: relative;
+  min-height: 1170px;
+  background-color: #f3f0f8;
+  background-image: url("static/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
+/* home */
+/* 头部 */
+.header {
+  width: 100%;
+  height: 60px;
+  .headerContainer {
+    position: relative;
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+  }
+  /* 头部左侧 */
+  .headerLeft {
+    display: inline-block;
+    width: 120px;
+    height: 60px;
+    span {
+      display: inline-block;
+      height: 60px;
+      line-height: 60px;
+      width: 80px;
+      text-align: center;
+      font-weight: bold;
+      color: #220ef4f7;
+    }
+    &:hover {
+      cursor: pointer;
+      & + .list {
+        display: block;
+      }
+    }
+  }
+  /* 选择彩种 */
+  .list {
+    // background: rgba(0, 0, 0, 0.6);
+    background: #333;
+    position: absolute;
+    width: 600px;
+    color: #fff;
+    top: 40px;
+    left: 20px;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    display: none;
+    z-index: 9999;
+    &:hover {
+      display: block;
+    }
+    .lotteryUl {
+      padding: 0;
+      li {
+        display: inline-block;
+        width: 25%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+      }
+      li:hover {
+        cursor: pointer;
+        background: #f44336;
+      }
+    }
+  }
+  /* 头部右侧 */
+  .headerRight {
+    float: right;
+    width: 340px;
+    .headerSpan {
+      display: inline-block;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      color: rgba(34, 14, 244, 0.97);
+      font-weight: bold;
+    }
+    .headerSpan:nth-of-type(1) {
+      width: 100px;
+    }
+    .headerSpan:nth-of-type(2) {
+      width: 150px;
+    }
+  }
+}
+/* 头部end */
+
+/* homeContainer */
+.homeContainer, .lotteryContainer {
+  width: 100%;
+  min-height: 800px;
+  .homeBox {
+    position: relative;
+    overflow-x: hidden;
+    width: 1200px;
+    min-height: 800px;
+    margin: 0 auto;
+    background: #fff;
+    .homeBanner {
+      .homeBanner1 {
+        background-image:  url("static/images/banner.jpg");
+      }
+      .homeBanner2 {
+        background-image:  url("static/images/banner2.jpg");
+      }
+      .homeBanner3 {
+        background-image:  url("static/images/banner3.jpg");
+      }
+      .homeBanner4 {
+        background-image:  url("static/images/banner4.jpg");
+      }
+      .homeBanner5 {
+        background-image:  url("static/images/banner5.jpg");
+      }
+      div {
+        width: 100%;
+        height: 270px;
+        background-color: #f3f0f8;
+        // background-image:  url("static/images/banner.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+    }
+    .infoBefore, .infoAfter {
+      display: inline-block;
+      position: absolute;
+      width: 50px;
+      height: 40px;
+      line-height: 40px;
+      background: #ddd;
+      font-size: 30px;
+      text-align: center;
+      z-index: 1;
+    }
+    .homeInfo {
+      width: 500%;
+      height: 40px;
+      line-height: 40px;
+      background: #fff;
+      span {
+        position: relative;
+        display: inline-block;
+        margin-right: 100px;
+        animation: Move 30s linear 0s infinite;
+        -webkit-animation: Move 30s linear 0s infinite; 
+        -moz-animation: Move 30s linear 0s infinite; 
+        -o-animation: Move 30s linear 0s infinite; 
+      }
+      @keyframes Move {
+        from { 
+          left: 0;
+        }
+        to {
+          left: -10%;
+        }
+      }
+      @-webkit-keyframes Move {
+        from { 
+          left: 0;
+        }
+        to {
+          left: -10%;
+        }
+      }
+    }
+    .infoAfter {
+      top: 270px;
+      right: 0;
+    }
+    main {
+      .mainLeft {
+        width: 300px;
+        min-height: 600px;
+        float: left;
+        box-sizing: border-box;
+        background: #f5f1f1;
+        text-align: center;
+      }
+      .mainRight {
+        width: 900px;
+        min-height: 600px;
+        float: right;
+        box-sizing: border-box;
+        background: #fff;
+        .ant-tabs-tabpane {
+          padding: 0 25px;
+          box-sizing: border-box;
+        }
+        .lotteryCard {
+          display: inline-block;
+          width: 162px;
+          height: 162px;
+          // border: 5px solid #2196f3f7;
+          // line-height: 162px;
+          text-align: center;
+          // background-color: #2196f3f7;
+          // background-image:  url("static/images/lotteryname.jpg");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+          margin: 25px;
+          color: rgb(8, 4, 22);
+          &:hover {
+            cursor: pointer;
+          }
+          img {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+/* homeContainer end */
+
+/* 页脚 */ 
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  bottom: 0;
+  padding: 10px;
+  .footerContent {
+    width: 1200px;
+    height: 50px;
+    margin: 15px auto;
+    background: url('./static/images/ft_logo.png') no-repeat center;
+  }
+  p {
+    text-align: center;
+    color: #b799b9;
+    font-size: 12px;
+  }
+}
+/* 页脚 end */ 
+/* home end */ 
+
+
+/* lottery */ 
+.lotteryContainer {
+  width: 100%;
+  min-height: 800px;
+  .lotteryBox {
+    position: relative;
+    overflow-x: hidden;
+    width: 1200px;
+    min-height: 800px;
+    margin: 0 auto;
+    background: #fff;
+    nav {
+      padding: 0;
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #193d10;
+      .logo, .times, .prevNumber, .details {
+        position: absolute;
+        display: inline-block;
+        top: 40px;
+        height: 120px;
+        background: #fff;
+        border: none;
+      }
+      .logo {
+        left: 72px;
+        width: 120px;
+        background-image: url('./static/images/logo.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .times {
+        left: 264px;
+        width: 300px;
+        .times-name, .times-number, .times-end {
+          display: inline-block;
+          text-align: left;
+          height: 46px;
+          line-height: 46px;
+          padding: 0 10px;
+        }
+        .times-name {
+          width: 50%;
+          font-size: 22px;
+          font-weight: bold;
+          color: #ff5656;
+        }
+        .times-number {
+          width: 50%;
+          color: #333;
+        
+        }
+        .times-end {
+          width: 100%;
+          color: #333;
+          em {
+            display: inline-block;
+            width: 25px;
+            height: 36px;
+            line-height: 36px;
+            background: #ff5656;
+            color: #fff;
+            border-radius: 3px;
+            text-align: center;
+            margin: 0 2px;
+            font-size: 18px;
+          }
+          span {
+            font-size: 26px;
+            padding: 0 5px;
+          }
+        }
+      }
+      .prevNumber {
+        left: 636px;
+        width: 300px;
+        span {
+          width: 35%;
+          display: inline-block;
+          text-align: center;
+          height: 46px;
+          line-height: 46px;
+          box-sizing: border-box;
+          padding: 0 2px;
+        }
+        span:nth-of-type(3) {
+          background: #ff5656;
+          color: #fff;
+          border-radius: 10px;
+          height: 30px;
+          line-height: 30px;
+          width: 80px;
+        }
+        ul {
+          width: 100%;
+          display: inline-block;
+          margin: 0;
+          li {
+            float: left;
+            width: 40px;
+            height: 40px;
+            line-height: 37px;
+            text-align: center;
+            border-radius: 50%;
+            background: #ff5656;
+            color: #fff;
+            border: 3px solid #e1d4d4;
+            box-sizing: border-box;
+            margin-right: 4px;
+          }
+        }
+        p {
+          margin: 0;
+          height: 28px;
+          line-height: 28px;
+          padding: 0 5px;
+          font-size: 12px;
+          text-align: center;
+          color: #333;
+        }
+      }
+      .details {
+        right: 72px;
+        width: 120px;
+        span {
+          display: inline-block;
+          width: 80px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #ff5656;
+          color: #fff;
+          border-radius: 10px;
+          margin: 14px 20px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    main {
+      .mainLeft {
+        width: 900px;
+        min-height: 600px;
+        float: left;
+        box-sizing: border-box;
+        background: #fff;
+        .ant-tabs-tabpane {
+          padding: 0 25px;
+          box-sizing: border-box;
+        }
+        .lotteryCard {
+          display: inline-block;
+          width: 162px;
+          height: 162px;
+          // border: 5px solid #2196f3f7;
+          // line-height: 162px;
+          text-align: center;
+          // background-color: #2196f3f7;
+          // background-image:  url("static/images/lotteryname.jpg");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+          margin: 25px;
+          color: rgb(8, 4, 22);
+          &:hover {
+            cursor: pointer;
+          }
+          img {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            left: 5px;
+          }
+        }
+      }
+      .mainRight {
+        width: 300px;
+        min-height: 600px;
+        float: right;
+        box-sizing: border-box;
+        background: #f5f1f1;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// 玩法组 玩法群
+.lottery_content {
+  // width: 876px;
+  // height: 500px;
+  // padding: 5px 10px;
+  // margin: 100px auto;
+  border: 1px solid #ddd;
+  // background: #ddd;
+  :global {
+    .ant-tab-nav-container {
+      border-radius: 6px;
+    }
+    // 外层
+    .ant-tabs-nav-wrap {
+      background: #444659;
+    }
+    .ant-tabs-tab {
+      background: #444659;
+      color: #fff;
+    }
+    .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+      background: #444659;
+      border: 0;
+    }
+    // 选中
+    .ant-tabs-tab-active {
+      background: #eee !important;
+      color: #000 !important;
+      border-radius: 6px;
+    }
+    // 左
+    .ant-tabs-tab-prev.ant-tabs-tab-arrow-show {
+      background: #444659;
+      left: 757px;
+      text-align: center;
+      width: 130px;
+      z-index: 11;
+      border-radius: 6px;
+      height: 39px;
+      &::before {
+        content: '更多玩法';
+        display: inline-block;
+        width: 93px;
+        line-height: 40px;
+        vertical-align: middle;
+        color: #de602f;
+      }
+      .ant-tabs-tab-prev-icon {
+        margin-left: 46px;
+        color: #de602f;
+      }
+    }
+    // 右
+    .ant-tabs-tab-next.ant-tabs-tab-arrow-show {
+      background: #444659;
+      left: 757px;
+      text-align: center;
+      width: 130px;
+      z-index: 11;
+      border-radius: 6px;
+      color: #fff;
+      height: 39px;
+      &::before {
+        content: '更多玩法';
+        display: inline-block;
+        width: 93px;
+        line-height: 40px;
+        vertical-align: middle;
+      }
+      .ant-tabs-tab-next-icon {
+        margin-left: 46px;
+      }
+    }
+    // 滚动条
+    .ant-tabs-nav-container-scrolling {
+      padding-left: 0;
+    }
+    // 隐藏禁用的箭头
+    .ant-tabs-tab-btn-disabled {
+      display: none;
+    }
+  }
+
+  // 玩法群
+  .playGroup {
+    .playMethods {
+      display: inline-block;
+      width: 100px;
+      height: 25px;
+    }
+    .playMethodsList {
+      display: inline-block;
+      width: 700px;
+    }
+    .playMethodName {
+      display: inline-block;
+      padding: 0 5px;
+      background: #ddd;
+      border-radius: 5px;
+      margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .selectZone {
+    .row {
+      padding: 5px;
+    }
+    .title {
+      height: 35px;
+      line-height: 35px;
+    }
+    .balls {
+      display: inline-block;
+      border: 1px solid #d3d0c9;
+      background: #ddd;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      margin-right: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+/* lottery end */
+
+
+/* chart */ 
+
+/* chart end */
