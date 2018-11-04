@@ -41,8 +41,51 @@ class LotteryContainer extends Component {
         this.setState({ endTimes });
     }
 
+    /* 历史开奖记录 */
+    showHistoryNumber(list) {
+        if (list && list.length > 0) {
+            const arr = list.map((item, index) => {
+                if (index < 10) {
+                    return (
+                        <li key={item.number}>
+                            <span className="leftSpan">{item.number} 期</span>
+                            <span className="rightSpan">
+                                {this.historyNumbersBalls(item.code)}
+                            </span>
+                        </li>
+                    )
+                }
+            });
+            return arr;
+        }
+    }
+
+    /* 历史开奖号码球  */
+    historyNumbersBalls(number) {
+        let list = null;
+        // ssc 快3
+        if (number.length <= 5) list = [...number];
+        // 11x5
+        if (number.length === 14) list = number.split(' ');
+        // pk10
+        if (number.length === 20) list = number.split(',');
+        console.log(number.length);
+        if (list && list.length > 0) {
+            const arr = list.map((item, index) => {
+                if (index < 5) {
+                    return (
+                        <em className="historyBall" key={index}>{item}</em>
+                    )
+                }
+            });
+            return arr;
+        }
+    }
+
     render() {
         const { endTimes } = this.state;
+        const { historyNumbers } = this.props.lotteryStore;
+
         return (
             <div className="lotteryBox">
                 {/* nav */}
@@ -93,7 +136,15 @@ class LotteryContainer extends Component {
                     </div>
                     {/* 右侧 */}
                     <div className={"clearfix mainRight"}>
-                        历史开奖记录
+                        <span className="title">历史开奖记录</span>
+                        <ul className="historyUl">
+                            <li>
+                                <span className="leftSpan">奖期</span>
+                                <span className="rightSpan">开奖</span>
+                            </li>
+                            {this.showHistoryNumber(historyNumbers)}
+                        </ul>
+                        <button className="goChart">查看完整走势</button>
                     </div>
                 </main>
             </div>

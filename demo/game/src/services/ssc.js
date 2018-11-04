@@ -3,12 +3,9 @@ import request from '@/axios/request';
 import api from '@/config/api';
 import { objToStr } from '@/utils/format';
 
-// 时时彩
- export function getCqssc(params) {
-    return request(api.ssc.cqssc, {
+// 获取对应彩种玩法
+export function getMethods(params) {
+    return request(api.lottery[params], {
         method: 'POST',
-        data: params,
-        // dataType: 'FormData'
     });
 }
-

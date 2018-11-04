@@ -3,12 +3,13 @@ import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Tabs, Card } from 'antd';
 import { lotterymenu } from '@/mock/lottery';
+import { opStorage } from '@/utils/db';
 
 const TabPane = Tabs.TabPane;
 const { Meta } = Card;
+
 @withRouter
-@inject('commonStore')
-@observer
+@inject('commonStore', 'lotteryStore') @observer
 class HomeTabs extends Component {
     constructor(props) {
         super(props);
@@ -61,14 +62,23 @@ class HomeTabs extends Component {
     
     // 跳转彩票页面
     toLotteryPage(item) {
-        this.props.commonStore.changeCurrentLotteryName(item.name);
-        this.props.history.replace(`/lottery/${item.type}`);
+        const { name, type } = item;
+        // 改变当前彩种名称
+        this.props.commonStore.changeCurrentLotteryName(name);
+        // 保存当前彩种名称和类型
+        const currentLottery = { name, type };
+        opStorage('mobx-game', {
+            key: 'currentLottery',
+            value: currentLottery,
+        });
+        this.props.lotteryStore.getMethods(type);
+        this.props.history.replace(`/lottery/${type}`);
     }
 
     render() {
         return (
             <div>
-                <Tabs defaultActiveKey="ffc" onChange={this.handleChange}>
+                <Tabs defaultActiveKey="ssc" onChange={this.handleChange}>
                     {this.createTabPane(lotterymenu)}
                 </Tabs>
             </div>

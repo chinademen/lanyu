@@ -74,9 +74,9 @@ service.interceptors.response.use(
         // 统一post提交的提示信息
         if (data.status === 1) {
             return data;
-        } else {
-            message.error(data.message);
         }
+        // message.error(data.message);
+
     },
     error => {
         let errortext = error + '';

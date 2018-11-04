@@ -19,7 +19,7 @@ export default {
 				"children": [{
 					"id": 65,
 					"pid": 10,
-					"series_way_id": 65,
+					"series_way_id": "ssc_sanxingzhixuan_fushi_q3",
 					"name_cn": "直选复式",
 					"name_en": "fushi",
 					"price": 2,
@@ -32,7 +32,7 @@ export default {
 				}, {
 					"id": 1,
 					"pid": 10,
-					"series_way_id": 1,
+					"series_way_id": "ssc_wuxingzhixuan_danshi",
 					"name_cn": "直选单式",
 					"name_en": "danshi",
 					"price": 2,
@@ -45,7 +45,7 @@ export default {
 				}, {
 					"id": 71,
 					"pid": 10,
-					"series_way_id": 71,
+					"series_way_id": "ssc_sanxingzhixuan_hezhi_q3",
 					"name_cn": "直选和值",
 					"name_en": "hezhi",
 					"price": 2,
@@ -58,7 +58,7 @@ export default {
 				}, {
 					"id": 60,
 					"pid": 10,
-					"series_way_id": 60,
+					"series_way_id": "ssc_sanxingzhixuan_kuadu_q3",
 					"name_cn": "直选跨度",
 					"name_en": "kuadu",
 					"price": 2,
@@ -71,7 +71,7 @@ export default {
 				}, {
 					"id": 14,
 					"pid": 10,
-					"series_way_id": 14,
+					"series_way_id": "ssc_sanxingzhixuan_zuhe_q3",
 					"name_cn": "直选组合",
 					"name_en": "zuhe",
 					"price": 2,
@@ -90,7 +90,7 @@ export default {
 				"children": [{
 					"id": 16,
 					"pid": 11,
-					"series_way_id": 16,
+					"series_way_id": "ssc_sanxingzuxuan_3_q3",
 					"name_cn": "组三",
 					"name_en": "zusan",
 					"price": 2,
@@ -103,7 +103,7 @@ export default {
 				}, {
 					"id": 17,
 					"pid": 11,
-					"series_way_id": 17,
+					"series_way_id": "ssc_sanxingzuxuan_6_q3",
 					"name_cn": "组六",
 					"name_en": "zuliu",
 					"price": 2,
@@ -116,7 +116,7 @@ export default {
 				}, {
 					"id": 13,
 					"pid": 11,
-					"series_way_id": 13,
+					"series_way_id": "ssc_sanxingzuxuan_hunhezuxuan_q3",
 					"name_cn": "混合组选",
 					"name_en": "hunhezuxuan",
 					"price": 2,
@@ -129,7 +129,7 @@ export default {
 				}, {
 					"id": 75,
 					"pid": 11,
-					"series_way_id": 75,
+					"series_way_id": "ssc_sanxingzuxuan_hezhi_q3",
 					"name_cn": "组选和值",
 					"name_en": "hezhi",
 					"price": 2,
@@ -142,7 +142,7 @@ export default {
 				}, {
 					"id": 2,
 					"pid": 11,
-					"series_way_id": 2,
+					"series_way_id": "ssc_sanxingzuxuan_zu3danshi_q3",
 					"name_cn": "组三单式",
 					"name_en": "zusandanshi",
 					"price": 2,
@@ -155,7 +155,7 @@ export default {
 				}, {
 					"id": 3,
 					"pid": 11,
-					"series_way_id": 3,
+					"series_way_id": "ssc_sanxingzuxuan_zu6danshi_q3",
 					"name_cn": "组六单式",
 					"name_en": "zuliudanshi",
 					"price": 2,
@@ -168,7 +168,7 @@ export default {
 				}, {
 					"id": 64,
 					"pid": 11,
-					"series_way_id": 64,
+					"series_way_id": "ssc_sanxingzuxuan_baodan_q3",
 					"name_cn": "包胆",
 					"name_en": "baodan",
 					"price": 2,
@@ -187,7 +187,7 @@ export default {
 				"children": [{
 					"id": 33,
 					"pid": 12,
-					"series_way_id": 33,
+					"series_way_id": "ssc_sanxingqita_hezhiweishu_q3",
 					"name_cn": "和值尾数",
 					"name_en": "hezhiweishu",
 					"price": 2,
@@ -200,7 +200,7 @@ export default {
 				}, {
 					"id": 48,
 					"pid": 12,
-					"series_way_id": 48,
+					"series_way_id": "ssc_sanxingqita_teshuhaoma_q3",
 					"name_cn": "特殊号码",
 					"name_en": "teshuhaoma",
 					"price": 2,
@@ -225,7 +225,7 @@ export default {
 				"children": [{
 					"id": 142,
 					"pid": 62,
-					"series_way_id": 142,
+					"series_way_id": "ssc_sanxingzhixuan_fushi_z3",
 					"name_cn": "直选复式",
 					"name_en": "fushi",
 					"price": 2,
@@ -238,7 +238,7 @@ export default {
 				}, {
 					"id": 143,
 					"pid": 62,
-					"series_way_id": 143,
+					"series_way_id": "ssc_sanxingzhixuan_danshi_z3",
 					"name_cn": "直选单式",
 					"name_en": "danshi",
 					"price": 2,
@@ -251,7 +251,7 @@ export default {
 				}, {
 					"id": 145,
 					"pid": 62,
-					"series_way_id": 145,
+					"series_way_id": "ssc_sanxingzhixuan_hezhi_q3",
 					"name_cn": "直选和值",
 					"name_en": "hezhi",
 					"price": 2,
@@ -264,7 +264,7 @@ export default {
 				}, {
 					"id": 147,
 					"pid": 62,
-					"series_way_id": 147,
+					"series_way_id": "ssc_sanxingzhixuan_kuadu_z3",
 					"name_cn": "直选跨度",
 					"name_en": "kuadu",
 					"price": 2,
@@ -277,7 +277,7 @@ export default {
 				}, {
 					"id": 148,
 					"pid": 62,
-					"series_way_id": 148,
+					"series_way_id": "ssc_sanxingzhixuan_zuhe_z3",
 					"name_cn": "直选组合",
 					"name_en": "zuhe",
 					"price": 2,
@@ -296,7 +296,7 @@ export default {
 				"children": [{
 					"id": 150,
 					"pid": 63,
-					"series_way_id": 150,
+					"series_way_id": "ssc_sanxingzuxuan_3_z3",
 					"name_cn": "组三",
 					"name_en": "zusan",
 					"price": 2,
@@ -309,7 +309,7 @@ export default {
 				}, {
 					"id": 152,
 					"pid": 63,
-					"series_way_id": 152,
+					"series_way_id": "ssc_sanxingzuxuan_6_z3",
 					"name_cn": "组六",
 					"name_en": "zuliu",
 					"price": 2,
@@ -322,7 +322,7 @@ export default {
 				}, {
 					"id": 144,
 					"pid": 63,
-					"series_way_id": 144,
+					"series_way_id": "ssc_sanxingzuxuan_zu3danshi_z3",
 					"name_cn": "组三单式",
 					"name_en": "zusandanshi",
 					"price": 2,
@@ -335,7 +335,7 @@ export default {
 				}, {
 					"id": 146,
 					"pid": 63,
-					"series_way_id": 146,
+					"series_way_id": "ssc_sanxingzuxuan_zu6danshi_z3",
 					"name_cn": "组六单式",
 					"name_en": "zuliudanshi",
 					"price": 2,
@@ -348,7 +348,7 @@ export default {
 				}, {
 					"id": 154,
 					"pid": 63,
-					"series_way_id": 154,
+					"series_way_id": "ssc_sanxingzuxuan_hunhezuxuan_z3",
 					"name_cn": "混合组选",
 					"name_en": "hunhezuxuan",
 					"price": 2,
@@ -361,7 +361,7 @@ export default {
 				}, {
 					"id": 160,
 					"pid": 63,
-					"series_way_id": 160,
+					"series_way_id": "ssc_sanxingzuxuan_hezhi_z3",
 					"name_cn": "组选和值",
 					"name_en": "hezhi",
 					"price": 2,
@@ -374,7 +374,7 @@ export default {
 				}, {
 					"id": 153,
 					"pid": 63,
-					"series_way_id": 153,
+					"series_way_id": "ssc_sanxingzuxuan_baodan_z3",
 					"name_cn": "包胆",
 					"name_en": "baodan",
 					"price": 2,
@@ -393,7 +393,7 @@ export default {
 				"children": [{
 					"id": 149,
 					"pid": 64,
-					"series_way_id": 149,
+					"series_way_id": "ssc_sanxingqita_hezhiweishu_z3",
 					"name_cn": "和值尾数",
 					"name_en": "hezhiweishu",
 					"price": 2,
@@ -406,7 +406,7 @@ export default {
 				}, {
 					"id": 151,
 					"pid": 64,
-					"series_way_id": 151,
+					"series_way_id": "ssc_sanxingqita_teshuhaoma_z3",
 					"name_cn": "特殊号码",
 					"name_en": "teshuhaoma",
 					"price": 2,
@@ -431,7 +431,7 @@ export default {
 				"children": [{
 					"id": 69,
 					"pid": 13,
-					"series_way_id": 69,
+					"series_way_id": "ssc_sanxingzhixuan_fushi_h3",
 					"name_cn": "直选复式",
 					"name_en": "fushi",
 					"price": 2,
@@ -444,7 +444,7 @@ export default {
 				}, {
 					"id": 8,
 					"pid": 13,
-					"series_way_id": 8,
+					"series_way_id": "ssc_sanxingzhixuan_danshi_h3",
 					"name_cn": "直选单式",
 					"name_en": "danshi",
 					"price": 2,
@@ -457,7 +457,7 @@ export default {
 				}, {
 					"id": 73,
 					"pid": 13,
-					"series_way_id": 73,
+					"series_way_id": "ssc_sanxingzhixuan_hezhi_h3",
 					"name_cn": "直选和值",
 					"name_en": "hezhi",
 					"price": 2,
@@ -470,7 +470,7 @@ export default {
 				}, {
 					"id": 62,
 					"pid": 13,
-					"series_way_id": 62,
+					"series_way_id": "ssc_sanxingzhixuan_kuadu_h3",
 					"name_cn": "直选跨度",
 					"name_en": "kuadu",
 					"price": 2,
@@ -483,7 +483,7 @@ export default {
 				}, {
 					"id": 82,
 					"pid": 13,
-					"series_way_id": 82,
+					"series_way_id": "ssc_sanxingzhixuan_zuhe_h3",
 					"name_cn": "直选组合",
 					"name_en": "zuhe",
 					"price": 2,
@@ -502,7 +502,7 @@ export default {
 				"children": [{
 					"id": 49,
 					"pid": 9,
-					"series_way_id": 49,
+					"series_way_id": "ssc_sanxingzuxuan_3_h3",
 					"name_cn": "组三",
 					"name_en": "zusan",
 					"price": 2,
@@ -515,7 +515,7 @@ export default {
 				}, {
 					"id": 50,
 					"pid": 9,
-					"series_way_id": 50,
+					"series_way_id": "ssc_sanxingzuxuan_6_h3",
 					"name_cn": "组六",
 					"name_en": "zuliu",
 					"price": 2,
@@ -528,7 +528,7 @@ export default {
 				}, {
 					"id": 81,
 					"pid": 9,
-					"series_way_id": 81,
+					"series_way_id": "ssc_sanxingzuxuan_hunhezuxuan_h3",
 					"name_cn": "混合组选",
 					"name_en": "hunhezuxuan",
 					"price": 2,
@@ -541,7 +541,7 @@ export default {
 				}, {
 					"id": 80,
 					"pid": 9,
-					"series_way_id": 80,
+					"series_way_id": "ssc_sanxingzuxuan_hezhi_h3",
 					"name_cn": "组选和值",
 					"name_en": "hezhi",
 					"price": 2,
@@ -554,7 +554,7 @@ export default {
 				}, {
 					"id": 9,
 					"pid": 9,
-					"series_way_id": 9,
+					"series_way_id": "ssc_sanxingzuxuan_zu3danshi_h3",
 					"name_cn": "组三单式",
 					"name_en": "zusandanshi",
 					"price": 2,
@@ -567,7 +567,7 @@ export default {
 				}, {
 					"id": 10,
 					"pid": 9,
-					"series_way_id": 10,
+					"series_way_id": "ssc_sanxingzuxuan_zu6danshi_h3",
 					"name_cn": "组六单式",
 					"name_en": "zuliudanshi",
 					"price": 2,
@@ -580,7 +580,7 @@ export default {
 				}, {
 					"id": 83,
 					"pid": 9,
-					"series_way_id": 83,
+					"series_way_id": "ssc_sanxingzuxuan_baodan_h3",
 					"name_cn": "包胆",
 					"name_en": "baodan",
 					"price": 2,
@@ -599,7 +599,7 @@ export default {
 				"children": [{
 					"id": 54,
 					"pid": 14,
-					"series_way_id": 54,
+					"series_way_id": "ssc_sanxingqita_hezhiweishu_h3",
 					"name_cn": "和值尾数",
 					"name_en": "hezhiweishu",
 					"price": 2,
@@ -612,7 +612,7 @@ export default {
 				}, {
 					"id": 57,
 					"pid": 14,
-					"series_way_id": 57,
+					"series_way_id": "ssc_sanxingqita_teshuhaoma_h3",
 					"name_cn": "特殊号码",
 					"name_en": "teshuhaoma",
 					"price": 2,

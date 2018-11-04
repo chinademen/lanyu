@@ -6,26 +6,26 @@ import hljssc from './ssc/hljssc';
 import hg2mssc from './ssc/hg2mssc';
 import flb5mssc from './ssc/flb5mssc';
 // 11x5
-import ah11x5 from './ssc/ah11x5';
-import gd11x5 from './ssc/gd11x5';
-import js11x5 from './ssc/js11x5';
-import sd11x5 from './ssc/sd11x5';
-import sh11x5 from './ssc/sh11x5';
-import sx11x5 from './ssc/sx11x5';
+import ah11x5 from './11x5/ah11x5';
+import gd11x5 from './11x5/gd11x5';
+import js11x5 from './11x5/js11x5';
+import sd11x5 from './11x5/sd11x5';
+import sh11x5 from './11x5/sh11x5';
+import sx11x5 from './11x5/sx11x5';
 // k3
-import ahk3 from './ssc/ahk3';
-import gsk3 from './ssc/gsk3';
-import hbk3 from './ssc/hbk3';
-import hnk3 from './ssc/hnk3';
-import jsk3 from './ssc/jsk3';
+import ahk3 from './k3/ahk3';
+import gsk3 from './k3/gsk3';
+import hbk3 from './k3/hbk3';
+import hnk3 from './k3/hnk3';
+import jsk3 from './k3/jsk3';
 // 6hc
-import xg6hc from './ssc/xg6hc';
+import xg6hc from './6hc/xg6hc';
 // pk10
-import bjpk10 from './ssc/bjpk10';
+import bjpk10 from './pk10/bjpk10';
 // other
-import fc3d from './ssc/fc3d';
-import shssl from './ssc/shssl';
-import tcp3p5 from './ssc/tcp3p5';
+import fc3d from './other/fc3d';
+import shssl from './other/shssl';
+import tcp3p5 from './other/tcp3p5';
 
 const Mock = require('mockjs');
 const Random = Mock.Random;

@@ -3,17 +3,30 @@ import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Icon, Button } from 'antd';
 import { lotterymenu } from '@/mock/lottery.js';
+import { opStorage } from '@/utils/db';
 
 @withRouter
-@inject('commonStore')
-@observer
+@inject('commonStore', 'lotteryStore') @observer
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
 
-    // 生成彩种目录 
+    componentDidMount() {
+        let storage = opStorage('mobx-game');
+        if (storage && storage.currentLottery) {
+            const { name, type } = storage.currentLottery;
+            if (!type || name === '首页') {
+                this.backHome();
+                return;
+            }
+            this.props.commonStore.changeCurrentLotteryName(name);
+            this.props.lotteryStore.getMethods(type);
+        } 
+    }
+
+    // 生成彩种目录
     createLotteryMenu(list) {
         if (list && list.length > 0) {
             const menus = list.map(item => {
@@ -46,14 +59,30 @@ class Header extends Component {
 
     // 跳转彩票页面
     toLotteryPage(item) {
+        const { name, type } = item;
         // 改变当前彩种名称
-        this.props.commonStore.changeCurrentLotteryName(item.name);
-        this.props.history.replace(`/lottery/${item.type}`);
+        this.props.commonStore.changeCurrentLotteryName(name);
+        // 保存当前彩种名称和类型
+        const currentLottery = { name, type };
+        opStorage('mobx-game', {
+            key: 'currentLottery',
+            value: currentLottery,
+        });
+        this.props.lotteryStore.getMethods(type);
+        this.props.history.replace(`/lottery/${type}`);
     }
 
     // 返回首页
     backHome() {
         this.props.commonStore.changeCurrentLotteryName('首页');
+        const currentLottery = {
+            name: '首页',
+            type: null, 
+        }
+        opStorage('mobx-game', {
+            key: 'currentLottery',
+            value: currentLottery,
+        });
         this.props.history.replace('/home');
     }
 

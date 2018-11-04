@@ -29,6 +29,8 @@ body {
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 // 公用加载
@@ -199,6 +201,13 @@ ul {
       height: 40px;
       line-height: 40px;
       background: #fff;
+      &:hover {
+        cursor: pointer;
+        span {
+          animation-play-state: paused;
+          -webkit-animation-play-state: paused;
+        }
+      }
       span {
         position: relative;
         display: inline-block;
@@ -206,7 +215,6 @@ ul {
         animation: Move 30s linear 0s infinite;
         -webkit-animation: Move 30s linear 0s infinite; 
         -moz-animation: Move 30s linear 0s infinite; 
-        -o-animation: Move 30s linear 0s infinite; 
       }
       @keyframes Move {
         from { 
@@ -237,6 +245,43 @@ ul {
         box-sizing: border-box;
         background: #f5f1f1;
         text-align: center;
+        .infoBox {
+          height: 260px;
+          margin: 35px auto;
+          font-size: 14px;
+          background: #fff;
+          overflow: hidden;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+        .infoList {
+          position: relative;
+          animation: infoMove 8s linear 0.5s infinite;
+          -webkit-animation: infoMove 8s linear 0.5s infinite; 
+          -moz-animation: infoMove 8s linear 0.5s infinite; 
+          -o-animation: infoMove 8s linear 0.5s infinite;
+          &:hover {
+            cursor: pointer;
+            animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+          }
+        }
+        @keyframes infoMove {
+          from { 
+            top: 0;
+          }
+          to {
+            top: -160px;
+          }
+        }
+        @-webkit-keyframes infoMove {
+          from { 
+            top: 0;
+          }
+          to {
+            top: -160px;
+          }
+        }
       }
       .mainRight {
         width: 900px;
@@ -245,7 +290,7 @@ ul {
         box-sizing: border-box;
         background: #fff;
         .ant-tabs-tabpane {
-          padding: 0 25px;
+          padding: 0 20px;
           box-sizing: border-box;
         }
         .lotteryCard {
@@ -311,7 +356,7 @@ ul {
     width: 1200px;
     min-height: 800px;
     margin: 0 auto;
-    background: #fff;
+    background: #ddd;
     nav {
       padding: 0;
       position: relative;
@@ -344,13 +389,13 @@ ul {
           padding: 0 10px;
         }
         .times-name {
-          width: 50%;
+          width: 55%;
           font-size: 22px;
           font-weight: bold;
           color: #ff5656;
         }
         .times-number {
-          width: 50%;
+          width: 45%;
           color: #333;
         
         }
@@ -411,6 +456,9 @@ ul {
             border: 3px solid #e1d4d4;
             box-sizing: border-box;
             margin-right: 4px;
+            &:nth-of-type(1) {
+              margin-left: 35px;
+            }
           }
         }
         p {
@@ -448,9 +496,8 @@ ul {
         min-height: 600px;
         float: left;
         box-sizing: border-box;
-        background: #fff;
         .ant-tabs-tabpane {
-          padding: 0 25px;
+          padding: 0 20px;
           box-sizing: border-box;
         }
         .lotteryCard {
@@ -479,12 +526,56 @@ ul {
         }
       }
       .mainRight {
-        width: 300px;
+        width: 280px;
         min-height: 600px;
         float: right;
         box-sizing: border-box;
-        background: #f5f1f1;
+        background: #fff;
         text-align: center;
+        .title {
+          width: 100%;
+          font-size: 16px;
+          font-weight: bold;
+          display: inline-block; 
+          height: 39.6px;
+          line-height: 39.6px;
+          background: #444659;
+          color: #fff;
+        }
+        .historyUl {
+          span {
+            display: inline-block;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;     
+            border-bottom: 1px dashed #ddd;
+          }
+          .leftSpan {
+            width: 40%;
+          }
+          .rightSpan {
+            width: 60%;
+          }
+        }
+        .historyBall {
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          text-align: center;
+          line-height: 20px;
+          margin-left:5px;
+          border-radius: 50%;
+          background: #FF5656;
+          color: #fff;
+        }
+        .goChart {
+          margin-top: 18px;
+          height: 30px;
+          line-height: 26px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -492,12 +583,36 @@ ul {
 
 // 玩法组 玩法群
 .lottery_content {
-  // width: 876px;
-  // height: 500px;
-  // padding: 5px 10px;
-  // margin: 100px auto;
   border: 1px solid #ddd;
-  // background: #ddd;
+  background: #fff;
+  min-height: 600px;
+  padding-bottom: 20px;
+  .group_box {
+    display: flex;
+    margin-bottom: 5px;
+    .group_name {
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+  .group_ul {
+    width: 700px;
+    li {
+      float: left;
+      height: 30px;
+      padding: 5px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      background: #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   :global {
     .ant-tab-nav-container {
       border-radius: 6px;
@@ -597,12 +712,14 @@ ul {
   }
 
   .selectZone {
+    // 普通
     .row {
       padding: 5px;
     }
     .title {
       height: 35px;
       line-height: 35px;
+      text-align: center;
     }
     .balls {
       display: inline-block;
@@ -614,8 +731,20 @@ ul {
       text-align: center;
       line-height: 35px;
       margin-right: 5px;
+      margin-bottom: 5px;
       &:hover {
         cursor: pointer;
+      }
+    }
+    // 单式
+    .danshi {
+      width: 80%;
+      height: 280px;
+      margin: 0 auto;
+      textarea {
+        width: 80%;
+        height: 160px;
+        color: #999;
       }
     }
   }

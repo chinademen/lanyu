@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import { autoSelectNumber } from '@/config/algorithm';
-// import { playGroups, playMethods } from './mock';
 
 const tools = ["全", "大", "小", "奇", "偶", "清"];
 export default class PlayGroup extends Component {
@@ -36,14 +35,16 @@ export default class PlayGroup extends Component {
     }
 
     render() {
-        const currentSelect = autoSelectNumber.ssc_sanxingzhixuan_fushi_q3;
+        const { methodName } = this.props;
+        const currentSelect = autoSelectNumber[methodName];
+
         return (
             <div className="selectZone">
-                {currentSelect && currentSelect.layout.map((item, index) => {
+                {currentSelect && currentSelect.type === 'digital' ? currentSelect.layout.map((item, index) => {
                     return (
-                        <div key={item.title}>
+                        <div key={item.title || index}>
                             <Row className="row">
-                                <Col className="title" span={2}>{item.title}：</Col>
+                                <Col className="title" span={2}>{item.title}</Col>
                                 <Col span={13}>
                                     {this.createNumberCol(item)}
                                 </Col>
@@ -53,7 +54,17 @@ export default class PlayGroup extends Component {
                             </Row>
                         </div>
                     )
-                })}
+                }) : currentSelect && currentSelect.type === 'danshi' ? 
+                    <div className="danshi">
+                        <textarea 
+                            defaultValue={
+                            `说明：1、支持常见的各种单式格式，间隔符如： 换行符 回车 逗号 分号等 \n           2、上传文件后缀必须是.txt格式,最大支持10万注，并支持拖拽文件到文本框进行上传 \n           3、文件较大时会导致上传时间较长，请耐心等待！ \n \n          格式范例：12345 23456 88767 33021 98897`
+                            }>
+                        
+                        </textarea>
+                    </div>
+                : null
+                }
             </div>
         )
     }
