@@ -112,7 +112,7 @@ let rendererConfig = {
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({filename: 'styles.css'}),
     new HtmlWebpackPlugin({
-      title: 'devApp',
+      title: '桌面挂机应用',
       filename: 'index.html', // 要将HTML写入的文件
       template: path.resolve(__dirname, '../src/index.ejs'), // 模板路径
       minify: {

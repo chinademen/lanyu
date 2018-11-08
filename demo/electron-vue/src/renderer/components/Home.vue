@@ -22,9 +22,21 @@
 </script>
 
 <style>
+    html, body {
+        margin: 0;
+        width:100%;
+        height: 100%;
+        overflow: hidden;
+        background: rgb(240, 240, 240);
+    }
+    #app {
+        height: 100%;
+    }
     #home {
         width: 100%;
         min-width: 1200px;
+        height: 100%;
+        position: relative;
     }
 </style>
   
