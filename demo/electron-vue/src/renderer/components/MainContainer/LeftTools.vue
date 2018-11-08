@@ -1,8 +1,9 @@
+<!-- 左侧工具栏 -->
 <template>
-    <div class="left-tools">
-        <Login v-if="isShowAppTools"></Login>
-        <Plat-Address></Plat-Address>
-        <Histroy-Number></Histroy-Number>
+    <div class="left-tools" v-if="isShowAppTools">
+        <Login></Login>
+        <Plat-Address v-if="isShowPlatAddress"></Plat-Address>
+        <Histroy-Number v-if="isShowHistroyNumber"></Histroy-Number>
     </div>
 </template>
 
@@ -26,7 +27,9 @@
         },
         computed: {
             ...mapState({
-                isShowAppTools: state => state.AppTools.isShowAppTools
+                isShowAppTools: state => state.AppTools.isShowAppTools,
+                isShowPlatAddress: state => state.AppTools.isShowPlatAddress,
+                isShowHistroyNumber: state => state.AppTools.isShowHistroyNumber,
             })
         }
     }

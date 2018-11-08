@@ -1,3 +1,4 @@
+<!-- 右侧选项卡区域 -->
 <template>
     <div class="right-tabs">
         
@@ -5,6 +6,7 @@
 </template>
 
 <script>
+    
 
     export default {
         name: 'right-tabs',
