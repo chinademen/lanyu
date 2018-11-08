@@ -1,5 +1,6 @@
 <template>
     <div class="right-tabs">
+        
     </div>
 </template>
 
@@ -13,4 +14,3 @@
 <style>
 
 </style>
-          

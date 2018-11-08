@@ -3,15 +3,15 @@
     <div class="app-tools">
         <ul class="app-tools-title">
             <li>
-                <input type="checkbox" />
+                <input type="checkbox" @change="toggle('ToggleAppTools')" checked />
                 <span>平台信息</span>
             </li>
             <li>
-                <input type="checkbox" />
+                <input type="checkbox" @change="toggle('TogglePlatAddress')" />
                 <span>平台地址</span>
             </li>
             <li>
-                <input type="checkbox" />
+                <input type="checkbox" @change="toggle('ToggleHistoryNumber')" />
                 <span>历史号码</span>
             </li>
             <li>
@@ -39,6 +39,16 @@
 
     export default {
         name: 'app-tools',
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            toggle(actionType) {
+                this.$store.dispatch(actionType)
+            }
+        }
     }
 </script>
 
