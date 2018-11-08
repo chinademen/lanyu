@@ -14,7 +14,7 @@ const AppTools = {
         },
         TOGGLE_HISTORY_NUMBER (state) {
             state.isShowHistroyNumber = !state.isShowHistroyNumber;
-        }
+        },
         
         // 异步操作
     

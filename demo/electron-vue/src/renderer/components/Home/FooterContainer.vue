@@ -20,7 +20,7 @@
         width: 100%;
         height: 30px;
         border: 2px solid #333;
-        border-top: none;
+        background: rgb(240, 240, 240);
         font-size: 12px;
     }
     .footer-container span {

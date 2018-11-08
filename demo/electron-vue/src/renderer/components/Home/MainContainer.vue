@@ -25,6 +25,7 @@
         top: 122px;
         bottom: 30px;
         border: 2px solid #333;
+        border-bottom: none;
     }
 </style>
           
