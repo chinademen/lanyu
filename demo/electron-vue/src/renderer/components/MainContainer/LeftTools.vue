@@ -1,6 +1,6 @@
 <template>
     <div class="left-tools">
-        <Login v-if=""></Login>
+        <Login v-if="isShowAppTools"></Login>
         <Plat-Address></Plat-Address>
         <Histroy-Number></Histroy-Number>
     </div>
@@ -10,6 +10,7 @@
     import Login from '../LeftTools/Login';
     import PlatAddress from '../LeftTools/PlatAddress';
     import HistroyNumber from '../LeftTools/HistroyNumber';
+    import { mapState } from 'vuex';
 
     export default {
         name: 'left-tools',
@@ -20,8 +21,13 @@
         },
         data() {
             return {
-                
+
             }
+        },
+        computed: {
+            ...mapState({
+                isShowAppTools: state => state.AppTools.isShowAppTools
+            })
         }
     }
 </script>
@@ -33,4 +39,4 @@
         border-right: 2px solid #333;
     }
 </style>
-          
+         
