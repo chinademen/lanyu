@@ -12,7 +12,7 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .footer-container {
         position: absolute;
         bottom: 0;
@@ -22,18 +22,18 @@
         border: 2px solid #333;
         background: rgb(240, 240, 240);
         font-size: 12px;
-    }
-    .footer-container span {
-        display: inline-block;
-        height: 30px;
-        line-height: 24px;
-    }
-    .footer-container span:nth-of-type(1) {
-        border-right: 1px solid #333;
-        padding: 0 5px;
-    }
-    .footer-container em {
-        color: rgb(70, 130, 180);
+        span {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            &:nth-of-type(1) {
+                border-right: 1px solid #333;
+                padding: 0 5px;
+            }
+        }
+        em {
+            color: rgb(70, 130, 180);
+        }
     }
 </style>
   

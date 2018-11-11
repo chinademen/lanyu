@@ -52,7 +52,7 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .app-tools {
         float: left;
         display: inline-block;
@@ -63,34 +63,43 @@
     .app-tools-title {
         width: 100%;
         height: 80px;
-    }
-    .app-tools-title li {
-        float: left;
-        width: 33.3%;
-        height: 38px;
-        line-height: 38px;
-        text-align: center;
-        font-size: 12px;
-    }
-    .app-tools-title input {
-        position: relative;
-        top: 3px;
+        li {
+            float: left;
+            width: 33.3%;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            font-size: 12px;
+        }
+        input {
+            position: relative;
+            top: 3px;
+            cursor: pointer;
+        }
     }
     .app-tools-content {
+        box-sizing: border-box;
         width: 100%;
         height: 40px;
         line-height: 34px;
         border-top: 2px solid #333;
         padding-left: 10px;
+        span {
+            width: 30%;
+            height: 40px;
+            font-size: 14px;
+        }
+        input {
+            width: 40%;
+            height: 18px;
+        }
+        button {
+            width: 40px;
+            height: 22px;
+            line-height: 16px;
+            cursor: pointer;
+        }
     }
-    .app-tools-content span, .app-tools-content span button {
-        width: 30%;
-        height: 40px;
-        font-size: 14px;
-    }
-    .app-tools-content input {
-        width: 40%;
-        height: 23px;
-    }
+    
 </style>
               

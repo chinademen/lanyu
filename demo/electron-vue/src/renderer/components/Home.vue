@@ -22,6 +22,10 @@
 </script>
 
 <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
     html, body {
         margin: 0;
         width:100%;
@@ -37,6 +41,16 @@
         min-width: 1200px;
         height: 100%;
         position: relative;
+    }
+    ul {
+        list-style: none;
+    }
+    .clearfix:after{
+        content:'';
+        display:block;
+        width:100%;
+        clear:both;
+        height:0;
     }
 </style>
   

@@ -8,8 +8,8 @@
         </div>
         <ul class="plat-address-list">
             <li>
-                <span class="plat-address-fwq">服务器</span>
-                <span class="plat-address-status">状态</span>
+                <span id="plat-address-fwq">服务器</span>
+                <span id="plat-address-status">状态</span>
             </li>
             <li>
                 <span>https://baidu.com</span>
@@ -42,70 +42,78 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .plat-address {
         width: 100%;
         height: 160px;
         border-bottom: 1px solid #ddd;
     }
     .plat-address-btngroup {
-        height: 35px;
+        display: flex;
+        justify-content: space-around;
+        height: 28px;
         padding: 4px 2px;
         border-bottom: 1px solid #333;
-    }
-    .plat-address-btngroup button {
-        margin-left: 18px;
+        button {
+            padding: 5px 8px;
+            height: 26px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     }
     .plat-address-list {
         width: 100%;
         height: 125px; 
         overflow-y: scroll;
         font-size: 12px;
+        li {
+            border: 1px solid #b5b5b5;
+            border-bottom: none;
+            span {
+                &:nth-of-type(1), &:nth-of-type(2) {
+                    display: inline-block;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    color: #000;
+                }
+                &:nth-of-type(1) {
+                    display: inline-block;
+                    width: 69.5%;
+                    border-right: 1px solid #b5b5b5;
+                }
+                &:nth-of-type(2) {
+                    display: inline-block;
+                    width: 28.6%;
+                }
+            }
+        }
     }
-    .plat-address-list li {
-        border: 1px solid #b5b5b5;
-        border-bottom: none;
-    }
-    .plat-address-fwq, .plat-address-status {
+    #plat-address-fwq, #plat-address-status {
         color: #fff;
         background: rgb(70, 130, 180);
         float: left;
     }
-    .plat-address .plat-address-list .plat-address-status  {
+    #plat-address-status  {
         width: 30%;
     }
-    .plat-address-list li span:nth-of-type(1), .plat-address-list li span:nth-of-type(2) {
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        color: #000;
-    }
-    .plat-address-list li span:nth-of-type(1) {
-        display: inline-block;
-        width: 69.9%;
-        border-right: 1px solid #b5b5b5;
-    }
-    .plat-address-list li span:nth-of-type(2) {
-        display: inline-block;
-        width: 28.6%;
-    }
+   
     /* 滚动条样式设置 */
     /*
-    .plat-address-list::-webkit-scrollbar {
-        border-bottom: 1px solid #ddd;
+    滚动槽
+    ::-webkit-scrollbar-track {    
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);   
+        border-radius: 10px;
     }
-    .plat-address-list::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
-        border-radius: 10px;  
-        background-color: #c1e2f1;  
+    滚动条滑块
+    ::-webkit-scrollbar-thumb {    
+        border-radius: 10px;    
+        background: #bbb;    
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
     }
-    .plat-address-list::-webkit-scrollbar-thumb  
-    {  
-        border-radius: 10px;  
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
-        background-color: #1f7ebe;  
-        color: #c1e2f1;
+    激活滚动条样式
+    ::-webkit-scrollbar-thumb:window-inactive {    
+        /* background: rgba(255,0,0,0.4);
     }
     */
 </style>

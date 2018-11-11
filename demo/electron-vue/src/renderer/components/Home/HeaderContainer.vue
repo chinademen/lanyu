@@ -4,7 +4,6 @@
         <Award-Number></Award-Number>
         <App-Tools></App-Tools>
         <Plat-Logo></Plat-Logo>
-        <span class="clearfix"></span>
     </div>
 </template>
 
@@ -31,13 +30,6 @@
         height: 122px;
         border: 2px solid #333;
         border-bottom: none;
-    }
-    .clearfix:after{
-        content:'';
-        display:block;
-        width:100%;
-        clear:both;
-        height:0;
     }
 </style>
           

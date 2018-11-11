@@ -21,7 +21,7 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .award-number {
         float: left;
         display: inline-block;
@@ -49,17 +49,18 @@
         font-weight: bold;
         padding-top: 10px;
         padding-left: 2px;
+        li {
+            float: left;
+            color: #fff;
+            background: rgb(250, 0, 0);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px 1px black;
+        }
     }
-    .award-number-content li {
-        float: left;
-        color: #fff;
-        background: rgb(250, 0, 0);
-        width: 50px;
-        height: 50px;
-        line-height: 46px;
-        margin: 10px;
-        border-radius: 50%;
-        box-shadow: 0 0 5px 1px black;
-    }
+    
 </style>
                   

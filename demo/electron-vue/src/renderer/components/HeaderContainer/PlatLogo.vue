@@ -1,7 +1,7 @@
 <!-- logo -->
 <template>
     <div class="plat-logo">
-        <img src="~@/assets/images/logo.png" alt="魔兽世界WLK">
+        <img src="~@/assets/images/logo.png" alt="logo">
     </div>
 </template>
 
@@ -12,16 +12,16 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .plat-logo {
         float: left;
         display: inline-block;
-        width: 356px;
+        width: 354px;
         height: 120px;
-    }
-    .plat-logo img {
-        width: 100%;
-        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 </style>
                           

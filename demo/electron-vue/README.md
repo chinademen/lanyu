@@ -1,22 +1,10 @@
-# vueapp
+### npm run dev 启动
 
-> An electron-vue project
+### npm run build 打包
+    打包之后可以
+    删除 build 目录下除了 build/win-unpacked/ 目之外的文件
+    删除 build/win-unpacked/resources/app.asar.unpacked/node_modules/electron/dist  
 
-#### Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:9080
-npm run dev
-
-# build electron application for production
-npm run build
-
-
-```
-
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[8fae476](https://github.com/SimulatedGREG/electron-vue/tree/8fae4763e9d225d3691b627e83b9e09b56f6c935) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+### electron-builder
+    构建未打包的目录
+    生成简单的可执行文件，没有完整的安装程序。用于快速测试。

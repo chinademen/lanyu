@@ -3,11 +3,11 @@
     <div class="login">
         <span>选择平台：</span>
         <select v-model="platName">
-            <option v-for="item in platList" :value="item.platId">{{item.name}}</option>
+            <option v-for="(item, index) in platList" :value="item.platId" :key="index">{{item.name}}</option>
         </select>
         <span>投注彩种：</span>
         <select v-model="lotteryType">
-            <option v-for="item in lotteryList" :value="item.lotteryId">{{item.name}}</option>
+            <option v-for="(item, index) in lotteryList" :value="item.lotteryId" :key="index">{{item.name}}</option>
         </select>
         <span>会员账号：</span>
         <input type="text" name="username" @input="username = $event.target.value" />
@@ -29,25 +29,22 @@
         name: 'login-tool',
         data() {
             return {
-                platList: [{    // 平台列表
+                platList: [{ // 平台列表
                 　　"platId": "dh",
                 　　"name": "东皇娱乐"
             　　}],
-                platName: '', // 平台名称
-                lotteryList: [ // 彩种列表
-                {
+                platName: 'dh', // 平台名称
+                lotteryList: [{ // 彩种列表
                     "lotteryId": "cqssc",
                     "name": "重庆时时彩"
-                },
-                {
+                }, {
                     "lotteryId": "tjssc",
                     "name": "天津时时彩"
-                },
-                {
+                }, {
                     "lotteryId": "txffc",
                     "name": "腾讯分分彩"
                 }],
-                lotteryType: '', // 彩种名称
+                lotteryType: 'cqssc', // 彩种名称
                 username: '', // 用户名
                 password: '', // 密码
             }
@@ -68,43 +65,51 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .login {
         width: 100%;
-        height: 273px;
+        height: 250px;
         border-bottom: 2px solid #333;
+        font-weight: bold;
+        span, p, div {
+            box-sizing: border-box;
+            display: inline-block;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: #000;
+        }
+        select, input {
+            display: inline-block;
+            width: 216px;
+            height: 20px;
+            line-height: 20px;
+            margin: 0 10px;
+            color: #000;
+        }
+        select {
+            border-radius: 3px;
+            border: 1px solid #333;
+            background: rgb(240, 240, 240);
+            padding: 2px;
+        }
+        option {
+            background: #fff;
+        }
+        .login-error-info {
+            color: red;
+        }    
     }
-    .login span, .login p, .login div {
-        display: inline-block;
-        width: 100%;
-        padding: 5px 10px;
-        font-size: 12px;
-        color: #000;
-    }
-    .login select, .login input {
-        display: inline-block;
-        width: 216px;
-        height: 20px;
-        line-height: 20px;
-        margin: 0 10px;
-        color: #000;
-    }
-    .login select {
-        border-radius: 3px;
-        border: 1px solid #333;
-        background: rgb(240, 240, 240);
-    }
-    .login option {
-        background: #fff;
-    }
-    .login p.login-error-info {
-        color: red;
-    }
+    
     .login-btn-group {
         border-top: 1px solid #333;
-    }
-    .login-btn-group button {
-        margin-left: 26px;
+        button {
+            margin-left: 26px;
+            padding: 5px 8px;
+            height: 26px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     }
 </style>
           

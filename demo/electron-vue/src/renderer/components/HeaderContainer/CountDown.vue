@@ -13,7 +13,7 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .count-down {
         float: left;
         display: inline-block;

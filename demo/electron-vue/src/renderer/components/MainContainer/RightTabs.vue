@@ -80,7 +80,7 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .right-tabs {
         position: relative;
         float: left;
@@ -91,24 +91,22 @@
         width: 100%;
         border-bottom: 1px solid #333;
         margin: 0;
-    }
-    .right-tabs-header li {
-        margin-top: 4px;
-        font-size: 12px;
-        width: 100px;
-        height: 30px;
-        line-height: 30px;
-        font-weight: bold;
-        float: left;
-        border: 1px solid #333;
-        border-bottom: none;
-        text-align: center;
-    }
-    .right-tabs-header li:hover {
-        cursor: pointer;
-    }
-    .right-tabs-header li:nth-of-type(1) {
-        margin-left: 5px;
+        li {
+            margin-top: 4px;
+            font-size: 12px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            font-weight: bold;
+            float: left;
+            border: 1px solid #333;
+            border-bottom: none;
+            text-align: center;
+            cursor: pointer;
+            &:nth-of-type(1) {
+                margin-left: 5px;
+            }
+        }
     }
     .right-tabs-active {
         background: #fff;
