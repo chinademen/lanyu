@@ -71,11 +71,6 @@
             text-align: center;
             font-size: 12px;
         }
-        input {
-            position: relative;
-            top: 3px;
-            cursor: pointer;
-        }
     }
     .app-tools-content {
         box-sizing: border-box;

@@ -2,28 +2,17 @@
 <template>
     <div class="right-tabs">
         <ul class="right-tabs-header">
-            <!-- <li :class=" v.state ? 'right-tabs-active' : '' " 
-                @click="toggleTabs('ToggleTabs', v.state)"
-                :key="i"
-                v-for="(v, i) in tabsName"
-            >{{v.name}}</li> -->
-            <li :class=" isShowWelcome ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowWelcome')">1-欢迎使用</li>
-            <li :class=" isShowAutoBetting ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowAutoBetting')">2-自动投注</li>
-            <li :class=" isShowSchemeSetting ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowSchemeSetting')">3-方案设定</li>
-            <li :class=" isShowReferData ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowReferData')">4-参考数据</li>
-            <li :class=" isShowHistoryStatic ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowHistoryStatic')">5-历史统计</li>
-            <li :class=" isShowSoftware ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowSoftware')">6-计划软件</li>
-            <li :class=" isShowUserBook ? 'right-tabs-active' : '' " @click="toggleTabs('ToggleTabs', 'isShowUserBook')">7-用户必看</li>
+            <li :class="{'right-tabs-active':isActive == index}" 
+                :key="index"
+                @click="isActive=index"
+                v-for="(item, index) in tabsName"
+            >{{item.name}}</li>
         </ul>
-        <div class="right-tabs-content">
-            <Welcome-Page v-if="isShowWelcome"></Welcome-Page>
-            <Auto-Betting v-if="isShowAutoBetting"></Auto-Betting>
-            <Scheme-Setting v-if="isShowSchemeSetting"></Scheme-Setting>
-            <Refer-Data v-if="isShowReferData"></Refer-Data>
-            <History-Static v-if="isShowHistoryStatic"></History-Static>
-            <Soft-ware v-if="isShowSoftware"></Soft-ware>
-            <User-Book v-if="isShowUserBook"></User-Book>
-        </div>
+        <ul class="right-tabs-content">
+            <li v-for="(item, index) in tabsName" v-if="isActive == index">
+                <component :is="item.componentName" :key="index"></component>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -50,32 +39,25 @@
         },
         data() {
             return {
+                isActive: 0,
                 tabsName: [
-                    { state: 'isShowWelcome', name: '1-欢迎使用' }, 
-                    { state: 'isShowAutoBetting', name: '2-自动投注' }, 
-                    { state: 'isShowSchemeSetting', name: '3-方案设定' }, 
-                    { state: 'isShowReferData', name: '4-参考数据' }, 
-                    { state: 'isShowHistoryStatic', name: '5-历史统计' }, 
-                    { state: 'isShowSoftware', name: '6-计划软件' }, 
-                    { state: 'isShowUserBook', name: '7-用户必看' },
+                    { name: '1-欢迎使用', componentName: 'WelcomePage' }, 
+                    { name: '2-自动投注', componentName: 'AutoBetting' }, 
+                    { name: '3-方案设定', componentName: 'SchemeSetting' }, 
+                    { name: '4-参考数据', componentName: 'ReferData' }, 
+                    { name: '5-历史统计', componentName: 'HistoryStatic' }, 
+                    { name: '6-计划软件', componentName: 'SoftWare' }, 
+                    { name: '7-用户必看', componentName: 'UserBook' },
                 ]
             }
         },
         computed: {
             ...mapState({
-                isShowWelcome: state => state.RightTabs.isShowWelcome,
-                isShowAutoBetting: state => state.RightTabs.isShowAutoBetting,
-                isShowSchemeSetting: state => state.RightTabs.isShowSchemeSetting,
-                isShowReferData: state => state.RightTabs.isShowReferData,
-                isShowHistoryStatic: state => state.RightTabs.isShowHistoryStatic,
-                isShowSoftware: state => state.RightTabs.isShowSoftware,
-                isShowUserBook: state => state.RightTabs.isShowUserBook,
+
             })
         },
         methods: {
-            toggleTabs(actionType, currentTab) {
-                this.$store.dispatch(actionType, currentTab)
-            }
+
         }
     }
 </script>
@@ -85,6 +67,7 @@
         position: relative;
         float: left;
         height: 100%;
+        width: calc(100% - 242px);
     }
     .right-tabs-header {
         display: inline-block;
@@ -118,6 +101,10 @@
         top: 34px;
         bottom: 0;
         border: 1px solid #333;
-        background: #fff;        
+        background: #fff;
+        li {
+            width: 100%;
+            height: 100%;
+        }  
     }
 </style>

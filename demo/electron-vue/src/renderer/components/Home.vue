@@ -46,11 +46,17 @@
         list-style: none;
     }
     .clearfix:after{
-        content:'';
-        display:block;
-        width:100%;
-        clear:both;
-        height:0;
+        content: '';
+        display: block;
+        width: 100%;
+        clear: both;
+        height: 0;
+    }
+    input {
+        margin-top: -2px;
+        margin-bottom: 1px;
+        vertical-align: middle;
+        cursor: pointer;
     }
 </style>
   
