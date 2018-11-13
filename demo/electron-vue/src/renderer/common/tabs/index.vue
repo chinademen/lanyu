@@ -20,7 +20,7 @@
         name: 'CmTabs',
 
         components: {
-            ...this.componentsArr
+
         },
 
         props: {
@@ -30,14 +30,13 @@
             // },
             activeName: String,
             tabsName: Array,
-            componentsArr: Array
+            components: Array
         },
 
         provide() {
             return {
                 isActive: 0,
-                activeName: this.activeName,
-                componentsArr: this.componentsArr
+                activeName: this.activeName
             }
         },
 
