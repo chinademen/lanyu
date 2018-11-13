@@ -1,6 +1,7 @@
 <!-- 右侧选项卡区域 -->
 <template>
     <div class="right-tabs">
+    <!--
         <ul class="right-tabs-header">
             <li :class="{'right-tabs-active':isActive == index}" 
                 :key="index"
@@ -13,6 +14,8 @@
                 <component :is="item.componentName" :key="index"></component>
             </li>
         </ul>
+    -->
+    <cm-tabs :tabsName="tabsName" :componentsArr="componentsArr"></cm-tabs>
     </div>
 </template>
 
@@ -48,6 +51,15 @@
                     { name: '5-历史统计', componentName: 'HistoryStatic' }, 
                     { name: '6-计划软件', componentName: 'SoftWare' }, 
                     { name: '7-用户必看', componentName: 'UserBook' },
+                ],
+                componentsArr: [
+                    WelcomePage,
+                    AutoBetting,
+                    SchemeSetting,
+                    ReferData,
+                    HistoryStatic,
+                    SoftWare,
+                    UserBook
                 ]
             }
         },
