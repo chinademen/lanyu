@@ -70,16 +70,36 @@
                 </ul>
             </div>
             <div class="right">
-                <div class="auto-btn">
+                <div class="auto-btn" @click="isAutoBtn">
                     <span>开启</span>
                     <span>自动投注</span>
                 </div>
             </div>
         </div>
-        <div class="auto-betting-info"></div>
+        <div class="auto-betting-info">
+            <div class="row">
+                <span class="col">真实盈亏：<em>0</em></span>
+                <span class="col">真实下注：<em>0</em></span>
+                <span class="col">模拟盈亏：<em>0</em></span>
+                <span class="col">模拟下注：<em>0</em></span>
+                <span class="col">最大连中：<em>0</em></span>
+                <span class="col">最大连挂：<em>0</em></span>
+                <span class="col">准确率：<em>0%</em></span>
+            </div>
+            <div class="row">
+                <span class="col">投注记录：<em>0</em></span>
+                <span class="col">投注状态：<em>无</em></span>
+            </div>
+            <div class="row">
+                <span>方案倍数乘以系数：</span>
+                <input type="number" />
+                <button class="ok" @click="isOk">确定</button>
+                <button class="clear" @click="isClear">清空记录</button>
+            </div>
+        </div>
         <!-- 表格组件 -->
         <div class="auto-betting-table">
-
+            <cm-table></cm-table>
         </div>
         <!-- 底部 -->
         <div class="auto-betting-footer">
@@ -111,6 +131,15 @@
             // 控制各checkbox开关
             toggleCheckbox(name) {
                 this[name] = !this[name];
+            },
+            isOk() {
+                alert('功能开发中...')
+            },
+            isClear() {
+                alert('功能开发中...')
+            },
+            isAutoBtn() {
+                alert('功能开发中...')
             }
         }
     }
@@ -200,8 +229,23 @@
             height: 100px;
             float: left;
             .auto-btn {
-                width: 90px;
-                height: 90px;
+                width: 96px;
+                height: 96px;
+                text-align: center;
+                background: #4682b4;
+                border: 1px solid #fff;
+                color: #fff;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                span {
+                    display: inline-block;
+                    width: 100%;
+                    height: 48px;
+                    &:nth-of-type(1) {
+                        line-height: 75px;
+                    }
+                }
             }
         }
     }
@@ -211,9 +255,36 @@
         height: 77px;
         border: 1px solid #333;
         border-bottom: none;
+        padding-left: 5px; 
+        .row {
+            width: 960px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            .col {
+                box-sizing: border-box;
+                display: inline-block;
+                width: 130px;
+            }
+            em {
+                color: #4682b4;
+            }
+            input[type="number"] {
+                width: 50px;
+            }
+            button {
+                height: 18px;
+                line-height: 16px;
+                margin-top: 2px;
+                cursor: pointer;
+            }
+        }
     }
     .auto-betting-table {
         width: 100%;
+        position: absolute;
+        top: 177px;
+        bottom: 30px;
         border: 1px solid #333;
     }
     .auto-betting-footer {

@@ -1,5 +1,5 @@
 <template>
-    <div class="header-container">
+    <div class="header-container" v-show="isShowHeader">
         <Count-Down></Count-Down>
         <Award-Number></Award-Number>
         <App-Tools></App-Tools>
@@ -12,6 +12,7 @@
     import AwardNumber from '../HeaderContainer/AwardNumber';
     import AppTools from '../HeaderContainer/AppTools';
     import PlatLogo from '../HeaderContainer/PlatLogo';
+    import { mapState } from 'vuex';
 
     export default {
         name: 'header-container',
@@ -20,6 +21,11 @@
             AwardNumber,
             AppTools,
             PlatLogo
+        },
+        computed: {
+            ...mapState({
+                isShowHeader: state => state.RightTabs.isShowHeader
+            })
         }
     }
 </script>

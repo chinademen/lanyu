@@ -1,21 +1,19 @@
 <!-- 右侧选项卡区域 -->
 <template>
     <div class="right-tabs">
-    <!--
         <ul class="right-tabs-header">
             <li :class="{'right-tabs-active':isActive == index}" 
                 :key="index"
                 @click="isActive=index"
                 v-for="(item, index) in tabsName"
             >{{item.name}}</li>
+            <span class="toggleHeader" @click="toggleHeader">切换</span>
         </ul>
         <ul class="right-tabs-content">
-            <li v-for="(item, index) in tabsName" v-if="isActive == index">
+            <li v-for="(item, index) in tabsName" :key="index" v-if="isActive == index">
                 <component :is="item.componentName" :key="index"></component>
             </li>
         </ul>
-    -->
-    <cm-tabs :tabsName="tabsName" :componentsArr="componentsArr"></cm-tabs>
     </div>
 </template>
 
@@ -46,21 +44,12 @@
                 tabsName: [
                     { name: '1-欢迎使用', componentName: 'WelcomePage' }, 
                     { name: '2-自动投注', componentName: 'AutoBetting' }, 
-                    { name: '3-方案设定', componentName: 'SchemeSetting' }, 
+                    { name: '3-方案设定', componentName: 'SchemeSetting' },
                     { name: '4-参考数据', componentName: 'ReferData' }, 
                     { name: '5-历史统计', componentName: 'HistoryStatic' }, 
                     { name: '6-计划软件', componentName: 'SoftWare' }, 
                     { name: '7-用户必看', componentName: 'UserBook' },
                 ],
-                componentsArr: [
-                    WelcomePage,
-                    AutoBetting,
-                    SchemeSetting,
-                    ReferData,
-                    HistoryStatic,
-                    SoftWare,
-                    UserBook
-                ]
             }
         },
         computed: {
@@ -69,7 +58,10 @@
             })
         },
         methods: {
-
+            // 控制头部显示隐藏
+            toggleHeader() {
+                this.$store.dispatch('toggleHeader');
+            }
         }
     }
 </script>
@@ -101,6 +93,18 @@
             &:nth-of-type(1) {
                 margin-left: 5px;
             }
+        }
+        .toggleHeader {
+            position: absolute;
+            box-sizing: border-box;
+            background: #4682b4;
+            padding: 3px 5px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 3px;
+            right: 20px;
+            top: 6px;
+            cursor: pointer;
         }
     }
     .right-tabs-active {
