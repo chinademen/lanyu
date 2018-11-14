@@ -1,18 +1,11 @@
 <template>
     <thead class="cm-table-header">
         <tr>
-            <th>投注时间</th>
-            <th>投注彩种</th>
-            <th>期数</th>
-            <th>方案</th>
-            <th>玩法</th>
-            <th>注数</th>
-            <th>倍数</th>
-            <th>轮次</th>
-            <th>金额</th>
-            <th>盈亏</th>
-            <th>方案盈亏</th>
-            <th>连挂</th>
+            <th v-for="item in column"
+                :key="item.key"
+            >
+            {{item.title}}
+            </th>
         </tr>
     </thead>
 </template>
@@ -26,7 +19,9 @@
         },
 
         props: {
-       
+            column: {
+                require: true
+            },
         },
 
         provide() {
@@ -50,34 +45,37 @@
         },
 
         render() {
-            
+            console.log('render');
         },
 
         created() {
-
+            console.log('created');
+            console.log(this.column);
         },
 
         mounted() {
-
+            console.log('mounted');
+            console.log(this.column);
         },
 
         updated() {
-            
+            console.log('updated');
         }
     }
 </script>
 
 <style lang="less">
-    .cm-table-header {
-        display: inline-block;
-        box-sizing: border-box;
-        width: 100%;
-        tr {
-            display: flex;
-            justify-content: space-between;
-        }
+    thead {
         th {
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 19px;
+            padding: 5px 8px;
             text-align: center;
+            color: #fff;
+            border: 1px solid #f0f0f0;
+            border-right: 1px solid #fff;
+            background: #4682b4;
         }
     }
 </style>

@@ -97,9 +97,12 @@
                 <button class="clear" @click="isClear">清空记录</button>
             </div>
         </div>
-        <!-- 表格组件 -->
+        <!-- 表格 -->
         <div class="auto-betting-table">
-            <cm-table></cm-table>
+            <cm-table
+                :column="column"
+                :data="tableData"
+            ></cm-table>
         </div>
         <!-- 底部 -->
         <div class="auto-betting-footer">
@@ -125,6 +128,47 @@
                 disconnectStopBet: false, // 断期停投
                 autoStart: false, // 自动开始
                 auto: false, // 自动
+                column: [ // 表头
+                    { title: '投注时间', key: 'bettime' },
+                    { title: '投注彩种', key: 'betlottery' },
+                    { title: '期数', key: 'periods' },
+                    { title: '方案', key: 'programme' },
+                    { title: '玩法', key: 'playmethod' },
+                    { title: '注数', key: 'notes' },
+                    { title: '倍数', key: 'multiple' },
+                    { title: '轮次', key: 'rotation' },
+                    { title: '金额', key: 'money' },
+                    { title: '盈亏', key: 'profit' },
+                    { title: '方案盈亏', key: 'projectprofit' },
+                    { title: '连挂', key: 'hangup' },
+                ],
+                tableData: [ // 表格数据
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
+                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
+                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
+                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
+                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
+                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                ]
             }
         },
         methods: {

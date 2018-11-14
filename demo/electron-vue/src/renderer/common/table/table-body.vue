@@ -1,60 +1,13 @@
 <template>
     <tbody class="cm-table-body">
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-         <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-         <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-         <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+        <tr v-for="(item, index) in data"
+            :key="index"
+        >
+            <td v-for="(value, key) in item"
+                :key="key"
+            >
+            {{value}}
+            </td>
         </tr>
     </tbody>
 </template>
@@ -68,7 +21,9 @@
         },
 
         props: {
-       
+            data: {
+                require: true
+            }
         },
 
         provide() {
@@ -92,34 +47,38 @@
         },
 
         render() {
-            
+            // console.log('render');
         },
 
         created() {
-
+            // console.log('created');
+            console.log(this.data);
         },
 
         mounted() {
-
+            // console.log('mounted');
+            // console.log(this.data);
         },
 
         updated() {
-            
+            // console.log('updated');
         }
     }
 </script>
 
 <style lang="less">
-    .cm-table-body {
-        display: inline-block;
-        box-sizing: border-box;
-        width: 100%;
-        tr {
-            display: flex;
-            justify-content: space-between;
+    tbody {
+        td, th {
+            padding: 9px;
         }
-        td {
-            text-align: center;
+        /* 偶数行 */
+        tr:nth-child(even) th, tr:nth-child(even) td {
+            background-color: rgb(240, 240, 240);
+        }
+        /* tr的hover样式 */
+        tr:hover td, tr:hover th { 
+            background-color: #8b7;
+            color: #fff;
         }
     }
 </style>
