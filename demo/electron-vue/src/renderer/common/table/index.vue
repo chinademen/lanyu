@@ -12,19 +12,24 @@
         <cm-table-body
             :data="data"
         ></cm-table-body>
+        <cm-table-footer
+            :column="column"
+        ></cm-table-footer>
     </table>
 </template>
 
 <script>
     import CmTableHeader from './table-header';
     import CmTableBody from './table-body';
+    import CmTableFooter from './table-footer';
 
     export default {
         name: 'CmTable',
 
         components: {
             CmTableHeader,
-            CmTableBody
+            CmTableBody,
+            CmTableFooter
         },
 
         props: {

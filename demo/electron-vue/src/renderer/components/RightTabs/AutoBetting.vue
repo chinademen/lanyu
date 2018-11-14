@@ -168,6 +168,81 @@
                        playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
                         profit: 0, projectprofit: 0, hangup: 0
                     },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
+                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
+                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
+                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
+                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
+                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
+                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
+                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
+                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
+                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
+                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
+                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
+                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
+                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
+                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
+                    { 
+                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
+                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
+                        profit: 0, projectprofit: 0, hangup: 0
+                    },
                 ]
             }
         },
@@ -330,6 +405,7 @@
         top: 177px;
         bottom: 30px;
         border: 1px solid #333;
+        overflow: scroll;
     }
     .auto-betting-footer {
         position: absolute;
