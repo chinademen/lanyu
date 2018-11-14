@@ -1,12 +1,6 @@
 <template>
     <tfoot class="cm-table-foot">
-        <tr>
-            <td v-for="item in column"
-                :key="item.key"
-            >
-                {{item.title}}
-            </td>
-        </tr>
+       
     </tfoot>
 </template>
 
@@ -19,9 +13,7 @@
         },
 
         props: {
-            column: {
-                require: true
-            },
+           
         },
 
         provide() {
