@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Icon, Button } from 'antd';
+import QRCode from 'qrcode.react';
 import { lotterymenu } from '@/mock/lottery.js';
 import { opStorage } from '@/utils/db';
 
@@ -10,7 +11,9 @@ import { opStorage } from '@/utils/db';
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            path: null, // 二维码保存路径 
+        };
     }
 
     componentDidMount() {
@@ -97,6 +100,13 @@ class Header extends Component {
                     {/* 展示所有游戏种类 */}
                     <div className="list">
                         {this.createLotteryMenu(lotterymenu)}
+                    </div>
+                    {/* 二维码链接 */}
+                    <div className="qrcode">
+                        <label>二维码</label>
+                        <div className="qrcode-img">
+                            <QRCode value="http://facebook.github.io/react/" />
+                        </div>
                     </div>
                     <div className='clearfix headerRight'>
                         <span className="headerSpan">张三</span>
