@@ -1,5 +1,5 @@
 export default {
     logintools: {
-        login: 'api/user/login', // 登陆
+        login: '/api/login', // 登陆
     }
 }

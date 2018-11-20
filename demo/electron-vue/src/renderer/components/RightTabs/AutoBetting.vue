@@ -92,8 +92,8 @@
             </div>
             <div class="row">
                 <span>方案倍数乘以系数：</span>
-                <input type="number" />
-                <button class="ok" @click="isOk">确定</button>
+                <input type="number" :disabled="lockRate" />
+                <button class="ok" @click="toggleCheckbox('lockRate')">确定</button>
                 <button class="clear" @click="isClear">清空记录</button>
             </div>
         </div>
@@ -128,6 +128,7 @@
                 disconnectStopBet: false, // 断期停投
                 autoStart: false, // 自动开始
                 auto: false, // 自动
+                lockRate: false, // 是否锁定方案倍数乘以系数
                 column: [ // 表头
                     { title: '投注时间', key: 'bettime' },
                     { title: '投注彩种', key: 'betlottery' },
@@ -250,9 +251,6 @@
             // 控制各checkbox开关
             toggleCheckbox(name) {
                 this[name] = !this[name];
-            },
-            isOk() {
-                alert('功能开发中...')
             },
             isClear() {
                 alert('功能开发中...')

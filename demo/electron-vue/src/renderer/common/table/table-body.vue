@@ -70,6 +70,8 @@
     tbody {
         td, th {
             padding: 9px;
+            font-size: 12px;
+            color: #000;
         }
         /* 偶数行 */
         tr:nth-child(even) th, tr:nth-child(even) td {
