@@ -1,5 +1,11 @@
 export default {
-    logintools: {
-        login: '/api/login', // 登陆
+    common: {
+        line: '/api/line',
+        login: '/api/login',
+        logout: '/api/logout',
+        currentLottery: '/api/currentLottery', 
+    },
+    lottery: {
+        lotteryNumber: '/api/lotteryNumber',
     }
 }

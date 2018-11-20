@@ -6,7 +6,7 @@ import axios from "axios";
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    // baseURL: 'http://xxx/',
+    // baseURL: 'http://localhost:9000',
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
@@ -65,7 +65,7 @@ service.interceptors.response.use(
         checkStatus(data);
 
         // 统一post提交的提示信息
-        if (data.status === 1) {
+        if (data.status === 0) {
             return data;
         }
 

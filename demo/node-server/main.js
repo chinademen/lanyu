@@ -8,30 +8,30 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const redisStore = require('connect-redis')(session);
-const sessionStore = new redisStore({ 
-    host: 'localhost',
-    port: 6379,
-    db: 0,                  // 使用第0个数据库
-    // pass: 123456,        // 数据库密码 默认无
-    prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
-    ttl: 10 * 60,           // 过期时间 单位：s
-});
+// const session = require('express-session');
+// const redisStore = require('connect-redis')(session);
+// const sessionStore = new redisStore({ 
+//     host: 'localhost',
+//     port: 6379,
+//     db: 0,                  // 使用第0个数据库
+//     // pass: 123456,        // 数据库密码 默认无
+//     prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
+//     ttl: 10 * 60,           // 过期时间 单位：s
+// });
 const app = express();
-// app.use(cookieParser('session_id'));    // cookie
-app.use(session({           // session
-    store: sessionStore,    // 设置session存储在redis中
-    secret: 'session_id',
-    // name: Math.floor(Math.random()*1000) + '_' + new Date().getTime() + '_' + Math.floor(Math.random()*10000), // sessionKey 为  (1-1000)_当前时间戳_(1_10000)
-    resave: true,
-    rolling: true,
-    saveUninitialized: false,
-    // cookie : {
-    //     httpOnly: true,
-    //     maxAge : 10 * 60 * 1000, // 设置 session 的有效时间，单位毫秒    该有效时间对存在redis和数据库中的session无效
-    // },
-}));
+// // app.use(cookieParser('session_id'));    // cookie
+// app.use(session({           // session
+//     store: sessionStore,    // 设置session存储在redis中
+//     secret: 'session_id',
+//     // name: Math.floor(Math.random()*1000) + '_' + new Date().getTime() + '_' + Math.floor(Math.random()*10000), // sessionKey 为  (1-1000)_当前时间戳_(1_10000)
+//     resave: true,
+//     rolling: true,
+//     saveUninitialized: false,
+//     // cookie : {
+//     //     httpOnly: true,
+//     //     maxAge : 10 * 60 * 1000, // 设置 session 的有效时间，单位毫秒    该有效时间对存在redis和数据库中的session无效
+//     // },
+// }));
 
 // 输出日志
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'));

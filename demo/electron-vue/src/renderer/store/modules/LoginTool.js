@@ -1,4 +1,4 @@
-import { userLogin } from '@/services/LoginTools'
+import { userLogin } from '@/services/common'
 
 const LoginTool = {
     state: {
@@ -14,7 +14,7 @@ const LoginTool = {
         // 异步操作
         // 登陆
         USER_LOGIN (state, payload) {
-            const { status } = payload;
+            if (!payload) alert('登陆失败, 请重新登陆');
             alert(payload.msg);
         },
     },
@@ -29,12 +29,8 @@ const LoginTool = {
         // 登录
         async UserLogin ({ state, commit }, payload) {
             const { username, password } = payload;
-            if (!username) {
-                return alert('请输入用户名')
-            };
-            if (!password) {
-                return alert('请输入密码')
-            };
+            if (!username) return alert('请输入用户名');
+            if (!password) return alert('请输入密码');
             commit('USER_LOGIN', await userLogin(payload))
         }
     }
