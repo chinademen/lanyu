@@ -11,8 +11,8 @@
                 <span class="col col-8"><input type="checkbox" /> 失败停投</span>
             </div>
             <div class="row">
-                <span class="col col-5"><input type="checkbox" /> 开始时间：<input type="number" /></span>
-                <span class="col col-5"><input type="checkbox" /> 结束时间：<input type="number" /></span>
+                <span class="col col-5"><input type="checkbox" /> 开始时间：<date-picker></date-picker></span>
+                <span class="col col-5"><input type="checkbox" /> 结束时间：<date-picker></date-picker></span>
                 <span class="col col-5"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</span>
             </div>
             <div class="row remind">
