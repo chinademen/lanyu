@@ -3,17 +3,23 @@
     <div class="auto-betting">
         <div class="auto-betting-header">
             <div class="row">
-                <span class="col col-8">止损盈亏：<em>+186.000</em></span>
-                <span class="col col-8">盈利大于 <input type="number" /></span>
-                <span class="col col-8">亏损大于 <input type="number" /></span>
-                <span class="col col-8">最大连挂：<em>5</em></span>
-                <span class="col col-8"><input type="checkbox" /> 断期停投</span>
-                <span class="col col-8"><input type="checkbox" /> 失败停投</span>
+                <span class="col col-2">止损盈亏：<em>+186.000</em></span>
+                <span class="col col-2">盈利大于 <input type="number" /></span>
+                <span class="col col-2">亏损大于 <input type="number" /></span>
+                <span class="col col-1">最大连挂：<em>5</em></span>
+                <span class="col col-1"><input type="checkbox" /> 断期停投</span>
+                <span class="col col-1"><input type="checkbox" /> 失败停投</span>
             </div>
             <div class="row">
-                <span class="col col-5"><input type="checkbox" /> 开始时间：<date-picker></date-picker></span>
-                <span class="col col-5"><input type="checkbox" /> 结束时间：<date-picker></date-picker></span>
-                <span class="col col-5"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</span>
+                <span class="col col-1"><input type="checkbox" /> 开始时间：</span>
+                <span class="col col-2 time-box">
+                    <date-picker></date-picker>
+                </span>
+                <span class="col col-1"><input type="checkbox" /> 结束时间：</span>
+                <span class="col col-2 time-box">
+                    <date-picker></date-picker>
+                </span>
+                <span class="col col-3"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</span>
             </div>
             <div class="row remind">
                 *挂机软件没有撤单功能；分分彩建议不设置延迟投注，如设置则不能超过12秒
@@ -22,14 +28,14 @@
         </div>
         <div class="auto-betting-info">
             <div class="row">
-                <span class="col col-6">总盈亏：<em>+186.000</em></span>
-                <span class="col col-6">总投注：<em>2000.000</em></span>
-                <span class="col col-6">最大连中：<em>3</em></span>
-                <span class="col col-6">最大连挂：<em>5</em></span>
+                <span class="col col-2">总盈亏：<em>+186.000</em></span>
+                <span class="col col-2">总投注：<em>2000.000</em></span>
+                <span class="col col-2">最大连中：<em>3</em></span>
+                <span class="col col-2">最大连挂：<em>5</em></span>
             </div>
             <div class="row">
-                <span class="col col-6">投注记录：<em>25/25期</em></span>
-                <span class="col col-4 status-col">投注状态：<em>投注失败-用户余额不足，请充值！</em></span>
+                <span class="col col-2">投注记录：<em>25/25期</em></span>
+                <span class="col col-6">投注状态：<em>投注失败-用户余额不足，请充值！</em></span>
             </div>
             <button class="clear-btn" @click="isClear">清空记录</button>
         </div>
@@ -112,14 +118,12 @@
         height: 100%;
     }
     .row {
-        width: 960px;
         height: 25px;
         line-height: 25px;
-        font-size: 12px;
-        .col {
+        /* .col {
             box-sizing: border-box;
             display: inline-block;
-        }
+        } */
         .status-col {
             width: 540px;
         }
@@ -127,7 +131,7 @@
             color: #4682b4;
         }
         input[type="number"] {
-            width: 50px;
+            width: 80px;
         }
         button {
             height: 18px;
@@ -159,6 +163,9 @@
         padding: 5px 12px;
         .auto-btn {
             right: 121px;
+        }
+        .time-box {
+            margin-right: 15px;
         }
         .remind {
             margin-top: 12px;

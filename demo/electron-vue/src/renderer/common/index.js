@@ -1,5 +1,5 @@
 import CmTable from './table';
-import DatePicker from './DatePicker';
+import DatePicker from './datepicker';
 
 const components = [
     CmTable,

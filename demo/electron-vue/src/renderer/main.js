@@ -6,6 +6,8 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import './index.less'
+
 import '@/mock';
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))

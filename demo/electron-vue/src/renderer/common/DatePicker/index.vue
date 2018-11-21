@@ -218,13 +218,15 @@
 
 <style lang="less">
    .date-picker {
-        width: 280px;
-        padding: 5px;
         position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
         >input {
-            width: 50%;
-            height: 20px;
-            padding: 5px;
+            width: 80%;
+            height: 100%;
+            padding: 2px 10px;
         }
         .fade-enter-active, .fade-leave-active {
             transition: all 0.5s;
@@ -234,13 +236,13 @@
             transform: translateY(-10px);
         }
         >div {
-            width: 100%;
+            width: 280px;
             border: 1px solid #EAEAEA;
             border-radius: 5px;
             box-shadow: 2px 2px 2px #eee;
             background: white;
             position: absolute;
-            top: 50px;
+            top: 30px;
             left: 0px;
             z-index: 99;
             div.day-select {
@@ -260,10 +262,10 @@
                 }
                 >div:nth-child(1),
                 >div:nth-child(3) {
-                    width: 20%;
+                    width: 56px;
                 }
                 >div:nth-child(2) {
-                    width: 60%;
+                    width: 168px;
                     display: flex;
                     justify-content: center;
                     input:hover {
@@ -280,7 +282,7 @@
             div.day-screen {
                 >div {
                     width: 280px;
-                    padding: 0 5px;
+                    /* padding: 0 5px; */
                     display: flex;
                     font-size: 14px;
                     justify-content: flex-start;

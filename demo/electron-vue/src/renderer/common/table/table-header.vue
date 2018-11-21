@@ -45,21 +45,21 @@
         },
 
         render() {
-            console.log('render');
+            // console.log('render');
         },
 
         created() {
-            console.log('created');
-            console.log(this.column);
+            // console.log('created');
+            // console.log(this.column);
         },
 
         mounted() {
-            console.log('mounted');
-            console.log(this.column);
+            // console.log('mounted');
+            // console.log(this.column);
         },
 
         updated() {
-            console.log('updated');
+            // console.log('updated');
         }
     }
 </script>
