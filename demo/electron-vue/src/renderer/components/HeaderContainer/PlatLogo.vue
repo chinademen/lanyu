@@ -16,7 +16,7 @@
     .plat-logo {
         float: left;
         display: inline-block;
-        width: 354px;
+        width: 460px;
         height: 120px;
         img {
             width: 100%;

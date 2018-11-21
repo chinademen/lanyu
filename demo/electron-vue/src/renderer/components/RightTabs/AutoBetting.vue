@@ -2,100 +2,36 @@
 <template>
     <div class="auto-betting">
         <div class="auto-betting-header">
-            <div class="left">
-                <!-- 控制器-上 -->
-                <ul class="control">
-                    <div class="mask" v-show="simulateBet"></div>
-                    <li class="li-type-1">
-                        <input type="checkbox" @change="toggleCheckbox('simulateBet')" />
-                        <span>模拟投注</span>
-                    </li>
-                    <li class="li-type-2">
-                        <div>
-                            <input type="checkbox" @change="toggleCheckbox('simulateBetWin')" />
-                            <span>模拟投注输</span>
-                            <input type="text" :disabled="simulateBetWin" />
-                        </div>
-                        <div>
-                            <input type="checkbox" @change="toggleCheckbox('simulateBetLose')" />
-                            <span>模拟投注赢</span>
-                            <input type="text" :disabled="simulateBetLose" />
-                        </div>
-                    </li>
-                    <li class="li-type-1">循环切换</li>
-                    <li class="li-type-2">
-                        <div>
-                            <input type="checkbox" @change="toggleCheckbox('realBetLose')" />
-                            <span>真实投注输</span>
-                            <input type="text" :disabled="realBetLose" />
-                        </div>
-                        <div>
-                            <input type="checkbox" @change="toggleCheckbox('realBetWin')" />
-                            <span>真实投注赢</span>
-                            <input type="text" :disabled="realBetWin" />
-                        </div>
-                    </li>
-                    <li class="li-type-3">
-                        <div>
-                            <input type="checkbox" @change="toggleCheckbox('failStopBet')" />
-                            <span>失败停投</span>
-                        </div>
-                        <div>
-                            <input type="checkbox" @change="toggleCheckbox('disconnectStopBet')" />
-                            <span>断期停投</span>
-                        </div>
-                    </li>
-                </ul>
-                <!-- 控制器-下 -->
-                <ul class="control-two">
-                    <li>
-                        <input type="checkbox" @change="toggleCheckbox('autoStart')" />
-                        <span>自动开始</span>
-                        <input type="time" />
-                    </li>
-                    <li>
-                        <input type="checkbox" @change="toggleCheckbox('auto')" />
-                        <span>自动</span>
-                        <select>
-                            <option value="stopBet" selected>停止投注</option>
-                            <option value="stopNewBet">停止新增投注</option>
-                        </select>
-                        <input type="time" />
-                    </li>
-                    <li>
-                        <span>延迟投注：</span>
-                        <input type="number" />
-                        <span>秒后：</span>
-                    </li>
-                </ul>
+            <div class="row">
+                <span class="col col-8">止损盈亏：<em>+186.000</em></span>
+                <span class="col col-8">盈利大于 <input type="number" /></span>
+                <span class="col col-8">亏损大于 <input type="number" /></span>
+                <span class="col col-8">最大连挂：<em>5</em></span>
+                <span class="col col-8"><input type="checkbox" /> 断期停投</span>
+                <span class="col col-8"><input type="checkbox" /> 失败停投</span>
             </div>
-            <div class="right">
-                <div class="auto-btn" @click="isAutoBtn">
-                    <span>开启</span>
-                    <span>自动投注</span>
-                </div>
+            <div class="row">
+                <span class="col col-5"><input type="checkbox" /> 开始时间：<input type="number" /></span>
+                <span class="col col-5"><input type="checkbox" /> 结束时间：<input type="number" /></span>
+                <span class="col col-5"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</span>
             </div>
+            <div class="row remind">
+                *挂机软件没有撤单功能；分分彩建议不设置延迟投注，如设置则不能超过12秒
+            </div>
+            <button class="auto-btn" @click="isAutoBtn">开始自动投注</button>
         </div>
         <div class="auto-betting-info">
             <div class="row">
-                <span class="col">真实盈亏：<em>0</em></span>
-                <span class="col">真实下注：<em>0</em></span>
-                <span class="col">模拟盈亏：<em>0</em></span>
-                <span class="col">模拟下注：<em>0</em></span>
-                <span class="col">最大连中：<em>0</em></span>
-                <span class="col">最大连挂：<em>0</em></span>
-                <span class="col">准确率：<em>0%</em></span>
+                <span class="col col-6">总盈亏：<em>+186.000</em></span>
+                <span class="col col-6">总投注：<em>2000.000</em></span>
+                <span class="col col-6">最大连中：<em>3</em></span>
+                <span class="col col-6">最大连挂：<em>5</em></span>
             </div>
             <div class="row">
-                <span class="col">投注记录：<em>0</em></span>
-                <span class="col">投注状态：<em>无</em></span>
+                <span class="col col-6">投注记录：<em>25/25期</em></span>
+                <span class="col col-4 status-col">投注状态：<em>投注失败-用户余额不足，请充值！</em></span>
             </div>
-            <div class="row">
-                <span>方案倍数乘以系数：</span>
-                <input type="number" :disabled="lockRate" />
-                <button class="ok" @click="toggleCheckbox('lockRate')">确定</button>
-                <button class="clear" @click="isClear">清空记录</button>
-            </div>
+            <button class="clear-btn" @click="isClear">清空记录</button>
         </div>
         <!-- 表格 -->
         <div class="auto-betting-table">
@@ -105,11 +41,13 @@
             ></cm-table>
         </div>
         <!-- 底部 -->
-        <div class="auto-betting-footer">
-            <input type="checkbox" />
-            <span>自动删除N期前的计划：</span>
-            <input type="number" />
-        </div>
+        <!--
+            <div class="auto-betting-footer">
+                <span>投注记录显示数量：</span>
+                <input type="number" />
+                <span>条</span>
+            </div>
+        -->
     </div>
 </template>
 
@@ -119,145 +57,50 @@
         name: 'auto-betting',
         data() {
             return {
-                simulateBet: false, // 模拟投注
-                simulateBetLose: false, // 模拟投注输
-                simulateBetWin: false, // 模拟投注赢
-                realBetLose: false, // 真实投注输
-                realBetWin: false, // 真实投注赢
-                failStopBet: false, // 失败停投
-                disconnectStopBet: false, // 断期停投
-                autoStart: false, // 自动开始
-                auto: false, // 自动
-                lockRate: false, // 是否锁定方案倍数乘以系数
                 column: [ // 表头
                     { title: '投注时间', key: 'bettime' },
-                    { title: '投注彩种', key: 'betlottery' },
-                    { title: '期数', key: 'periods' },
                     { title: '方案', key: 'programme' },
+                    { title: '彩种', key: 'betlottery' },
+                    { title: '投注期号', key: 'periods' },
                     { title: '玩法', key: 'playmethod' },
-                    { title: '注数', key: 'notes' },
+                    { title: '投注数', key: 'notes' },
                     { title: '倍数', key: 'multiple' },
                     { title: '轮次', key: 'rotation' },
-                    { title: '金额', key: 'money' },
+                    { title: '投注额', key: 'money' },
                     { title: '盈亏', key: 'profit' },
                     { title: '方案盈亏', key: 'projectprofit' },
-                    { title: '连挂', key: 'hangup' },
+                    { title: '投注内容', key: 'betnumber' },
+                    { title: '开奖号码', key: 'winnumber' },
+                    { title: '状态', key: 'status' },
                 ],
                 tableData: [ // 表格数据
                     { 
                         bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
                         playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
-                        profit: 0, projectprofit: 0, hangup: 0
+                        profit: 0, projectprofit: 0, betnumber: 2|3|1|4|6, winnumber: 2|3|1|4|6, status: '中奖'
                     },
                     { 
                         bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
                         playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
-                        profit: 0, projectprofit: 0, hangup: 0
+                        profit: 0, projectprofit: 0, betnumber: 2|3|1|4|6, winnumber: 2|3|1|4|6, status: '挂'
                     },
                     { 
                         bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
                         playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
-                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
-                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
-                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
-                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
-                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
-                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
-                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
-                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
-                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
-                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
-                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
-                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000001', programme: 1, 
-                        playmethod: '五星复式', notes: 1, multiple: 1, rotation: 1, money: 1,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000002', programme: 2, 
-                        playmethod: '五星复式', notes: 2, multiple: 2, rotation: 2, money: 2,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000003', programme: 3, 
-                        playmethod: '五星复式', notes: 3, multiple: 3, rotation: 3, money: 3,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000004', programme: 4, 
-                        playmethod: '五星复式', notes: 4, multiple: 4, rotation: 4, money: 4,
-                        profit: 0, projectprofit: 0, hangup: 0
-                    },
-                    { 
-                        bettime: '2018-11-14', betlottery: '重庆时时彩', periods: '000005', programme: 5, 
-                       playmethod: '五星复式', notes: 5, multiple: 5, rotation: 5, money: 5,
-                        profit: 0, projectprofit: 0, hangup: 0
+                        profit: 0, projectprofit: 0, betnumber: 2|3|1|4|6, winnumber: 2|3|1|4|6, status: '待开奖'
                     },
                 ]
             }
         },
         methods: {
-            // 控制各checkbox开关
-            toggleCheckbox(name) {
-                this[name] = !this[name];
+            // 开始自动投注
+            isAutoBtn() {
+                alert('功能开发中...')
             },
+            // 清空记录
             isClear() {
                 alert('功能开发中...')
             },
-            isAutoBtn() {
-                alert('功能开发中...')
-            }
         }
     }
 </script>
@@ -268,168 +111,103 @@
         width: 100%;
         height: 100%;
     }
+    .row {
+        width: 960px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        .col {
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        .status-col {
+            width: 540px;
+        }
+        em {
+            color: #4682b4;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        button {
+            height: 18px;
+            line-height: 16px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+    }
+    .auto-btn, .clear-btn {
+        position: absolute;
+        top: 10px;
+        right: 150px;
+        cursor: pointer;
+        background: #4682b4;
+        color: #fff;
+        padding: 12px;
+        border: 0;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
     .auto-betting-header {
+        position: relative;
         box-sizing: border-box;
         width: 100%;
         height: 100px;
         border: 1px solid #333;
         font-size: 12px;
-        .left {
-            display: inline-block;
-            width: 590px;
-            float: left;
+        padding: 5px 12px;
+        .auto-btn {
+            right: 121px;
         }
-        .control {
-            box-sizing: border-box;
-            height: 70px;
-            .mask {
-                position: absolute;
-                width: 420px;
-                height: 70px;
-                left: 80px;
-                background: rgba(255, 255, 255, 0.5);
-            }
-            li {
-                box-sizing: border-box;
-                display: inline-block;
-                border: 1px solid #333;
-                width: 80px;
-                height: 70px;
-                line-height: 70px;
-                text-align: center;
-                float: left;
-                padding: 0 5px;
-                &.li-type-2 {
-                    width: 170px;
-                    line-height: 35px;
-                }
-                &.li-type-3 {
-                    width: 90px;
-                    line-height: 35px;
-                }
-            }
-            input[type="text"] {
-                display: inline-block;
-                width: 70px;
-            }
-        }
-        .control-two {
-            box-sizing: border-box;
-            height: 30px;
-            line-height: 30px;
-            border-right: 1px solid #333;
-            li {
-                box-sizing: border-box;
-                display: inline-block;
-                float: left;
-                width: 180px;
-                padding: 0 5px;
-                &:nth-of-type(2) {
-                    width: 236px;
-                    border-right: 1px solid #333;
-                }
-                &:nth-of-type(3) {
-                    width: 173px;
-                }
-                input[type="time"] {
-                    width: 70px;
-                    height: 15px;
-                }
-                input[type="number"] {
-                    width: 50px;
-                }
-            }
-        }
-        .right {
-            display: inline-block;
-            width: calc(100% - 590px);
-            height: 100px;
-            float: left;
-            .auto-btn {
-                width: 96px;
-                height: 96px;
-                text-align: center;
-                background: #4682b4;
-                border: 1px solid #fff;
-                color: #fff;
-                font-size: 20px;
-                font-weight: bold;
-                cursor: pointer;
-                span {
-                    display: inline-block;
-                    width: 100%;
-                    height: 48px;
-                    &:nth-of-type(1) {
-                        line-height: 75px;
-                    }
-                }
-            }
+        .remind {
+            margin-top: 12px;
         }
     }
     .auto-betting-info {
+        position: relative;
         box-sizing: border-box;
         width: 100%;
-        height: 77px;
+        height: 62px;
         border: 1px solid #333;
         border-bottom: none;
-        padding-left: 5px; 
-        .row {
-            width: 960px;
-            height: 25px;
-            line-height: 25px;
-            font-size: 12px;
-            .col {
-                box-sizing: border-box;
-                display: inline-block;
-                width: 130px;
-            }
-            em {
-                color: #4682b4;
-            }
-            input[type="number"] {
-                width: 50px;
-            }
-            button {
-                height: 18px;
-                line-height: 16px;
-                margin-top: 2px;
-                cursor: pointer;
-            }
-        }
+        padding: 5px 12px;
     }
     .auto-betting-table {
         width: 100%;
         position: absolute;
-        top: 177px;
+        top: 162px;
         bottom: 30px;
         border: 1px solid #333;
         overflow: scroll;
     }
-    .auto-betting-footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 30px;
-        line-height: 27px;
-        border: 1px solid #333;
-        font-size: 12px;
-        input[type="checkbox"] {
-            position: absolute;
-            left: 5px;
-            top: 9px;
-        }
-        span {
-            position: absolute;
-            display: inline-block;
-            height: 100%;
-            left: 26px;
-        }
-        input[type="number"] {
-            position: absolute;
-            left: 160px;
-            top: 7px;
-            width: 50px;
-        }
-    }
+    // .auto-betting-footer {
+    //     position: absolute;
+    //     bottom: 0;
+    //     width: 100%;
+    //     height: 30px;
+    //     line-height: 27px;
+    //     border: 1px solid #333;
+    //     font-size: 12px;
+    //     span {
+    //         position: absolute;
+    //         display: inline-block;
+    //         height: 30px;
+    //         line-height: 30px;
+    //     }
+    //     span:nth-of-type(1) {
+    //         left: 10px;
+    //     }
+    //     input[type="number"] {
+    //         position: absolute;
+    //         left: 120px;
+    //         top: 5px;
+    //         width: 50px;
+    //         height: 18px;
+    //     }
+    //     span:nth-of-type(2) {
+    //         left: 180px;
+    //     }
+    // }
 </style>
     

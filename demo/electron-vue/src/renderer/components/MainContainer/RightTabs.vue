@@ -7,7 +7,7 @@
                 @click="isActive=index"
                 v-for="(item, index) in tabsName"
             >{{item.name}}</li>
-            <span class="toggleHeader" @click="toggleHeader">切换</span>
+            <span class="instructions" @click="instructions">使用说明</span>
         </ul>
         <ul class="right-tabs-content">
             <li v-for="(item, index) in tabsName" :key="index" v-if="isActive == index">
@@ -18,37 +18,34 @@
 </template>
 
 <script>
-    import WelcomePage from '../RightTabs/WelcomePage';
-    import AutoBetting from '../RightTabs/AutoBetting';
-    import SchemeSetting from '../RightTabs/SchemeSetting';
-    import ReferData from '../RightTabs/ReferData';
-    import HistoryStatic from '../RightTabs/HistoryStatic';
-    import SoftWare from '../RightTabs/SoftWare';
     import UserBook from '../RightTabs/UserBook';
+    import AutoBetting from '../RightTabs/AutoBetting';
+    import SchemeManager from '../RightTabs/SchemeManager';
+    import CustomScheme from '../RightTabs/CustomScheme';
+    import PlanScheme from '../RightTabs/PlanScheme';
+    import HistoryStatic from '../RightTabs/HistoryStatic';
     import { mapState } from 'vuex';
 
     export default {
         name: 'right-tabs',
         components: {
-            WelcomePage,
+            UserBook,
             AutoBetting,
-            SchemeSetting,
-            ReferData,
+            SchemeManager,
+            CustomScheme,
+            PlanScheme,
             HistoryStatic,
-            SoftWare,
-            UserBook
         },
         data() {
             return {
                 isActive: 0,
                 tabsName: [
-                    { name: '1-欢迎使用', componentName: 'WelcomePage' }, 
-                    { name: '2-自动投注', componentName: 'AutoBetting' }, 
-                    { name: '3-方案设定', componentName: 'SchemeSetting' },
-                    { name: '4-参考数据', componentName: 'ReferData' }, 
-                    { name: '5-历史统计', componentName: 'HistoryStatic' }, 
-                    { name: '6-计划软件', componentName: 'SoftWare' }, 
-                    { name: '7-用户必看', componentName: 'UserBook' },
+                    { name: '用户须知', componentName: 'UserBook' }, 
+                    { name: '自动投注', componentName: 'AutoBetting' }, 
+                    { name: '方案管理', componentName: 'SchemeManager' },
+                    { name: '自定义方案', componentName: 'CustomScheme' }, 
+                    { name: '计划方案', componentName: 'PlanScheme' }, 
+                    { name: '历史统计', componentName: 'HistoryStatic' }, 
                 ],
             }
         },
@@ -58,9 +55,9 @@
             })
         },
         methods: {
-            // 控制头部显示隐藏
-            toggleHeader() {
-                this.$store.dispatch('toggleHeader');
+            // 使用说明
+            instructions() {
+                alert('功能开发中...')
             }
         }
     }
@@ -69,9 +66,8 @@
 <style lang="less">
     .right-tabs {
         position: relative;
-        float: left;
         height: 100%;
-        width: calc(100% - 242px);
+        width: 100%;
     }
     .right-tabs-header {
         display: inline-block;
@@ -94,7 +90,7 @@
                 margin-left: 5px;
             }
         }
-        .toggleHeader {
+        .instructions {
             position: absolute;
             box-sizing: border-box;
             background: #4682b4;

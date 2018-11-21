@@ -1,30 +1,27 @@
 <template>
-    <div class="header-container" v-show="isShowHeader">
-        <Count-Down></Count-Down>
-        <Award-Number></Award-Number>
-        <App-Tools></App-Tools>
-        <Plat-Logo></Plat-Logo>
+    <div class="header-container">
+        <count-down></count-down>
+        <plat-logo></plat-logo>
+        <qr-code></qr-code>
     </div>
 </template>
 
 <script>
     import CountDown from '../HeaderContainer/CountDown';
-    import AwardNumber from '../HeaderContainer/AwardNumber';
-    import AppTools from '../HeaderContainer/AppTools';
     import PlatLogo from '../HeaderContainer/PlatLogo';
+    import QrCode from '../HeaderContainer/QrCode';
     import { mapState } from 'vuex';
 
     export default {
         name: 'header-container',
         components: {
             CountDown,
-            AwardNumber,
-            AppTools,
-            PlatLogo
+            PlatLogo,
+            QrCode,
         },
         computed: {
             ...mapState({
-                isShowHeader: state => state.RightTabs.isShowHeader
+
             })
         }
     }

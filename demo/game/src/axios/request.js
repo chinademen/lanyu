@@ -37,6 +37,8 @@ function toFormData(config) {
     config.transformRequest = [function (data) {
         let res = '';
         for (let i in data) {
+			// 如果传输的是数组， key为 key[]
+            i = (data[i] instanceof Array) ? `${i}[]` : i;
             res += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&';
         }
         res = res.slice(0, res.length - 1);

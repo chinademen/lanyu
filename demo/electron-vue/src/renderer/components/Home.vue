@@ -1,22 +1,19 @@
 <template>
     <div id="home">
-        <Header-Container></Header-Container>
-        <Main-Container></Main-Container>
-        <Footer-Container></Footer-Container>
+        <left-container></left-container>
+        <right-container></right-container>
     </div>
 </template>
 
 <script>
-    import HeaderContainer from './Home/HeaderContainer';
-    import MainContainer from './Home/MainContainer';
-    import FooterContainer from './Home/FooterContainer';
+    import LeftContainer from './Home/LeftContainer';
+    import RightContainer from './Home/RightContainer';
 
     export default {
         name: 'home',
         components: {
-            HeaderContainer,
-            MainContainer,
-            FooterContainer
+            LeftContainer,
+            RightContainer,
         }
     }
 </script>
@@ -57,6 +54,39 @@
         margin-bottom: 1px;
         vertical-align: middle;
         cursor: pointer;
+    }
+    .col-2 {
+        width: 50%;
+    }
+    .col-3 {
+        width: 33.3%;
+    }
+    .col-4 {
+        width: 25%;
+    }
+    .col-5 {
+        width: 20%;
+    }
+    .col-6 {
+        width: 16.6%;
+    }
+    .col-7 {
+        width: 14.2%;
+    }
+    .col-8 {
+        width: 12.5%;
+    }
+    .col-9 {
+        width: 11.1%
+    }
+    .col-10 {
+        width: 10%;
+    }
+    .col-11 {
+        width: 9%;
+    }
+    .col-12 {
+        width: 8.3%;
     }
 </style>
   

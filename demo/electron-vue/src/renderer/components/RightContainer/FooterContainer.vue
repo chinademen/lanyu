@@ -1,7 +1,8 @@
 <template>
     <div class="footer-container">
-        <span>在线人数：<em>*</em></span>
-        <span>用户：<em>免责声明，该软件仅技术交流使用，请勿用于商业用途</em></span>
+        <span>投注记录显示数量：</span>
+        <input type="number" /> 条
+        <span>当前登录人数：<em>3556</em></span>
     </div>
 </template>
 
@@ -27,12 +28,18 @@
             height: 30px;
             line-height: 30px;
             &:nth-of-type(1) {
-                border-right: 1px solid #333;
                 padding: 0 5px;
+            }
+            &:nth-of-type(2) {
+                position: absolute;
+                right: 15px;
             }
         }
         em {
             color: rgb(70, 130, 180);
+        }
+        input[type="number"] {
+            width: 50px;
         }
     }
 </style>
