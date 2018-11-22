@@ -1,8 +1,13 @@
-export default {
-    "msg": "登录成功",
-    "status": 0,
-    "data": {
-        "username": "jonhny001",
-        "balance": "99999.999",
+function login(options, getPostData) {
+    const params = getPostData(options.body);
+    return {
+        "msg": "登录成功",
+        "status": 0,
+        "data": {
+            "username": params.username,
+            "balance": "99999.999",
+        }
     }
 }
+
+export default login

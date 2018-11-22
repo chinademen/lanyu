@@ -1,4 +1,5 @@
-function line() {
+function line(options, getPostData) {
+    const params = getPostData(options.body);
     let lineWay = `线路${Math.ceil(Math.random() * 10)}`;
     let rates = `${Math.ceil(Math.random() * 1000)}ms`;
     return {

@@ -37,7 +37,7 @@
         float: left;
         display: inline-block;
         box-sizing: border-box;
-        width: 240px;
+        width: 256px;
         height: 100%;
         border: 1px solid #333;
     }

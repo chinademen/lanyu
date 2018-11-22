@@ -28,6 +28,16 @@ export function userLogout(params) {
     });
 }
 
+// 彩种列表
+export function lotteryList(params) {
+    return request(api.common.lotteryList, {
+        method: 'POST',
+        data: params,
+        dataType: 'FormData',
+    });
+}
+
+
 // 当前彩种信息
 export function currentLottery(params) {
     return request(api.common.currentLottery, {

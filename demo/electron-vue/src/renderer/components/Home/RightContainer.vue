@@ -26,7 +26,7 @@
         position: relative;
         display: inline-block;
         box-sizing: border-box;
-        width: calc(100% - 244px);
+        width: calc(100% - 256px);
         height: 100%;
         border: 1px solid #333;
     }
