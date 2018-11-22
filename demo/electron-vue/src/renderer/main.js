@@ -7,6 +7,7 @@ import router from './router'
 import store from './store'
 
 import './index.less'
+import '@/assets/icomoon/style.css'
 
 import '@/mock';
 

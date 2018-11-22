@@ -36,8 +36,13 @@
                 <span>线路1</span>
                 <a>811ms</a>
             </p>
-            <p>会员账号：<span>{{userInfo.username}}</span></p>
-            <p>账户余额：<span>{{userInfo.balance}}</span></p>
+            <p>
+                会员账号：<span>{{userInfo.username}}</span>
+            </p>
+            <p>
+                账户余额：<span>{{userInfo.balance}}</span>
+                <span class="icon-loop2 reflash"></span>
+            </p>
             <div class="logout-btn-group">
                 <button @click="logout">退出登陆</button>
             </div>
@@ -51,56 +56,51 @@
             </div>
         -->
         <div class="lottery-select">
-            <span class="currentLotteryName">重庆时时彩</span>
+            <span class="currentLotteryName">{{lotteryInfo && lotteryInfo.lotteryname}}</span>
             <span class="toggleLotteryList">></span>
             <div class="lotteryList-box">
                 <div class="row">
                     <span>高频彩</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item">重庆时时彩</li>
-                        <li class="lottery-item">腾讯分分彩</li>
-                        <li class="lottery-item">北京PK10</li>
-                        <li class="lottery-item">重庆时时彩</li>
-                        <li class="lottery-item">腾讯分分彩</li>
-                        <li class="lottery-item">北京PK10</li>
-                        <li class="lottery-item">重庆时时彩</li>
-                        <li class="lottery-item">腾讯分分彩</li>
-                        <li class="lottery-item">北京PK10</li>
+                        <li class="lottery-item" value="cqssc" @click="toggleLotteryName">重庆时时彩</li>
+                        <li class="lottery-item" value="txffc" @click="toggleLotteryName">腾讯分分彩</li>
+                        <li class="lottery-item" value="bjpk10" @click="toggleLotteryName">北京PK10</li>
+                        <li class="lottery-item" value="bjkl8" @click="toggleLotteryName">北京快乐8</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>快3系</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item">江苏快3</li>
-                        <li class="lottery-item">安徽快3</li>
+                        <li class="lottery-item" value="jsk3" @click="toggleLotteryName">江苏快3</li>
+                        <li class="lottery-item" value="ahk3" @click="toggleLotteryName">安徽快3</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>11选5</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item">广东11选5</li>
-                        <li class="lottery-item">江西11选5</li>
-                        <li class="lottery-item">加拿大11选5</li>
+                        <li class="lottery-item" value="gd11x5" @click="toggleLotteryName">广东11选5</li>
+                        <li class="lottery-item" value="jx11x5" @click="toggleLotteryName">江西11选5</li>
+                        <li class="lottery-item" value="jnd11x5" @click="toggleLotteryName">加拿大11选5</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>30秒系</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item">多彩重庆30秒</li>
-                        <li class="lottery-item">多彩腾讯30秒</li>
-                        <li class="lottery-item">加拿大30秒</li>
+                        <li class="lottery-item" value="dccq30s" @click="toggleLotteryName">多彩重庆30秒</li>
+                        <li class="lottery-item" value="dctx30s" @click="toggleLotteryName">多彩腾讯30秒</li>
+                        <li class="lottery-item" value="jnd30s" @click="toggleLotteryName">加拿大30秒</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>低频彩</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item">排列5</li>
-                        <li class="lottery-item">福彩3D</li>
-                        <li class="lottery-item">排列3</li>
+                        <li class="lottery-item" value="pl5" @click="toggleLotteryName">排列5</li>
+                        <li class="lottery-item" value="fc3d" @click="toggleLotteryName">福彩3D</li>
+                        <li class="lottery-item" value="pl3" @click="toggleLotteryName">排列3</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -173,7 +173,8 @@
             },
             // 切换彩种
             toggleLotteryName(e) {
-                this.$store.dispatch('ChangeLotteryType', { type: e.target.value })
+                // console.log(e.target.getAttribute('value'));
+                this.$store.dispatch('ChangeLotteryType', { type: e.target.getAttribute('value') })
             }
         },
     }
@@ -206,6 +207,10 @@
             }
             select {
                 padding: 2px;
+            }
+            .reflash {
+                float: right;
+                cursor: pointer;
             }
         }
         select {

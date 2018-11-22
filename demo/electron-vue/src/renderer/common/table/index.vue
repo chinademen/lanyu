@@ -3,7 +3,6 @@
         class="cm-table"
         cellspacing="0"
         cellpadding="0"
-        border="0"
         v-if="data || data.length > 0"    
     >
         <cm-table-header
