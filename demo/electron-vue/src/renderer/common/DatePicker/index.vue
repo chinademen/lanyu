@@ -1,5 +1,5 @@
 <template>
-     <div class="date-picker">
+     <div class="cm-date-picker">
         <input type="text" placeholder="选择日期" @focus="trueDateBox" :value="date" readonly />
         <transition name="fade">
             <div class="date-box" v-if="dateBoxFlag">
@@ -35,7 +35,7 @@
 <script>
 
     export default {
-        name: 'DatePicker',
+        name: 'CmDatePicker',
         data() {
             return {
                 dateBoxFlag: false,
@@ -217,7 +217,7 @@
 </script>
 
 <style lang="less">
-   .date-picker {
+   .cm-date-picker {
         position: relative;
         display: inline-block;
         width: 100%;

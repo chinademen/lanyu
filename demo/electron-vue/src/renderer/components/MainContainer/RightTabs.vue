@@ -71,6 +71,7 @@
     }
     .right-tabs-header {
         display: inline-block;
+        background: #E7E7E7;
         width: 100%;
         border-bottom: 1px solid #333;
         margin: 0;

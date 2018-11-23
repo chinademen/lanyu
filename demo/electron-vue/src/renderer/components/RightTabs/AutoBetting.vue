@@ -13,11 +13,11 @@
             <div class="row">
                 <span class="col col-1"><input type="checkbox" /> 开始时间：</span>
                 <span class="col col-2 time-box">
-                    <date-picker></date-picker>
+                    <cm-date-picker></cm-date-picker>
                 </span>
                 <span class="col col-1"><input type="checkbox" /> 结束时间：</span>
                 <span class="col col-2 time-box">
-                    <date-picker></date-picker>
+                    <cm-date-picker></cm-date-picker>
                 </span>
                 <span class="col col-3"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</span>
             </div>

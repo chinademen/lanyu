@@ -1,9 +1,11 @@
-import CmTable from './table';
-import DatePicker from './datepicker';
+import CmTable from './Table';
+import CmDatePicker from './DatePicker';
+import CmLayer from './Layer';
 
 const components = [
     CmTable,
-    DatePicker
+    CmDatePicker,
+    CmLayer,
 ];
 
 export default components

@@ -2,11 +2,13 @@
 <template>
     <div class="history-number">
         <p class="history-number-title">近期开奖</p>
+        <div class="history-number-column">
+            <span id="history-number-fwq">期号</span>
+            <span id="history-number-status">开奖号码</span>
+        </div>
+       
         <ul class="history-number-list">
-            <li>
-                <span id="history-number-fwq">期号</span>
-                <span id="history-number-status">开奖号码</span>
-            </li>
+            
             <li>
                 <span>713705</span>
                 <span>1,6,3,2,5,10,8,9,7,4</span>
@@ -47,14 +49,31 @@
     }
     .history-number-title {
         height: 20px;
-        padding: 8px;
-        background: #F7F7F7;
+        padding: 10px;
+        background: #EEE;
         color: #000;
         text-align: center;
     }
+    .history-number-column {
+        height: 30px;
+        font-size: 12px;
+        #history-number-fwq, #history-number-status {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        #history-number-fwq {
+            width: 45.6%;
+            border-right: 1px solid #b5b5b5;
+        }
+        #history-number-status  {
+            width: 49%;
+        }
+    }
     .history-number-list {
         position: absolute;
-        top: 30px;
+        top: 70px;
         bottom: 0;
         width: 100%;
         overflow-y: scroll;
@@ -62,7 +81,7 @@
         li {
             border: 1px solid #b5b5b5;
             border-bottom: none;
-            &:nth-of-type(even) {
+            &:nth-of-type(odd) {
                 background:  #FFF3EC;
             }
             span {
@@ -86,13 +105,6 @@
             &:last-of-type {
                 border-bottom: 1px solid #b5b5b5;
             }
-        }
-        #history-number-fwq, #history-number-status {
-            background: #F6F6F6;
-            float: left;
-        }
-        #history-number-status  {
-            width: 50%;
         }
     }
 </style>

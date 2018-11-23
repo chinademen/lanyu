@@ -32,6 +32,7 @@
     .count-down {
         float: left;
         display: inline-block;
+        box-sizing: border-box;
         width: 240px;
         height: 120px;
         border-right: 2px solid #333;

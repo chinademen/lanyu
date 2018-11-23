@@ -1,10 +1,30 @@
 ### npm run dev 启动
 
 ### npm run build 打包
-    打包之后可以
-    删除 build 目录下除了 build/win-unpacked/ 目之外的文件
-    删除 build/win-unpacked/resources/app.asar.unpacked/node_modules/electron/dist  
+    取 build/xxx.exe 为安装软件
 
-### electron-builder
-    构建未打包的目录
-    生成简单的可执行文件，没有完整的安装程序。用于快速测试。
+### 带_bak的文件及目录，项目暂时没有使用
+
+### common 公共组件  使用方法如： <cm-table></cm-table>
+    Table       表格组件         
+    DatePicker  日期选择组件       
+    Loading     loading组件     
+    Layer       弹出层组件   
+
+### components 不可复用组件 及 页面
+
+### store vuex状态管理
+
+### mock 模拟数据
+
+### assets 静态资源
+
+### axios axios请求封装
+
+### services 请求
+
+### router 路由
+
+### config 接口以及配置文件 等 常量文件
+
+### util 公用工具方法库

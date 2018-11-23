@@ -48,17 +48,12 @@
             </div>
         </div>
         <!-- 彩种选择 -->
-        <!--
-            <div class="lottery-select">
-                <select v-model="lotteryType" @change="toggleLotteryName" class="select-lotteryType">
-                    <option v-for="(item, index) in lotteryList" :value="item.type" :key="item.type">{{item.name}}</option>
-                </select>
-            </div>
-        -->
         <div class="lottery-select">
             <span class="currentLotteryName">{{lotteryInfo && lotteryInfo.lotteryname}}</span>
-            <span class="toggleLotteryList">></span>
-            <div class="lotteryList-box">
+            <span :class="!isChooseLottery ? 'icon-circle-right toggleLotteryList' : 'icon-circle-down toggleLotteryList'"
+                  @click="toggleLotteryList"
+            ></span>
+            <div class="lotteryList-box" v-if="isChooseLottery">
                 <div class="row">
                     <span>高频彩</span>
                     <ul class="lottery-ul">
@@ -126,6 +121,7 @@
                 username: '', // 用户名
                 password: '', // 密码
                 db: opStorage('electron-vue'), // 获取localStorage
+                isChooseLottery: false, // 是否打开挑选彩种页面
             }
         },
         created() {
@@ -175,11 +171,16 @@
             },
             // 切换彩种
             toggleLotteryName(e) {
+                this.isChooseLottery = !this.isChooseLottery;
                 this.$store.dispatch('ChangeLotteryType', { type: e.target.getAttribute('value') })
             },
             // 刷新余额
             reflashBalance() {
                 this.$store.dispatch('getBalance')
+            },
+            // 切换选择彩种页面
+            toggleLotteryList() {
+                this.isChooseLottery = !this.isChooseLottery;
             }
         },
     }
@@ -325,19 +326,13 @@
                 width: 30px;
                 height: 30px;
                 line-height: 30px;
-                background: #333;
-                color: #fff;
-                font-size: 18px;
+                color: #333;
+                font-size: 26px;
                 cursor: pointer;
-                &:hover {
-                    & + .lotteryList-box {
-                        display: block;
-                    }
-                }
             }
             .lotteryList-box {
                 position: absolute;
-                display: none;
+                display: block;
                 top: 50px;
                 left: 215px;
                 width: 600px;
@@ -346,9 +341,6 @@
                 z-index: 999;
                 border-radius: 5px;
                 padding: 15px 30px;
-                &:hover {
-                    display: block;
-                }
                 .row {
                     position: relative;
                 }
@@ -400,8 +392,6 @@
             line-height: 30px;
             text-align: center;
             font-size: 12px;
-            color: #fff;
-            background: rgb(70, 130, 180);
         }
         .award-number-content {
             box-sizing: border-box;
