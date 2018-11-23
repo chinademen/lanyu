@@ -73,7 +73,7 @@
             padding: 5px 8px;
             text-align: center;
             color: #fff;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #FFF;
             border-right: 1px solid #fff;
             background: #4682b4;
         }

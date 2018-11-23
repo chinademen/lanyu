@@ -4,8 +4,8 @@
         <p class="history-number-title">近期开奖</p>
         <ul class="history-number-list">
             <li>
-                <span id="history-number-fwq">开奖期号</span>
-                <span id="history-number-status">号码</span>
+                <span id="history-number-fwq">期号</span>
+                <span id="history-number-status">开奖号码</span>
             </li>
             <li>
                 <span>713705</span>
@@ -47,8 +47,8 @@
     }
     .history-number-title {
         height: 20px;
-        padding: 5px;
-        background: #ddd;
+        padding: 8px;
+        background: #F7F7F7;
         color: #000;
         text-align: center;
     }
@@ -62,6 +62,9 @@
         li {
             border: 1px solid #b5b5b5;
             border-bottom: none;
+            &:nth-of-type(even) {
+                background:  #FFF3EC;
+            }
             span {
                 &:nth-of-type(1), &:nth-of-type(2) {
                     display: inline-block;
@@ -85,8 +88,7 @@
             }
         }
         #history-number-fwq, #history-number-status {
-            color: #fff;
-            background: rgb(70, 130, 180);
+            background: #F6F6F6;
             float: left;
         }
         #history-number-status  {

@@ -3,6 +3,7 @@ import login from './login';
 import logout from './logout';
 import lotteryList from './lotteryList';
 import currentLottery from './currentLottery';
+import getBalance from './getBalance';
 import lotteryNumber from './lotteryNumber';
 
 const Mock = require('mockjs');
@@ -25,6 +26,7 @@ Mock.mock('/api/login', 'post', options => login(options, getPostData)); // 登�
 Mock.mock('/api/logout', 'post', options => logout(options, getPostData)); // 登出
 Mock.mock('/api/lotteryList', 'post', options => lotteryList(options, getPostData)); // 获取彩种列表
 Mock.mock('/api/currentLottery', 'post', options => currentLottery(options, getPostData)); // 获取当前彩种信息
+Mock.mock('/api/getBalance', 'post', options => getBalance(options, getPostData)); // 刷新余额
 
 // lottery
 Mock.mock('/api/lotteryNumber', 'post', options => lotteryNumber(options, getPostData)); // 获取历史号码

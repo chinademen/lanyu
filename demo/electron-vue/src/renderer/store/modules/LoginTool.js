@@ -1,4 +1,5 @@
-import { userLogin, userLogout, lotteryList, currentLottery } from '@/services/common'
+import { userLogin, userLogout, lotteryList, currentLottery, getBalance } from '@/services/common';
+import { opStorage } from '@/util/db';
 
 const LoginTool = {
     state: {
@@ -13,6 +14,15 @@ const LoginTool = {
         USER_LOGIN (state, payload) {
             if (!payload) alert('登陆失败, 请重新登陆');
             alert('登陆成功');
+            // 登录成功 保存当前用户信息和状态到storage
+            opStorage('electron-vue', {
+                key: 'islogin',
+                value: true
+            });
+            opStorage('electron-vue', {
+                key: 'userInfo',
+                value: payload.data
+            });
             state.islogin = true;
             state.userInfo = payload.data;
         },
@@ -20,6 +30,8 @@ const LoginTool = {
         USER_LOGOUT (state, payload) {
             if (!payload) alert('退出失败');
             alert('退出成功');
+            // 退出登录，清除storage
+            opStorage('electron-vue', 'null');
             state.islogin = false;
         },
         // 彩种列表
@@ -32,6 +44,25 @@ const LoginTool = {
             if (!payload) alert('切换彩种失败');
             state.lotteryInfo = payload.data;
         },
+        // 刷新余额
+        GET_BALANCE (state, payload) {
+            if (!payload) alert('刷新余额失败');
+            if (state.userInfo) {
+                const { balance } = payload.data;
+                let userInfo = opStorage('electron-vue').userInfo;
+                userInfo.balance = balance;
+                opStorage('electron-vue', {
+                    key: 'userInfo',
+                    value: userInfo
+                });
+                state.userInfo.balance = balance;
+            }
+        },
+        // f5刷新 更新是否已登录
+        REFLASH_ISLOGIN (state, payload) {
+            let islogin = opStorage('electron-vue').islogin;
+            state.islogin = islogin ? true : false;
+        }
     },
     // 异步
     actions: {
@@ -54,6 +85,14 @@ const LoginTool = {
         async ChangeLotteryType ({ state, commit }, params) {
             commit('CHANGE_LOTTERYTYPE', await currentLottery(params))
         },
+        // 刷新余额
+        async getBalance ({ state, commit }, params) {
+            commit('GET_BALANCE', await getBalance())
+        },
+        // f5刷新 更新是否已登录
+        async reflashIsLogin ({ state, commit }, params) {
+            commit('REFLASH_ISLOGIN');
+        }
     }
 }
 

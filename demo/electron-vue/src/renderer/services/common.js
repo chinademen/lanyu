@@ -46,3 +46,12 @@ export function currentLottery(params) {
         dataType: 'FormData',
     });
 }
+
+// 刷新余额
+export function getBalance(params) {
+    return request(api.common.getBalance, {
+        method: 'POST',
+        data: params,
+        dataType: 'FormData',
+    });
+}

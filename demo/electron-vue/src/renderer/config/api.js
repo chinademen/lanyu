@@ -4,7 +4,8 @@ export default {
         login: '/api/login',
         logout: '/api/logout',
         lotteryList: '/api/lotteryList',
-        currentLottery: '/api/currentLottery', 
+        currentLottery: '/api/currentLottery',
+        getBalance: '/api/getBalance',
     },
     lottery: {
         lotteryNumber: '/api/lotteryNumber',

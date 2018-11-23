@@ -1,8 +1,23 @@
 <!-- 倒计时 -->
 <template>
     <div class="count-down">
-        <div class="count-down-title">据第 <span>181107057</span> 期开奖</div>
-        <div class="count-down-content">00:00:30</div>
+        <div class="count-down-title">
+            <p>
+                据第 <span>181107057</span> 期开奖
+            </p>    
+        </div>
+        <div class="count-down-content">
+            <div class="time-box">
+                <span>0</span>
+                <span>0</span>
+                <em>:</em>
+                <span>0</span>
+                <span>0</span>
+                <em>:</em>
+                <span>3</span>
+                <span>0</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,26 +35,46 @@
         width: 240px;
         height: 120px;
         border-right: 2px solid #333;
+        background: #EDEDED;
+        color: #454646;
     }
     .count-down-title {
+        position: relative;
         display: inline-block;
         width: 100%;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
+        height: 35px;
+        line-height: 35px;
         font-size: 12px;
-        color: #fff;
-        background: rgb(70, 130, 180);
+        p {
+            display: inline-block;
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            text-align: center;
+            bottom: 0;
+        }
     }
     .count-down-content {
         display: inline-block;
         width: 100%;
-        height: 88px;
-        line-height: 88px;
+        height: 85px;
         text-align: center;
-        color: rgb(250, 0, 0);
-        font-size: 40px;
         font-weight: bold;
+        .time-box {
+            width: 100%;
+            height: 50px;
+            margin: 5px auto;
+        }
+        span {
+            display: inline-block;
+            color: #fff;
+            width: 30px;
+            height: 40px;
+            line-height: 40px;
+            background: #454646;
+            border-radius: 5px;
+            font-size: 26px;
+        }
     }
 </style>
                       

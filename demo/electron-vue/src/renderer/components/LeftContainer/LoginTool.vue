@@ -2,7 +2,7 @@
 <template>
     <div class="login">
         <!-- 登录框 -->
-        <div class="no-login" v-if="!islogin">
+        <div class="no-login" v-if="!(islogin || db.islogin)">
             <p class="row">
                 <span class="col col-3">线路</span>
                 <select class="col col-5">
@@ -30,18 +30,18 @@
             </div>
         </div>
         <!-- 用户信息 -->
-        <div class="is-login" v-if="islogin">
+        <div class="is-login" v-if="(islogin || db.islogin)">
             <p>
                 <span>当前线路：</span>
                 <span>线路1</span>
                 <a>811ms</a>
             </p>
             <p>
-                会员账号：<span>{{userInfo.username}}</span>
+                会员账号：<span>{{userInfo && userInfo.username || db.userInfo.username}}</span>
             </p>
             <p>
-                账户余额：<span>{{userInfo.balance}}</span>
-                <span class="icon-loop2 reflash"></span>
+                账户余额：<span>{{userInfo && userInfo.balance || db.userInfo.balance}}</span>
+                <span class="icon-loop2 reflash" @click="reflashBalance"></span>
             </p>
             <div class="logout-btn-group">
                 <button @click="logout">退出登陆</button>
@@ -63,8 +63,7 @@
                     <span>高频彩</span>
                     <ul class="lottery-ul">
                         <li class="lottery-item" value="cqssc" @click="toggleLotteryName">重庆时时彩</li>
-                        <li class="lottery-item" value="txffc" @click="toggleLotteryName">腾讯分分彩</li>
-                        <li class="lottery-item" value="bjpk10" @click="toggleLotteryName">北京PK10</li>
+                        <li class="lottery-item" value="tjssc" @click="toggleLotteryName">天津时时彩</li>
                         <li class="lottery-item" value="bjkl8" @click="toggleLotteryName">北京快乐8</li>
                     </ul>
                     <div class="clearfix"></div>
@@ -72,35 +71,26 @@
                 <div class="row">
                     <span>快3系</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item" value="jsk3" @click="toggleLotteryName">江苏快3</li>
-                        <li class="lottery-item" value="ahk3" @click="toggleLotteryName">安徽快3</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>11选5</span>
                     <ul class="lottery-ul">
+                        <li class="lottery-item" value="bj11x5" @click="toggleLotteryName">北京11选5</li>
                         <li class="lottery-item" value="gd11x5" @click="toggleLotteryName">广东11选5</li>
-                        <li class="lottery-item" value="jx11x5" @click="toggleLotteryName">江西11选5</li>
-                        <li class="lottery-item" value="jnd11x5" @click="toggleLotteryName">加拿大11选5</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>30秒系</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item" value="dccq30s" @click="toggleLotteryName">多彩重庆30秒</li>
-                        <li class="lottery-item" value="dctx30s" @click="toggleLotteryName">多彩腾讯30秒</li>
-                        <li class="lottery-item" value="jnd30s" @click="toggleLotteryName">加拿大30秒</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <span>低频彩</span>
                     <ul class="lottery-ul">
-                        <li class="lottery-item" value="pl5" @click="toggleLotteryName">排列5</li>
-                        <li class="lottery-item" value="fc3d" @click="toggleLotteryName">福彩3D</li>
-                        <li class="lottery-item" value="pl3" @click="toggleLotteryName">排列3</li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -125,6 +115,7 @@
 
 <script>
     import { mapState } from 'vuex'
+    import { opStorage } from '@/util/db'
 
     export default {
         name: 'login-tool',
@@ -134,9 +125,12 @@
                 lotteryname: '重庆时时彩', // 彩种名称
                 username: '', // 用户名
                 password: '', // 密码
+                db: opStorage('electron-vue'), // 获取localStorage
             }
         },
         created() {
+            // 初始化是否登录
+            this.$store.dispatch('reflashIsLogin');
             // 获取彩种列表
             this.$store.dispatch('getLotteryList');
             // 初始化当前彩种
@@ -151,14 +145,22 @@
             })
         },
         methods: {
+            // 用户是否登录
+            userIsLogin() {
+                if (this.islogin || this.db.islogin) {
+                    return true
+                } else {
+                    return false
+                }
+            },
             // 设置号码球样式
-            setBallsClass (num) {
+            setBallsClass(num) {
                 let len = num.split('|').length;
                 let cls = len <= 5 ? 'balls-5' : len <= 10 ? 'balls-10' : 'balls-20';
                 return cls;
             },
             // 切换最优线路
-            changeLine () {
+            changeLine() {
                 alert('功能开发中...')
             },
             // 登陆
@@ -173,8 +175,11 @@
             },
             // 切换彩种
             toggleLotteryName(e) {
-                // console.log(e.target.getAttribute('value'));
                 this.$store.dispatch('ChangeLotteryType', { type: e.target.getAttribute('value') })
+            },
+            // 刷新余额
+            reflashBalance() {
+                this.$store.dispatch('getBalance')
             }
         },
     }
@@ -183,8 +188,8 @@
 <style lang="less">
     .login {
         width: 100%;
-        height: 350px;
-        border-bottom: 2px solid #333;
+        height: 352px;
+        border-bottom: 2px solid #FCFCFC;
         font-weight: bold;
         /* 公用select, input样式 */
         .select-lotteryType {
@@ -203,7 +208,7 @@
                 height: 20px;
                 line-height: 20px;
                 margin: 0 10px;
-                color: #000;
+                color: #666;
             }
             select {
                 padding: 2px;
@@ -225,13 +230,22 @@
         .no-login {
             width: 100%;
             height: 152px;
+            border: 2px solid #F3F3F3;
+            select {
+                border: 1px solid #EEE;
+            }
+            button {
+                color: #666;
+                background: #EEE;
+                border: 1px solid #EEE;
+            }
             p, div {
                 box-sizing: border-box;
                 display: inline-block;
                 width: 100%;
                 padding: 8px 10px;
                 font-size: 12px;
-                color: #000;
+                color: #666;
             }
             .login-btn-group {
                 text-align: center;
@@ -239,7 +253,6 @@
                     width: 100%;
                     padding: 5px 8px;
                     height: 26px;
-                    font-weight: bold;
                     cursor: pointer;
                 }
             }
@@ -248,13 +261,14 @@
         .is-login {
             width: 100%;
             height: 152px;
+            border: 2px solid #F3F3F3;
             p {
                 box-sizing: border-box;
                 display: inline-block;
                 width: 100%;
-                padding: 8px 10px;
-                font-size: 14px;
-                color: #000;
+                padding: 11px 10px;
+                font-size: 12px;
+                color: #666;
             }
             a {
                 margin-left: 10px;
@@ -271,7 +285,9 @@
                     width: 100%;
                     padding: 5px 8px;
                     height: 26px;
-                    font-weight: bold;
+                    color: #666;
+                    background: #EEE;
+                    border: 1px solid #EEE;
                     cursor: pointer;
                 }
             }
@@ -287,7 +303,7 @@
                 width: 100%;
                 padding: 5px 10px;
                 font-size: 12px;
-                color: #000;
+                color: #666;
             }
             .currentLotteryName {
                 display: inline-block;
@@ -375,7 +391,6 @@
             display: inline-block;
             width: 100%;
             height: 100px;
-            border-right: 2px solid #333;
         }
         .award-number-title {
             box-sizing: border-box;

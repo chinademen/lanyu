@@ -76,18 +76,24 @@
         margin: 0;
         li {
             margin-top: 4px;
+            margin-right: 2px;
             font-size: 12px;
             width: 100px;
             height: 30px;
             line-height: 30px;
-            font-weight: bold;
             float: left;
-            border: 1px solid #333;
+            border: 1px solid #ECECEC;
+            border-radius: 5px 5px 0 0;
+            background: #F8F8F8;
             border-bottom: none;
             text-align: center;
             cursor: pointer;
             &:nth-of-type(1) {
                 margin-left: 5px;
+            }
+            &.right-tabs-active {
+                background: #C13752;
+                color: #fff;
             }
         }
         .instructions {
@@ -103,16 +109,12 @@
             cursor: pointer;
         }
     }
-    .right-tabs-active {
-        background: #fff;
-        color: red;
-    }
     .right-tabs-content {
         position: absolute;
         width: 100%;
         top: 34px;
         bottom: 0;
-        border: 1px solid #333;
+        border-top: 2px solid #B36285;
         background: #fff;
         li {
             width: 100%;
