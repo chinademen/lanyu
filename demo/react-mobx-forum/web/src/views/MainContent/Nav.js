@@ -25,10 +25,10 @@ class Nav extends Component {
                     key={[index]}
                     onClick={() => this.changeMenu(index, 1)}
                 >
-                    <span data-hover={item}>{item}</span>
-                    <ul className="main-menu">
+                    <span>{item}</span>
+                    {/* <ul className="main-menu">
                         {this.createMenu(index)}
-                    </ul>
+                    </ul> */}
                 </li>
             )
         });
@@ -36,18 +36,18 @@ class Nav extends Component {
     }
 
     // 创建二级导航
-    createMenu(index) {
-        const menu = navMenu2[index].map((item, index) => {
-            return (
-                <li key={[index]}
-                    onClick={() => this.changeMenu(index, 2)}
-                >
-                    <span data-hover={item}>{item}</span>
-                </li>
-            )
-        });
-        return menu;
-    }
+    // createMenu(index) {
+    //     const menu = navMenu2[index].map((item, index) => {
+    //         return (
+    //             <li key={[index]}
+    //                 onClick={() => this.changeMenu(index, 2)}
+    //             >
+    //                 <span>{item}</span>
+    //             </li>
+    //         )
+    //     });
+    //     return menu;
+    // }
 
     // 目录切换
     changeMenu(index, level) {

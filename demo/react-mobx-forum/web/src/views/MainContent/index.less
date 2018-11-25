@@ -1,3 +1,10 @@
+ a{
+    cursor: pointer;
+    &:hover {
+        text-decoration-line: underline;
+    }
+ }
+ 
  /* 导航 */
  .main-nav {
     width: 100%;
@@ -16,7 +23,7 @@
             box-sizing: border-box;
             height: 40px;
             line-height: 40px;
-            padding: 0 30px;
+            padding: 0 72px;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
@@ -30,53 +37,53 @@
         }
     }
     /* 二级导航 */
-    .main-menu {
-        position: absolute;
-        display: none;
-        top: 40px;
-        left: 0;
-        width: 100%;
-        // height: 200px;
-        background: #fff;
-        color: #333;
-        z-index: 999;
-        padding: 5px;
-        border-left: 1px solid #ddd;
-        border-right: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-        &:hover {
-            display: block;
-        }
-        >li {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            >span {
-                display: inline-block;
-                box-sizing: border-box;
-                height: 30px;
-                line-height: 30px;
-                margin: 0 3px;
-                padding: 0 25px;
-                text-align: center;
-                border-bottom: 1px solid #ddd;
-                border-top: 1px solid #ddd;
-                font-size: 12px;
-                cursor: pointer;
-                &:last-child {
-                    border-bottom: none;
-                }
-                &:hover {
-                    background: #48b6fb;
-                    color: #fff;
-                    .main-menu {
-                        display: block;
-                    }
-                }
-            }
-        }
-    }
+    // .main-menu {
+    //     position: absolute;
+    //     display: none;
+    //     top: 40px;
+    //     left: 0;
+    //     width: 100%;
+    //     // height: 200px;
+    //     background: #fff;
+    //     color: #333;
+    //     z-index: 999;
+    //     padding: 5px;
+    //     border-left: 1px solid #ddd;
+    //     border-right: 1px solid #ddd;
+    //     border-bottom: 1px solid #ddd;
+    //     box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    //     &:hover {
+    //         display: block;
+    //     }
+    //     >li {
+    //         position: relative;
+    //         display: inline-block;
+    //         width: 100%;
+    //         >span {
+    //             display: inline-block;
+    //             box-sizing: border-box;
+    //             height: 30px;
+    //             line-height: 30px;
+    //             margin: 0 3px;
+    //             padding: 0 25px;
+    //             text-align: center;
+    //             border-bottom: 1px solid #ddd;
+    //             border-top: 1px solid #ddd;
+    //             font-size: 12px;
+    //             cursor: pointer;
+    //             &:last-child {
+    //                 border-bottom: none;
+    //             }
+    //             &:hover {
+    //                 background: #48b6fb;
+    //                 color: #fff;
+    //                 .main-menu {
+    //                     display: block;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 /* 登陆 / 用户信息 */
@@ -123,9 +130,6 @@
             a {
                 padding-left: 8px;
                 color: #888;
-                &:hover {
-                    text-decoration-line: underline;
-                }
             }
             .user-name {
                 color: #48B6FB;
@@ -162,10 +166,70 @@
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    height: 90px;
+    height: 100px;
     margin-bottom: 10px;
     background: #fff;
-    border-bottom: 1px #F0F0F0 solid;
+    // 跑马灯
+    .ant-carousel .slick-slide {
+        text-align: center;
+        height: 100px;
+        // line-height: 100px;
+        // background: #364d79;
+        overflow: hidden;
+    }
+    .ant-carousel .slick-slide h3 {
+        color: #fff;
+    }
+    // 重写跑马灯的按钮样式
+    .ant-carousel .slick-dots li {
+        width: 10px;
+        height: 10px;
+        background: #333;
+        border-radius: 50%;
+    }
+    .ant-carousel .slick-dots li button {
+        width: 10px;
+        height: 10px;
+        background: #333;
+        border-radius: 50%;
+    }
+    .ant-carousel .slick-dots li.slick-active, .ant-carousel .slick-dots li.slick-active button {
+        background: red;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .ant-carousel .slick-dots li.slick-active button:focus {
+        background: red;
+    }
+    .community-box {
+        font-family: 微軟雅黑;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 12px;
+        .community-title {
+            width: 137px;
+            height: 22px;
+            line-height: 22px;
+            font-weight: 700;
+            color: rgb(51, 51, 51);
+            text-align: center;
+            margin: 10px 24px 5px;
+        }
+        .community-title-odd {
+            background-color: #DBF1FB;
+        }
+        .community-title-even {
+            background-color: #F2F2F2;
+        }
+        ul {
+            margin-left: 24px;
+            li {
+                float: left;
+                line-height: 30px;
+            }
+        }
+    }
 }
 
 /* 广告栏 */
@@ -247,7 +311,6 @@
         }
         a {
             color: #48B6FB;
-            cursor: pointer;
         }
     }
 } 
