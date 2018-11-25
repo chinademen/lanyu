@@ -1,0 +1,68 @@
+html,
+body,
+:global(#root) {
+  height: 100%;
+}
+
+:global(.ant-layout) {
+  min-height: 100%;
+}
+
+/* 清浮动 */ 
+.clearfix:after{
+	content:'';
+	display:block;
+	width:100%;
+	clear:both;
+	height:0;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  background: #333;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// 公用加载
+.loading {
+  width: 100%;
+  height: 100%;
+  margin: 100px auto;
+  .ant-spin-spinning {
+    width: 100%;
+  }
+}
+
+.globalSpin {
+  width: 100%;
+  margin: 40px 0 !important;
+}
+
+// temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
+:global {
+  .ant-spin-container {
+    overflow: visible !important;
+  }
+}
+
+#root {
+  position: relative;
+  // background-color: #f3f0f8;
+  // min-height: 1170px;
+  // background-image: url("static/images/bg.jpg");
+  // background-size: cover;
+  // background-repeat: no-repeat; 
+}
+
+

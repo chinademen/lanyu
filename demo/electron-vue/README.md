@@ -6,10 +6,12 @@
 ### 带_bak的文件及目录，项目暂时没有使用
 
 ### common 公共组件  使用方法如： <cm-table></cm-table>
+    Row         行组件
+    Col         列组件
     Table       表格组件         
     DatePicker  日期选择组件       
     Loading     loading组件     
-    Layer       弹出层组件   
+    Layer       弹出层组件
 
 ### components 不可复用组件 及 页面
 

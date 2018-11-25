@@ -41,7 +41,7 @@
             </p>
             <p>
                 账户余额：<span>{{userInfo && userInfo.balance || db.userInfo.balance}}</span>
-                <span class="icon-loop2 reflash" @click="reflashBalance"></span>
+                <i class="icon-loop2 reflash" @click="reflashBalance"></i>
             </p>
             <div class="logout-btn-group">
                 <button @click="logout">退出登陆</button>
@@ -193,17 +193,8 @@
         border-bottom: 2px solid #FCFCFC;
         font-weight: bold;
         /* 公用select, input样式 */
-        .select-lotteryType {
-            position: absolute;
-            height: 40px;
-            border: none;
-            font-size: 30px;
-            margin: 30px 40px;
-            cursor: pointer;
-            background: #fff;
-        }
         .is-login, .award-number {
-            select, input {
+            input {
                 display: inline-block;
                 width: 230px;
                 height: 20px;
@@ -211,17 +202,12 @@
                 margin: 0 10px;
                 color: #666;
             }
-            select {
-                padding: 2px;
-            }
             .reflash {
                 float: right;
                 cursor: pointer;
             }
         }
         select {
-            border-radius: 3px;
-            border: 1px solid #333;
             background: rgb(240, 240, 240);
         }
         option {
@@ -244,7 +230,7 @@
                 box-sizing: border-box;
                 display: inline-block;
                 width: 100%;
-                padding: 8px 10px;
+                padding: 4px 10px;
                 font-size: 12px;
                 color: #666;
             }
@@ -267,7 +253,7 @@
                 box-sizing: border-box;
                 display: inline-block;
                 width: 100%;
-                padding: 11px 10px;
+                padding: 10px;
                 font-size: 12px;
                 color: #666;
             }
@@ -341,9 +327,6 @@
                 z-index: 999;
                 border-radius: 5px;
                 padding: 15px 30px;
-                .row {
-                    position: relative;
-                }
                 .lottery-ul {
                     float: left;
                     width: 410px;

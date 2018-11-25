@@ -2,7 +2,7 @@
     <div id="home">
         <left-container></left-container>
         <right-container></right-container>
-        <cm-layer></cm-layer>
+        <!-- <cm-layer></cm-layer> -->
     </div>
 </template>
 

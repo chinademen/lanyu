@@ -33,7 +33,7 @@
         min-width: 1024px;
         height: 122px;
         box-sizing: border-box;
-        border: 2px solid #333;
+        border: 2px solid #EDEDED;
         border-bottom: none;
     }
 </style>

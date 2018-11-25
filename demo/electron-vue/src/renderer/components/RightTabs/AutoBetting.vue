@@ -2,42 +2,50 @@
 <template>
     <div class="auto-betting">
         <div class="auto-betting-header">
-            <div class="row">
-                <span class="col col-2">止损盈亏：<em>+186.000</em></span>
-                <span class="col col-2">盈利大于 <input type="number" /></span>
-                <span class="col col-2">亏损大于 <input type="number" /></span>
-                <span class="col col-1">最大连挂：<em>5</em></span>
-                <span class="col col-1"><input type="checkbox" /> 断期停投</span>
-                <span class="col col-1"><input type="checkbox" /> 失败停投</span>
+            <div class="header-left">
+                <cm-row>
+                    <cm-col :span="4">止损盈亏：<em>+186.000</em></cm-col>
+                    <cm-col :span="4">盈利大于 <input type="number" /></cm-col>
+                    <cm-col :span="4">亏损大于 <input type="number" /></cm-col>
+                    <cm-col :span="4">最大连挂：<em>5</em></cm-col>
+                    <cm-col :span="4"><input type="checkbox" /> 断期停投</cm-col>
+                    <cm-col :span="4"><input type="checkbox" /> 失败停投</cm-col>
+                </cm-row>
+                <cm-row>
+                    <cm-col :span="3"><input type="checkbox" /> 开始时间：</cm-col>
+                    <cm-col :span="4">
+                        <cm-date-picker></cm-date-picker>
+                    </cm-col>
+                    <cm-col :span="3" :offset="1"><input type="checkbox" /> 结束时间：</cm-col>
+                    <cm-col :span="4">
+                        <cm-date-picker></cm-date-picker>
+                    </cm-col>
+                    <cm-col :span="8" :offset="1"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</cm-col>
+                </cm-row>
+                <cm-row class="info">
+                    *挂机软件没有撤单功能；分分彩建议不设置延迟投注，如设置则不能超过12秒
+                </cm-row>
             </div>
-            <div class="row">
-                <span class="col col-1"><input type="checkbox" /> 开始时间：</span>
-                <span class="col col-2 time-box">
-                    <cm-date-picker></cm-date-picker>
-                </span>
-                <span class="col col-1"><input type="checkbox" /> 结束时间：</span>
-                <span class="col col-2 time-box">
-                    <cm-date-picker></cm-date-picker>
-                </span>
-                <span class="col col-3"><input type="checkbox" /> 延迟投注 <input type="number" /> 秒后</span>
+            <div class="header-right">
+                <button class="auto-btn" @click="isAutoBtn">开始自动投注</button>
             </div>
-            <div class="row remind">
-                *挂机软件没有撤单功能；分分彩建议不设置延迟投注，如设置则不能超过12秒
-            </div>
-            <button class="auto-btn" @click="isAutoBtn">开始自动投注</button>
         </div>
         <div class="auto-betting-info">
-            <div class="row">
-                <span class="col col-2">总盈亏：<em>+186.000</em></span>
-                <span class="col col-2">总投注：<em>2000.000</em></span>
-                <span class="col col-2">最大连中：<em>3</em></span>
-                <span class="col col-2">最大连挂：<em>5</em></span>
+            <div class="info-left">
+                <cm-row>
+                    <cm-col :span="4">总盈亏：<em>+186.000</em></cm-col>
+                    <cm-col :span="4">总投注：<em>2000.000</em></cm-col>
+                    <cm-col :span="4">最大连中：<em>3</em></cm-col>
+                    <cm-col :span="4">最大连挂：<em>5</em></cm-col>
+                </cm-row>
+                <cm-row>
+                    <cm-col :span="4">投注记录：<em>25/25期</em></cm-col>
+                    <cm-col :span="20">投注状态：<em>投注失败-用户余额不足，请充值！</em></cm-col>
+                </cm-row>
             </div>
-            <div class="row">
-                <span class="col col-2">投注记录：<em>25/25期</em></span>
-                <span class="col col-6">投注状态：<em>投注失败-用户余额不足，请充值！</em></span>
+            <div class="info-right">
+                <button class="clear-btn" @click="isClear">清空记录</button>
             </div>
-            <button class="clear-btn" @click="isClear">清空记录</button>
         </div>
         <!-- 表格 -->
         <div class="auto-betting-table">
@@ -46,14 +54,6 @@
                 :data="tableData"
             ></cm-table>
         </div>
-        <!-- 底部 -->
-        <!--
-            <div class="auto-betting-footer">
-                <span>投注记录显示数量：</span>
-                <input type="number" />
-                <span>条</span>
-            </div>
-        -->
     </div>
 </template>
 
@@ -117,13 +117,8 @@
         width: 100%;
         height: 100%;
     }
-    .row {
-        height: 25px;
-        line-height: 25px;
-        /* .col {
-            box-sizing: border-box;
-            display: inline-block;
-        } */
+    .cm-row {
+        padding: 5px 0;
         .status-col {
             width: 540px;
         }
@@ -131,7 +126,7 @@
             color: #4682b4;
         }
         input[type="number"] {
-            width: 80px;
+            width: 60px;
         }
         button {
             height: 18px;
@@ -153,15 +148,35 @@
         font-size: 14px;
         font-weight: bold;
     }
+    /* 投注控制 及 开始自动投注按钮 区域 */
     .auto-betting-header {
         position: relative;
         box-sizing: border-box;
         width: 100%;
         height: 100px;
-        border: 1px solid #333;
         font-size: 12px;
         padding: 5px 12px;
+        .header-left {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 750px;
+            .info {
+                padding-top: 15px;
+            }
+        }
+        .header-right {
+            display: inline-block;
+            width: calc(100% - 750px);
+        }
+        .cm-date-picker {
+            padding: 0;
+            font-size: 12px;
+            input {
+                text-align: center;
+            }
+        }
         .auto-btn {
+            top: 30px;
             right: 121px;
         }
         .time-box {
@@ -171,50 +186,32 @@
             margin-top: 12px;
         }
     }
+    /* 投注详情 及 清空记录按钮 区域 */
     .auto-betting-info {
         position: relative;
         box-sizing: border-box;
         width: 100%;
         height: 62px;
-        border: 1px solid #333;
-        border-bottom: none;
+        font-size: 12px;
         padding: 5px 12px;
+        .info-left {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 750px;
+        }
+        .info-right {
+            display: inline-block;
+            width: calc(100% - 750px);
+        }
     }
+    /* 表格区域 */
     .auto-betting-table {
         width: 100%;
         position: absolute;
         top: 162px;
         bottom: 30px;
-        border: 1px solid #333;
+        // border: 1px solid #ddd;
         overflow: scroll;
     }
-    // .auto-betting-footer {
-    //     position: absolute;
-    //     bottom: 0;
-    //     width: 100%;
-    //     height: 30px;
-    //     line-height: 27px;
-    //     border: 1px solid #333;
-    //     font-size: 12px;
-    //     span {
-    //         position: absolute;
-    //         display: inline-block;
-    //         height: 30px;
-    //         line-height: 30px;
-    //     }
-    //     span:nth-of-type(1) {
-    //         left: 10px;
-    //     }
-    //     input[type="number"] {
-    //         position: absolute;
-    //         left: 120px;
-    //         top: 5px;
-    //         width: 50px;
-    //         height: 18px;
-    //     }
-    //     span:nth-of-type(2) {
-    //         left: 180px;
-    //     }
-    // }
 </style>
     

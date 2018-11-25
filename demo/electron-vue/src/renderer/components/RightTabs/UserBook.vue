@@ -1,7 +1,7 @@
 <!-- 用户须知 -->
 <template>
     <div class="user-book">
-        用户须知  
+        用户须知
     </div>
 </template>
 
@@ -12,6 +12,10 @@
     }
 </script>
 
-<style>
-
+<style lang="less">
+   .user-book {
+       .row {
+           height: 50px;
+       }
+   }
 </style>

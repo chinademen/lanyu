@@ -1,0 +1,95 @@
+.header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 1200px;
+    height: 80px;
+    // background: #fff;
+    background: #28282d;
+    padding: 10px 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    .header-content {
+        width: 1200px;
+        box-sizing: border-box;
+        height: 60px;;
+        margin: 0 auto;
+        &:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    }
+    // logo
+    .header-logo {
+        display: inline-block;
+        box-sizing: border-box;
+        float: left;
+        width: 200px;
+        height: 100%;
+        background-image: url("~@/static/images/logo.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat; 
+    }
+    // 导航
+    .header-nav {
+        display: inline-block;
+        box-sizing: border-box;
+        height: 100%;
+        float: right;
+        li {
+            display: inline-block;
+            box-sizing: border-box;
+            height: 60px;
+            line-height: 60px;
+            padding: 0 15px;
+            color: #fff;
+            cursor: pointer;
+            &.active {
+                color: #E44E27;
+            }
+            span {
+                display: inline-block;
+                box-sizing: border-box;
+                padding: 0 10px;
+                height: 60px;
+                line-height: 60px;
+                position: relative;
+                border: 3px solid transparent;
+                transform-style: preserve-3d;
+                transform-origin: 50% 0 0;
+                transition: 0.3s;
+                font-size: 18px;
+                font-weight: bold;
+                &:before {
+                    content: attr(data-hover);
+                    box-sizing: border-box;
+                    position: absolute;
+                    left: -2px;
+                    top: 100%;
+                    width: calc(100% + 6px);
+                    height: 100%;
+                    background: #E44E27;
+                    color: #fff;
+                    line-height: 50px;
+                    text-align: center;
+                    opacity: 0;
+                    border: 2px solid #E44E27;
+                    transform-origin: 50% 0 0;
+                    transform: rotateX(-90deg);
+                    transition: 0.3s;
+                }
+            }
+            &:hover {
+                span {
+                    transform: rotateX(90deg);
+                    border-color:#E44E27;
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

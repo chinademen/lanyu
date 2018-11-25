@@ -4,11 +4,13 @@
         <!-- 弹出窗 -->
         <div class="cm-layer-box">
             <!-- 头部 -->
-            <div class="cm-layer-box-header"></div>
+            <div class="cm-layer-box-header">信息</div>
             <!-- 内容 -->
-            <div class="cm-layer-box-content"></div>
+            <div class="cm-layer-box-content">这是弹出层</div>
             <!-- 按钮 -->
-            <div class="cm-layer-box-btns"></div>
+            <div class="cm-layer-box-btns">
+                <button class="isOk" @click="isOk">确定</button>
+            </div>
         </div>
     </div>
 </template>
@@ -43,7 +45,9 @@
         },
 
         methods: {
-
+            isOk() {
+                
+            }
         },
 
         render() {
@@ -112,14 +116,37 @@
                 padding: 10px 15px;
                 color: #606266;
                 font-size: 14px;
+                text-align: center;
             }
             .cm-layer-box-btns {
                 padding: 5px 15px 0;
                 text-align: right;
+                .isOk {
+                    padding: 9px 15px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                    color: #fff;
+                    background-color: #409eff;
+                    border-color: #409eff;
+                    display: inline-block;
+                    line-height: 1;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    border: 1px solid #dcdfe6;
+                    -webkit-appearance: none;
+                    text-align: center;
+                    box-sizing: border-box;
+                    outline: none;
+                    margin: 0;
+                    transition: .1s;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
             }
         }
     }
     .cm-modal {
+        // display: none;
         z-index: 2001;
         position: fixed;
         left: 0;

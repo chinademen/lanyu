@@ -220,13 +220,15 @@
    .cm-date-picker {
         position: relative;
         display: inline-block;
+        box-sizing: border-box;
         width: 100%;
         height: 100%;
         padding: 5px;
         >input {
-            width: 80%;
+            box-sizing: border-box;
+            width: 100%;
             height: 100%;
-            padding: 2px 10px;
+            padding: 2px 5px 1px 5px;
         }
         .fade-enter-active, .fade-leave-active {
             transition: all 0.5s;

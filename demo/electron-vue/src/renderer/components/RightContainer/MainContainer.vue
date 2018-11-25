@@ -27,7 +27,7 @@
         width: 100%;
         top: 122px;
         bottom: 0;
-        border: 2px solid #333;
+        border: 2px solid #EDEDED;
         border-bottom: none;
     }
 </style>
