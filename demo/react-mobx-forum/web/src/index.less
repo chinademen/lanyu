@@ -4,11 +4,6 @@ body,
   height: 100%;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-}
-
 :global(.ant-layout) {
   min-height: 100%;
 }
@@ -58,6 +53,18 @@ ul {
 :global {
   .ant-spin-container {
     overflow: visible !important;
+  }
+  * { 
+    word-wrap: break-word;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+  }
+  p {
+    margin: 0;
+    padding: 0;
   }
 }
 

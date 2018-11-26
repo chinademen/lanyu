@@ -39,10 +39,10 @@ class Forum extends Component {
                     <ul className="forum-list clearfix">
                         <li className="forum-item">
                             <div className="img-box">
-                                <img src={require('../../static/images/user_icon1.png')} alt="用户头像" />
+                                <img src={require('../../static/images/common_icon1.png')} alt="用户头像" />
                             </div>
                             <section className="bankuai-intro">
-                                <h2><a href="forum-2-1.html">彩界新闻</a></h2>
+                                <h2><a href="#">彩界新闻</a></h2>
                                 <span className="fatieliang">今日:2664</span>
                                 <p className="bankuai-jieshao">聊你所想的，所说的。</p>
                                 <p className="bankuai-fenlei">
@@ -52,31 +52,839 @@ class Forum extends Component {
                                     <a href="#">爆料</a>
                                 </p>
                             </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
                         </li>
                         <li className="forum-item">
                             <div className="img-box">
-                                <img src={require('../../static/images/user_icon2.png')} alt="用户头像" />
+                                <img src={require('../../static/images/common_icon2.png')} alt="用户头像" />
                             </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
                         </li>
                         <li className="forum-item">
                             <div className="img-box">
-                                <img src={require('../../static/images/user_icon3.png')} alt="用户头像" />
+                                <img src={require('../../static/images/common_icon3.png')} alt="用户头像" />
                             </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
                         </li>
                         <li className="forum-item">
                             <div className="img-box">
-                                <img src={require('../../static/images/user_icon4.png')} alt="用户头像" />
+                                <img src={require('../../static/images/common_icon4.png')} alt="用户头像" />
                             </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
                         </li>
                         <li className="forum-item">
                             <div className="img-box">
-                                <img src={require('../../static/images/user_icon5.png')} alt="用户头像" />
+                                <img src={require('../../static/images/common_icon5.png')} alt="用户头像" />
                             </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
                         </li>
                         <li className="forum-item">
                             <div className="img-box">
-                                <img src={require('../../static/images/user_icon6.png')} alt="用户头像" />
+                                <img src={require('../../static/images/common_icon6.png')} alt="用户头像" />
                             </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                    </ul>
+                    {/* 2 */}
+                    <ul className="forum-list clearfix">
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon1.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon2.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon3.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon4.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon5.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon6.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                    </ul>
+                    {/* 3 */}
+                    <ul className="forum-list clearfix">
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon1.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon2.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon3.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon4.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon5.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon6.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                    </ul>
+                    {/* 4 */}
+                    <ul className="forum-list clearfix">
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon1.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon2.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon3.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon4.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon5.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
+                        </li>
+                        <li className="forum-item">
+                            <div className="img-box">
+                                <img src={require('../../static/images/common_icon6.png')} alt="用户头像" />
+                            </div>
+                            <section className="bankuai-intro">
+                                <h2><a href="#">彩界新闻</a></h2>
+                                <span className="fatieliang">今日:2664</span>
+                                <p className="bankuai-jieshao">聊你所想的，所说的。</p>
+                                <p className="bankuai-fenlei">
+                                    <a href="#">好文转载</a><span>|</span>
+                                    <a href="#">综合讨论</a><span>|</span>
+                                    <a href="#">每日话题</a><span>|</span>
+                                    <a href="#">爆料</a>
+                                </p>
+                            </section>
+                            <section className="zhuti-num">
+                                <h2>11.6万</h2>
+                                <p>主题</p>
+                            </section>
+                            <section className="tiezi-num">
+                                <h2>204.9万</h2>
+                                <p>回复</p>
+                            </section>
+                            <section className="zuixin-tiezi">
+                                <a href="#" className="xi2">神了！菲律宾打车，居然还有这样 ...</a>
+                                <p>
+                                    <span className="publish-time">
+                                        <span title="2018-11-26 12:45">7&nbsp;秒前</span>
+                                    </span> 
+                                    <span className="tiezi-author">
+                                        <a href="#">yammy</a>
+                                    </span>
+                                </p>
+                            </section>
                         </li>
                     </ul>
                 </div>
