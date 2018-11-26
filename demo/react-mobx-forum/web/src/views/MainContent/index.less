@@ -96,13 +96,54 @@
     background: #fff;
     border-bottom: 1px #F0F0F0 solid;
     padding: 12px;
-    &:after {
-        content:'';
-        display:block;
-        width:100%;
-        clear:both;
-        height:0;
+    /* 登录 */
+    .login-btn {
+        float: left;
+        width: 100px !important;
+        height: 36px;
+        font-size: 14px;
+        background: #48B6FB;
+        color: white;
+        font-weight: 900;
+        font-family: '微软雅黑';
+        margin: 18px 0 0 20px;
+        border-radius: 4px;
+        border: none;
+        vertical-align: middle;
+        overflow: hidden;
+        padding: 0;
+        cursor: pointer;
     }
+    .fast-reg, .find-pwd {
+        float: left;
+        display: inline-block;
+        width: 80px;
+        height: 20px;
+        font-size: 13px;
+        margin: 28px 0 0 20px;
+        a {
+            font-weight: 400;
+            color: #333333;
+        }
+    }
+    .fast-reg, .find-pwd {
+        &::before {
+            position: relative;
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            top: 2px;
+            margin-right: 5px;
+            background: url('~@/static/images/u31.png') no-repeat;
+        }
+    }
+    .find-pwd {
+        &::before {
+            background: url('~@/static/images/u29.png') no-repeat;
+        }
+    }
+    /* 用户信息 */
     .user-avatar {
         float: left;
         border: 1px solid #ddd;
@@ -245,9 +286,143 @@
     }
 }
 
+/* 注册 */
+.register {
+    border: 1px solid #CDCDCD;
+    background: #FFF;
+    /* 头部 */
+    .register-header {
+        padding: 0 10px;
+        height: 31px;
+        border-top: 1px solid #FFF;
+        border-bottom: 1px solid #C2D5E3;
+        background: #F2F2F2;
+        line-height: 31px;
+        white-space: nowrap;
+        overflow: hidden;
+        border-bottom: 1px solid #CDCDCD !important;
+        span {
+            float: right;
+        }
+        a {
+            color: #369;
+        }
+        h3 {
+            font-size: 14px !important;
+            font-weight: bold;
+        }
+    }
+    /* 表单 */
+}
+
 /* 论坛 */
 .forum {
-
+    background: #fff;
+    /* 头部 */
+    .forum-header {
+        background: #F7F7F7;
+        padding: 10px 20px;
+        p, div {
+            display: inline-block;
+        }
+        p {
+            color: black;
+            margin: 0;
+            &:before{
+                position: relative;
+                display: inline-block;
+                content: '';
+                width: 16px;
+                height: 16px;
+                top: 2px;
+                margin-right: 6px;
+                background: url('~@/static/images/chart.png') no-repeat;
+            }
+            em {
+                color: #E94646;
+            }
+        }
+        .pipe {
+            margin: 0 24px;
+            color: #000;
+        }
+    }
+    /* 列表 */
+    .forum-body {
+        padding: 20px;
+        /* 头部 */
+        h2 {
+            font-weight: bold;
+        }
+        .notabs {
+            color: #369;
+        }
+        /* item */
+        .form-list {
+            .forum-item {
+                height: 88px;
+                padding-bottom: 10px;
+                margin-top: 20px;
+                font-family: '微软雅黑';
+                border-bottom: 1px #F0F0F0 solid;
+            }
+            .img-box {
+                float: left;
+                width: 75px;
+                height: 75px;
+                img {
+                    border-radius: 5px;
+                }
+            }
+            .bankuai-intro {
+                float: left;
+                width: 550px;
+                height: 80px;
+                margin-left: 20px;
+                h2 {
+                    display: inline-block;
+                    font-size: 16px;
+                    margin-right: 20px;
+                    color: #333;
+                }
+            }
+            .fatieliang {
+                background: #48B6FB;
+                color: white;
+                display: inline-block;
+                width: 80px;
+                text-align: center;
+                height: 22px;
+                line-height: 22px;
+                font-size: 12px;
+                border-radius: 14px;
+            }
+            .bankuai-jieshao {
+                width: 400px;
+                height: 20px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 12px;
+                margin-top: 13px;
+                color: #666666;
+            }
+            .bankuai-fenlei {
+                font-size: 12px;
+                margin-top: 2px;
+                a:first-child {
+                    color: #F34D3E;
+                }
+                a {
+                    color: rgb(0,128,128);
+                }
+                span {
+                    color: #839BB4;
+                    margin: 0 4px;
+                }
+            }
+        }
+    }
 }
 
 

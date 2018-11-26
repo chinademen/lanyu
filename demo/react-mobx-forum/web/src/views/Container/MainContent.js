@@ -1,11 +1,11 @@
 /* 主要内容 */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { inject, observer } from 'mobx-react';
-import { navMenu, navMenu2 } from '@/config/tabsMenu';
 import Nav from '../MainContent/Nav';
 import UserInfo from '../MainContent/UserInfo';
 import OtherCommunity from '../MainContent/OtherCommunity';
 import Banner from '../MainContent/Banner';
+import Register from '../MainContent/Register';
 import Forum from '../MainContent/Forum';
 import Footer from '../MainContent/Footer';
 import './index.less';
@@ -19,6 +19,7 @@ class MainContent extends Component {
     }
 
     render() {
+        const { isRegister } = this.props.commonStore;
         return (
             <div className="main-content">
                 {/* 导航 */}
@@ -27,10 +28,11 @@ class MainContent extends Component {
                 <UserInfo />
                 {/* 其他社区跳转 */}
                 <OtherCommunity />
-                {/* 自适应高度广告栏 */}
-                <Banner />
-                {/* 论坛区 */}
-                <Forum />
+                {/* 注册 / 自适应高度广告栏 + 论坛区 */}
+                {isRegister ? <Register /> : <Fragment>
+                    <Banner />
+                    <Forum />
+                </Fragment>}
                 {/* 页脚 */}
                 <Footer />
             </div>

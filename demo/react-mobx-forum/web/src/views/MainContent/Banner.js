@@ -44,15 +44,16 @@ class MainContent extends Component {
             <div className="gg-box">
                 {/* {this.createGgList(ggList)} */}
                 <img src={require('../../static/images/gg1.gif')} alt="广告图片" />
-                {/* <img src={require('../../static/images/gg2.gif')} alt="广告图片" />
-                <img src={require('../../static/images/gg3.gif')} alt="广告图片" /> */}
-                <img src={require('../../static/images/gg4.gif')} alt="广告图片" />
-                {/* <img src={require('../../static/images/gg5.gif')} alt="广告图片" /> */}
-                {/* <img src={require('../../static/images/gg6.gif')} alt="广告图片" /> */}
-                {/* <img src={require('../../static/images/gg7.gif')} alt="广告图片" />
+                <img src={require('../../static/images/gg2.gif')} alt="广告图片" />
+                <img src={require('../../static/images/gg3.gif')} alt="广告图片" />
+                {/* <img src={require('../../static/images/gg4.gif')} alt="广告图片" />
+                <img src={require('../../static/images/gg5.gif')} alt="广告图片" />
+                <img src={require('../../static/images/gg6.gif')} alt="广告图片" />
+                <img src={require('../../static/images/gg7.gif')} alt="广告图片" />
                 <img src={require('../../static/images/gg8.gif')} alt="广告图片" />
                 <img src={require('../../static/images/gg9.gif')} alt="广告图片" />
                 <img src={require('../../static/images/gg10.png')} alt="广告图片" /> */}
+                
             </div>
         )
     }
