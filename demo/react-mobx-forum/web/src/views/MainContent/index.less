@@ -207,13 +207,13 @@
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    height: 100px;
+    height: 126px;
     margin-bottom: 10px;
     background: #fff;
     // 跑马灯
     .ant-carousel .slick-slide {
         text-align: center;
-        height: 100px;
+        height: 120px;
         // line-height: 100px;
         // background: #364d79;
         overflow: hidden;
@@ -223,21 +223,21 @@
     }
     // 重写跑马灯的按钮样式
     .ant-carousel .slick-dots li {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         background: #333;
         border-radius: 50%;
     }
     .ant-carousel .slick-dots li button {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         background: #333;
         border-radius: 50%;
     }
     .ant-carousel .slick-dots li.slick-active, .ant-carousel .slick-dots li.slick-active button {
         background: red;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
     }
     .ant-carousel .slick-dots li.slick-active button:focus {
@@ -349,7 +349,12 @@
     }
     /* 列表 */
     .forum-body {
-        padding: 20px;
+        // padding: 20px;
+        background: #333;
+        >h2, >p, >ul, section {
+            box-sizing: content-box;
+            background: #fff;
+        }
         /* 头部 */
         h2 {
             font-weight: bold;
@@ -357,19 +362,23 @@
         .notabs {
             color: #369;
         }
+        .forum-bg {
+            padding: 20px;
+            margin-bottom: 10px !important;
+            background: #fff;
+        }
         /* item */
         .forum-list {
-            margin-bottom: 10px !important;
             .forum-item {
-                box-sizing: content-box;
+                // box-sizing: content-box;
                 height: 88px;
                 padding-bottom: 10px;
                 margin-top: 20px;
                 font-family: '微软雅黑';
                 border-bottom: 1px #F0F0F0 solid;
-                section {
-                    box-sizing: content-box;
-                }
+                // section {
+                //     box-sizing: content-box;
+                // }
             }
             .img-box {
                 float: left;

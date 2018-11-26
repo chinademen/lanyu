@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import MainContent from '../Container/MainContent';
 import './index.less';
 
-@inject('homeStore')
+@inject('commonStore')
 @observer
 class Container extends Component {
     constructor(props) {

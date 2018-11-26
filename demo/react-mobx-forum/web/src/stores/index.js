@@ -1,8 +1,8 @@
-import homeStore from './homeStore';
+import forumStore from './forumStore';
 import commonStore from './commonStore';
 
 const stores = {
-    homeStore,
+    forumStore,
     commonStore,
 }
 

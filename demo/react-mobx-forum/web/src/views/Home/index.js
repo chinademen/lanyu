@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 // import Footer from '@/components/Footer';
 import Container from './Container';
 
-@inject('homeStore')
+@inject('commonStore')
 @observer
 class Home extends Component {
     constructor(props) {

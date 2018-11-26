@@ -1,4 +1,5 @@
 import gg from './gg';
+import forumListZone from './forumListZone';
 
 const Mock = require('mockjs');
 const Random = Mock.Random;
@@ -14,3 +15,4 @@ function getPostData(bodyData) {
 }
 
 Mock.mock('/api/gg', 'post', options => gg(options, getPostData)); // 内容区域所有广告图片
+Mock.mock('/api/forumListZone', 'post', options => forumListZone(options, getPostData)); // 获取对应的贴吧分区列表
