@@ -1,6 +1,7 @@
 /* 注册 */
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import Editor from '@/components/Editor';
 import './index.less';
 
 @inject('commonStore')
@@ -20,7 +21,9 @@ class Register extends Component {
                     </span>
                     <h3>立即注册</h3>
                 </div>
-                
+                <div style={{ position: 'relative', padding: 20 }}>
+                    <Editor />
+                </div>
             </div>
         )
     }

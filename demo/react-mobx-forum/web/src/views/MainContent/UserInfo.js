@@ -38,7 +38,7 @@ class UserInfo extends Component {
                         <a onClick={() => this.register()}>立即注册</a>
                     </div>
                     <div className="find-pwd">
-                        <a href="javascript:;">找回密码</a>
+                        <a>找回密码</a>
                     </div>
                 </Fragment> : <Fragment>
                     {/* 用户头像 */}
