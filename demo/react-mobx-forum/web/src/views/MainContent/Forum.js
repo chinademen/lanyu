@@ -16,19 +16,37 @@ class Forum extends Component {
         this.props.forumStore.getForumListZone(forumid)
     }
 
+    // 改变当前贴吧社区
+    changeForum(forumid) {
+        this.props.forumStore.setForumid(forumid);
+        this.props.forumStore.getForumListZone(forumid);
+    }
+
+    // 收起/展开 指定讨论区
+    toggleForum(forumid) {
+        this.props.forumStore.setCloseForumList(forumid)
+    }
+
     // 渲染分区列表
-    drawForumList(forumZoneList) {
+    drawForumList(forumZoneList, closeForumList) {
         if (forumZoneList) {
             const list = forumZoneList.map(item => {
                 const { forumid, title, moderator, children } = item;
+                const isShow = !closeForumList.includes(forumid) ? 'block' : 'none';
+                const imgName = !closeForumList.includes(forumid) ? 'no' : 'yes';
                 return (
                     <div className="forum-bg" key={forumid}>
-                        <h2>{title}</h2>
+                        <span className="onOff">
+                            <img src={require(`../../static/images/collapsed_${imgName}.gif`)} alt="收起/展开" onClick={() => this.toggleForum(forumid)} />
+                        </span>
+                        <h2>
+                            <a onClick={() => this.changeForum(forumid)}>{title}</a>
+                        </h2>
                         <p style={{ fontSize: 13, color: '#999999' }}>分区版主: 
                             <a className="notabs">{moderator[0]}</a>, 
                             <a className="notabs">{moderator[1]}</a>
                         </p>
-                        <ul className="forum-list clearfix">
+                        <ul className="forum-list clearfix" style={{ display: isShow }}>
                             {this.drawForumChildList(children, forumid)}
                         </ul>
                     </div>
@@ -86,7 +104,7 @@ class Forum extends Component {
     }
 
     render() {
-        const { forumZoneList } = this.props.forumStore;
+        const { forumZoneList, closeForumList } = this.props.forumStore;
 
         return (
             <div className="forum clearfix">
@@ -107,7 +125,7 @@ class Forum extends Component {
                     </div>
                 </div>
                 <div className="forum-body">
-                    {this.drawForumList(forumZoneList)}
+                    {this.drawForumList(forumZoneList, closeForumList)}
                     {/* <div className="forum-bg">
                         <h2>彩界新闻</h2>
                         <p style={{ fontSize: 13, color: '#999999' }}>分区版主: 

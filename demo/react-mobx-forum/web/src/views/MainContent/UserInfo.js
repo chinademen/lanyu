@@ -17,7 +17,7 @@ class UserInfo extends Component {
     login() {
         this.setState({ isLogin: true })
         this.props.commonStore.updateIsRegister(false)
-        this.props.forumStore.setForumid('null')
+        this.props.forumStore.getForumListZone('null')
     }
 
     logout() {
