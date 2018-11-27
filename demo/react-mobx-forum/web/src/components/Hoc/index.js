@@ -1,7 +1,7 @@
 /* 高阶组件, 可用于动态生成组件 */
 import React, { Component, Fragment } from 'react';
 
-const HightComponent = (MiddeleComponent) => {
+const Hoc = (MiddeleComponent) => {
     return class extends Component {
         render() {
             return (
@@ -13,4 +13,4 @@ const HightComponent = (MiddeleComponent) => {
     }
 };
 
-export default HightComponent;
+export default Hoc;

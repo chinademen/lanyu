@@ -16,7 +16,7 @@ class UserInfo extends Component {
 
     login() {
         this.setState({ isLogin: true })
-        this.props.commonStore.updateIsRegister(false)
+        this.props.commonStore.changeCurrentView('forum')
         this.props.forumStore.getForumListZone('null')
     }
 
@@ -25,7 +25,7 @@ class UserInfo extends Component {
     }
 
     register() {
-        this.props.commonStore.updateIsRegister(true)
+        this.props.commonStore.changeCurrentView('register')
     }
 
     render() {

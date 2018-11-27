@@ -27,6 +27,11 @@ class Forum extends Component {
         this.props.forumStore.setCloseForumList(forumid)
     }
 
+    // 跳转到 讨论区页 || 帖子
+    changeView(name, forumid) {
+        this.props.commonStore.changeCurrentView(name)
+    }
+
     // 渲染分区列表
     drawForumList(forumZoneList, closeForumList) {
         if (forumZoneList) {
@@ -67,7 +72,9 @@ class Forum extends Component {
                             <img src={require(`../../static/images/common/common_icon${forumid}-${index+1}.png`)} alt="用户头像" width="75" height="75" />
                         </div>
                         <section className="bankuai-intro">
-                            <h2><a>{title || ''}</a></h2>
+                            <h2>
+                                <a onClick={() => this.changeView('forumDetails', forumid)}>{title || ''}</a>
+                            </h2>
                             <span className="fatieliang">今日:{views || 0}</span>
                             <p className="bankuai-jieshao">{introduce}</p>
                             <p className="bankuai-fenlei">
@@ -86,7 +93,7 @@ class Forum extends Component {
                             <p>回复</p>
                         </section>
                         <section className="zuixin-tiezi">
-                            <a className="xi2">{news}</a>
+                            <a className="xi2" onClick={() => this.changeView('article', forumid)}>{news}</a>
                             <p>
                                 <span className="publish-time">
                                     <span title="2018-11-26 12:45">7&nbsp;秒前</span>
