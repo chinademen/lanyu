@@ -1,19 +1,36 @@
-import { observable, action } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
+import { getgg } from '@/services/common';
 
 class CommonStore {
-    @observable username = '';  // 当前登陆用户
-    @observable balance = 0; // 当前登陆用户可用余额
-    @observable currentLottertyName = '首页'; // 当前彩种名称
+    @observable activeNav = 0; // 被选中一级导航栏
+    @observable activeNavTwo = 0; // 被选中二级导航栏
+    @observable ggList = null; // 所有广告图片
+    @observable isRegister = false; // 是否是注册界面
 
+    // 获取所有广告图片
     @action.bound
-    async getUserInfo() {
-
+    async getgg(params) {
+        const res = await getgg();
+        runInAction(() => {
+            if (!res) return;
+            this.ggList = res.data;
+        })
     }
 
-    /* 改变当前彩种名称 */
+    // 更新被选中导航
     @action.bound
-    async changeCurrentLotteryName(name) {
-        this.currentLottertyName = name;
+    updateTab(index, level) {
+        if (level === 1) {
+            this.activeNav = index;
+        } else {
+            this.activeNavTwo = index;
+        }
+    }
+
+    // 切换注册界面
+    @action.bound
+    updateIsRegister(value) {
+        this.isRegister = value;
     }
 }
 

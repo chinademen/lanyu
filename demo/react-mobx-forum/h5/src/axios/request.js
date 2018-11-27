@@ -1,19 +1,12 @@
 import axios from "axios";
-import { message } from 'antd';
+import baseURL from '@/config/domain';
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
-
-// 提示框
-message.config({
-    top: 100,
-    delay: 3,
-    maxCount: 1,
-});
 
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    // baseURL: 'http://xxx/',
+    // baseURL: baseURL,
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
@@ -74,15 +67,13 @@ service.interceptors.response.use(
         checkStatus(data);
 
         // 统一post提交的提示信息
-        if (data.status === 1) {
+        if (data.status === 0) {
             return data;
         }
-        // message.error(data.message);
 
     },
     error => {
         let errortext = error + '';
-        message.error(errortext);
         return Promise.reject({
             success: false,
             statusCode: errortext.substr(-3),

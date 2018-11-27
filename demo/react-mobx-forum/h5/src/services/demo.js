@@ -1,5 +1,5 @@
 // 演示使用axios的各种数据类型提交方式
-import request from '@/fetch/request';
+import request from '@/axios/request';
 import api from '@/config/api';
 import { objToStr } from '@/util/format';
 

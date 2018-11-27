@@ -1,11 +1,9 @@
+import forumStore from './forumStore';
 import commonStore from './commonStore';
-import homeStore from './homeStore';
-import lotteryStore from './lotteryStore';
 
 const stores = {
+    forumStore,
     commonStore,
-    homeStore,
-    lotteryStore,
 }
 
 export default stores;

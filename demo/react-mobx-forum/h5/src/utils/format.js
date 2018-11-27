@@ -1,6 +1,4 @@
 import React from 'react';
-import { Select } from 'antd';
-const { Option } = Select;
 
 // 格式化工具
 
@@ -39,17 +37,6 @@ export function objToStr(obj) {
     }
     str = str.slice(0, str.length - 1);
     return str;
-}
-
-// 数组生成option
-export function createOption(params) {
-    let arr = [];
-    arr = params.map(item => {
-        for (var k in item) {
-            return (<Option value={k} key={k}>{item[k]}</Option>);
-        }
-    });
-    return arr;
 }
 
 // 给表格数据添加key
