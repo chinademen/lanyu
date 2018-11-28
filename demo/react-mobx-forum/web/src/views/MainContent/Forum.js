@@ -29,6 +29,7 @@ class Forum extends Component {
 
     // 跳转到 讨论区页 || 帖子
     changeView(name, forumid) {
+        this.props.forumStore.setForumid(forumid);
         this.props.commonStore.changeCurrentView(name)
     }
 

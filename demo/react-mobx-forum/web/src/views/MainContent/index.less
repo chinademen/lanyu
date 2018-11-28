@@ -506,11 +506,75 @@
 /* 讨论区 */
 .forum-details {
     background: #fff;
+    .forum-details-header {
+        padding: 10px 20px;
+        .breadcrumb {
+            a {
+                font-weight: bold;
+                font-size: 16px;
+                color: #333;
+                margin-right: 10px;
+            }
+        }
+        .title {
+            margin: 20px 0;
+            .icon {
+                float: left;
+                width: 100px;
+                height: 100px;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .rightbox {
+                display: inline-block;
+                box-sizing: border-box;
+                height: 100px;
+                width: calc(100% - 120px);
+                margin-left: 20px;
+            }
+        }
+        .bankuai-name {
+            a {
+                color: #333;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            a, em, span {
+                margin-left: 10px;
+            }
+            .bankuai-name-title {
+                margin-left: 0;
+            }
+        }
+        .bankuai-banzhu {
+            a {
+                color: #8A9BB6;
+                margin-right: 2px;
+            }
+        }
+    }
+    .forum-details-body {
+        padding: 10px 20px;
+    }
 }
 
 /* 帖子 */ 
 .article {
     background: #fff;
+    .article-header {
+        padding: 10px 20px;
+        .breadcrumb {
+            a {
+                font-weight: bold;
+                font-size: 16px;
+                color: #333;
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
 /* 页脚 */
