@@ -17,6 +17,7 @@ class OtherCommunity extends Component {
 
     // 改变当前贴吧社区
     changeForum(forumid) {
+        this.props.commonStore.changeCurrentView('forum');
         this.props.forumStore.setForumid(forumid);
         this.props.forumStore.getForumListZone(forumid);
     }
