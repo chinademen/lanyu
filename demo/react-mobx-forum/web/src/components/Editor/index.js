@@ -17,8 +17,8 @@ class Editor extends Component {
     super(props);
     this.state = {
       // 创建一个空的editorState作为初始值
-      // editorState: BraftEditor.createEditorState(null)
-      editorState: editorState2
+      editorState: BraftEditor.createEditorState(null)
+      // editorState: editorState2
     }
   }
 

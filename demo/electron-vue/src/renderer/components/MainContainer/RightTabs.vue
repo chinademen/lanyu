@@ -9,11 +9,14 @@
             >{{item.name}}</li>
             <span class="instructions" @click="instructions">使用说明</span>
         </ul>
-        <ul class="right-tabs-content">
+        <ul class="right-tabs-content" v-if="islogin">
             <li v-for="(item, index) in tabsName" :key="index" v-if="isActive == index">
                 <component :is="item.componentName" :key="index"></component>
             </li>
         </ul>
+         <div class="user-nologin" v-if="!islogin">
+            请登陆后再使用该功能！
+        </div>
     </div>
 </template>
 
@@ -38,6 +41,7 @@
         },
         data() {
             return {
+                isLogin: false,
                 isActive: 0,
                 tabsName: [
                     { name: '用户须知', componentName: 'UserBook' }, 
@@ -51,7 +55,7 @@
         },
         computed: {
             ...mapState({
-
+                islogin: state => state.LoginTool.islogin,
             })
         },
         methods: {
@@ -120,5 +124,17 @@
             width: 100%;
             height: 100%;
         }  
+    }
+    .user-nologin {
+        position: absolute;
+        width: 100%;
+        border-top: 2px solid #B36285;
+        background: #fff;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 500px;
+        top: 34px;
+        bottom: 0;
     }
 </style>

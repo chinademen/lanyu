@@ -8,7 +8,7 @@
     需要注释的内容：    filter: progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false);
 
 ##### 3. 运行项目
-    npm run dev
+    npm run start
 
 ##### 4. 打包
     npm run build

@@ -2,7 +2,7 @@
 <template>
     <div class="login">
         <!-- 登录框 -->
-        <div class="no-login" v-if="!(islogin || db.islogin)">
+        <div class="no-login" v-if="!islogin">
             <p class="row">
                 <span class="col col-3">线路</span>
                 <select class="col col-5">
@@ -30,7 +30,7 @@
             </div>
         </div>
         <!-- 用户信息 -->
-        <div class="is-login" v-if="(islogin || db.islogin)">
+        <div class="is-login" v-if="islogin">
             <p>
                 <span>当前线路：</span>
                 <span>线路1</span>
