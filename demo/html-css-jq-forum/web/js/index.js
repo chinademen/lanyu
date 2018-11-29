@@ -152,5 +152,7 @@ $(document).ready(function () {
         $('.article').show();
     });
 
+    
+
 
 })

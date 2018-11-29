@@ -1,0 +1,34 @@
+/* 导航 */
+.main-nav {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border-bottom: 1px #F0F0F0 solid;
+    box-sizing: border-box;
+}
+.main-nav .active {
+    background: #48b6fb;
+    color: #fff;
+}
+.main-nav>li {
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+.main-nav>li>span {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 72px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.main-nav>li>span:hover {
+    background: #48b6fb;
+    color: #fff;
+}
+.main-nav>li>span:hover + .main-menu {
+    display: block;
+}

@@ -1,0 +1,41 @@
+/* 其他社区跳转区 */
+.other-community {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 126px;
+    margin-bottom: 10px;
+    /* background: #fff; */
+}
+.swiper-container {
+    width: 100%;
+    height: 126px;
+    margin: 20px auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 13px;
+    background: #fff;
+}
+.community-title {
+    width: 137px;
+    height: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    margin: 10px 19px;
+}
+.community-title-odd {
+    background-color: #DBF1FB;
+}
+.community-title-even {
+    background-color: #F2F2F2;
+}
+.other-community ul {
+    margin-left: 24px;
+}
+.other-community ul li {
+    float: left;
+    line-height: 30px;
+}
