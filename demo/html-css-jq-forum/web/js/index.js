@@ -80,6 +80,9 @@ $(document).ready(function () {
         skin: '#393A3A',
         groups: 7 //连续显示分页数
     });
+    $('#atarget').on('click', function () {
+        $(this).toggleClass('atarget_1');
+    });
     /* 讨论区 end */
   
 

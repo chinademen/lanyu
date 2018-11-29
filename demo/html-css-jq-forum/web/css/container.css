@@ -492,7 +492,7 @@
     width: calc(100% - 120px);
     margin-left: 20px;
 }
-.bankuai-name a, .bankuai-name em, .bankuai-name span {
+.bankuai-name em, .bankuai-name span {
     margin-left: 10px;
 }
 .bankuai-name-title {
@@ -534,6 +534,156 @@
     font-weight: bold;
     background: #48B6FB;
     font-size: 12px;
+}
+.details-list-nav {
+    height: 40px;
+    line-height: 40px;
+    background: #FAFAFA;
+    border-left: 1px #ECECEC solid;
+    border-right: 1px #ECECEC solid;
+    border-top: 1px #ECECEC solid;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+.fenlei-title {
+    font-weight: bold;
+    margin-right: 20px;
+}
+.fenlei-select {
+    color: #FF6F48;
+    font-weight: bold;
+    font-size: 12px;
+}
+.fenlei-fenge {
+    color: #CCCCCC;
+    margin: 0 8px;
+}
+.details-list-nav a {
+    color: #48B6FB;
+}
+.fenlei-fenge {
+    font-weight: bold;
+    color: #999;
+}
+.bankuai-shaixuan {
+    border-left: 1px #ECECEC solid;
+    border-right: 1px #ECECEC solid;
+    border-bottom: 1px #ECECEC solid;
+    background: #FAFAFA;
+    height: 50px;
+}
+.shaixuan-inner {
+    height: 50px;
+    line-height: 50px;
+    margin: 0 10px;
+    border-top: 1px #ECECEC solid;
+}
+.shaixuan-inner select {
+    padding: 3px 18px 5px 4px;
+    border: 1px #CCCCCC solid;
+    color: #333333;
+    margin-right: 10px;
+}
+#atarget.atarget_1, .chked {
+    background-position: 0 -37px;
+}
+#atarget, .unchk, .chked {
+    padding-left: 15px;
+    line-height: 16px;
+    background: url('../images/atarget.png') no-repeat 0 3px;
+    color: #369;
+    cursor: pointer;
+}
+.xuanze_item {
+    color: #999999;
+    float: right;
+    margin-right: 36px;
+}
+.y {
+    float: right;
+}
+.p_pop, .p_pof, .sllt {
+    padding: 4px;
+    border: 1px solid;
+    min-width: 60px;
+    border-color: #DDD;
+    background: #FEFEFE;
+    box-shadow: 1px 2px 2px rgba(0,0,0,0.3);
+}
+.p_pop li {
+    display: inline;
+}
+.p_pop li a {
+    border-top: 1px solid #E5EDF2 !important;
+    height: 26px;
+    line-height: 26px;
+    border-bottom: none !important;
+    color: black;
+    text-align: center;
+}
+.p_pop a {
+    display: block;
+    padding: 3px 5px;
+    border-bottom: 1px solid #E5EDF2;
+    white-space: nowrap;
+}
+/* 表格 */
+table {
+    width: 100%;
+    background-color: #FFF;
+    border: none;
+    color: #565;
+    font: 12px arial;
+}
+
+table caption {
+    font-size: 24px;
+    border-bottom: 2px solid #B3DE94;
+    border-top: 2px solid #B3DE94;
+}
+
+table, td, th {
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    text-align:left;
+}
+
+tbody td, tbody th {
+    background-color: #DFC;
+    border-bottom: 2px solid #B3DE94;
+    border-top: 3px solid #FFFFFF;
+    padding: 9px;
+}
+
+
+tfoot td, tfoot th {
+    font-weight: bold;
+    padding: 4px 8px 6px 9px;
+    text-align:center;
+}
+
+thead th {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 19px;
+    padding: 0 8px 2px;
+    text-align:center;
+}
+
+tbody tr.odd th,tbody tr.odd td { /*odd就是偶数行*/
+    background-color: #CEA;
+    border-bottom: 2px solid #67BD2A;
+}
+
+td+td+td, /*第三个td以及之后的td元素*/
+col.price{ /*类样式*/
+    text-align:right;
+}
+
+tbody tr:hover td, tbody tr:hover th { /*tr也有hover样式*/
+    background-color: #8b7;
+    color:#fff;
 }
 /* 讨论区 end */
 
