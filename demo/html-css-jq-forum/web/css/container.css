@@ -224,6 +224,7 @@
 
 /* 注册 */
 .register {
+    display: none;
     border: 1px solid #CDCDCD;
     background: #FFF;
 }
@@ -459,6 +460,7 @@
 
 /* 讨论区 */
 .forum-details {
+    display: none;
     background: #fff;
 }
 .forum-details-header {
@@ -509,6 +511,7 @@
 
 /* 帖子 */
 .article {
+    display: none;
     background: #fff;
 }
 .article-header {
