@@ -111,43 +111,10 @@ $(document).ready(function () {
     });
 
     // 分页
-    var cfg = {
-        // 点击页码方法(必须)
-        pageClickE: function(){},
-        // 总数(必须) >0
-        totalData: 100,
-        // 当前页码(必须) >0
-        pageIndex: '当前页码',
-        // 每页数量 [5-50]
-        pageSize: 10,
-        // 显示几个按钮[5-10]
-        totalBtn: 5
-    }
-    $('#pagenumId').pagenum(cfg);
-
-    /*
-    // ajax请求分页使用
-        function getdata() {
-            var para = {};
-            $.post('/api/PageNumber', { para:JSON.stringify(para) }, function (data) {
-            if (data.length == 0) {
-                // 如果没有数据返回,可以不用生成分页条.
-                return;
-            }
-            // 再生成新分页条
-            var cfg = {
-                // 这里绑定getdata方法自己
-                pageClickE:function(){ getdata() },
-                // 总数(必须) >0 由后端返回新的总数
-                totalData:data.总数,
-                // 当前页码(必须) >0 由后端返回当前页码,或者页面记住当前请求页面
-                pageIndex:data.当前页码,
-                // 每页数量 [5-50]
-                pageSize:10,
-                // 显示几个按钮[5-10]
-                totalBtn:5
-            }
-            $('#pagenumId').pagenum(cfg);
-        }
-    */
+    laypage({
+        cont: document.getElementById('page2'), //容器。值支持id名、原生dom对象，jquery对象,
+        pages: 100, //总页数
+        skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
+        groups: 7 //连续显示分页数
+    });
 })

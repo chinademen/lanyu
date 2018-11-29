@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/container.css">
-    <link rel="stylesheet" href="./css/pagenum.css">
+    <link rel="stylesheet" href="./css/laypage.css">
     </style>
 </head>
 <body>
@@ -2327,24 +2327,7 @@
                 <div class="forum-details-body">
                     <h4>帖子列表</h4>
                     <!-- 分页 -->
-                    <nav class="pagenum" id="pagenum1">
-                        <span class="pagenum-btns">
-                            <a class="pagenum-prev"><</a>
-                            <a class="pagenum-num">1</a>
-                            <span class="pagenum-break">...</span>
-                            <a class="pagenum-num">7</a>
-                            <a class="pagenum-num">8</a>
-                            <a class="pagenum-active">9</a>
-                            <a class="pagenum-num">10</a>
-                            <a class="pagenum-num">11</a>
-                            <span class="pagenum-break">...</span>
-                            <a class="pagenum-num">98</a>
-                            <a class="pagenum-next">></a>
-                        </span>
-                        <span class="pagenum-skip">
-                            共<b class="pagenum-total">98</b>页&nbsp;&nbsp;到第<input class="pagenum-input" value="1" type="text" />页<a class="pagenum-ok">确定</a>
-                        </span>
-                    </nav>
+                    <div id="page2"></div>
                     <h4>帖子分类选项卡</h4>
                     <ul>
                         <li>帖子1111111111</li>
@@ -2359,24 +2342,7 @@
                         <li>帖子1010101010</li>
                     </ul>
                     <!-- 分页 -->
-                    <nav class="pagenum" id="pagenum1">
-                        <span class="pagenum-btns">
-                            <a class="pagenum-prev"><</a>
-                            <a class="pagenum-num">1</a>
-                            <span class="pagenum-break">...</span>
-                            <a class="pagenum-num">7</a>
-                            <a class="pagenum-num">8</a>
-                            <a class="pagenum-active">9</a>
-                            <a class="pagenum-num">10</a>
-                            <a class="pagenum-num">11</a>
-                            <span class="pagenum-break">...</span>
-                            <a class="pagenum-num">98</a>
-                            <a class="pagenum-next">></a>
-                        </span>
-                        <span class="pagenum-skip">
-                            共<b class="pagenum-total">98</b>页&nbsp;&nbsp;到第<input class="pagenum-input" value="1" type="text" />页<a class="pagenum-ok">确定</a>
-                        </span>
-                    </nav>
+                   
                 </div>
             </div>
 
@@ -2425,7 +2391,7 @@
 
     <script src="./js/jquery-1.83.min.js"></script>
     <script src="./js/swiper.min.js"></script>
-    <script src="./js/pagenum.js"></script>
+    <script src="./js/laypage.js"></script>
     <script src="./js/index.js"></script>
 
 </body>
