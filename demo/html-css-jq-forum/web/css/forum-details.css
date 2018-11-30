@@ -78,6 +78,10 @@
     overflow: hidden;
     text-decoration: none;
 }
+.back-forum-btn>a:hover {
+    border-color: #369;
+    color: #369;
+}
 .new-tiezi-btn {
     width: 80px;
     height: 30px;
@@ -103,7 +107,7 @@
     font-weight: bold;
     margin-right: 20px;
 }
-.fenlei-select {
+.details-list-nav .fenlei-select {
     color: #FF6F48;
     font-weight: bold;
     font-size: 12px;

@@ -2356,11 +2356,16 @@
                     </div>
                     <div class="details-list-nav">
                         <span class="fenlei-title">分类</span>
-                        <span class="fenlei-select">全部</span>
-                        <span class="fenlei-fenge">|</span><a href="javascript:;">好文转载</a>
-                        <span class="fenlei-fenge">|</span><a href="javascript:;">综合讨论</a>
-                        <span class="fenlei-fenge">|</span><a href="javascript:;">每日话题</a>
-                        <span class="fenlei-fenge">|</span><a href="javascript:;">爆料</a>
+                        <!-- <span class="fenlei-select">全部</span> -->
+                        <a href="javascript:;" class="fenlei-select">全部</a>
+                        <span class="fenlei-fenge">|</span>
+                        <a href="javascript:;">好文转载</a>
+                        <span class="fenlei-fenge">|</span>
+                        <a href="javascript:;">综合讨论</a>
+                        <span class="fenlei-fenge">|</span>
+                        <a href="javascript:;">每日话题</a>
+                        <span class="fenlei-fenge">|</span>
+                        <a href="javascript:;">爆料</a>
                     </div>
                     <div class="bankuai-shaixuan">
                         <div class="shaixuan-inner">
@@ -2879,30 +2884,377 @@
             <!-- 帖子 -->
             <div class="article clearfix">
                 <div class="article-header">
-                    <div class="breadcrumb">
+                    <div class="breadcrumb clearfix">
                         <a href="javascript:;">论坛首页</a>
                         <span>></span>
-                        <!-- <Icon type="right" style={{ marginRight: 10 }} /> -->
                         <a href="javascript:;">xxx论坛</a>
                         <span>></span>
-                        <!-- <Icon type="right" style={{ marginRight: 10 }} /> -->
                         <a href="javascript:;">xxx讨论区</a>
                     </div>
-                    <p class="row">
-                        <div class="col-3">
-                            <span class="back-forum-details">
-                                <a href="javascript:;">返回列表</a>
-                            </span>
-                        </div>
-                    </p>
+                    <div class="btn-box">
+                        <a href="javascript:;" id="back-forum-details">返回列表</a>
+                    </div>
                 </div>
                 <div class="article-body">
-                    <div class="row">
-                        <div class="col-12">【综合讨论】读了这本书，我才知道平庸和优秀人的差距原来这么大！</div>
-                        <a class="col-2" href="javasript:;">[复制链接]</a>
-                        <a class="col-2" href="javasript:;">[收藏主题]</a>
-                        <span class="col-2 col-offset-4">发表新主题</span>
-                        <span class="col-2">立即回复</span>
+                    <div class="header">
+                        <h2>【综合讨论】</h2>
+                        <h1>读了这本书，我才知道平庸和优秀人的差距原来这么大！</h1>
+                        <a class="copy-link" href="javasript:;">[复制链接]</a>
+                        <a class="save-theme" href="javasript:;">[收藏主题]</a>
+                        <span class="return-info">立即回复</span>
+                        <span class="new-theme">发表新主题</span>
+                    </div>
+                    <!-- 一个回帖内容 -->
+                    <div class="article-content clearfix">
+                        <div class="left clearfix">
+                            <div class="avatar">
+                                <img src="./images/noavatar_middle.gif" alt="用户头像">
+                            </div>
+                            <a href="javascript:;" class="authorName">999999999</a>
+                            <a href="javascript:;" class="authorGroup">LV1 出入江湖</a>
+                            <!-- 进度条 -->
+                            <div class="jindutiao">
+                                <div style="background-color:#cccccc;margin-left: 4px;width:180px;height:10px;border-radius:10px">
+                                    <div style="width:77%;height:100%;border-radius:10px;background-color:red;"></div>
+                                </div>
+                            </div>
+                            <div class="avatar_fenge"></div>
+                            <!-- 帖子数 -->
+                            <div class="avatar_jinghua">帖子 &nbsp;&nbsp;&nbsp;<a href="javascript:;" style="color:#28a1f0;text-decoration:none;" target="_blank">10</a></div>
+                            <!-- 提现 -->
+                            <div style="text-align:left;color:#ed9026;font-family:'微软雅黑 Regular','微软雅黑';font-size:12px;font-style:normal;font-weight:400;line-height:28px;">xx币 &nbsp;&nbsp;&nbsp;
+                                <a target="_blank" href="javascript:;" style="color:#ed9026;">429</a>
+                                <a href="javascript:;" style="color:#28a1f0;text-decoration:none;margin-left:5px;" target="_blank">
+                                    <img src="./images/wh.png" style="vertical-align:middle;margin:0  0 3px 3px;display: inline-block;" title="xx币是什么">
+                                </a>
+                                <a href="javascript:;" style="color:#28a1f0;text-decoration:none;float:right;margin-right:25px;" target="_blank">提现</a>
+                            </div>
+                            <div class="avatar_cash">提现 &nbsp;&nbsp;&nbsp;<span style="color:#E2A813">0</span> 元</div>
+                            <!-- 注册时间 / 登录时间 -->
+                            <div class="avatar_zhuce">注册 &nbsp;&nbsp;&nbsp;2018-6-23</div>
+                            <div class="avatar_zhuce">登录 &nbsp;&nbsp;&nbsp;2018-11-29</div>
+                            <!-- 加好友，发私信 -->
+                            <div class="friend_msg clearfix">
+                                <a class="fasixin" href="javascript:;" target="_blank">发送私信</a>
+                                <a class="jiahaoyou" href="javascript:;" id="a_sendpm_">加为好友</a>
+                                <div style="clear:both"></div>
+                            </div>
+                            <!-- 勋章中心 -->
+                            <div style="text-align:left;font-family:'微软雅黑 Regular','微软雅黑';font-size:12px;font-style:normal;font-weight:400;line-height:28px;margin-top: 10px;">
+                                TA的勋章：<a href="javascript:;" style="color:#28a1f0;text-decoration:underline;float:right;margin-right:25px;" target="_blank">勋章中心</a>
+                            </div>
+                            <ul class="medal clearfix" style="float:left;">
+                                <li style="float:left">
+                                    <img src="./images/danshenwang.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                </li>
+                                <li style="float:left">
+                                    <img src="./images/longmaojf.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                </li>
+                                <li style="float:left">
+                                    <img src="./images/wanshengjie.gif" style="max-width:44px;max-height:55px;">
+                                </li>
+                                <li style="float:left">
+                                    <img src="./images/medal12.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                </li>
+                                <li style="float:left">
+                                    <img src="./images/medal69.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                </li>
+                                <li style="float:left">
+                                    <img src="./images/medal56.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                </li>
+                                <li style="float:left">
+                                    <img src="./images/medal33.gif" style="max-width:44px;max-height:55px;">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <div class="authMsg">
+                                <!-- 发表时间 -->
+                                <span class="postDateLine">发表于 <span title="2018-11-29 16:19:45">昨天&nbsp;16:19</span></span>
+                                <!-- 浏览人数 -->
+                                <span class="viewNum"> 714  </span>
+                                <!-- 回复数 -->
+                                <span class="replayNum">10</span>
+                                <span class="pipe show">|</span>
+                                <a style="font-size:12px;" href="javascript:;" rel="nofollow">只看该作者</a>
+                                <span class="pipe show">|</span>
+                                <a style="font-size:12px;" href="javascript:;" class="show">倒序浏览</a>
+                                <!-- 发表楼层 -->
+                                <a href="javascript:;" class="toptoolbar">楼主</a>
+                            </div>
+                            <!-- 帖子正文 -->
+                            <div class="content">
+                                帖子正文
+                                <ul>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                </ul>
+                            </div>
+                            <!-- 正文底部 -->
+                            <div class="footer">
+                                <!-- 个人签名 -->
+                                <div class="signature">
+                                    <div class="signature-title">
+                                        <span>个人签名</span>
+                                    </div>
+                                    <div class="signature-box">
+                                        <img src="./images/5b2f79b321520.gif" alt="签名图片">
+                                        <img src="./images/301cfd7b07da6b8e8614e6a7b510d124_0" alt="签名图片">
+                                    </div>
+                                </div>
+                                <!-- 回复  评分 -->
+                                <div class="operateBox operatePost clearfix" style="border-bottom:none;margin-bottom: 15px;margin-top: 30px;">
+                                    <div class="z">
+                                        <a class="no-reply-thread operateBtn fastre" href="javascript:;">回复</a>
+                                        <!--评分-->
+                                        <a href="javascript:;" id="ak_rate" class="no-k_rate" >评分</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 一个回帖内容 -->
+                    <div class="article-content clearfix">
+                            <div class="left clearfix">
+                                <div class="avatar">
+                                    <img src="./images/noavatar_middle.gif" alt="用户头像">
+                                </div>
+                                <a href="javascript:;" class="authorName">asdasdasd</a>
+                                <a href="javascript:;" class="authorGroup">LV1 出入江湖</a>
+                                <!-- 进度条 -->
+                                <div class="jindutiao">
+                                    <div style="background-color:#cccccc;margin-left: 4px;width:180px;height:10px;border-radius:10px">
+                                        <div style="width:77%;height:100%;border-radius:10px;background-color:red;"></div>
+                                    </div>
+                                </div>
+                                <div class="avatar_fenge"></div>
+                                <!-- 帖子数 -->
+                                <div class="avatar_jinghua">帖子 &nbsp;&nbsp;&nbsp;<a href="javascript:;" style="color:#28a1f0;text-decoration:none;" target="_blank">10</a></div>
+                                <!-- 提现 -->
+                                <div style="text-align:left;color:#ed9026;font-family:'微软雅黑 Regular','微软雅黑';font-size:12px;font-style:normal;font-weight:400;line-height:28px;">xx币 &nbsp;&nbsp;&nbsp;
+                                    <a target="_blank" href="javascript:;" style="color:#ed9026;">429</a>
+                                    <a href="javascript:;" style="color:#28a1f0;text-decoration:none;margin-left:5px;" target="_blank">
+                                        <img src="./images/wh.png" style="vertical-align:middle;margin:0  0 3px 3px;display: inline-block;" title="xx币是什么">
+                                    </a>
+                                    <a href="javascript:;" style="color:#28a1f0;text-decoration:none;float:right;margin-right:25px;" target="_blank">提现</a>
+                                </div>
+                                <div class="avatar_cash">提现 &nbsp;&nbsp;&nbsp;<span style="color:#E2A813">0</span> 元</div>
+                                <!-- 注册时间 / 登录时间 -->
+                                <div class="avatar_zhuce">注册 &nbsp;&nbsp;&nbsp;2018-6-23</div>
+                                <div class="avatar_zhuce">登录 &nbsp;&nbsp;&nbsp;2018-11-29</div>
+                                <!-- 加好友，发私信 -->
+                                <div class="friend_msg clearfix">
+                                    <a class="fasixin" href="javascript:;" target="_blank">发送私信</a>
+                                    <a class="jiahaoyou" href="javascript:;" id="a_sendpm_">加为好友</a>
+                                    <div style="clear:both"></div>
+                                </div>
+                                <!-- 勋章中心 -->
+                                <div style="text-align:left;font-family:'微软雅黑 Regular','微软雅黑';font-size:12px;font-style:normal;font-weight:400;line-height:28px;margin-top: 10px;">
+                                    TA的勋章：<a href="javascript:;" style="color:#28a1f0;text-decoration:underline;float:right;margin-right:25px;" target="_blank">勋章中心</a>
+                                </div>
+                                <ul class="medal clearfix" style="float:left;">
+                                    <li style="float:left">
+                                        <img src="./images/danshenwang.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                    </li>
+                                    <li style="float:left">
+                                        <img src="./images/longmaojf.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                    </li>
+                                    <li style="float:left">
+                                        <img src="./images/wanshengjie.gif" style="max-width:44px;max-height:55px;">
+                                    </li>
+                                    <li style="float:left">
+                                        <img src="./images/medal12.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <div class="authMsg">
+                                    <!-- 发表时间 -->
+                                    <span class="postDateLine">发表于 <span title="2018-11-29 16:19:45">昨天&nbsp;18:19</span></span>
+                                    <!-- 浏览人数 -->
+                                    <span class="viewNum"> 714  </span>
+                                    <!-- 回复数 -->
+                                    <span class="replayNum">10</span>
+                                    <span class="pipe show">|</span>
+                                    <a style="font-size:12px;" href="javascript:;" rel="nofollow">只看该作者</a>
+                                    <span class="pipe show">|</span>
+                                    <a style="font-size:12px;" href="javascript:;" class="show">倒序浏览</a>
+                                    <!-- 发表楼层 -->
+                                    <a href="javascript:;" class="toptoolbar">沙发</a>
+                                </div>
+                                <!-- 帖子正文 -->
+                                <div class="content">
+                                    帖子正文
+                                    <ul>
+                                        <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    </ul>
+                                </div>
+                                <!-- 正文底部 -->
+                                <div class="footer">
+                                    <!-- 个人签名 -->
+                                    <div class="signature">
+                                        <div class="signature-title">
+                                            <span>个人签名</span>
+                                        </div>
+                                        <div class="signature-box">
+                                            <img src="./images/bn_5bb2e6457f856.jpg" alt="签名图片">
+                                        </div>
+                                    </div>
+                                    <!-- 回复  评分 -->
+                                    <div class="operateBox operatePost clearfix" style="border-bottom:none;margin-bottom: 15px;margin-top: 30px;">
+                                        <div class="z">
+                                            <a class="no-reply-thread operateBtn fastre" href="javascript:;">回复</a>
+                                            <!--评分-->
+                                            <a href="javascript:;" id="ak_rate" class="no-k_rate" >评分</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <!-- 一个回帖内容 -->
+                    <div class="article-content clearfix">
+                            <div class="left clearfix">
+                                <div class="avatar">
+                                    <img src="./images/noavatar_middle.gif" alt="用户头像">
+                                </div>
+                                <a href="javascript:;" class="authorName">asdasdasd</a>
+                                <a href="javascript:;" class="authorGroup">LV1 出入江湖</a>
+                                <!-- 进度条 -->
+                                <div class="jindutiao">
+                                    <div style="background-color:#cccccc;margin-left: 4px;width:180px;height:10px;border-radius:10px">
+                                        <div style="width:77%;height:100%;border-radius:10px;background-color:red;"></div>
+                                    </div>
+                                </div>
+                                <div class="avatar_fenge"></div>
+                                <!-- 帖子数 -->
+                                <div class="avatar_jinghua">帖子 &nbsp;&nbsp;&nbsp;<a href="javascript:;" style="color:#28a1f0;text-decoration:none;" target="_blank">10</a></div>
+                                <!-- 提现 -->
+                                <div style="text-align:left;color:#ed9026;font-family:'微软雅黑 Regular','微软雅黑';font-size:12px;font-style:normal;font-weight:400;line-height:28px;">xx币 &nbsp;&nbsp;&nbsp;
+                                    <a target="_blank" href="javascript:;" style="color:#ed9026;">429</a>
+                                    <a href="javascript:;" style="color:#28a1f0;text-decoration:none;margin-left:5px;" target="_blank">
+                                        <img src="./images/wh.png" style="vertical-align:middle;margin:0  0 3px 3px;display: inline-block;" title="xx币是什么">
+                                    </a>
+                                    <a href="javascript:;" style="color:#28a1f0;text-decoration:none;float:right;margin-right:25px;" target="_blank">提现</a>
+                                </div>
+                                <div class="avatar_cash">提现 &nbsp;&nbsp;&nbsp;<span style="color:#E2A813">0</span> 元</div>
+                                <!-- 注册时间 / 登录时间 -->
+                                <div class="avatar_zhuce">注册 &nbsp;&nbsp;&nbsp;2018-6-23</div>
+                                <div class="avatar_zhuce">登录 &nbsp;&nbsp;&nbsp;2018-11-29</div>
+                                <!-- 加好友，发私信 -->
+                                <div class="friend_msg clearfix">
+                                    <a class="fasixin" href="javascript:;" target="_blank">发送私信</a>
+                                    <a class="jiahaoyou" href="javascript:;" id="a_sendpm_">加为好友</a>
+                                    <div style="clear:both"></div>
+                                </div>
+                                <!-- 勋章中心 -->
+                                <div style="text-align:left;font-family:'微软雅黑 Regular','微软雅黑';font-size:12px;font-style:normal;font-weight:400;line-height:28px;margin-top: 10px;">
+                                    TA的勋章：<a href="javascript:;" style="color:#28a1f0;text-decoration:underline;float:right;margin-right:25px;" target="_blank">勋章中心</a>
+                                </div>
+                                <ul class="medal clearfix" style="float:left;">
+                                    <li style="float:left">
+                                        <img src="./images/danshenwang.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                    </li>
+                                    <li style="float:left">
+                                        <img src="./images/longmaojf.gif" style="max-width:44px;max-height:55px;" title="勋章">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <div class="authMsg">
+                                    <!-- 发表时间 -->
+                                    <span class="postDateLine">发表于 <span title="2018-11-29 16:19:45">昨天&nbsp;20:19</span></span>
+                                    <!-- 浏览人数 -->
+                                    <span class="viewNum"> 714  </span>
+                                    <!-- 回复数 -->
+                                    <span class="replayNum">10</span>
+                                    <span class="pipe show">|</span>
+                                    <a style="font-size:12px;" href="javascript:;" rel="nofollow">只看该作者</a>
+                                    <span class="pipe show">|</span>
+                                    <a style="font-size:12px;" href="javascript:;" class="show">倒序浏览</a>
+                                    <!-- 发表楼层 -->
+                                    <a href="javascript:;" class="toptoolbar">板凳</a>
+                                </div>
+                                <!-- 帖子正文 -->
+                                <div class="content">
+                                    帖子正文
+                                    <ul>
+                                        <li>帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文帖子正文</li>
+                                    </ul>
+                                </div>
+                                <!-- 正文底部 -->
+                                <div class="footer">
+                                    <!-- 个人签名 -->
+                                    <div class="signature">
+                                        <div class="signature-title">
+                                            <span>个人签名</span>
+                                        </div>
+                                        <div class="signature-box">
+                                            what the fuck!
+                                        </div>
+                                    </div>
+                                    <!-- 回复  评分 -->
+                                    <div class="operateBox operatePost clearfix" style="border-bottom:none;margin-bottom: 15px;margin-top: 30px;">
+                                        <div class="z">
+                                            <a class="no-reply-thread operateBtn fastre" href="javascript:;">回复</a>
+                                            <!--评分-->
+                                            <a href="javascript:;" id="ak_rate" class="no-k_rate" >评分</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -83,6 +83,10 @@ $(document).ready(function () {
     $('#atarget').on('click', function () {
         $(this).toggleClass('atarget_1');
     });
+    $('.details-list-nav a').on('click', function () {
+        $(this).siblings('a').removeClass('fenlei-select');
+        $(this).addClass('fenlei-select');
+    });
     /* 讨论区 end */
   
 
