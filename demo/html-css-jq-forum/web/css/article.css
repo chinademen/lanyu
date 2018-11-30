@@ -73,7 +73,7 @@
     color: #fff;
     font-size: 12px;
     font-weight: 700;
-    padding: 0 25px;
+    padding: 0 20px;
     margin-top: 8px;
     cursor: pointer
 }
@@ -313,4 +313,23 @@
     background: url('../images/userIco.png') no-repeat 0px -208px;
     color: #333;
     text-decoration: none;
+}
+/* 立即回复框 */
+#replynow {
+    display: none;
+    position: fixed;
+    width: 700px;
+    height: 420px;
+    top: calc(50% - 210px);
+    left: calc(50% - 350px);
+    padding: 10px 20px;
+    background: #fff;
+    border: 5px solid #ddd;
+}
+#getWangEditor1, #getWangEditor2 {
+    height: 26px;
+    background: #3A9BFF;
+    color: #FFF;
+    padding: 6px 10px;
+    cursor: pointer;
 }
