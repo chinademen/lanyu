@@ -1,0 +1,64 @@
+/* 美色论坛 */
+.meise {
+    display: none;
+    background: #fff;
+}
+.meise-header {
+    padding: 10px 20px 0;
+}
+.meise-header .breadcrumb {
+    margin: 15px 0;
+}
+.meise-list {
+    position: relative;
+    box-sizing: border-box;
+    width: 1200px;
+    padding: 20px;
+    overflow: hidden;
+    /* 180 +  13 * 6 */
+}
+.meise-item {
+    position: relative;
+    box-sizing: border-box;
+    float: left;
+    width: 193px;
+    height: 326px;
+    padding: 6.5px;
+}
+.meise-item img {
+    display: inline-block;
+    width: 180px;
+    height: 280px;
+    cursor: pointer;
+}
+.meise-item .play {
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    top: 6.5px;
+    left: 6.5px;
+    width: 180px;
+    height: 280px;
+    background: rgba(0,0,0,.3) url('../images/play.png') center no-repeat;
+}
+.meise-item img:hover + .play {
+    display: block;
+}
+.meise-item .play:hover {
+    display: block;
+    cursor: pointer;
+}
+.meise-item h4 {
+    text-align: center;
+    width: 180px;
+    height: 46px;
+    line-height: 30px;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}
+.meise-item h4:hover {
+    color: #F9009B;
+}

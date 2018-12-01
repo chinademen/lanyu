@@ -148,12 +148,6 @@
     margin: 0 10px;
     border-top: 1px #ECECEC solid;
 }
-.shaixuan-inner select {
-    padding: 3px 18px 5px 4px;
-    border: 1px #CCCCCC solid;
-    color: #333333;
-    margin-right: 10px;
-}
 #atarget.atarget_1, .chked {
     background-position: 0 -37px;
 }

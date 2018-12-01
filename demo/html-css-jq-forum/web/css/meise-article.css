@@ -1,0 +1,19 @@
+/* 美色帖子 */
+.meise-article {
+    display: none;
+    background: #fff;
+}
+.meise-article-header {
+    padding: 10px 20px 0;
+}
+.meise-article-header .breadcrumb {
+    margin: 15px 0;
+}
+.meise-article-body {
+    padding: 20px 100px;
+}
+.meise-article-body img {
+    margin: 15px auto;
+    height: 100%;
+    weight: 100%;
+}

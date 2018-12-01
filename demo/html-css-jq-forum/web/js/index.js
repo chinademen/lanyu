@@ -1,45 +1,67 @@
 $(document).ready(function () {
+    // 初始化富文本
+    var E = window.wangEditor;
+
     //导航 登陆 用户信息 其他社区跳转区 广告栏 注册 论坛区 讨论区 帖子
     /* 导航 */
-    $('.main-nav li').on('click', function () {
-        $(this).siblings('li').removeClass('active');
-        $(this).addClass('active');
-    });
+    // $('.main-nav li').on('click', function () {
+    //     $(this).siblings('li').removeClass('active');
+    //     $(this).addClass('active');
+    // });
     /* 导航 end */
 
 
 
     /* 登陆 */
+    // 登陆
     $('.login-btn').on('click', function () {
-        $('.login').hide();
-        $('.register').hide();
+        $('.main-content>div').hide();
         $('.userinfo').show();
+        $('.other-community').show();
         $('.gg-box').show();
         $('.forum').show();
     });
 
-    $('.logout').on('click', function () {
+    // 注册
+    $('.register-btn').on('click', function () {
+        $('.main-content>div').hide();
         $('.login').show();
-        $('.userinfo').hide();
+        $('.other-community').show();
+        $('.register').show();  
     });
-    // 登录 end
+    /* 登录 end */
 
 
 
     /* 用户信息 */
+    // 进入个人中心页
+    $('#go-personal-center').on('click', function () {
+        $('.main-content>div').hide();
+        $('.userinfo').show();
+        $('.other-community').show();
+        $('.personal-center').show();
+    });
 
+    // 退出
+    $('.logout').on('click', function () {
+        $('.main-content>div').hide();
+        $('.login').show();
+        $('.other-community').show();
+        $('.gg-box').show();
+        $('.forum').show();
+    });
     /* 用户信息 end */
 
 
 
     /* 其他社区跳转栏 */
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 6,
-        paginationClickable: true,
-        spaceBetween: 30,
-        freeMode: true
-    });
+    // var swiper = new Swiper('.swiper-container', {
+    //     pagination: '.swiper-pagination',
+    //     slidesPerView: 6,
+    //     paginationClickable: true,
+    //     spaceBetween: 30,
+    //     freeMode: true
+    // });
     /* 其他社区跳转栏 end */
 
 
@@ -51,18 +73,22 @@ $(document).ready(function () {
 
 
     /* 注册 */
-    $('.register-btn').on('click', function () {
-        $('.register').show();
-        $('.gg-box').hide();
-        $('.forum').hide();
-        $('.forum-details').hide();
-        $('.article').hide();
-    });
+
     /* 注册 end */
 
 
 
     /* 论坛区 */
+    // 展开/收起
+    $('.onOff').on('click', function () {
+        var $imgName = $(this).find('img').attr('src');
+        if ($imgName.indexOf('no') === -1) {
+            $(this).find('img').attr('src', './images/collapsed_yes.gif');
+        } else {
+            $(this).find('img').attr('src', './images/collapsed_no.gif');
+        }
+        $(this).siblings('.forum-list').toggle();
+    });
 
     /* 论坛区 end */
 
@@ -91,13 +117,35 @@ $(document).ready(function () {
   
 
 
+    /* 美色论坛 */
+    laypage({
+        cont: 'pagination2', //容器。值支持id名、原生dom对象，jquery对象,
+        pages: 100, //总页数
+        skip: true, //是否开启跳页
+        // skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
+        skin: '#AF0000',
+        // skin: 'molv',
+        // skin: '#393A3A',
+        groups: 7 //连续显示分页数
+    });
+    /* 美色论坛 end */ 
+
+
     /* 帖子 */
     // 立即回复
     $('.return-info').on('click', function () {
         $('#replynow').show();
     });
-    // 富文本
-    var E = window.wangEditor;
+    var editor2 = new E('#wangEditor2');
+    editor2.customConfig.pasteFilterStyle = false;
+    editor2.create();
+    // 点击立即回复获取富文本内容, 发表回复
+    $('#getWangEditor2').on('click', function () {
+        var editHtml2 = editor2.txt.html();
+        $('#replynow').hide();
+    });
+
+    // 回复
     var editor1 = new E('#wangEditor1');
     // 自定义菜单配置
     editor1.customConfig.menus = [
@@ -141,41 +189,74 @@ $(document).ready(function () {
     // 点击发表回复获取富文本内容
     $('#getWangEditor1').on('click', function () {
         var editHtml = editor1.txt.html();
-        console.log(editHtml);
     });
 
-    // 立即回复
-    var editor2 = new E('#wangEditor2');
-    editor2.customConfig.pasteFilterStyle = false;
-    editor2.create();
-    // 点击立即回复获取富文本内容, 发表回复
-    $('#getWangEditor2').on('click', function () {
-        var editHtml2 = editor2.txt.html();
-        console.log(editHtml2);
-        $('#replynow').hide();
-    });
+    
     /* 帖子 end */
 
 
 
-    
-
-    // 展开/收起
-    $('.onOff').on('click', function () {
-        var imgName = $(this).find('img').attr('src');
-        if (imgName.indexOf('no') === -1) {
-            $(this).find('img').attr('src', './images/collapsed_yes.gif');
-        } else {
-            $(this).find('img').attr('src', './images/collapsed_no.gif');
-        }
-        $(this).siblings('.forum-list').toggle();
+    /* 美色帖子 */
+    $('.meise-item>img').on('click', function () {
+        $('.meise-article').show();
     });
+    $('.meise-item>span').on('click', function () {
+        $('.meise-article').show();
+    });
+    $('.meise-item>h4').on('click', function () {
+        $('.meise-article').show();
+    });
+    /* 美色帖子 end */ 
+
+
+
+    /* 发表新帖子 */
+    // 标题输入监听
+    $("#add-newarticle-title").bind("input propertychange change", function(event){
+        var $len = $(this).val().length;
+        var $waring = $('#newarticle-title-waring');
+        var $cite = $('#newarticle-title-waring cite');
+        // 还能输入 80 - len 个字符
+        $cite.html(80 - $len);
+        if ($len > 70) {
+            $waring.css({'color': 'red'});
+        } else {
+            $waring.css({'color': '#000'});
+        }
+    });
+    var editor3 = new E('#wangEditor3');
+    editor3.customConfig.pasteFilterStyle = false;
+    editor3.create();
+    // 点击立即回复获取富文本内容, 发表新贴
+    $('#getWangEditor3').on('click', function () {
+        var editHtml3 = editor3.txt.html();
+    });
+    /* 发表新帖子 end */
+
+
+
+    /* 个人中心 */
+    $('.tb li').on('click', function () {
+        // 选项卡头部切换
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+        // 选项卡内容切换
+        var $index = $(this).index();
+        var $tab = $('.bm>.bm_c').eq($index); 
+        $tab.siblings().hide();
+        $tab.show();
+    });
+    /* 个人中心 end */ 
+
+   
 
     // 公共方法
     // 跳转到论坛区
     $('.to-forum').on('click', function () {
-        $('.article').hide();
-        $('.forum-details').hide();
+        $('.main-content>div').hide();
+        $('.userinfo').show();
+        $('.other-community').show();
+        $('.gg-box').show();
         $('.forum').show();
     });
 
@@ -210,6 +291,17 @@ $(document).ready(function () {
         $('.forum-details .icon img').attr('src', imgSrc);
     });
 
+    // 跳转到美色论坛列表
+    $('.to-meise').on('click', function () {
+        $('.register').hide();
+        $('.forum').hide();
+        $('.forum-details').hide();
+        $('.article').hide();
+        $('.new-article').hide();
+        $('.personal-center').hide();
+        $('.meise').show();
+    });
+
     // 跳转到帖子
     $('.to-article').on('click', function () {
         $('.forum').hide();
@@ -217,7 +309,12 @@ $(document).ready(function () {
         $('.article').show();
     });
 
+    // 发表新帖子
+    $('.add-article-btn').on('click', function () {
+        $('.forum').hide();
+        $('.forum-details').hide();
+        $('.article').hide();
+        $('.new-article').show();
+    });
     
-
-
 })

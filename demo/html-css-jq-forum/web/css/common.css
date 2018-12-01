@@ -44,6 +44,13 @@ img {
     display: block;
 }
 
+select {
+    padding: 3px 18px 5px 4px;
+    border: 1px #CCCCCC solid;
+    color: #333333;
+    margin-right: 10px;
+}
+
 /* 清浮动 */
 .clearfix {
     zoom: 1;

@@ -1,0 +1,58 @@
+/* 发表新帖子 */
+.new-article {
+    display: none;
+    background: #fff;
+}
+.new-article-header {
+    padding: 10px 20px 0;
+}
+.new-article-header .breadcrumb {
+    margin: 15px 0;
+}
+.new-article-body {
+    /* padding: 10px 20px 0; */
+}
+.post-article {
+    position: relative;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+.article-title {
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.article-title span {
+    width: 60px;
+    display: inline-block;
+    border-bottom: 1px #e9e4e4 solid;
+    font-weight: bold;
+    color: #333;
+    padding: 6px 15px;
+    background-color: #e9e4e4;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
+.article-box {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.article-box input {
+    margin-top: -4px;
+    margin-bottom: 1px;
+    vertical-align: middle;
+}
+#add-newarticle-title {
+    width: 300px;
+    padding: 3px 18px 5.8px 6px;
+    border: 1px #CCCCCC solid;
+    color: #333333;
+    margin-right: 10px;
+}
+#getWangEditor3 {
+    height: 26px;
+    background: #3A9BFF;
+    color: #FFF;
+    padding: 6px 10px;
+    cursor: pointer;
+}
