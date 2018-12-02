@@ -1,27 +1,72 @@
-body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, input, form, a, p, textarea {
-    margin: 0;
-    padding: 0;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+* { 
+    word-wrap: break-word; 
+    margin:0; 
+    padding:0; 
 }
-
-ol, ul, li {
-    list-style: none;
+ul, ol, li, span, p, form, h1, h2, h3, h4, h5, h6, dl, dt, dd { 
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+    z-index: inherit; 
 }
-
-a {
-    text-decoration: none;
-    display: block;
+img, a img { 
+    border:0; 
+    margin:0; 
+    padding:0; 
 }
-
-img {
-    border: none;
-    display: block;
+ul, ol, li { 
+    list-style:none; 
 }
-
+html, body { 
+    height:100%; 
+    font:14px/1.5 STHeiti, Microsoft YaHei, Helvetica, sans-serif; 
+    color:#4C4C4C; 
+}
+input, select, textarea, button { 
+    font:12px/1.5 STHeiti, Microsoft YaHei, Helvetica, sans-serif; 
+}
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc { 
+    margin: 0; 
+    padding: 0; 
+}
+body { 
+    max-width: 640px; 
+    margin: 0 auto; 
+    min-height: 100%; 
+}
+table { 
+    empty-cells: show; 
+    border-collapse: collapse; 
+}
+caption, th { 
+    text-align: left; 
+    font-weight: 400; 
+}
+ul li, .xl li { 
+    list-style: none; 
+}
+h1, h2, h3, h4, h5, h6 { 
+    font-size: 1em; 
+}
+em, cite, i { 
+    font-style: normal; 
+}
+a img { 
+    border: none; 
+}
+a:link, a:visited, a:hover { 
+    text-decoration: none; 
+    color: #222; 
+}
+label { 
+    cursor: pointer; 
+}
+.bg { 
+    background: #F5F5F5; 
+}
 .clearfloat {
     zoom: 1;
 }
-
 .clearfloat {
     display: block;
     clear: both;
@@ -29,3 +74,4 @@ img {
     visibility: hidden;
     height: 0;
 }
+.iconfont { font-family: "iconfont" !important; font-size: 16px; font-style: normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale; }
