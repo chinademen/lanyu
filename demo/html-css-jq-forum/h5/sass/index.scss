@@ -1,0 +1,5 @@
+// iphone6基准值
+@function pxToRem($px) {
+	$rem : 37.5px;
+	@return ($px / $rem) + rem; 
+}
