@@ -3,3 +3,57 @@
 	$rem : 37.5px;
 	@return ($px / $rem) + rem; 
 }
+
+// 一级导航
+nav {
+    position: fixed;
+    background: #F6F5F3;
+    box-shadow: 0 1px 1px #D7D7D7;
+    overflow: hidden;
+    top: 40px;
+    height: 40px;
+    z-index: 99;
+    width: 100%;
+    color: #333;
+    font-size: 13px;
+    span {
+        float: left;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        width: 16.6667%;
+    }
+    .active {
+        color: #F85857;
+    }
+}
+
+// 二级导航
+.nav2 {
+    position: fixed;
+    top: 80px;
+    z-index: 99;
+    height: 40px;
+    background: #fff;
+    .swiper-wrapper {
+        position: relative;
+        top: 10px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        color: #fff;
+        .swiper-slide {
+            background: #D33D3E;
+            text-align: center;
+        }
+        .active {
+            background: #D7D7D7 !important;
+            color: #D33D3E !important;
+        }
+    }
+    .swiper-pagination {
+        height: 10px;
+        width: 100%;
+    }
+}

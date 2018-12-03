@@ -7,10 +7,11 @@
     <title>xx社区</title>
     <link rel="shortcut icon" href="./images/banquan.png">
     <!-- 滑动门插件 -->
-    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <!-- 分页插件 -->
     <link rel="stylesheet" href="./css/laypage.css">
     <link rel="stylesheet" href="./css/iconfont/style.css">
+    <!-- 公共样式 -->
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/nav.css">
@@ -21,7 +22,7 @@
 <body class="bg">
 
     <!-- 头部 -->
-    <div class="bz-mobile">
+    <header class="bz-mobile">
         <div class="bz-mobile-left-guide">
             <div class="bz-mobile-left-logo">
                 <img src="./images/logo.png" height="30" max-width="100%">
@@ -37,71 +38,49 @@
                 </form>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- 导航 -->
-    <div class="banzhuan-top"></div>
-    <!-- 滚动导航 -->
-    <div id="top_nav">
-        <div class="top_menu_bar">
-            <div class="top_menu_more">
-                <a class="icon-guanzhu bzup"></a>
-            </div>
-            <div class="top_menu top_menu_list" id="navs_scrolls" style="overflow: hidden;">
-                <div class="nav_list" style="width: 820px; transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
-                    <ul> 
-                        <li><a href="javascript:;">彩界新闻</a></li>
-                        <li><a href="javascript:;">彩界问答</a></li>
-                        <li><a href="javascript:;">美色论坛</a></li>
-                        <li><a href="javascript:;">经验论坛</a></li>
-                        <li><a href="javascript:;">担保合作</a></li>
-                        <li><a href="javascript:;">信誉平台</a></li>
-                        <li><a href="javascript:;">信誉代理</a></li>
-                        <li><a href="javascript:;">合作伙伴</a></li>
-                        <li><a href="javascript:;">周边业务</a></li>
-                        <li><a href="javascript:;">新开平台</a></li>
-                        <li><a href="javascript:;">招聘求职</a></li>
-                        <li style="width: 28px;"></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 展开导航 -->
-    <div class="bzup-menu">
-        <div class="bgDiv"></div>
-        <div class="upNav">
-            <div class="upNav-cancel">
-                <a>切换频道</a>
-            </div>
-            <div class="upNav-list">
-                <li><a href="javascript:;">综合讨论区</a></li>
-                <li><a href="javascript:;">综合往期好贴</a></li>
-                <li><a href="javascript:;">热门活动</a></li>
-                <li><a href="javascript:;">本土新闻</a></li>
-                <li><a href="javascript:;">菲国攻略</a></li>
-                <li><a href="javascript:;">求助问答</a></li>
-                <li><a href="javascript:;">二手交易</a></li>
-                <li><a href="javascript:;">房屋交易</a></li>
-                <li><a href="javascript:;">声色犬马</a></li>
-                <li><a href="javascript:;">会员秀</a></li>
-            </div>
-        </div>
-    </div>
+    <!-- 一级导航 -->
+    <nav class="nav1">
+        <span class="active">曝光论坛</span>
+        <span>发布曝光</span>
+        <span>本站介绍</span>
+        <span>广告合作</span>
+        <span>挣点零钱</span>
+        <span>留下足迹</span>
+    </nav>
 
-    <div style=" display: block; width: 100%; height: 30px;"></div>
+    <!-- 二级导航 -->
+    <div class="nav2 swiper-container">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide">彩界新闻</li>
+            <li class="swiper-slide">彩界问答</li>
+            <li class="swiper-slide">美色论坛</li>
+            <li class="swiper-slide">经验论坛</li>
+            <li class="swiper-slide">担保合作</li>
+            <li class="swiper-slide">信誉平台</li>
+            <li class="swiper-slide">信誉代理</li>
+            <li class="swiper-slide">合作伙伴</li>
+            <li class="swiper-slide">周边业务</li>
+            <li class="swiper-slide">新开平台</li>
+            <li class="swiper-slide">招聘求职</li>
+        </ul>
+        <div class="swiper-pagination"></div>
+    </div>  
+
+
 
     <!-- 遮罩 -->
-    <div id="mask" style="display: none;"></div>
+    <!-- <div id="mask" style="display: none;"></div> -->
     
     <!-- 底部信息 -->
-    <div class="footer">
+    <!-- <div class="footer">
         <a href="javascript:;">© xx社区</a>
     </div>
-    <div class="banzhuan-bottom"></div>
+    <div class="banzhuan-bottom"></div> -->
 
     <!-- 底部导航 -->
-    <div id="footbar">
+    <footer id="footbar">
         <div class="fbc">
             <ul>
                 <li class="a"><a href="javascript:;" class="icon-home3"><span>首页</span></a></li>
@@ -111,7 +90,7 @@
                 <li><a href="javascript:;" class="icon-user">登录</a></li>
             </ul>
         </div>
-    </div>
+    </footer>
 
 
     <script src="./js/jquery-1.83.min.js"></script>

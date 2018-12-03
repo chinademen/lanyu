@@ -1,3 +1,24 @@
+$(document).ready(function () {
+    // 一级导航
+    $('.nav1>span').on('click',function () {
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+    });
+
+    // 二级导航
+    var swiper = new Swiper('.nav2', {
+        pagination: {
+            el: '.swiper-pagination',
+            type : 'progressbar'
+        },
+        slidesPerView: 5,
+        paginationClickable: true,
+        spaceBetween: 5,
+        freeMode: true
+    });
+
+});
+
 // $(document).ready(function () {
 //     // 初始化富文本
 //     var E = window.wangEditor;
