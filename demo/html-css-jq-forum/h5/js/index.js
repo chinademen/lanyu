@@ -17,6 +17,129 @@ $(document).ready(function () {
         freeMode: true
     });
 
+    // 底部导航
+    $('#footbar li').on('click', function () {
+        $(this).siblings().removeClass('a');
+        $(this).addClass('a');
+        var $index = $(this).index();
+        // 切换页面
+        $('.hash-page').hide();
+        $('.hash-page').eq($index).show();
+        // 回到顶部
+        if ($('html').scrollTop()) {
+            $('html').animate({ scrollTop: 0 }, 1000);
+            return false;
+        }
+        $('body').animate({ scrollTop: 0 }, 1000);
+    });
+
+    // 热帖导航
+    $('#thread_types>li').on('click', function () {
+        $(this).siblings().removeClass('a');
+        $(this).addClass('a');
+        // 没有帖子的时候显示
+        if ($(this).index() === 3) {
+            $('#threadlist').find('tbody').hide();
+            $('#threadlist').find('tbody:last-child').show();
+        } else {
+            $('#threadlist').find('tbody').show();
+            $('#threadlist').find('tbody:last-child').hide();
+        }
+    });
+    // 选择页数
+    $('#hotpage .dumppage').on('change', function () {
+        var page = $(this).children('option:selected').val();
+        $('#hotpage .currentPage').text('第' + page + '页');
+    });
+    // 上一页
+    $('#hotpage .prevPage').on('click', function () {
+        var currentPage = $('#hotpage .dumppage').children('option:selected').val();
+        if (currentPage > 1) {
+            var page = (currentPage - 0 - 1);
+            $('#hotpage .dumppage').find("option[value = '" + page + "']").attr("selected","selected");
+            $('#hotpage .currentPage').text('第' + page + '页');
+        }
+    });
+    // 下一页
+    $('#hotpage .nextPage').on('click', function () {
+        var currentPage = $('#hotpage .dumppage').children('option:selected').val();
+        var totalPage = $('#hotpage .dumppage').children('option').length;
+        if (currentPage < totalPage) {
+            var page = parseInt(currentPage) + 1;
+            $('#hotpage .dumppage').find("option[value = '" + page + "']").attr("selected","selected");
+            $('#hotpage .currentPage').text('第' + page + '页');
+        }
+    });
+
+
+
+    // 论坛
+    $('.subforumshow .o').on('click', function () {
+        var $em = $(this).children('em');
+        if ($em.hasClass('icon-on')) {
+            $em.removeClass('icon-on');
+            $em.addClass('icon-off');
+        } else {
+            $em.removeClass('icon-off');
+            $em.addClass('icon-on');
+        }
+    });
+
+
+
+    // 搜索导航
+    // 选择页数
+    $('#searchpage .dumppage').on('change', function () {
+        var page = $(this).children('option:selected').val();
+        $('#searchpage .currentPage').text('第' + page + '页');
+    });
+    // 上一页
+    $('#searchpage .prevPage').on('click', function () {
+        var currentPage = $('#searchpage .dumppage').children('option:selected').val();
+        if (currentPage > 1) {
+            var page = (currentPage - 0 - 1);
+            $('#searchpage .dumppage').find("option[value = '" + page + "']").attr("selected","selected");
+            $('#searchpage .currentPage').text('第' + page + '页');
+        }
+    });
+    // 下一页
+    $('#searchpage .nextPage').on('click', function () {
+        var currentPage = $('#searchpage .dumppage').children('option:selected').val();
+        var totalPage = $('#searchpage .dumppage').children('option').length;
+        if (currentPage < totalPage) {
+            var page = parseInt(currentPage) + 1;
+            $('#searchpage .dumppage').find("option[value = '" + page + "']").attr("selected","selected");
+            $('#searchpage .currentPage').text('第' + page + '页');
+        }
+    });
+
+
+
+    // 我的 .myinfo-item
+    $('.myinfo_list li').on('click', function () {
+        var $index = $(this).index();
+        $('.myinfo-item').siblings().hide();
+        $('.myinfo-item').eq($index).show();
+        $('.user_avatar').show();
+        // 头部导航显示
+        $('.user_avatar_h').show();
+    });
+    // 返回我的资料 主页
+    $('.return-userinfo').on('click', function () {
+        $('.user_avatar').hide();
+        $('.myinfo-item').hide();
+        $('.user_avatar').show();
+        $('.myinfo_list').show();
+    });
+    // 返回首页
+    $('.return-homepage').on('click', function () {
+        // 底部导航
+        $('#footbar li').removeClass('a');
+        $('#footbar li').eq(0).addClass('a');
+        // 切换页面
+        $('.hash-page').hide();
+        $('.hash-page').eq(0).show();
+    });
 });
 
 // $(document).ready(function () {

@@ -21,69 +21,747 @@
 </head>
 <body class="bg">
 
-    <!-- 头部 -->
-    <header class="bz-mobile">
-        <div class="bz-mobile-left-guide">
-            <div class="bz-mobile-left-logo">
-                <img src="./images/logo.png" height="30" max-width="100%">
+    <!-- 1. 首页 -->
+    <div id="homepage" class="hash-page">
+        <!-- 头部 -->
+        <header class="bz-mobile">
+            <div class="bz-mobile-left-guide">
+                <div class="bz-mobile-left-logo">
+                    <img src="./images/logo.png" />
+                </div>
+            </div>
+            <div class="bz-mobile-scbar">
+                <div class="icon-search">
+                    <form id="hdform" class="hdform" method="post" autocomplete="off">
+                        <input type="hidden" name="formhash" value="d4e86a6c">
+                        <input value="" class="input" name="srchtxt" id="hdform_srchtxt" placeholder=" 搜你想搜的 ">
+                        <input type="hidden" name="searchsubmit" value="yes">
+                        <input type="submit" value="搜索" class="hdform_submit" id="hdform_submit" style="display: block;">
+                    </form>
+                </div>
+            </div>
+        </header>
+        <div class="header" style="height: 40px;"></div>
+
+        <!-- 一级导航 -->
+        <nav class="nav1">
+            <span class="active">曝光论坛</span>
+            <span>发布曝光</span>
+            <span>本站介绍</span>
+            <span>广告合作</span>
+            <span>挣点零钱</span>
+            <span>留下足迹</span>
+        </nav>
+        <div class="nav1" style="height: 40px;"></div>
+
+        <!-- 二级导航 -->
+        <div class="nav2 swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">彩界新闻</li>
+                <li class="swiper-slide">彩界问答</li>
+                <li class="swiper-slide">美色论坛</li>
+                <li class="swiper-slide">经验论坛</li>
+                <li class="swiper-slide">担保合作</li>
+                <li class="swiper-slide">信誉平台</li>
+                <li class="swiper-slide">信誉代理</li>
+                <li class="swiper-slide">合作伙伴</li>
+                <li class="swiper-slide">周边业务</li>
+                <li class="swiper-slide">新开平台</li>
+                <li class="swiper-slide">招聘求职</li>
+            </ul>
+            <div class="swiper-pagination"></div>
+        </div> 
+        <div class="nav2-div" style="height: 40px;"></div>
+
+        <!-- banner置顶 -->
+        <div class="zd-banner pd10 bg-fff">
+            <section>
+                <div class="banner-header">
+                    <h3>
+                        <a href="javascript:;">置顶帖子标题</a>
+                    </h3>
+                </div>
+                <div class="banner-img">
+                    <a href="javascript:;">
+                        <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                    </a>
+                </div>
+                <div class="banner-footer">
+                    <p>
+                        <span class="banner-zhiding">置顶</span>
+                        <span>发帖人账号</span>
+                        <span class="comment">
+                            <a href="javascript:;">
+                                <em>666</em>评论</a>
+                        </span>
+                    </p>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- 帖子列表 -->
+        <div class="article-list mg10">
+            <!-- 热帖 -->
+            <div class="newbz-card pd10">
+                <div class="newbz-card-title">
+                    <div class="newbz-card-title-pic">
+                        <a href="javascript:;">
+                            <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                        </a>
+                    </div>
+                    <div class="newbz-card-title-a">
+                        <a href="javascript:;">帖子标题
+                            <p class="color-b">
+                                亲爱的博友们：
+                                    你们好！感谢你们一如既往对博牛社区的支持和鼓励，才给了我们继续
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="newbz-card-info clearfloat">
+                    <div class="newbz-card-info-name">
+                        <a href="javascript:;">amao</a>
+                            <span>2018-12-03</span>
+                        </div>
+                    <div class="newbz-card-info-view">
+                        <em class="y banner-hot">热</em>
+                        <em class="y color-c">666评论 </em>
+                    </div>
+                </div>
+            </div>
+            <!-- 热帖 -->
+            <div class="newbz-card pd10">
+                <div class="newbz-card-title">
+                    <div class="newbz-card-title-pic">
+                        <a href="javascript:;">
+                            <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                        </a>
+                    </div>
+                    <div class="newbz-card-title-a">
+                        <a href="javascript:;">帖子标题
+                            <p class="color-b">
+                                亲爱的博友们：
+                                    你们好！感谢你们一如既往对博牛社区的支持和鼓励，才给了我们继续
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="newbz-card-info clearfloat">
+                    <div class="newbz-card-info-name">
+                        <a href="javascript:;">amao</a>
+                            <span>2018-12-03</span>
+                        </div>
+                    <div class="newbz-card-info-view">
+                        <em class="y banner-hot">热</em>
+                        <em class="y color-c">666评论 </em>
+                    </div>
+                </div>
+            </div>
+            <!-- 热帖 -->
+            <div class="newbz-card pd10">
+                <div class="newbz-card-title">
+                    <div class="newbz-card-title-pic">
+                        <a href="javascript:;">
+                            <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                        </a>
+                    </div>
+                    <div class="newbz-card-title-a">
+                        <a href="javascript:;">帖子标题
+                            <p class="color-b">
+                                亲爱的博友们：
+                                    你们好！感谢你们一如既往对博牛社区的支持和鼓励，才给了我们继续
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="newbz-card-info clearfloat">
+                    <div class="newbz-card-info-name">
+                        <a href="javascript:;">amao</a>
+                            <span>2018-12-03</span>
+                        </div>
+                    <div class="newbz-card-info-view">
+                        <em class="y banner-hot">热</em>
+                        <em class="y color-c">666评论 </em>
+                    </div>
+                </div>
+            </div>
+            <!-- 热帖 -->
+            <div class="newbz-card pd10">
+                <div class="newbz-card-title">
+                    <div class="newbz-card-title-pic">
+                        <a href="javascript:;">
+                            <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                        </a>
+                    </div>
+                    <div class="newbz-card-title-a">
+                        <a href="javascript:;">帖子标题
+                            <p class="color-b">
+                                亲爱的博友们：
+                                    你们好！感谢你们一如既往对博牛社区的支持和鼓励，才给了我们继续
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="newbz-card-info clearfloat">
+                    <div class="newbz-card-info-name">
+                        <a href="javascript:;">amao</a>
+                            <span>2018-12-03</span>
+                        </div>
+                    <div class="newbz-card-info-view">
+                        <em class="y banner-hot">热</em>
+                        <em class="y color-c">666评论 </em>
+                    </div>
+                </div>
+            </div>
+            <!-- 热帖 -->
+            <div class="newbz-card pd10">
+                <div class="newbz-card-title">
+                    <div class="newbz-card-title-pic">
+                        <a href="javascript:;">
+                            <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                        </a>
+                    </div>
+                    <div class="newbz-card-title-a">
+                        <a href="javascript:;">帖子标题
+                            <p class="color-b">
+                                亲爱的博友们：
+                                    你们好！感谢你们一如既往对博牛社区的支持和鼓励，才给了我们继续
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="newbz-card-info clearfloat">
+                    <div class="newbz-card-info-name">
+                        <a href="javascript:;">amao</a>
+                            <span>2018-12-03</span>
+                        </div>
+                    <div class="newbz-card-info-view">
+                        <em class="y banner-hot">热</em>
+                        <em class="y color-c">666评论 </em>
+                    </div>
+                </div>
+            </div>
+            <!-- 热帖 -->
+            <div class="newbz-card pd10">
+                <div class="newbz-card-title">
+                    <div class="newbz-card-title-pic">
+                        <a href="javascript:;">
+                            <img src="./images/zhiding.jpg" style="display: inline; visibility: visible;">
+                        </a>
+                    </div>
+                    <div class="newbz-card-title-a">
+                        <a href="javascript:;">帖子标题
+                            <p class="color-b">
+                                亲爱的博友们：
+                                    你们好！感谢你们一如既往对博牛社区的支持和鼓励，才给了我们继续
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="newbz-card-info clearfloat">
+                    <div class="newbz-card-info-name">
+                        <a href="javascript:;">amao</a>
+                            <span>2018-12-03</span>
+                        </div>
+                    <div class="newbz-card-info-view">
+                        <em class="y banner-hot">热</em>
+                        <em class="y color-c">666评论 </em>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="bz-mobile-scbar">
-            <div class="icon-search">
-                <form id="hdform" class="hdform" method="post" autocomplete="off">
-                    <input type="hidden" name="formhash" value="d4e86a6c">
-                    <input value="" class="input" name="srchtxt" id="hdform_srchtxt" placeholder=" 搜你想搜的 ">
-                    <input type="hidden" name="searchsubmit" value="yes">
-                    <input type="submit" value="搜索" class="hdform_submit" id="hdform_submit" style="display: block;">
-                </form>
+    </div>
+    
+    <!-- 2. 热帖 -->
+    <div id="hotpage" class="hash-page" style="display: none;">
+        <div class="bz-guide-appl bg-fff">
+            <ul id="thread_types" class="bm clearfloat">
+                <li class="a"><a href="javascript:;">最新发表</a></li>
+                <li><a href="javascript:;">最新热门</a></li>
+                <li><a href="javascript:;">最新精华</a></li>
+                <li><a href="javascript:;">最新回复</a></li>
+            </ul>
+        </div>
+        <div class="header" style="height: 41.8px;"></div>
+        <div id="threadlist" class="pd10 bg-fff mg10 bzbt1 bzbb1">
+            <div class="guide-tiezi">
+                <table cellspacing="0" cellpadding="0">
+                    <!-- 帖子 -->
+                    <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                     <!-- 帖子 -->
+                     <tbody>
+                        <tr>
+                            <th class="common">
+                                <a href="javascript:;">微信推广引流之如何避免微信封号的情况发生？</a>
+                                <p class="color-c" style="line-height: 24px;">
+                                    <span style="font-size: 12px;">amao&nbsp;&nbsp;</span>
+                                    <span class="icon-eye color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;1&nbsp;&nbsp;</em>
+                                    </span>
+                                    <span class="icon-bubbles4 color-b" style="font-size: 12px;">
+                                        <em class="color-c">&nbsp;0</em>
+                                    </span>
+                                </p>
+                            </th>
+                        </tr>
+                    </tbody>
+                    <!-- 无帖子时显示 -->
+                    <tbody style="display: none;">
+                        <tr>
+                            <th colspan="5">
+                                <div class="guide-no">
+                                    <p class="icon-minus color-b" style="font-size: 50px;"></p>
+                                    <p class="color-b">暂时还没有帖子</p>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <div class="page">
+                <a href="javascript:;" class="grey prevPage">上一页</a>
+                <a id="select_a" style="margin:0 2px;padding:1px 0 0 0;border:0;display:inline-block;position:relative;width:100px;height:31px;line-height:27px;background:url(static//image/mobile/images/pic_select.png) no-repeat;text-align:left;text-indent:20px;">
+                    <select class="dumppage" style="position:absolute;left:0;top:0;height:27px;opacity:0;width:100px;">
+                        <option value="1" selected="">第1页</option>
+                        <option value="2">第2页</option>
+                        <option value="3">第3页</option>
+                        <option value="4">第4页</option>
+                        <option value="5">第5页</option>
+                        <option value="6">第6页</option>
+                    </select>
+                    <!-- 当前显示页码 -->
+                    <span class="currentPage">第1页</span>
+                </a>
+                <a href="javascript:;" class="nextPage">下一页</a>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- 一级导航 -->
-    <nav class="nav1">
-        <span class="active">曝光论坛</span>
-        <span>发布曝光</span>
-        <span>本站介绍</span>
-        <span>广告合作</span>
-        <span>挣点零钱</span>
-        <span>留下足迹</span>
-    </nav>
+    <!-- 3. 论坛 -->
+    <div id="forumpage" class="hash-page" style="display: none;">
+        <div id="chart" class="clearfloat bg-fff pd10 bzbb1">
+            <ul>
+                <li>
+                    <span>今日</span>
+                    <em style="color: #F74C31; font-weight: 700;">19161</em>
+                </li>
+                <li>
+                    <span>帖子</span>
+                    <em>8439684</em>
+                </li>
+                <li>
+                    <span>会员</span>
+                    <em>304644</em>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="header" style="height: 61px;"></div> -->
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">彩界新闻</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">彩界问答</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">美色论坛</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">经验论坛</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">担保合作</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">信誉平台</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">信誉代理</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">合作伙伴</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">周边业务</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">新开平台</a></h2>
+            </div>
+        </div>
+        <div class="mt10 clearfloat">
+            <div class="subforumshow bm_h clearfloat bzbt1">
+                <span class="o">
+                    <em class="icon-on color-red"></em>
+                </span>
+                <h2><a href="javascript:;">招聘求职</a></h2>
+            </div>
+        </div>
+    </div>
 
-    <!-- 二级导航 -->
-    <div class="nav2 swiper-container">
-        <ul class="swiper-wrapper">
-            <li class="swiper-slide">彩界新闻</li>
-            <li class="swiper-slide">彩界问答</li>
-            <li class="swiper-slide">美色论坛</li>
-            <li class="swiper-slide">经验论坛</li>
-            <li class="swiper-slide">担保合作</li>
-            <li class="swiper-slide">信誉平台</li>
-            <li class="swiper-slide">信誉代理</li>
-            <li class="swiper-slide">合作伙伴</li>
-            <li class="swiper-slide">周边业务</li>
-            <li class="swiper-slide">新开平台</li>
-            <li class="swiper-slide">招聘求职</li>
-        </ul>
-        <div class="swiper-pagination"></div>
-    </div>  
+    <!-- 4. 搜索 -->
+    <div id="searchpage" class="hash-page" style="display: none;">
+        <div class="bzsearch bzbb1">
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <input value="" autocomplete="off" class="input" name="srchtxt" id="scform_srchtxt" placeholder=" 搜你想搜的 ">
+                        </td>
+                        <td class="scbar_btn_td">
+                            <div><input type="hidden" name="searchsubmit" value="yes"><input type="submit" value="搜索" class="button2" id="scform_submit"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 搜索条件 -->
+        <div class="search-hot bg-fff pd10 mtb10 bzbt1 bzbb1">
+            <div id="scbar_hot">
+            <div class="tab-title"><a>热搜</a></div>
+                <div class="scbar-hot-title">
+                    <a href="javascript:;" class="xi2" sc="1">马尼拉</a>
+                    <a href="javascript:;" class="xi2" sc="1">菠菜</a>
+                    <a href="javascript:;" class="xi2" sc="1">银行卡</a>
+                    <a href="javascript:;" class="xi2" sc="1">999商场</a>
+                    <a href="javascript:;" class="xi2" sc="1">签证</a>
+                </div>
+            </div>
+        </div>
+        <!-- 搜索列表 -->
+        <div class="threadlist bg-fff">
+            <h2 class="thread_tit bzbt1">
+                结果: <em>找到 “<span>签证</span>” 相关内容 60 个</em>
+            </h2>
+            <ul>
+                <li>
+                    <a href="javascript:;">有没有在菲做<strong style="color: #ff0000;">签证</strong>的大佬</a>
+                </li>
+                <li>
+                    <a href="javascript:;">我们一直旅游<strong style="color: #ff0000;">签证</strong>真的可以吗?</a>
+                </li>
+                <li>
+                    <a href="javascript:;">有没有在菲做<strong style="color: #ff0000;">签证</strong>的大佬</a>
+                </li>
+                <li>
+                    <a href="javascript:;">我们一直旅游<strong style="color: #ff0000;">签证</strong>真的可以吗?</a>
+                </li>
+                <li>
+                    <a href="javascript:;">有没有在菲做<strong style="color: #ff0000;">签证</strong>的大佬</a>
+                </li>
+                <li>
+                    <a href="javascript:;">我们一直旅游<strong style="color: #ff0000;">签证</strong>真的可以吗?</a>
+                </li>
+                <li>
+                    <a href="javascript:;">有没有在菲做<strong style="color: #ff0000;">签证</strong>的大佬</a>
+                </li>
+                <li>
+                    <a href="javascript:;">我们一直旅游<strong style="color: #ff0000;">签证</strong>真的可以吗?</a>
+                </li>
+                <li>
+                    <a href="javascript:;">有没有在菲做<strong style="color: #ff0000;">签证</strong>的大佬</a>
+                </li>
+                <li>
+                    <a href="javascript:;">我们一直旅游<strong style="color: #ff0000;">签证</strong>真的可以吗?</a>
+                </li>
+            </ul>
+            <!-- 分页 -->
+            <div class="page">
+                <a href="javascript:;" class="grey prevPage">上一页</a>
+                <a id="select_a" style="margin:0 2px;padding:1px 0 0 0;border:0;display:inline-block;position:relative;width:100px;height:31px;line-height:27px;background:url(static//image/mobile/images/pic_select.png) no-repeat;text-align:left;text-indent:20px;">
+                    <select class="dumppage" style="position:absolute;left:0;top:0;height:27px;opacity:0;width:100px;">
+                        <option value="1" selected="">第1页</option>
+                        <option value="2">第2页</option>
+                        <option value="3">第3页</option>
+                        <option value="4">第4页</option>
+                        <option value="5">第5页</option>
+                        <option value="6">第6页</option>
+                    </select>
+                    <!-- 当前显示页码 -->
+                    <span class="currentPage">第1页</span>
+                </a>
+                <a href="javascript:;" class="nextPage">下一页</a>
+            </div>
+        </div>
+    </div>
 
-
+    <!-- 5. 我的 -->
+    <div id="mypage" class="hash-page" style="display: none;">
+        <!-- 我的资料回到上一页 / 回到主页 -->
+        <div class="user_avatar_h" style="display: none;">
+            <div class="user_avatar_h_l"><a href="javascript:;" class="icon-arrow-left return-userinfo"></a></div>
+            <h2></h2>
+            <div class="user_avatar_h_r"><a href="javascript:;" class="icon-home return-homepage"></a></div>
+        </div>
+        <div class="userinfo">
+            <!-- 我的资料头部 -->
+            <div class="user_avatar">
+                <div>
+                    <span>
+                        <img src="./images/noavatar_middle.gif" style="display: inline; visibility: visible;">
+                    </span>
+                </div>
+                <h2 class="name">amao</h2>
+                <p>Lv.0 LV0 未报道用户</p>
+            </div>
+            <!-- 我的资料主页 -->
+            <div class="myinfo_list clearfloat">
+                <ul>
+                    <li class="bzbt1">
+                        <a href="javascript:;" class="icon-profile">&nbsp;&nbsp;我的资料
+                            <span class="y icon-plus" style="line-height: 40px;"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="icon-soucang">&nbsp;&nbsp;我的收藏
+                            <span class="y icon-plus" style="line-height: 40px;"></span>
+                        </a>
+                    </li>	
+                    <li class="bzbt1" style="margin-top: 10px;">
+                        <a href="javascript:;" class="icon-bullhorn bzbb1">&nbsp;&nbsp;公告
+                            <span class="y icon-plus" style="line-height: 40px;"></span>
+                        </a>
+                    </li>	
+                    <li>
+                        <a href="javascript:;" class="icon-help">&nbsp;&nbsp;帮助
+                            <span class="y icon-plus" style="line-height: 40px;"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 我的资料 详情页 -->
+            <div class="myinfo-details myinfo-item" style="display: none;">
+                我的资料 详情页
+            </div>
+            <!-- 我的收藏 -->
+            <div class="myinfo-soucang myinfo-item" style="display: none;">
+                我的收藏
+            </div>
+            <!-- 公告 -->
+            <div class="myinfo-gonggao myinfo-item" style="display: none;">
+                公告
+            </div>  
+            <!-- 帮助 -->
+            <div class="myinfo-help myinfo-item" style="display: none;">
+                帮助
+            </div>
+        </div>
+    </div>
 
     <!-- 遮罩 -->
     <!-- <div id="mask" style="display: none;"></div> -->
     
     <!-- 底部信息 -->
-    <!-- <div class="footer">
+    <div class="footer">
         <a href="javascript:;">© xx社区</a>
     </div>
-    <div class="banzhuan-bottom"></div> -->
+    <div class="banzhuan-bottom"></div>
 
     <!-- 底部导航 -->
     <footer id="footbar">
         <div class="fbc">
             <ul>
-                <li class="a"><a href="javascript:;" class="icon-home3"><span>首页</span></a></li>
+                <li class="a"><a href="javascript:;" class="icon-home"><span>首页</span></a></li>
                 <li><a href="javascript:;" class="icon-hot"><span>热帖</span></a></li>            
                 <li><a href="javascript:;" class="icon-bubbles4">论坛</a></li>
                 <li><a href="javascript:;" class="icon-search">搜索</a></li>
