@@ -14,7 +14,7 @@
 .bz-mobile-left-logo img { max-width: 100%; }
 .bz-mobile-scbar { position: absolute; top: 0; left: 30%; right: 0; display: inline-block; height: 40px; line-height: 40px; vertical-align: top; }
 .bz-mobile-scbar div { height: 30px; line-height: 30px; display: block; margin: 5px 10px; padding: 0 5px; background: #fff; border-radius: 5px; color: #d8d8d8 !important; text-align: left; font-size: 14px; padding: 0 0 0 25px; box-sizing: border-box; }    
-.bz-mobile-scbar div.icon-search:before { margin-left: -20px; float: left; font-size: 18px; }
+.bz-mobile-scbar div.icon-search:before { margin-left: -20px; float: left; font-size: 18px; color: #d8dbde; }
 .bz-mobile-scbar .hdform { position: relative; float: left; height: 30px; width: 100%; overflow: hidden; }
 .bz-mobile-scbar .hdform .input { width: 100%; height: 30px; border: 0px; border-radius: 5px; }
 .bz-mobile-scbar .hdform .hdform_submit { position: absolute; top: 0; right: 0; height: 30px; background: none; width: 49px; margin-left: -50px; border-left: 1px solid #D8D8D8; border-right: 0; border-top: 0; border-bottom: 0; color: #999; }

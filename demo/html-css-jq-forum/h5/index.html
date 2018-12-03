@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>xx社区</title>
     <link rel="shortcut icon" href="./images/banquan.png">
-    <link rel="stylesheet" href="./css/iconfont/iconfont.css" type="text/css">
+    <!-- 滑动门插件 -->
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <!-- 分页插件 -->
+    <link rel="stylesheet" href="./css/laypage.css">
+    <link rel="stylesheet" href="./css/iconfont/style.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/footerNav.css">
-    <!-- <link rel="stylesheet" href="./css/index.css" type="text/css" media="all"> -->
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body class="bg">
 
@@ -24,7 +28,7 @@
             </div>
         </div>
         <div class="bz-mobile-scbar">
-            <div class="iconfont icon-search">
+            <div class="icon-search">
                 <form id="hdform" class="hdform" method="post" autocomplete="off">
                     <input type="hidden" name="formhash" value="d4e86a6c">
                     <input value="" class="input" name="srchtxt" id="hdform_srchtxt" placeholder=" 搜你想搜的 ">
@@ -41,7 +45,7 @@
     <div id="top_nav">
         <div class="top_menu_bar">
             <div class="top_menu_more">
-                <a class="iconfont icon-guanzhu bzup"></a>
+                <a class="icon-guanzhu bzup"></a>
             </div>
             <div class="top_menu top_menu_list" id="navs_scrolls" style="overflow: hidden;">
                 <div class="nav_list" style="width: 820px; transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
@@ -91,21 +95,30 @@
     <div id="mask" style="display: none;"></div>
     
     <!-- 底部信息 -->
-    <div class="footer"><a href="javascript:;">© xx社区</a></div>
+    <div class="footer">
+        <a href="javascript:;">© xx社区</a>
+    </div>
     <div class="banzhuan-bottom"></div>
 
     <!-- 底部导航 -->
     <div id="footbar">
         <div class="fbc">
             <ul>
-                <li class="a"><a href="javascript:;" class="iconfont icon-homefill"><span>首页</span></a></li>
-                <li><a href="javascript:;" class="iconfont icon-hot"><span>热帖</span></a></li>            
-                <li><a href="javascript:;" class="iconfont icon-mark">论坛</a></li>
-                <li><a href="javascript:;" class="iconfont icon-search1">搜索</a></li>
-                <li><a href="javascript:;" class="iconfont icon-people">登录</a></li>
+                <li class="a"><a href="javascript:;" class="icon-home3"><span>首页</span></a></li>
+                <li><a href="javascript:;" class="icon-hot"><span>热帖</span></a></li>            
+                <li><a href="javascript:;" class="icon-bubbles4">论坛</a></li>
+                <li><a href="javascript:;" class="icon-search">搜索</a></li>
+                <li><a href="javascript:;" class="icon-user">登录</a></li>
             </ul>
         </div>
     </div>
+
+
+    <script src="./js/jquery-1.83.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/laypage.js"></script>
+    <script src="./js/wangEditor.min.js"></script>
+    <script src="./js/index.js"></script>
 
 </body>
 </html>
