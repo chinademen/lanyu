@@ -120,12 +120,28 @@ $(document).ready(function () {
         var $index = $(this).index();
         $('.myinfo-item').siblings().hide();
         $('.myinfo-item').eq($index).show();
-        $('.user_avatar').show();
         // 头部导航显示
         $('.user_avatar_h').show();
+        // 我的资料
+        if ($index === 0) {
+            $('.user_avatar').show();
+            $('.user_avatar_h a').css({'color': '#fff'});
+        } else {
+            $('.user_avatar').hide();
+            $('.user_avatar_h a').css({'color': '#D33D3E'});
+        }
+        // 我的收藏
+        if ($index === 1) {
+            $('.user_avatar_h_l').css({'background-color': '#fff'});
+            $('.user_avatar_h_r').css({'background-color': '#fff'});
+        } else {
+            $('.user_avatar_h_l').css({'background-color': 'inherit'});
+            $('.user_avatar_h_r').css({'background-color': 'inherit'});
+        }
     });
     // 返回我的资料 主页
     $('.return-userinfo').on('click', function () {
+        $('.user_avatar_h').hide();
         $('.user_avatar').hide();
         $('.myinfo-item').hide();
         $('.user_avatar').show();
@@ -140,6 +156,12 @@ $(document).ready(function () {
         $('.hash-page').hide();
         $('.hash-page').eq(0).show();
     });
+    // 我的搜藏
+    $('#soucang-list li').on('click', function () {
+        var $index = $(this).index();
+        $(this).siblings().removeClass('a');
+        $('#soucang-list li').eq($index).addClass('a');
+    })
 });
 
 // $(document).ready(function () {

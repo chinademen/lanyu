@@ -186,4 +186,42 @@ nav {
 .myinfo_list li a { display:block; line-height:40px; text-align: left; font-size:16px; padding-left: 15px; }
 .myinfo_list li a:before { color: #999; }
 .myinfo_list li span { padding-right: 15px; color: #CBC7C7; font-size: 14px; }
+
+// 我的资料 详情页
+.user_box { border-radius: 0px; border: 0 solid #DDD; margin: 0; }
+.user_box li { background: #FFF; line-height: 38px; border-bottom: 1px solid rgba(0, 0, 0, 0.06); padding: 0 10px; color: #333; font-size:14px; }
+.user_box li:nth-child(1) { border-top: 1px solid rgba(0, 0, 0, 0.06); }
+.user_box li a { display: block; line-height: 40px; text-align: left; font-size: 16px; }
+.user_box li a:nth-child(2) { color: #808080; font-size: 14px; line-height: 20px; }
+.user_box li span { color: #808080; float: right; font-size: 14px; height: 40px; max-width: 70%; overflow: hidden; }
+.btn_exit { padding: 10px; margin: 10px 0 30px 0;}
+.btn_exit a { background: #D33D3E; height: 39px; line-height: 39px; display: block; overflow: hidden; margin: 0 auto; text-align: center; font-size: 14px; color: #FFFFFF; border-radius: 5px; }
+
+// 我的收藏
+.bz-header { width: 56%; height: 40px; position: fixed; top: 0; z-index: 100; background-color: #FFFFFF; border-bottom: 1px solid #EFEFEF; left: 22%; }
+.bz-header h2 { width: 100%; float: left; text-align: center; font-size: 16px; color: #4C4C4C; line-height: 40px; font-weight: 100; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.bz-header h2 li { width: 32%; float: left; text-align: center; border: 1px solid #D33D3E; height: 20px; line-height: 20px; margin-top: 8px; }
+.bz-header h2 li:first-child { margin-right: -1px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+.bz-header h2 li:nth-child(2) { margin-right: -1px; }
+.bz-header h2 li:nth-child(3) { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+.bz-header h2 li a { color: #D33D3E; font-size: 12px; font-weight: 700; }
+.bz-header h2 li.a { background: #D33D3E; }
+.bz-header h2 li.a a { color: #FFF; }
+.bz-header-left { width: 22%; float: left; height: 40px; line-height: 40px; }
+.bz-header-right { width: 22%; float: right; height: 40px; line-height: 40px; }
+
+// 帮助
+.bz-faq-appl { width: 98%; min-height: 28px; float: left; padding: 10px 0 1px 2%; overflow-y: hidden; overflow-x: scroll; margin-bottom: 2px; }
+.bz-faq-appl ul { white-space: nowrap; width: 98%; float: left; }
+.bz-faq-appl ul li { display: inline-block; text-align: center; margin-right: 5px; }
+.bz-faq-appl ul li a { border-radius: 2px; padding: 5px 8px; margin-right: 1px; background-color: #FFF; float: left; color: #B3B3B3; }    
+.bz-faq-appl ul li.a a { color: #060606; }
+.faqpx {
+    -webkit-appearance: none;
+    border: 1px solid #EFEFEF;
+    padding: 2px 4px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+}
 /* 我的 end */
