@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    // 返回主页
+    $('.return-homepage').on('click', function () {
+        location.href = 'index.html'
+    });
+    
     // 选择页数
     $('.dumppage').on('change', function () {
        var page = $(this).children('option:selected').val();

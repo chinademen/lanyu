@@ -17,6 +17,22 @@ $(document).ready(function () {
         freeMode: true
     });
 
+    $('.swiper-slide').on('click', function () {
+        location.href = 'list.html'; 
+    });
+
+    $('.zd-banner section').on('click', function () {
+        location.href = 'article.html'; 
+    });
+
+    $('.newbz-card').on('click',function () {
+        location.href = 'article.html'; 
+    });
+
+    $('.guide-tiezi .common').on('click',function () {
+        location.href = 'article.html'; 
+    });
+
     // 底部导航
     $('#footbar li').on('click', function () {
         $(this).siblings().removeClass('a');

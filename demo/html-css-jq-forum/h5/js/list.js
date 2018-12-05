@@ -1,5 +1,25 @@
 $(document).ready(function () {
-     // 选择页数
+    // 返回主页
+    $('.return-homepage').on('click', function () {
+        location.href = 'index.html'
+    });
+
+    // 导航
+    $('.type a').on('click', function () {
+        $(this).siblings().removeClass('a');
+        $(this).addClass('a');
+    })
+    
+    // 跳转帖子
+    $('#threadlist li').on('click', function () {
+        location.href = 'article.html';
+    });
+    
+    $('.bzfdtld').on('click', function () {
+        location.href = 'article.html';
+    });
+
+    // 选择页数
      $('.dumppage').on('change', function () {
         var page = $(this).children('option:selected').val();
         $('.currentPage').text('第' + page + '页');
