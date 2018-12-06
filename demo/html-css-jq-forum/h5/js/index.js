@@ -129,7 +129,49 @@ $(document).ready(function () {
         }
     });
 
+    // 登录成功
+    $('#login_btn').on('click', function () {
+        $('#login').hide();
+        $('#myprofile').show();
+        returnUserInfo();
+    });
 
+    // 用户注册
+    $('#to_register').on('click', function () {
+        $('#login').hide();
+        $('#register').show();
+    });
+    
+    // 注册成功
+    $('#register').on('click', function () {
+        $('#register_success').show();
+        $('#mask').show();
+        var times1 = setTimeout(function () {
+            registerSuccess();
+        }, 3000);
+        $('#register_success a').on('click', function () {
+            clearTimeout(times1);
+            registerSuccess();
+        });
+    });
+    function registerSuccess() {
+        $('#register_success').hide();
+        $('#mask').hide();
+        $('#register').hide();
+        $('#login').show();
+    }
+
+    // 注册去登录页面
+    $('#to_login').on('click', function () {
+        $('#register').hide();
+        $('#login').show();
+    });
+
+    // 退出
+    $('#logout').on('click', function () {
+        $('#myprofile').hide();
+        $('#login').show();
+    });
 
     // 我的 .myinfo-item
     $('.myinfo_list li').on('click', function () {
@@ -157,12 +199,15 @@ $(document).ready(function () {
     });
     // 返回我的资料 主页
     $('.return-userinfo').on('click', function () {
+        returnUserInfo();
+    });
+    function returnUserInfo() {
         $('.user_avatar_h').hide();
         $('.user_avatar').hide();
         $('.myinfo-item').hide();
         $('.user_avatar').show();
         $('.myinfo_list').show();
-    });
+    }
     // 返回首页
     $('.return-homepage').on('click', function () {
         // 底部导航
