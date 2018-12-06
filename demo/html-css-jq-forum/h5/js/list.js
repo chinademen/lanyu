@@ -43,4 +43,9 @@ $(document).ready(function () {
             $('.currentPage').text('第' + page + '页');
         }
     });
+
+    // 发帖
+    $('.bz-return').on('click', function () {
+        
+    });
 });
