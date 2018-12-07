@@ -27,7 +27,7 @@
         <div class="post_from">
             <ul class="clearfloat">
                 <!-- 标题 -->
-                <li class="bl_line pd10">
+                <li class="bl_line pd10" style="text-align: center;">
                     <input type="text" class="px" id="needsubject" autocomplete="off" value="" name="subject" placeholder="标题">
                 </li>
                 <!-- 选择主题分类 -->
@@ -48,24 +48,149 @@
                     </select>
                 </li>
                 <!-- 内容 -->
-                <li class="bl_none area pd10">
+                <!-- <li class="bl_none area pd10">
                     <textarea class="pt" id="needmessage" autocomplete="off" name="message" cols="80" rows="2" placeholder="内容"></textarea>
-                </li>
+                </li> -->
                 <!-- 表情包 -->
-
+                <!-- <div class="faceBox">
+                    <div class="bzwrap" id="bzwrap"> -->
+                        <!-- 表情包选项卡tab -->
+                        <!-- <ul class="tabClick">
+                            <li class="active">
+                                <img src="./images/biaoqing/yellow/biggrin.gif" width="20" height="20">
+                            </li>
+                            <li>
+                                <img src="./images/biaoqing/blue/01.gif" width="20" height="20">
+                            </li>
+                            <li>
+                                <img src="./images/biaoqing/monkey/16.gif" width="20" height="20">
+                            </li>
+                        </ul> -->
+                        <!-- 分割线 -->
+                        <!-- <div class="lineBorder">
+                            <div class="lineDiv"></div>
+                        </div> -->
+                        <!-- 表情包选择 -->
+                        <!-- <div class="tabCon">
+                            <div class="tabBox" style="overflow: hidden; position: relative; width: 1125px;">
+                                <div class="tabList" style="width: 375px; float: left; padding: 0px; margin: 0px; vertical-align: top; display: table-cell;">
+                                    <ul>
+                                        <li><img src="./images/biaoqing/yellow/biggrin.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/call.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/curse.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/dizzy.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/funk.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/handshake.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/huffy.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/hug.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/kiss.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/lol.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/loveliness.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/mad.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/sad.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/shocked.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/shutup.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/shy.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/sleepy.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/smile.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/sweat.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/time.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/titter.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/tongue.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/yellow/victory.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                    </ul>
+                                </div>
+                                <div class="tabList" style="width: 375px; float: left; padding: 0px; margin: 0px; vertical-align: top; display: table-cell;">
+                                    <ul>
+                                        <li><img src="./images/biaoqing/blue/01.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/02.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/03.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/04.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/05.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/06.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/07.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/08.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/09.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/10.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/11.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/12.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/13.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/14.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/15.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/16.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/17.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/18.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/19.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/20.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/21.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/22.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/23.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/blue/24.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                    </ul>
+                                </div>
+                                <div class="tabList" style="width: 375px; float: left; padding: 0px; margin: 0px; vertical-align: top; display: table-cell;">
+                                    <ul>
+                                        <li><img src="./images/biaoqing/monkey/01.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/02.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/03.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/04.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/05.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/06.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/07.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/08.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/09.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/10.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/11.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/12.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/13.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/14.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/15.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                        <li><img src="./images/biaoqing/monkey/16.gif" width="20" height="20" style="display: inline; visibility: visible;"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
 
                 <!-- 工具栏 -->
-                <li style="padding:0px;">
+                <!-- <li style="padding:0px; overflow: hidden; position: relative;" id="photo">
                     <a href="javascript:;" class="y icon-zhaoxiang">
                         <input type="file" name="Filedata" id="filedata" style="width:30px;height:30px;font-size:30px;opacity:0;">
                         <button id="cp_postsubmit" class="btn_pn btn_pn_blue" disable="false" style="margin-top: 4px; margin-right: 10px;">
                             <span>发表</span>
                         </button>
                     </a>
-                    <a href="javascript:;" class="faceBtn y color-c" style="margin-right: 10px; line-height: 18px;">
+                    <a href="javascript:;" class="faceBtn y color-c" style="margin-right: 10px; line-height: 18px; margin-top: 9px;">
                         <em class="icon-biaoqingbao" style="font-size: 20px;"></em>
                     </a>
+                </li> -->
+
+                <!-- 富文本编辑器 -->
+                <li style="padding: 10px;">
+                    <!-- 回复框 -->
+                    <div id="wangEditor1"></div>
+                    <!-- 回帖 -->
+                    <div style="margin: 20px 0; text-align: center;">
+                        <span id="getWangEditor1">发表回复</span>
+                    </div>
                 </li>
+               
+                <!-- 上传的图片 -->
+                <!-- <ul id="imglist" class="post_imglist cl bl_line">
+                    <li>
+                        <span aid="1178436" class="del">
+                            <a href="javascript:;">
+                                <img src="static/image/mobile/images/icon_del.png">
+                            </a>
+                        </span>
+                        <span class="p_img">
+                            <a href="javascript:;">
+                            </a>
+                        </span>
+                        <input type="hidden" name="attachnew[1178436][description]">
+                    </li>
+                </ul> -->
             </ul>
         </div>
     </div>

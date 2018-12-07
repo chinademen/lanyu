@@ -78,3 +78,31 @@
 .btn_pn { width:44px; height:31px; overflow:hidden; border: 1px solid #FFF; line-height:31px; border-radius: 4px;}
 .btn_pn_grey { background: #EFEFEF; color:#FFF; float: right;}
 .btn_pn_blue { background: #F85857; color: #FFF; float: right; }
+
+/* 工具栏 */
+#photo .icon-zhaoxiang:before {
+    font-size: 22px;
+    top: 8px;
+    position: absolute;
+}
+
+/* 表情包 */
+.faceBox .tabClick { background: #FFF; overflow: hidden; }
+.faceBox .tabClick li { height:37px; line-height: 37px; width: 33.3%; float: left; text-align: center; padding: 0 !important; }
+.faceBox .tabClick li.active { color: #EBEBEB; transition: 0.1s; font-weight: bold; }
+.faceBox .tabCon { overflow: hidden; background: #FFF;}
+.faceBox .tabBox { position: relative}
+.faceBox .tabList {word-break: break-all; width:100%; float:left; line-height: 100px; text-align:center; color: #D3D3D3; font-size:36px; font-family: "Arial Black"; }
+.faceBox .lineBorder { border-bottom: 1px solid #EBEBEB; }
+.faceBox .lineDiv { height: 1px; width: 33.3%; background: #999; }
+.faceBox { display:none; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -webkit-box-sizing: border-box; border-radius: 2px; overflow: hidden; }
+.faceBox li { width: 20%; float: left; margin: 0; display: block; text-align: center; line-height: 40px; }	
+
+/* 富文本 */
+#getWangEditor1 {
+    height: 26px;
+    background: #3A9BFF;
+    color: #FFF;
+    padding: 6px 10px;
+    cursor: pointer;
+}
