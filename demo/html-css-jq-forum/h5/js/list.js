@@ -46,6 +46,6 @@ $(document).ready(function () {
 
     // 发帖
     $('.bz-return').on('click', function () {
-        
+        location.href = 'editor.html';
     });
 });

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    // 返回主页
+    $('.return-homepage').on('click', function () {
+        location.href = 'index.html'
+    });
+
     // 初始化富文本
     var E = window.wangEditor;
     // 回复
