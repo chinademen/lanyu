@@ -58,7 +58,7 @@
 }
 .icon-hot2:before {
   content: "\e909";
-  color: #d81e06;
+  color: #1890ff;
 }
 .icon-zhaoxiang:before {
   content: "\e90a";
@@ -93,7 +93,7 @@
 }
 .icon-zhiding:before {
   content: "\e912";
-  color: #d81e06;
+  color: #1890ff;
 }
 .icon-more:before {
   content: "\e913";
@@ -150,5 +150,5 @@
 .icon-on:before {
   content: "\e902";
   font-size: 30px;
-  color: #d81e06;
+  color: #1890ff;
 }

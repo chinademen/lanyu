@@ -1,0 +1,62 @@
+/* 头部 */
+.user_avatar_h {
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EFEFEF;
+}
+.user_avatar_h h2 {
+    width: 56%;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    color: #4C4C4C;
+    line-height: 40px;
+    font-weight: 100;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.user_avatar_h_l {
+    width: 22%;
+    float: left;
+    line-height: 40px;
+}
+.user_avatar_h_l a {
+    color: #4C4C4C;
+    line-height: 40px;
+    font-size: 16px;
+    margin-left: 10px;
+    float: left;
+}
+.user_avatar_h_l a em {
+    font-size: 12px;
+}
+.user_avatar_h_r {
+    width: 22%;
+    float: right;
+    line-height: 40px;
+}
+.user_avatar_h_r a {
+    color: #4C4C4C;
+    line-height: 40px;
+    font-size: 16px;
+    margin-right: 10px;
+    float: right;
+}
+.user_avatar_h_r a em, .user_avatar_h_r a em {
+    font-size: 12px;
+}
+/* 主体 */
+.list-box {
+    position: relative;
+}
+.flex-box {
+    width: 100%;
+    overflow: hidden;
+    padding: 6%;
+    box-sizing: border-box;
+}
