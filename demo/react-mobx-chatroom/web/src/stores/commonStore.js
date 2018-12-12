@@ -2,17 +2,13 @@ import { observable, action, runInAction } from 'mobx';
 import { getgg } from '@/services/common';
 
 class CommonStore {
-    @observable ggList = null; // 所有广告图片
+    @observable username = null; // 当前登录用户
 
-    // 获取所有广告图片
-    @action.bound
-    async getgg(params) {
-        const res = await getgg();
-        runInAction(() => {
-            if (!res) return;
-            this.ggList = res.data;
-        })
+    // 保存当前登录用户
+    @action saveUsername(username) {
+        this.username = username;
     }
+
 }
 
 const commonStore = new CommonStore();

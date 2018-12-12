@@ -1,9 +1,9 @@
 import commonStore from './commonStore';
-import websocketStore from './websocketStore';
+import socketioStore from './socketioStore';
 
 const stores = {
     commonStore,
-    websocketStore,
+    socketioStore,
 }
 
 export default stores;
