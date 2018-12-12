@@ -4,7 +4,7 @@ header {
     width: 100%;
     min-width: 1200px;
     height: 80px;
-    background: #28282d;
+    background: #0087fa;
     padding: 10px 0;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
@@ -49,8 +49,9 @@ header {
 }
 
 .header-nav li:hover >span {
-    transform: rotateX(90deg);
-    border-color:#E44E27;
+    /* transform: rotateX(90deg);
+    border-color:#E44E27; */
+    background: #4dabfc;
 }
 
 .header-nav li:hover >span:before {

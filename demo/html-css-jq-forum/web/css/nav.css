@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 .main-nav .active {
-    background: #48b6fb;
+    background: #0087fa;
     color: #fff;
 }
 .main-nav>li {
@@ -26,7 +26,7 @@
     cursor: pointer;
 }
 .main-nav>li>span:hover {
-    background: #48b6fb;
+    background: #0087fa;
     color: #fff;
 }
 .main-nav>li>span:hover + .main-menu {

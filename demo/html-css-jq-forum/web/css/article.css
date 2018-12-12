@@ -69,7 +69,7 @@
     text-decoration: none;
     line-height: 27px;
     height: 27px;
-    background-color: #28A1F0;
+    background-color: #0087fa;
     color: #fff;
     font-size: 12px;
     font-weight: 700;
@@ -291,8 +291,8 @@
 .signature-title span {
     width: 60px;
     display: inline-block;
-    border-bottom: 1px #48B6FB solid;
-    color: #48B6FB;
+    border-bottom: 1px #0087fa solid;
+    color: #0087fa;
 }
 .z {
     float: left;
