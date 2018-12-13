@@ -17,7 +17,7 @@
         .header {
             box-sizing: border-box;
             display: inline-block;
-            padding: 5px 30px;
+            padding: 5px 10px;
             width: 100%;
             height: 30px;
             border-bottom: 1px solid #ddd;
@@ -35,11 +35,27 @@
                 // 用户名
                 &:nth-of-type(2) {
                     box-sizing: border-box;
-                    width: 150px;
+                    width: 100px;
                     height: 20px;
                     line-height: 20px;
                     padding: 0 5px;
                 }
+                // 等级
+                &:nth-of-type(3) {
+                    box-sizing: border-box;
+                    width: 40px;
+                    height: 20px;
+                    line-height: 20px;
+                    font-size: 12px;
+                }
+            }
+            // 等级图标
+            img {
+                position: absolute;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
             }
         }
         // 聊天列表
@@ -76,12 +92,58 @@
             width: 100%;
             height: 30px;
             border-bottom: 1px solid #ddd;
+            // 退出
+            .logout {
+                position: absolute;
+                cursor: pointer;
+                right: 10px;
+            }
         }
         // 消息盒子
         .msg_box {
             box-sizing: border-box;
             height: 500px;
             border-bottom: 1px solid #ddd;
+            overflow: auto;
+            padding: 10px;
+            li {
+                display: block;
+                margin-bottom: 10px;
+                overflow: hidden;
+            }
+            .msg_item {
+                display: inline-block;
+                box-shadow: 0 0 2px 0px black;
+            }
+            img {
+                position: relative;
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+            // 别人发的消息
+            .msg_box_left {
+                
+            }
+            // 自己发的消息
+            .msg_box_right {
+                position: relative;
+                text-align: right;
+                .msg_item {
+                    position: relative;
+                    margin-right: 10px;
+                    top: 2px;
+                }
+                img {
+                    position: relative;
+                }
+            }
+            // 新用户加入
+            .msg_box_middle {
+                text-align: center;
+            }
         }
         // 发送框
         .send_msg {
@@ -100,6 +162,13 @@
                 top: 19px;
                 right: 30px;
             }
+        }
+        // 没有聊天室
+        .no-chatroom {
+            height: 570px;
+            line-height: 570px;
+            font-size: 22px;
+            text-align: center;
         }
     }
 }

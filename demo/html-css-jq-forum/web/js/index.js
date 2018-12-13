@@ -4,10 +4,10 @@ $(document).ready(function () {
 
     //导航 登陆 用户信息 其他社区跳转区 广告栏 注册 论坛区 讨论区 帖子
     /* 导航 */
-    // $('.main-nav li').on('click', function () {
-    //     $(this).siblings('li').removeClass('active');
-    //     $(this).addClass('active');
-    // });
+    $('.header-nav li').on('click', function () {
+        $(this).siblings('li').removeClass('active');
+        $(this).addClass('active');
+    });
     /* 导航 end */
 
 

@@ -3,10 +3,27 @@
     position: relative;
     width: 100%;
 }
-.gg-item {
+.gg-box-1 {
     position: relative;
     height: 80px;
-    background-color: #ddd;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+}
+.gg-box-2 {
+    position: relative;
+    display: inline-block;
+    float: left;
+    height: 80px;
+    width: 50%;
+}
+.gg-box-3 {
+    position: relative;
+    display: inline-block;
+    float: left;
+    height: 80px;
+    width: 33.3333%;
+}
+.gg-box-2 img, .gg-box-3 img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
 }

@@ -5,7 +5,7 @@
  * @param {[String]} storage    [sessionStorage || localStorage, 可选]
 */
 export function opStorage(table, settings, storage){
-    table = table || 'mobx-game';         // 默认表名 'mobx-game'
+    table = table || 'mobx-chat';         // 默认表名 'mobx-chat'
     storage = storage || localStorage;  // 默认使用localStorage
 
     if(!window.JSON || !window.JSON.parse) return;

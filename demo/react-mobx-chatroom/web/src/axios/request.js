@@ -14,7 +14,7 @@ message.config({
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    // baseURL: baseURL,
+    baseURL: baseURL,
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    

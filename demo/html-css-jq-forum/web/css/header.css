@@ -4,7 +4,7 @@ header {
     width: 100%;
     min-width: 1200px;
     height: 80px;
-    background: #0087fa;
+    background: #1E2023;
     padding: 10px 0;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
@@ -45,13 +45,14 @@ header {
 }
 
 .header-nav li.active {
-    color: #E44E27;
+    /* color: #E44E27; */
+    color: #0087fa;
 }
 
 .header-nav li:hover >span {
     /* transform: rotateX(90deg);
     border-color:#E44E27; */
-    background: #4dabfc;
+    background: #ffffff50;
 }
 
 .header-nav li:hover >span:before {

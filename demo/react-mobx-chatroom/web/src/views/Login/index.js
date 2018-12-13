@@ -11,19 +11,21 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            username: null, // 用户名
         };
     }
 
     // 监听并记录用户名
     handleChange = e => {
-        this.props.commonStore.saveUsername(e.target.value);
+        this.setState({
+            username: e.target.value,
+        });
     }
 
     // 登录
     login() {
-        // const { username } = this.props.commonStore;
-        // this.props.socketioStore.socketInit(username);
+        const { username } = this.state;
+        this.props.commonStore.login({ username });
         this.props.history.replace('/home');
     }
 
@@ -33,7 +35,8 @@ class Login extends Component {
             <div className="login_page clearfix">
                 <div className="username_box">
                     <Icon type="user-add" style={{ width: 20 }} />
-                    <input type="text" name="username" onChange={this.handleChange} placeholder="用户名"  />   
+                    <input type="text" name="username" onChange={this.handleChange} placeholder="用户名" />
+                     
                 </div>
                 <Button type="primary" className="login_btn" onClick={() => this.login()}>登录</Button>
             </div>

@@ -1,12 +1,51 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+// node模块
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const url = require('url');
+// 第三方模块
+const express = require('express');
+const socketio = require('socket.io');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+// const session = require('express-session');
+// const redisStore = require('connect-redis')(session);
 
-// app.get('/', function(req, res){
-// 	res.send('<h1>Welcome Realtime Server</h1>');
+// 创建redis对象
+// const sessionStore = new redisStore({ 
+//     host: 'localhost',
+//     port: 6379,
+//     db: 0,                  // 使用第0个数据库
+//     // pass: 123456,        // 数据库密码 默认无
+//     prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
+//     ttl: 10 * 60,           // 过期时间 单位：s
 // });
-//  app.use(express.static('./public'));//设置静态文件目录
+
+const app = express();
+
+// 设置session缓存到redis
+// app.use(session({           // session
+//     store: sessionStore,    // 设置session存储在redis中
+//     secret: 'session_id',
+//     // name: Math.floor(Math.random()*1000) + '_' + new Date().getTime() + '_' + Math.floor(Math.random()*10000), // sessionKey 为  (1-1000)_当前时间戳_(1_10000)
+//     resave: true,
+//     rolling: true,
+//     saveUninitialized: false,
+//     // cookie : {
+//     //     httpOnly: true,
+//     //     maxAge : 10 * 60 * 1000, // 设置 session 的有效时间，单位毫秒    该有效时间对存在redis和数据库中的session无效
+//     // },
+// }));
+
+// 输出日志
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'));
+app.use(morgan('common', { stream: accessLogStream }));
+
+// 兼容json数据
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 // 允许所有跨域请求
 app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -15,6 +54,23 @@ app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
+// 设置静态资源路径     访问例子: http://localhost:80/images/level/1.png
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 路由
+app.use('/', require('./router/index'));
+
+// 创建http服务
+const server = http.createServer(app);
+
+// 监听80端口
+server.listen(80, function () {
+	console.log('listen http://localhost:80/');
+});
+
+// 创建socketio对象
+const io = socketio(server);
 
 // 在线用户
 var onlineUsers = {};
@@ -66,8 +122,4 @@ io.on('connection', function(socket){
 		console.log(obj.username+'说：'+ obj.content);
 	});
   
-});
-
-http.listen(80, function(){
-	console.log('listening on *:80');
 });
