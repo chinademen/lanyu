@@ -7,6 +7,7 @@ export default class Msg extends Component {
         this.state = {
             msg: [], // 后台推送的消息队列
             // times: 3000, // 每条消息显示时间
+            timer: null, // 定时器
             max: 10, // 默认最大消息数
         };
     }
@@ -28,6 +29,7 @@ export default class Msg extends Component {
             }
             this.updateMsg(newMsg);
         }
+        this.crearMsg()
     }
 
     // 生成消息
@@ -55,6 +57,28 @@ export default class Msg extends Component {
         this.setState({
             msg: newMsg
         });
+    }
+
+    // 定时清除消息队列
+    crearMsg = () => {
+        const _this = this;
+        const { msg } = this.state;
+        // 如果有消息队列，设置定时器定时清除信息
+        if (msg.length > 0) {
+            this.setState({
+                timer: setTimeout(() => {
+                    // const {  } = _this.state;
+                    _this.setState({
+    
+                    })
+                }, 10000)
+            });
+        } else {
+            // 如果没有消息队列，清除定时器
+            this.setState({
+                timer: null
+            });
+        }
     }
 
     render() {
