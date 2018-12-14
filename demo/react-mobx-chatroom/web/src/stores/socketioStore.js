@@ -28,7 +28,7 @@ class SocketioStore {
             const { onlineCount, onlineUsers, user } = msg;
             this.onlineCount = onlineCount;
             this.onlineUsers = onlineUsers;
-            this.user = user;
+            this.user = user.username;
         });
     }
 
