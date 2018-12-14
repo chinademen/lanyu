@@ -76,6 +76,9 @@ const io = socketio(server);
 var onlineUsers = {};
 // 当前在线人数
 var onlineCount = 0;
+// 用户等级和logo
+var level = '1级小菜鸡';
+var levelLogo = 'http://localhost/images/level/1.png';
 
 io.on('connection', function(socket){
     console.log('新用户加入');
@@ -83,7 +86,7 @@ io.on('connection', function(socket){
 	// 监听新用户加入
 	socket.on('login', function(obj){
 		// 将新加入用户的唯一标识当作socket的名称，后面退出的时候会用到
-		socket.name = obj.username;
+		socket.name = obj.username;	
 		
 		// 检查在线列表，如果不在里面就加入
 		if(!onlineUsers.hasOwnProperty(obj.username)) {
@@ -111,15 +114,24 @@ io.on('connection', function(socket){
 			
 			// 向所有客户端广播用户退出
 			io.emit('logout', {onlineUsers: onlineUsers, onlineCount: onlineCount, user:obj});
-            console.log(obj.username+'退出了聊天室');
+            console.log(obj.username + '退出了聊天室');
 		}
 	});
 	
 	// 监听用户发布聊天内容
 	socket.on('chat message', function(obj){
+		// 设置用户的等级和logo
+		if (obj.username === 'amao') {
+			level = '17级创世神';
+			levelLogo = 'http://localhost/images/level/17.png'
+		}
+		obj.level = level;
+		obj.levelLogo = levelLogo;
+
 		// 向所有客户端广播发布的消息
 		io.emit('chat message', obj);
-		console.log(obj.username+'说：'+ obj.content);
+		console.log('发消息的用户消息: ', obj);
+		console.log(obj.username + '说：' + obj.content);
 	});
   
 });

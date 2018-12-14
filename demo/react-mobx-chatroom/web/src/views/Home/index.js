@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Icon, Button, message } from 'antd';
+import ChatRoom from '@/components/ChatRoom';
 import './index.less';
 
 message.config({
@@ -95,7 +96,6 @@ class Home extends Component {
         const { activeChat, waringInfo, msg } = this.state;
         const { username, level, levelLogo } = this.props.commonStore;
         const { onlineCount, onlineUsers, user, chatMsg } = this.props.socketioStore;
-        console.log(user);
 
         return (
             <div className="home_page clearfix">
@@ -122,25 +122,7 @@ class Home extends Component {
                     {activeChat || activeChat === 0 ?
                         <Fragment>
                             {/* 消息盒子 */}
-                            <ul className="msg_box clearfix">
-                                <li className="msg_box_left">
-                                    <img src={levelLogo} alt="头像" title={level} />
-                                    <span className="msg_item">111111111</span>
-                                </li>
-                                <li className="msg_box_right">
-                                    <img src={levelLogo} alt="头像" title={level} />
-                                    <span className="msg_item">2222222222</span>
-                                </li>
-                                <li className="msg_box_middle">用户 {user} 加入了聊天室</li>
-                                <li className="msg_box_left">
-                                    <img src={levelLogo} alt="头像" title={level} />
-                                    <span className="msg_item">111111111</span>
-                                </li>
-                                <li className="msg_box_right">
-                                    <img src={levelLogo} alt="头像" title={level} />
-                                    <span className="msg_item">22222222222222222222</span>
-                                </li>
-                            </ul>
+                            <ChatRoom chatMsg={chatMsg} user={user} />
                             {/* 发送框 */}
                             <div className="send_msg">
                                 <input type="area" onChange={this.handleChange} value={msg} />

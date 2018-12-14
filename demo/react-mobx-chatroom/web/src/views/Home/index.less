@@ -99,54 +99,6 @@
                 right: 10px;
             }
         }
-        // 消息盒子
-        .msg_box {
-            box-sizing: border-box;
-            height: 500px;
-            border-bottom: 1px solid #ddd;
-            overflow: auto;
-            padding: 10px;
-            li {
-                display: block;
-                margin-bottom: 10px;
-                overflow: hidden;
-            }
-            .msg_item {
-                display: inline-block;
-                // box-shadow: 0 0 2px 0px black;
-                background: #ddd;
-                padding: 0 10px;
-                margin: 0 10px;
-                line-height: 30px;
-                word-break: break-all;
-            }
-            img {
-                position: relative;
-                display: inline-block;
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-            }
-            // 别人发的消息
-            .msg_box_left {
-                display: flex;
-                flex-direction: row; /* 从左到右布局 */
-                align-items: stretch;
-            }
-            // 自己发的消息
-            .msg_box_right {
-                display: flex;
-                flex-direction: row-reverse; /* 从右到左布局 */
-                align-items: stretch;
-                img {
-                    margin-right: 10px;
-                }
-            }
-            // 新用户加入
-            .msg_box_middle {
-                text-align: center;
-            }
-        }
         // 发送框
         .send_msg {
             position: relative;

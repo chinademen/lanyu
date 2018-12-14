@@ -28,7 +28,7 @@ class SocketioStore {
             const { onlineCount, onlineUsers, user } = msg;
             this.onlineCount = onlineCount;
             this.onlineUsers = onlineUsers;
-            this.user = user.username;
+            this.user = user;
         });
     }
 
@@ -53,6 +53,11 @@ class SocketioStore {
     // 监听用户退出
     @action socketLogout(username) {
         this.socket.emit('disconnect', { username });
+    }
+
+    // 清除最后加入的用户
+    @action clearUser() {
+        this.user = null;
     }
 
 }
