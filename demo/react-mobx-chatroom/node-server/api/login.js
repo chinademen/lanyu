@@ -1,8 +1,17 @@
+const redis = require('redis');
+const client = redis.createClient('6379', '127.0.0.1');
 const sql = require('../mysql/index');
+
+// string类型
+// client.get("sessionid:1111babsdajbdk12bkjbjasbjdbjak", function (err, reply) {
+//     console.log('get: ', err, reply);
+// });
 
 // 登入
 const login = (req, res) => {
     const { username } = req.body;
+    req.session.username = username;
+    
     var level = '1级小菜鸡';
     var levelLogo = 'http://localhost/images/level/1.png';
     if (username === 'amao') {

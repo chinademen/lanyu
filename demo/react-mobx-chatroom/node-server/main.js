@@ -8,42 +8,53 @@ const express = require('express');
 const socketio = require('socket.io');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-// const session = require('express-session');
-// const redisStore = require('connect-redis')(session);
-
-// 创建redis对象
-// const sessionStore = new redisStore({ 
-//     host: 'localhost',
-//     port: 6379,
-//     db: 0,                  // 使用第0个数据库
-//     // pass: 123456,        // 数据库密码 默认无
-//     prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
-//     ttl: 10 * 60,           // 过期时间 单位：s
-// });
+const md5 = require('md5');
+const session = require('express-session');
+// 用于上线环境，将session存储到redis
+const redisStore = require('connect-redis')(session);
+// 用于开发和测试环境，将redis存储到内存当中
+// const sessionStore = new session.MemoryStore({ reapInterval: 10000 });
 
 const app = express();
 
+// 兼容json数据
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// 创建redis对象
+const sessionStore = new redisStore({ 
+    host: '127.0.0.1',
+    port: 6379,
+    db: 0,                  // 使用第0个数据库
+    // pass: 123456,        // 数据库密码 默认无
+    prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
+    ttl: 10 * 60,           // 过期时间 单位：s
+});
+
 // 设置session缓存到redis
-// app.use(session({           // session
-//     store: sessionStore,    // 设置session存储在redis中
-//     secret: 'session_id',
-//     // name: Math.floor(Math.random()*1000) + '_' + new Date().getTime() + '_' + Math.floor(Math.random()*10000), // sessionKey 为  (1-1000)_当前时间戳_(1_10000)
-//     resave: true,
-//     rolling: true,
-//     saveUninitialized: false,
-//     // cookie : {
-//     //     httpOnly: true,
-//     //     maxAge : 10 * 60 * 1000, // 设置 session 的有效时间，单位毫秒    该有效时间对存在redis和数据库中的session无效
-//     // },
-// }));
+app.use(session({           // session
+    store: sessionStore,    // 设置session存储在redis中
+	secret: 'session_id',
+	genid: function (req) { // 生成一个自定义的sessionid串，实际值： sessionid:xxx...
+		const { username } = req.body;
+		if (username) {
+			return md5(username);
+		}
+	},
+    name: 'token', // 设置sessionid的名字，默认是connect.sid
+    resave: true,  
+    rolling: true, // 用户每次请求都修改session的保存时间
+    saveUninitialized: false, // 配置session是否需要初始化
+    // cookie : { // 该有效时间对存在redis和数据库中的session无效
+    //     httpOnly: true,
+    //     maxAge : 10 * 60 * 1000, // 设置 session 的有效时间，单位毫秒    该有效时间对存在redis和数据库中的session无效
+    // },
+}));
 
 // 输出日志
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'));
 app.use(morgan('common', { stream: accessLogStream }));
 
-// 兼容json数据
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // 允许所有跨域请求

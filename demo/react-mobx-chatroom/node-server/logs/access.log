@@ -1,0 +1,8 @@
+::1 - - [15/Dec/2018:16:51:55 +0000] "GET /images/level/1.png HTTP/1.1" 200 21966
+::1 - - [15/Dec/2018:16:52:01 +0000] "OPTIONS /api/user/login HTTP/1.1" 200 4
+::1 - - [15/Dec/2018:16:52:01 +0000] "POST /api/user/login HTTP/1.1" 200 140
+::1 - - [15/Dec/2018:16:52:01 +0000] "GET /images/level/17.png HTTP/1.1" 200 31755
+::1 - - [15/Dec/2018:16:53:40 +0000] "GET /images/level/17.png HTTP/1.1" 304 -
+::1 - - [15/Dec/2018:16:53:40 +0000] "OPTIONS /api/user/login HTTP/1.1" 200 4
+::1 - - [15/Dec/2018:16:53:40 +0000] "POST /api/user/login HTTP/1.1" 200 137
+::1 - - [15/Dec/2018:16:53:40 +0000] "GET /images/level/1.png HTTP/1.1" 304 -
