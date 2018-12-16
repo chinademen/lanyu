@@ -1,5 +1,6 @@
 import { observable, action, runInAction } from 'mobx';
 import io from 'socket.io-client';
+import baseURL from '@/config/domain';
 import commonStore from './commonStore';
 
 // socket.io   on('msg')监听msg事件  emit('msg)发送msg事件
@@ -13,7 +14,7 @@ class SocketioStore {
     // 连接后台socket
     @action socketInit(username) {
         // 初始化socket
-        this.socket = new io('http://localhost:80/', {
+        this.socket = new io(baseURL, {
             reconnection : true,
             // reconnectionDelay : 5000
         });
@@ -58,6 +59,11 @@ class SocketioStore {
     // 清除最后加入的用户
     @action clearUser() {
         this.user = null;
+    }
+
+    // 清空聊天记录
+    @action clearChatMsg() {
+        this.chatMsg = null;
     }
 
 }

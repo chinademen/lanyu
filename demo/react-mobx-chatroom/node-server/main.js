@@ -28,13 +28,13 @@ const sessionStore = new redisStore({
     db: 0,                  // 使用第0个数据库
     // pass: 123456,        // 数据库密码 默认无
     prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
-    ttl: 10 * 60,           // 过期时间 单位：s
+    ttl: 10 * 60,           // 过期时间 单位：s, 当session保存在redis中，在此处设置过期时间，而不是在maxAge中设置过期时间
 });
 
 // 设置session缓存到redis
 app.use(session({           // session
     store: sessionStore,    // 设置session存储在redis中
-	secret: 'session_id',
+	secret: 'keyboard cat',
 	genid: function (req) { // 生成一个自定义的sessionid串，实际值： sessionid:xxx...
 		const { username } = req.body;
 		if (username) {
@@ -45,10 +45,6 @@ app.use(session({           // session
     resave: true,  
     rolling: true, // 用户每次请求都修改session的保存时间
     saveUninitialized: false, // 配置session是否需要初始化
-    // cookie : { // 该有效时间对存在redis和数据库中的session无效
-    //     httpOnly: true,
-    //     maxAge : 10 * 60 * 1000, // 设置 session 的有效时间，单位毫秒    该有效时间对存在redis和数据库中的session无效
-    // },
 }));
 
 // 输出日志
@@ -89,7 +85,7 @@ var onlineUsers = {};
 var onlineCount = 0;
 // 用户等级和logo
 var level = '1级小菜鸡';
-var levelLogo = 'http://localhost/images/level/1.png';
+var levelLogo = 'http://127.0.0.1/images/level/1.png';
 
 io.on('connection', function(socket){
     console.log('新用户加入');
@@ -134,7 +130,10 @@ io.on('connection', function(socket){
 		// 设置用户的等级和logo
 		if (obj.username === 'amao') {
 			level = '17级创世神';
-			levelLogo = 'http://localhost/images/level/17.png'
+			levelLogo = 'http://127.0.0.1/images/level/17.png'
+		} else {
+			level = '1级小菜鸡';
+			levelLogo = 'http://127.0.0.1/images/level/1.png'
 		}
 		obj.level = level;
 		obj.levelLogo = levelLogo;

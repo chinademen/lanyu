@@ -15,6 +15,10 @@ class Login extends Component {
         };
     }
 
+    componentDidMount() {
+        this.props.socketioStore.clearChatMsg();
+    }
+
     // 监听并记录用户名
     handleChange = e => {
         this.setState({
