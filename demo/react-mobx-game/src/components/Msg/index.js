@@ -29,14 +29,16 @@ export default class Msg extends Component {
             }
             this.updateMsg(newMsg);
         }
-        this.crearMsg()
+        // this.crearMsg()
     }
 
     // 生成消息
     createMsg = msg => {
+        const len = msg.length;
+        console.log(len);
         const list = msg.map((a, i) => {
             return (
-                <li key={[i]}>
+                <li key={[i]} style={{ transform: 'rotateY()' }}>
                     <span className="closeMsg" onClick={() => this.handleCloseMsg(i)}>x</span>
                     {a}
                 </li>

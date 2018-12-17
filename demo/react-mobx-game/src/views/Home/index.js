@@ -15,6 +15,13 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        /**
+         *  var a = ['']
+         * 
+         * 
+         * 
+         * 
+         */
         let { num } = this.state;
         setInterval(() => {
             num++;

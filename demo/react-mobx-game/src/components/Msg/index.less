@@ -13,6 +13,7 @@
         line-height: 50px;
         box-shadow: 0 0 2px 0px black;
         margin-top: 5px;
+        animation: move 1.2s linear 0s 1; 
         .closeMsg {
             position: absolute;
             display: inline-block;
@@ -25,5 +26,17 @@
             right: 5px;
             cursor: pointer;
         }
+    }
+    // .msg_item {
+    //     attr(key);
+    // }
+}
+
+@keyframes move {
+    from {
+        top: 50px;
+    }
+    to {
+        top: 0px;
     }
 }

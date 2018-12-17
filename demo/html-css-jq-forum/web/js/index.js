@@ -2,6 +2,10 @@ $(document).ready(function () {
     // 初始化富文本
     var E = window.wangEditor;
 
+    // 悬浮广告
+    var mgL =  ($(width).width() - 1200) / 2 - $('#left_gg img').width();
+    $('#left_gg').css({'marginLeft': mgL + 'px'});
+
     //导航 登陆 用户信息 其他社区跳转区 广告栏 注册 论坛区 讨论区 帖子
     /* 导航 */
     $('.header-nav li').on('click', function () {
