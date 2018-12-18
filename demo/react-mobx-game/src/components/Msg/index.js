@@ -6,7 +6,7 @@ export default class Msg extends Component {
         super(props);
         this.state = {
             msg: [], // 后台推送的消息队列
-            // times: 12000, // 每条消息显示时间
+            times: 12000, // 每条消息显示时间
             timerArr: [], // 定时器
             max: 10, // 默认最大消息数
         };
@@ -29,14 +29,14 @@ export default class Msg extends Component {
             }
             this.updateMsg(newMsg);
         }
-        this.crearMsg()
+        this.clearMsg()
     }
 
     // 生成消息
     createMsg = msg => {
         const list = msg.map((a, i) => {
             return (
-                <li key={[i]}>
+                <li key={[i]} className="add_item">
                     <span className="closeMsg" onClick={() => this.handleCloseMsg(i)}>x</span>
                     {a}
                 </li>
@@ -60,19 +60,30 @@ export default class Msg extends Component {
     }
 
     // 定时清除消息队列
-    crearMsg = () => {
+    clearMsg = () => {
         const _this = this;
-        const { msg, timerArr } = this.state;
+        const { times, msg, timerArr } = this.state;
         // 如果有消息队列，设置定时器定时清除信息
         if (msg.length > 0) {
             let timer = setTimeout(() => {
-                const { msg, timerArr } = _this.state;
-                console.log(msg, '        ', msg.slice(1));
-                _this.setState({
-                    msg: msg.slice(1)
-                });
-            }, 13200);
-            timerArr.push(timer);
+                // 定时12s给消息添加移除效果
+                let ul = this.refs.msg;
+                let li = ul.getElementsByTagName('li')[0];
+                li.classList.add('remove_item');
+                // 1.2s后移除第一个li以及动画特效
+                let timer2 = setTimeout(() => {
+                    const { msg } = _this.state;
+                    li.classList.remove('remove_item');
+                    li.classList.remove('add_item');
+                    _this.setState({
+                        msg: msg.slice(1)
+                    });
+                }, 1200);
+                // timerArr.push(timer2);
+            }, times);
+            // 清除定时器
+            // timerArr.push(timer);
+            // console.log(timerArr);
         }
     }
 
@@ -80,7 +91,7 @@ export default class Msg extends Component {
         const { msg } = this.state;
 
         return (
-            <ul className="msg">
+            <ul className="msg" ref="msg">
                 {this.createMsg(msg)}
             </ul>
         )

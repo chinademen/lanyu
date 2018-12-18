@@ -15,20 +15,15 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        /**
-         *  var a = ['']
-         * 
-         * 
-         * 
-         * 
-         */
         let { num } = this.state;
         setInterval(() => {
-            num++;
-            this.setState({
-                num: num,
-                msgInfo: `新消息${num}`
-            });
+            if (num < 15) {
+                num++;
+                this.setState({
+                    num: num,
+                    msgInfo: `新消息${num}`
+                });
+            }
         }, 3000);
     }
 
