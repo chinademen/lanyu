@@ -37,7 +37,7 @@ class Home extends Component {
         return (
             <div>
                 <Header />
-                <Msg msgInfo={this.state.msgInfo} max={5} />
+                <Msg msgInfo={this.state.msgInfo} />
             </div>
         )
     }

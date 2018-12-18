@@ -6,8 +6,8 @@ export default class Msg extends Component {
         super(props);
         this.state = {
             msg: [], // 后台推送的消息队列
-            // times: 3000, // 每条消息显示时间
-            timer: null, // 定时器
+            // times: 12000, // 每条消息显示时间
+            timerArr: [], // 定时器
             max: 10, // 默认最大消息数
         };
     }
@@ -29,16 +29,14 @@ export default class Msg extends Component {
             }
             this.updateMsg(newMsg);
         }
-        // this.crearMsg()
+        this.crearMsg()
     }
 
     // 生成消息
     createMsg = msg => {
-        const len = msg.length;
-        console.log(len);
         const list = msg.map((a, i) => {
             return (
-                <li key={[i]} style={{ transform: 'rotateY()' }}>
+                <li key={[i]}>
                     <span className="closeMsg" onClick={() => this.handleCloseMsg(i)}>x</span>
                     {a}
                 </li>
@@ -64,22 +62,17 @@ export default class Msg extends Component {
     // 定时清除消息队列
     crearMsg = () => {
         const _this = this;
-        const { msg } = this.state;
+        const { msg, timerArr } = this.state;
         // 如果有消息队列，设置定时器定时清除信息
         if (msg.length > 0) {
-            this.setState({
-                timer: setTimeout(() => {
-                    // const {  } = _this.state;
-                    _this.setState({
-    
-                    })
-                }, 10000)
-            });
-        } else {
-            // 如果没有消息队列，清除定时器
-            this.setState({
-                timer: null
-            });
+            let timer = setTimeout(() => {
+                const { msg, timerArr } = _this.state;
+                console.log(msg, '        ', msg.slice(1));
+                _this.setState({
+                    msg: msg.slice(1)
+                });
+            }, 13200);
+            timerArr.push(timer);
         }
     }
 
