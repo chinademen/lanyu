@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Icon, Button, message } from 'antd';
+import { roomName } from '@/config/room';
 import './index.less';
 
 message.config({
@@ -23,20 +24,28 @@ class ChatRoom extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { user } = nextProps;
+        const { user, clearMsgList, isClearMsgList } = nextProps;
         const { userList, msgList } = this.state;
-        // 新用户进入聊天室
-        if (user && user.username && !userList.includes(user.username)) {
-            userList.push(user.username); // 新用户加入在线用户队列
-            msgList.push(user); // 聊天消息队列新增 '用户加入聊天室' 消息
-            this.setState({ userList, msgList });
+        // 清空上一个聊天室的数据
+        if (isClearMsgList) {
+            this.setState({
+                userList: [],
+                msgList: []
+            });
+            clearMsgList(false);
+        } else {
+            // 新用户进入聊天室
+            if (user && user.username && !userList.includes(user.username)) {
+                userList.push(user.username); // 新用户加入在线用户队列
+                msgList.push(user); // 聊天消息队列新增 '用户加入聊天室' 消息
+                this.setState({ userList, msgList });
+            }
         }
     }
 
     // 更新聊天室消息
     updateMsgBox = (chatMsg, user) => {
         let { msgList } = this.state;
-        // const { onlineCount, onlineUsers } = this.props.socketioStore;
         // 有用户发送消息，添加到消息队列
         if (chatMsg) {
             msgList.push(chatMsg);
@@ -67,7 +76,7 @@ class ChatRoom extends Component {
                 // 新用户进入聊天室
                 return (
                     <li className="msg_box_middle" key={[index]}>
-                        用户 {username} 加入了聊天室
+                        用户 {username} 加入了 {roomName[index]}
                     </li>
                 );
             }

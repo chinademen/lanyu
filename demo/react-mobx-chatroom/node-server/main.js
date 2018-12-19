@@ -87,11 +87,11 @@ var onlineCount = 0;
 var level = '1级小菜鸡';
 var levelLogo = 'http://127.0.0.1/images/level/1.png';
 
-io.on('connection', function(socket){
+io.on('connection', function (socket) {
     console.log('新用户加入');
 
 	// 监听新用户加入
-	socket.on('login', function(obj){
+	socket.on('login', function (obj) {
 		// 将新加入用户的唯一标识当作socket的名称，后面退出的时候会用到
 		socket.name = obj.username;	
 		
@@ -108,7 +108,7 @@ io.on('connection', function(socket){
 	});
 	
 	// 监听用户退出
-	socket.on('disconnect', function () {
+	socket.on('disconnected', function () {
 		console.log(socket);
 		// 将退出的用户从在线列表中删除
 		if(onlineUsers.hasOwnProperty(socket.name)) {
@@ -127,7 +127,7 @@ io.on('connection', function(socket){
 	});
 	
 	// 监听用户发布聊天内容
-	socket.on('chat message', function(obj){
+	socket.on('chat message', function (obj) {
 		// 设置用户的等级和logo
 		if (obj.username === 'amao') {
 			level = '17级创世神';
