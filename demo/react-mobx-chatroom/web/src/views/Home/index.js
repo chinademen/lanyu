@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Icon, Button, message } from 'antd';
 import ChatRoom from '@/components/ChatRoom';
+import { roomMenu } from '@/config/room';
 import './index.less';
 
 message.config({
@@ -21,6 +22,7 @@ class Home extends Component {
             activeChat: null, // 当前选中的聊天室
             msg: '', // 聊天框消息
             waringInfo: '请选择聊天室', // 未进入聊天室提示信息
+            isClearMsgList: false, // 是否清空聊天室信息
         };
     }
 
@@ -30,13 +32,8 @@ class Home extends Component {
 
     // 生成聊天室
     createChat = (index) => {
-        const arr = [
-            '1级聊天室', '2级聊天室', '3级聊天室', '4级聊天室', '5级聊天室', '6级聊天室', '7级聊天室', '8级聊天室',
-            '9级聊天室', '10级聊天室', '11级聊天室', '12级聊天室', '13级聊天室', '14级聊天室', '15级聊天室', '16级聊天室',
-            '17级聊天室',
-        ];
         const { activeChat } = this.state;
-        const list = arr.map((item, index) => {
+        const list = roomMenu.map((item, index) => {
             const cls = activeChat === index ? 'chat_item active' : 'chat_item';
             return <li className={cls} key={[index]} onClick={() => this.changeChat(index)}>{item}</li>;
         });
@@ -58,13 +55,28 @@ class Home extends Component {
         this.setState({
             activeChat: index,
         });
-        // 进入聊天室
+        // 关闭上一次聊天
         const { username } = this.props.commonStore;
+        if (this.props.socketioStore.socket.connected && username) {
+            this.props.socketioStore.socketLogout(username);
+        }
+        // 清空聊天记录, 最后加入的用户, 上一个聊天室的数据
+        this.props.socketioStore.clearChatMsg();
+        this.props.socketioStore.clearUser();
+        this.clearMsgList(true);
+        // 进入聊天室
         this.props.socketioStore.socketInit(username);
         // 监听其他用户登陆
         this.props.socketioStore.socketLogin();
         // 监听聊天消息
         this.props.socketioStore.socketWatch();
+    }
+
+    // 清空上一个聊天室的数据
+    clearMsgList = isClearMsgList => {
+        this.setState({
+            isClearMsgList: !!isClearMsgList
+        });
     }
 
     // 聊天消息
@@ -122,7 +134,12 @@ class Home extends Component {
                     {activeChat || activeChat === 0 ?
                         <Fragment>
                             {/* 消息盒子 */}
-                            <ChatRoom chatMsg={chatMsg} user={user} />
+                            <ChatRoom 
+                                chatMsg={chatMsg}
+                                user={user}
+                                clearMsgList={this.clearMsgList}
+                                isClearMsgList={this.state.isClearMsgList}
+                            />
                             {/* 发送框 */}
                             <div className="send_msg">
                                 <input type="area" onChange={this.handleChange} value={msg} />

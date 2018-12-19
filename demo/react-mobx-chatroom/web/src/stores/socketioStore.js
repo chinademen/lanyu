@@ -53,8 +53,10 @@ class SocketioStore {
 
     // 监听用户退出
     @action socketLogout(username) {
-        console.log(username, this.socket);
-        this.socket.emit('disconnect', { username });
+        // 告诉给后台用户退出
+        this.socket.emit('disconnected', { username });
+        // 手动关闭socket连接
+        this.socket.close();
     }
 
     // 清除最后加入的用户
