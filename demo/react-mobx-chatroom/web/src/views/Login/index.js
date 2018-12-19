@@ -29,6 +29,11 @@ class Login extends Component {
     // 登录
     login() {
         const { username } = this.state;
+        // 判断上一次socket链接是否还没端口， 断开上一次sockit链接
+        if (this.props.socketioStore.socket.connected && this.props.commonStore.username) {
+            this.props.socketioStore.socketLogout(this.props.commonStore.username);
+        }
+        // 保存用户信息 跳转到主页
         this.props.commonStore.login({ username });
         this.props.history.replace('/home');
     }

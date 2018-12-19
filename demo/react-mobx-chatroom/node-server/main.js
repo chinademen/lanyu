@@ -108,7 +108,8 @@ io.on('connection', function(socket){
 	});
 	
 	// 监听用户退出
-	socket.on('disconnect', function(){
+	socket.on('disconnect', function () {
+		console.log(socket);
 		// 将退出的用户从在线列表中删除
 		if(onlineUsers.hasOwnProperty(socket.name)) {
 			// 退出用户的信息

@@ -36,12 +36,11 @@ class ChatRoom extends Component {
     // 更新聊天室消息
     updateMsgBox = (chatMsg, user) => {
         let { msgList } = this.state;
-        const { onlineCount, onlineUsers } = this.props.socketioStore;
+        // const { onlineCount, onlineUsers } = this.props.socketioStore;
         // 有用户发送消息，添加到消息队列
         if (chatMsg) {
             msgList.push(chatMsg);
         }
-        console.log(msgList);
         const list = msgList.map((item, index) => {
             // 用户登录 item = { username };  用户发送消息 item = { username, content };
             const { username, content, levelLogo, level } = item;
@@ -78,7 +77,6 @@ class ChatRoom extends Component {
 
     render() {
         const { chatMsg, user } = this.props;
-
         return (
             <ul className="msg_box clearfix">
                 {this.updateMsgBox(chatMsg, user)}

@@ -53,6 +53,7 @@ class SocketioStore {
 
     // 监听用户退出
     @action socketLogout(username) {
+        console.log(username, this.socket);
         this.socket.emit('disconnect', { username });
     }
 
