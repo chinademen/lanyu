@@ -7,7 +7,7 @@ const url = require('url');
 const express = require('express');
 const socketio = require('socket.io');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const md5 = require('md5');
 const session = require('express-session');
 // 用于上线环境，将session存储到redis
@@ -48,8 +48,8 @@ app.use(session({           // session
 }));
 
 // 输出日志
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'));
-app.use(morgan('common', { stream: accessLogStream }));
+// const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'));
+// app.use(morgan('common', { stream: accessLogStream }));
 
 
 
