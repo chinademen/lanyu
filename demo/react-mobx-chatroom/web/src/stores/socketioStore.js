@@ -47,7 +47,7 @@ class SocketioStore {
             username: username,
             content: value
         }
-        console.log('发送事件: ', obj);
+        // console.log('发送事件: ', obj);
         this.socket.emit('chat message', obj);
     }
 

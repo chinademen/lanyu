@@ -2,7 +2,7 @@ import request from '@/axios/request';
 import api from '@/config/api';
 import { objToStr } from '@/utils/format';
 
-// 登陆
+// login
 export function login(params) {
     return request(api.common.login, {
         method: 'POST',
@@ -10,7 +10,7 @@ export function login(params) {
     })
 }
 
-// 登出
+// logout
 export function logout(params) {
     return request(api.common.logout, {
         method: 'POST',

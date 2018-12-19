@@ -5,10 +5,11 @@ const md5 = require('md5');
 
 // 登入
 const login = (req, res) => {
-    const { username } = req.body;
-    const token = md5(username + new Date().getTime());
+    let { username } = req.body;
+    if (!username) username = '游客';
+    const authorization = md5(username + new Date().getTime());
     req.session.username = username;
-    req.session.token = token;
+    req.session.authorization = authorization;
     
     var level = '1级小菜鸡';
     var levelLogo = 'http://127.0.0.1/images/level/1.png';
@@ -16,6 +17,9 @@ const login = (req, res) => {
         level = '17级创世神';
         levelLogo = 'http://127.0.0.1/images/level/17.png'
     }
+    // 设置响应头
+    res.append('authorization', authorization); // token
+    // 设置响应body
     res.json({
         status: 0,
         message: '登录成功',
@@ -23,7 +27,6 @@ const login = (req, res) => {
             username: username, // 用户名
             level: level, // 用户等级
             levelLogo: levelLogo, // 用户logo
-            token: token // token
         },
     });
     
@@ -32,13 +35,13 @@ const login = (req, res) => {
 // 登出
 const logout = (req, res) => {
     // 清空对应域名下的session
-    const { token } = req.body;
+    const { authorization } = req.headers;
     client.keys("sessionid:*", function (err, reply) {
         reply.forEach(item => {
             // 查找对应的session对象
             client.get(item, function (err, data) {
                 // 删除指定的sessionid
-                if (JSON.parse(data).token === token) {
+                if (JSON.parse(data).authorization === authorization) {
                     client.del(item)
                 }
             })
