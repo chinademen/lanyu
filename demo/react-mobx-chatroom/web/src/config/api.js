@@ -1,6 +1,6 @@
 export default {
     common: {
-        login: '/api/user/login', // 登陆
-        logout: '/api/user/logout', // 登出
+        login: '/api/user/login', // login
+        logout: '/api/user/logout', // logout
     }
 }

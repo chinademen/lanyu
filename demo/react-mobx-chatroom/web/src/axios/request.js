@@ -2,14 +2,14 @@ import axios from "axios";
 import { message } from 'antd';
 import baseURL from '@/config/domain';
 import createHistory from 'history/createHashHistory';
+import { opStorage } from '@/utils/db';
+import commonStore from '@/stores/commonStore';
+import api from '@/config/api';
+
 const history = createHistory();
 
 // 提示框
-message.config({
-    top: 100,
-    delay: 3,
-    maxCount: 1,
-});
+message.config({ top: 100, delay: 3, maxCount: 1 });
 
 // axios公共配置
 const service = axios.create({
@@ -26,9 +26,9 @@ function checkStatus(data) {
     // 401用户没有权限
     if (status === 401) {
         // 这里做清除storage等操作
+        opStorage('mobx-chat', 'null');
         // 返回登录界面
-        history.replace('/user/login');
-        return;
+        return history.replace('/login');
     }
     // 其他状态码操作
 }
@@ -55,8 +55,10 @@ service.interceptors.request.use(
             toFormData(config);
         }
         
-        // 这里设置请求头字段,  比如所有请求携带 Authorization
-        // config.headers.Authorization = xxx.Authorization;
+        // 这里设置请求头字段,  比如所有请求携带 authorization
+        if (!config.url.includes(api.common.login)) {
+            config.headers.authorization = commonStore.authorization;
+        }
         
         return config;
     },
@@ -68,9 +70,18 @@ service.interceptors.request.use(
 // respone拦截器
 service.interceptors.response.use(
     response => {
-        // 这里处理响应数据, 比如保存响应头中的  Authorization
-        const { config: {method}, data, headers: {authorization} } = response;
-        
+        // 这里处理响应数据, 比如保存响应头中的  authorization
+        const { config: { method }, data, headers: { authorization } } = response;
+
+        // 保存token
+        if (authorization) {
+            commonStore.saveToken(authorization);
+            opStorage('mobx-chat', {
+                key: 'authorization',
+                value: authorization
+            });
+        }
+
         // 处理状态码(非浏览器自带状态码)
         checkStatus(data);
 

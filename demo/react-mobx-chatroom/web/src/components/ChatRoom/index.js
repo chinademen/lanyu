@@ -5,11 +5,7 @@ import { Icon, Button, message } from 'antd';
 import { roomName } from '@/config/room';
 import './index.less';
 
-message.config({
-    top: 100,
-    duration: 3,
-    maxCount: 1,
-});
+message.config({ top: 100, duration: 3, maxCount: 1 });
 
 @withRouter
 @inject('commonStore', 'socketioStore')
@@ -60,7 +56,7 @@ class ChatRoom extends Component {
                     return (
                         <li className="msg_box_right" key={[index]}>
                             <img src={levelLogo} alt="头像" title={level} />
-                            <span className="msg_item">{content}</span>
+                            <span className="msg_item" dangerouslySetInnerHTML={{__html: content}}></span>
                         </li>
                     );
                 } else {
@@ -68,7 +64,7 @@ class ChatRoom extends Component {
                     return (
                         <li className="msg_box_left" key={[index]}>
                             <img src={levelLogo} alt="头像" title={level} />
-                            <span className="msg_item">{content}</span>
+                            <span className="msg_item" dangerouslySetInnerHTML={{__html: content}}></span>
                         </li>
                     );
                 }
@@ -86,12 +82,21 @@ class ChatRoom extends Component {
 
     render() {
         const { chatMsg, user } = this.props;
+        // 使用node-webshot进行网页截图
         return (
             <ul className="msg_box clearfix">
                 {this.updateMsgBox(chatMsg, user)}
+                <div id="msg_end" style={{ height: 0, overflow: 'hidden' }}></div>
             </ul>
         )
     }
+
+    // 组件更新之后，消息盒子滚动到最底部
+    componentDidUpdate() {
+        if (document.getElementsByClassName('msg_box')[0]) {
+            document.getElementById('msg_end').scrollIntoView(false);
+        }
+    }
 }
 
-export default ChatRoom
+export default ChatRoom;

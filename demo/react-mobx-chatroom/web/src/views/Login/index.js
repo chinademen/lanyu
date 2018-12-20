@@ -35,7 +35,6 @@ class Login extends Component {
         }
         // 保存用户信息 跳转到主页
         this.props.commonStore.login({ username });
-        this.props.history.replace('/home');
     }
 
     render() {

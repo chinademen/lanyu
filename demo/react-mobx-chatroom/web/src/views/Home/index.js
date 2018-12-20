@@ -4,13 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { Icon, Button, message } from 'antd';
 import ChatRoom from '@/components/ChatRoom';
 import { roomMenu } from '@/config/room';
+import BraftEditor from 'braft-editor';
+import 'braft-editor/dist/index.css';
 import './index.less';
 
-message.config({
-    top: 100,
-    duration: 3,
-    maxCount: 1,
-});
+message.config({ top: 100, duration: 3, maxCount: 1 });
+const controls = ['emoji', 'media'];
 
 @withRouter
 @inject('commonStore', 'socketioStore')
@@ -23,11 +22,14 @@ class Home extends Component {
             msg: '', // 聊天框消息
             waringInfo: '请选择聊天室', // 未进入聊天室提示信息
             isClearMsgList: false, // 是否清空聊天室信息
+            editorState: BraftEditor.createEditorState(null),  // 聊天消息
         };
     }
 
-    componentDidMount() {
-
+    // 聊天消息
+    handleChangeEditor = (editorState) => {
+        const htmlString = editorState.toHTML();
+        this.setState({ editorState });
     }
 
     // 生成聊天室
@@ -79,21 +81,15 @@ class Home extends Component {
         });
     }
 
-    // 聊天消息
-    handleChange = e => {
-        this.setState({
-            msg: e.target.value
-        });
-    }
-
     // 发送消息
     sendmsg = () => {
-        const { msg } = this.state;
+        const { editorState } = this.state;
+        const htmlString = editorState.toHTML();
         // 发送消息
-        this.props.socketioStore.socketSend(msg);
+        this.props.socketioStore.socketSend(htmlString);
         // 重置消息框
         this.setState({
-            msg: ''
+            editorState: BraftEditor.createEditorState(null)
         });
     }
 
@@ -142,13 +138,19 @@ class Home extends Component {
                             />
                             {/* 发送框 */}
                             <div className="send_msg">
-                                <input type="area" onChange={this.handleChange} value={msg} />
+                                {/* 富文本 */}
+                                <BraftEditor
+                                    controls={controls}
+                                    contentStyle={{ height: 124, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
+                                    value={this.state.editorState} 
+                                    onChange={this.handleChangeEditor}
+                                />
+                                {/* 自定义富文本 */}
                                 <Button type="primary" className="send_btn" onClick={() => this.sendmsg()}>发送</Button>
                             </div>
                         </Fragment> :
                         <div className="no-chatroom">{waringInfo}</div>
                     }
-                    
                 </div>
             </div>
         )
