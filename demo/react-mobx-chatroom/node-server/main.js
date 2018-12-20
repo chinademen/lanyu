@@ -137,10 +137,12 @@ io.on('connection', function (socket) {
 		// 设置用户的等级和logo
 		if (obj.username === 'amao') {
 			level = '17级创世神';
-			levelLogo = 'http://127.0.0.1/images/level/17.png'
+			levelLogo = 'http://127.0.0.1/images/avatar/avatar24.jpg';
 		} else {
 			level = '1级小菜鸡';
-			levelLogo = 'http://127.0.0.1/images/level/1.png'
+			levelLogo = 'http://127.0.0.1/images/avatar/avatar1.jpg';
+			// var num = Math.ceil(Math.random() * (1 * 30));
+			// levelLogo = 'http://127.0.0.1/images/avatar/avatar' + num + '.jpg';
 		}
 		obj.level = level;
 		obj.levelLogo = levelLogo;
