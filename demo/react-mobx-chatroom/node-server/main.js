@@ -23,10 +23,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 创建redis对象
 const sessionStore = new redisStore({ 
-    host: '127.0.0.1',
+    host: '207.148.73.3',
     port: 6379,
     db: 0,                  // 使用第0个数据库
-    // pass: 123456,        // 数据库密码 默认无
+    // pass: 'gPj-Z9qw',        	// 数据库密码 默认无
     prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
     ttl: 10 * 60,           // 过期时间 单位：s, 当session保存在redis中，在此处设置过期时间，而不是在maxAge中设置过期时间
 });
@@ -68,7 +68,7 @@ app.all('*', function (req, res, next) {
     next();
 });
 
-// 设置静态资源路径     访问例子: http://localhost:80/images/level/1.png
+// 设置静态资源路径     访问例子: http://207.148.73.3:80/images/level/1.png
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 路由
@@ -78,8 +78,8 @@ app.use('/', require('./router/index'));
 const server = http.createServer(app);
 
 // 监听80端口
-server.listen(80, function () {
-	console.log('listen http://localhost:80/');
+server.listen(8080, function () {
+	console.log('listen http://207.148.73.3:80/');
 });
 
 // 创建socketio对象
@@ -91,7 +91,7 @@ var onlineUsers = {};
 var onlineCount = 0;
 // 用户等级和logo
 var level = '1级小菜鸡';
-var levelLogo = 'http://127.0.0.1/images/level/1.png';
+var levelLogo = 'http://207.148.73.3:8080/images/level/1.png';
 
 io.on('connection', function (socket) {
     console.log('新用户加入');
@@ -137,10 +137,10 @@ io.on('connection', function (socket) {
 		// 设置用户的等级和logo
 		if (obj.username === 'amao') {
 			level = '17级创世神';
-			levelLogo = 'http://127.0.0.1/images/level/17.png'
+			levelLogo = 'http://207.148.73.3:8080/images/level/17.png'
 		} else {
 			level = '1级小菜鸡';
-			levelLogo = 'http://127.0.0.1/images/level/1.png'
+			levelLogo = 'http://207.148.73.3:8080/images/level/1.png'
 		}
 		obj.level = level;
 		obj.levelLogo = levelLogo;

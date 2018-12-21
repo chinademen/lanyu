@@ -6,7 +6,7 @@ const mysql = require('mysql');
 */
 module.exports = (sql, value, callback) => {
     let config = mysql.createConnection({
-        host: 'localhost',
+        host: '207.148.73.3',
         user: 'root',
         password: '123456',
         port: '3306',
