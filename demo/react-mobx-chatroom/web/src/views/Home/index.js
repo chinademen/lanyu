@@ -26,6 +26,14 @@ class Home extends Component {
         };
     }
 
+    componentDidMount() {
+        if (!this.props.commonStore.authorization) {
+            message.error('用户未登陆');
+            this.props.history.replace('/login');
+            return;
+        }
+    }
+
     // 聊天消息
     handleChangeEditor = (editorState) => {
         const htmlString = editorState.toHTML();

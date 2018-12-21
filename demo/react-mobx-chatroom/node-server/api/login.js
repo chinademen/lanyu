@@ -2,6 +2,7 @@ const redis = require('redis');
 const client = redis.createClient('6379', '207.148.73.3');
 const sql = require('../mysql/index');
 const md5 = require('md5');
+const config = require('../config');
 
 // 登入
 const login = (req, res) => {
@@ -12,10 +13,10 @@ const login = (req, res) => {
     req.session.authorization = authorization;
     
     var level = '1级小菜鸡';
-    var levelLogo = 'http://207.148.73.3:8080/images/level/1.png';
+    var levelLogo = config.baseUrl + '/images/level/1.png';
     if (username === 'amao') {
         level = '17级创世神';
-        levelLogo = 'http://207.148.73.3:8080/images/level/17.png'
+        levelLogo = config.baseUrl + '/images/level/17.png'
     }
     // 设置响应头
     res.append('authorization', authorization); // token
