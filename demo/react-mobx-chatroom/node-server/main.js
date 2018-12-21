@@ -141,6 +141,7 @@ io.on('connection', function (socket) {
 		} else {
 			level = '1级小菜鸡';
 			levelLogo = 'http://207.148.73.3:8080/images/level/1.png'
+
 		}
 		obj.level = level;
 		obj.levelLogo = levelLogo;
