@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <!-- 头部 -->
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/right-box.css">
     <link rel="stylesheet" href="./css/main.css">
     <!-- <link rel="stylesheet" href="./css/container.css"> -->
     <!-- <link rel="stylesheet" href="./css/nav.css"> -->
@@ -51,11 +52,31 @@
     <!-- 头部 end -->
 
     <!-- 左右两侧悬浮广告栏 -->
-    <div id="left_gg" style="position: fixed; zz-index: 20; margin-left: calc( (100% - 1200px) / 2 - 100px);">
+    <div id="left_gg" style="position: fixed; z-index: 20; margin-left: calc( (100% - 1200px) / 2 - 100px);">
         <img src="./images/gg_left.png" alt="左侧广告栏">
     </div>
     <div id="right_gg" style="position: fixed; top: 100px; z-index: 20; margin-left: calc( (100% - 1200px) / 2 + 1200px);">
         <img src="./images/gg_right.png" alt="左侧广告栏">
+    </div>
+
+    <!-- 关注微信 联系我们 意见反馈 返回顶部 -->
+    <div id="right_box">
+        <span class="right_box_item">
+            <span class="right_item_top">关注</span>
+            <span class="right_item_bottom">微信</span>
+        </span>
+        <span class="right_box_item">
+            <span class="right_item_top">联系</span>
+            <span class="right_item_bottom">我们</span>
+        </span>
+        <span class="right_box_item">
+            <span class="right_item_top">意见</span>
+            <span class="right_item_bottom">反馈</span>
+        </span>
+        <span class="right_box_item" id="toTop">
+            <span class="right_item_top">返回</span>
+            <span class="right_item_bottom">顶部</span>
+        </span>
     </div>
 
     <!-- 内容 -->
@@ -3655,8 +3676,14 @@
                         <a href="javascript:;"  target="_blank" style="width: 118px">广告刊登/合作提案</a>
                         <a href="javascript:;"  target="_blank" style="border-right: none;">投诉举报</a>
                     </div>
-                    <div class="footer_shengming">
+                    <div class="footer_shengming" style="position: relative;">
                         重要声明：本网站是以时时留言的方式运作，本站对于所有留言的真实性、完整性及立场等，不负任何法律责任。而一切留言的言论只代表留言者个人意见，并非本网站的立场，用户不应该信赖内容，并应自行判断内容的真实性。由于讨论区是受到[时时留言]运作方式所限制，故不能完全监察所有时时留言，若读者发现有留言出现问题，请联系我们。本站有权删除任何留言及拒绝任何人士留言，同时亦有不删除留言的权力。切勿撰写粗言秽语、诽谤、渲染色情暴力或人身攻击的言论，敬请自律。本网站保留一切法律权利。
+                        <div style="position: absolute; width: 500px; height: 60px; left: 385px; bottom: 0; cursor: pointer;">
+                            <a href="http://www.baidu.com" target="_blank" id="to-boniu" style="height: 60px; width: 100px; display: inline-block;"></a>
+                            <a href="http://www.baidu.com" target="_blank" id="to-youying" style="height: 60px; width: 80px; display: inline-block;"></a>
+                            <a href="http://www.baidu.com" target="_blank" id="to-mayashixun" style="height: 60px; width: 148px; display: inline-block;"></a>
+                            <a href="http://www.baidu.com" target="_blank" id="to-UJOB" style="height: 60px; width: 162px; display: inline-block;"></a>
+                        </div>
                         <img style="display: block; margin: 0 auto;" src="./images/footer_shengming.jpg" />
                     </div>
                 </div>

@@ -1,0 +1,52 @@
+#right_box {
+    position: fixed; 
+    top: 300px; 
+    width: 50px; 
+    z-index: 20; 
+    margin-left: calc( (100% - 1200px) / 2 + 1218px); 
+    text-align: center; 
+    color: #333; 
+    font-size: 12px;
+}
+.right_box_item {
+    overflow: hidden;
+    display: inline-block; 
+    width:50px; 
+    height: 50px; 
+    margin-bottom: 3px; 
+    cursor: pointer;
+}
+.right_box_item:hover {
+    background: #0087fa !important; 
+    color: #fff;
+}
+.right_box_item:hover >span {
+    display: inline-block;
+}
+.right_item_top {
+    display: inline-block; 
+    width: 50px; 
+    height: 25px; 
+    line-height: 35px;
+}
+.right_item_bottom {
+    display: inline-block; 
+    width: 50px; 
+    height: 25px; 
+    line-height: 10px;
+}
+.right_box_item>span {
+    display: none;
+}
+.right_box_item:nth-of-type(1) {
+    background: url('../images/weixin.png');
+}
+.right_box_item:nth-of-type(2) {
+    background: url('../images/yijian.png');
+}
+.right_box_item:nth-of-type(3) {
+    background: url('../images/contact.jpg');
+}
+.right_box_item:nth-of-type(4) {
+    background: url('../images/returntop.png');
+}

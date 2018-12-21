@@ -3,8 +3,15 @@ $(document).ready(function () {
     var E = window.wangEditor;
 
     // 悬浮广告
-    var mgL =  ($(width).width() - 1200) / 2 - $('#left_gg img').width();
+    var mgL =  ($(window).width() - 1200) / 2 - $('#left_gg img').width();
     $('#left_gg').css({'marginLeft': mgL + 'px'});
+
+    // 返回顶部
+    //当点击跳转链接后，回到页面顶部位置
+    $("#toTop").click(function () {
+        $('body, html').animate({ scrollTop: 0 }, 1000);
+        return false;
+    });
 
     //导航 登陆 用户信息 其他社区跳转区 广告栏 注册 论坛区 讨论区 帖子
     /* 导航 */
@@ -13,7 +20,6 @@ $(document).ready(function () {
         $(this).addClass('active');
     });
     /* 导航 end */
-
 
 
     /* 登陆 */
