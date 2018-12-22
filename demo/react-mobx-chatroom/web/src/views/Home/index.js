@@ -4,9 +4,24 @@ import { withRouter } from 'react-router-dom';
 import { Icon, Button, message } from 'antd';
 import ChatRoom from '@/components/ChatRoom';
 import { roomMenu } from '@/config/room';
-import BraftEditor from 'braft-editor';
-import 'braft-editor/dist/index.css';
+import BraftEditor from 'braft-editor'; // 富文本
+import 'braft-editor/dist/index.css'; // 富文本样式
+import 'braft-extensions/dist/emoticon.css'; // 富文本表情包组件样式
+import Emoticon, { defaultEmoticons } from 'braft-extensions/dist/emoticon'; // 表情包组件和默认表情包列表
 import './index.less';
+
+// 转换默认表情包列表，让webpack可以正确加载到默认表情包中的图片，请确保已对png格式的文件配置了loader
+const emoticons = defaultEmoticons.map(item => require(`braft-extensions/dist/assets/${item}`));
+
+// 也可以使用自己的表情包资源，不受打包工具限制
+// const emoticons = ['http://path/to/emoticon-1.png', 'http://path/to/emoticon-2.png', 'http://path/to/emoticon-3.png', 'http://path/to/emoticon-4.png', ...]
+
+// 转换自定义表情包
+BraftEditor.use(Emoticon({
+  includeEditors: ['demo-editor-with-emoticon'],
+  emoticons: emoticons
+}));
+
 
 message.config({ top: 100, duration: 3, maxCount: 1 });
 const controls = ['emoji', 'media'];
@@ -148,6 +163,7 @@ class Home extends Component {
                             <div className="send_msg">
                                 {/* 富文本 */}
                                 <BraftEditor
+                                    id="demo-editor-with-emoticon"
                                     controls={controls}
                                     contentStyle={{ height: 124, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                                     value={this.state.editorState} 

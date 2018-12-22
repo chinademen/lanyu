@@ -6,6 +6,7 @@
     "antd": "^3.10.3",
     "axios": "^0.18.0",
     "braft-editor": "^2.1.31",
+    "braft-extensions": "0.0.13",
     "less": "^3.8.1",
     "md5": "^2.2.1",
     "mobx": "^5.5.2",
