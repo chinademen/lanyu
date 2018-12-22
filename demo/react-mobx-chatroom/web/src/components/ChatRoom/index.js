@@ -48,14 +48,14 @@ class ChatRoom extends Component {
         }
         const list = msgList.map((item, index) => {
             // 用户登录 item = { username };  用户发送消息 item = { username, content };
-            const { username, content, levelLogo, level } = item;
+            const { username, content, levelLogo, level, userAvatar } = item;
             // 用户聊天
             if (content) {
                 // 当前用户发送消息
                 if (username === this.props.commonStore.username) {
                     return (
                         <li className="msg_box_right" key={[index]}>
-                            <img src={levelLogo} alt="头像" title={level} />
+                            <img src={userAvatar} alt="头像" title={level} />
                             <span className="msg_item" dangerouslySetInnerHTML={{__html: content}}></span>
                         </li>
                     );
@@ -63,7 +63,7 @@ class ChatRoom extends Component {
                     // 其他用户发送消息
                     return (
                         <li className="msg_box_left" key={[index]}>
-                            <img src={levelLogo} alt="头像" title={level} />
+                            <img src={userAvatar} alt="头像" title={level} />
                             <span className="msg_item" dangerouslySetInnerHTML={{__html: content}}></span>
                         </li>
                     );
@@ -91,11 +91,14 @@ class ChatRoom extends Component {
         )
     }
 
-    // 组件更新之后，消息盒子滚动到最底部
+    // 组件更新后
     componentDidUpdate() {
+        // 消息盒子保持滚动到最底部
         if (document.getElementsByClassName('msg_box')[0]) {
             document.getElementById('msg_end').scrollIntoView(false);
         }
+        // 清空本次socketio传过来的消息实体，避免用户切换聊天室时，别的用户重复渲染上一次的消息
+        this.props.socketioStore.clearChatMsg();
     }
 }
 

@@ -110,7 +110,7 @@ class Home extends Component {
 
     render() {
         const { activeChat, waringInfo, msg } = this.state;
-        const { username, level, levelLogo } = this.props.commonStore;
+        const { username, level, levelLogo, userAvatar } = this.props.commonStore;
         const { onlineCount, onlineUsers, user, chatMsg } = this.props.socketioStore;
 
         return (
@@ -118,7 +118,7 @@ class Home extends Component {
                 <div className="left">
                     {/* 用户信息 */}
                     <div className="header">
-                        <span></span>
+                        <span style={{ backgroundImage: `url(${userAvatar})` }}></span>
                         <span>{username}</span>
                         <span>等级：</span>
                         <img src={levelLogo} alt="等级" title={level} />

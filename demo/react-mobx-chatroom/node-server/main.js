@@ -93,7 +93,6 @@ var onlineUsers = {};
 var onlineCount = 0;
 // 用户等级和logo
 var level = '1级小菜鸡';
-var levelLogo = config.baseUrl + '/images/level/1.png';
 
 io.on('connection', function (socket) {
     console.log('新用户加入');
@@ -117,7 +116,6 @@ io.on('connection', function (socket) {
 	
 	// 监听用户退出
 	socket.on('disconnected', function () {
-		console.log(socket);
 		// 将退出的用户从在线列表中删除
 		if(onlineUsers.hasOwnProperty(socket.name)) {
 			// 退出用户的信息
@@ -136,18 +134,6 @@ io.on('connection', function (socket) {
 	
 	// 监听用户发布聊天内容
 	socket.on('chat message', function (obj) {
-		// 设置用户的等级和logo
-		if (obj.username === 'amao') {
-			level = '17级创世神';
-			levelLogo = config.baseUrl + '/images/avatar/avatar24.jpg';
-		} else {
-			level = '1级小菜鸡';
-			levelLogo = config.baseUrl + '/images/avatar/avatar30.jpg';
-
-		}
-		obj.level = level;
-		obj.levelLogo = levelLogo;
-
 		// 向所有客户端广播发布的消息
 		io.emit('chat message', obj);
 		console.log('发消息的用户消息: ', obj);

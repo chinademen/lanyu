@@ -14,6 +14,7 @@ class CommonStore {
     @observable username = userInfo && userInfo.username; // 当前登录用户
     @observable level = userInfo && userInfo.level; // 当前登陆用户等级
     @observable levelLogo = userInfo && userInfo.levelLogo; // 当前登陆用户等级图标
+    @observable userAvatar = userInfo && userInfo.userAvatar; // 当前登陆用户的头像
     @observable authorization = authorization; // token
 
     // 保存token
@@ -35,10 +36,11 @@ class CommonStore {
                 return message.error('登录失败，请重新登录');
             };
             // 初始化用户信息
-            const { username, level, levelLogo } = res.data;
+            const { username, level, levelLogo, userAvatar } = res.data;
             this.username = username;
             this.level = level;
             this.levelLogo = levelLogo;
+            this.userAvatar = userAvatar;
             // 登陆时保存用户信息
             opStorage('mobx-chat', {
                 key: 'userInfo',
@@ -67,6 +69,7 @@ class CommonStore {
         this.username = null;
         this.level = null;
         this.levelLogo = null;
+        this.userAvatar = null;
         this.authorization = null;
         opStorage('mobx-chat', 'null');
     }

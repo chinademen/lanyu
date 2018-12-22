@@ -42,10 +42,13 @@ class SocketioStore {
 
     // 发送事件
     @action socketSend(value) {
-        const { username } = commonStore;
+        const { username, userAvatar, level, levelLogo } = commonStore;
         const obj = {
-            username: username,
-            content: value
+            username,
+            content: value,
+            userAvatar,
+            level,
+            levelLogo,
         }
         // console.log('发送事件: ', obj);
         this.socket.emit('chat message', obj);

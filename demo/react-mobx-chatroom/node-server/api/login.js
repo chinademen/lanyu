@@ -14,9 +14,11 @@ const login = (req, res) => {
     
     var level = '1级小菜鸡';
     var levelLogo = config.baseUrl + '/images/level/1.png';
+    var userAvatar = config.baseUrl + '/images/avatar/avatar30.jpg';
     if (username === 'amao') {
         level = '17级创世神';
-        levelLogo = config.baseUrl + '/images/level/17.png'
+        levelLogo = config.baseUrl + '/images/level/17.png';
+        userAvatar = config.baseUrl + '/images/avatar/avatar24.jpg';
     }
     // 设置响应头
     res.append('authorization', authorization); // token
@@ -27,7 +29,8 @@ const login = (req, res) => {
         data: {
             username: username, // 用户名
             level: level, // 用户等级
-            levelLogo: levelLogo, // 用户logo
+            levelLogo: levelLogo, // 用户等级logo
+            userAvatar: userAvatar, // 用户聊天头像
         },
     });
     

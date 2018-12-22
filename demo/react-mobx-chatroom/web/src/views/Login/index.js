@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Icon, Button } from 'antd';
@@ -44,7 +44,7 @@ class Login extends Component {
                 <div className="username_box">
                     <Icon type="user-add" style={{ width: 20 }} />
                     <input type="text" name="username" onChange={this.handleChange} placeholder="用户名" />
-                     
+                    
                 </div>
                 <Button type="primary" className="login_btn" onClick={() => this.login()}>登录</Button>
             </div>
