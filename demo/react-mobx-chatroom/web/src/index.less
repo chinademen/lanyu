@@ -27,6 +27,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  background-image: url('~@/static/images/bg.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 ul {
@@ -70,11 +73,11 @@ ul {
 }
 
 #root {
-  position: relative;
+  position: absolute;
   overflow: hidden;
-  background-image: url('~@/static/images/bg.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
 }
 
 

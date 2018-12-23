@@ -26,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 创建redis对象
 const sessionStore = new redisStore({ 
     host: config.domain,
-    port: 6379,
-    db: 0,                  // 使用第0个数据库
+    port: config.redis.port,
+    db: config.redis.db,                  // 使用第0个数据库
     // pass: 'gPj-Z9qw',        	// 数据库密码 默认无
     prefix: 'sessionid:',   // 数据表前缀, 默认为"sess:"
     ttl: 10 * 60,           // 过期时间 单位：s, 当session保存在redis中，在此处设置过期时间，而不是在maxAge中设置过期时间

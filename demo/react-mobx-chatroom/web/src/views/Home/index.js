@@ -1,30 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-import { Icon, Button, message } from 'antd';
-import ChatRoom from '@/components/ChatRoom';
-import { roomMenu } from '@/config/room';
-import BraftEditor from 'braft-editor'; // 富文本
-import 'braft-editor/dist/index.css'; // 富文本样式
-import 'braft-extensions/dist/emoticon.css'; // 富文本表情包组件样式
-import Emoticon, { defaultEmoticons } from 'braft-extensions/dist/emoticon'; // 表情包组件和默认表情包列表
+import {  message } from 'antd';
 import './index.less';
-
-// 转换默认表情包列表，让webpack可以正确加载到默认表情包中的图片，请确保已对png格式的文件配置了loader
-const emoticons = defaultEmoticons.map(item => require(`braft-extensions/dist/assets/${item}`));
-
-// 也可以使用自己的表情包资源，不受打包工具限制
-// const emoticons = ['http://path/to/emoticon-1.png', 'http://path/to/emoticon-2.png', 'http://path/to/emoticon-3.png', 'http://path/to/emoticon-4.png', ...]
-
-// 转换自定义表情包
-BraftEditor.use(Emoticon({
-  includeEditors: ['demo-editor-with-emoticon'],
-  emoticons: emoticons
-}));
-
-
-message.config({ top: 100, duration: 3, maxCount: 1 });
-const controls = ['emoji', 'media'];
+/* 聊天列表、音乐列表、好友列表、资料列表 */
+import ChatTab from '../Tabs/ChatTab';
+import MusicTab from '../Tabs/MusicTab';
+import FriendTab from '../Tabs/FriendTab';
+import InfoTab from '../Tabs/InfoTab';
+/* 聊天室、音乐室、好友资料页面、个人资料页面 */
+import ChatContent from '../TabsContent/ChatContent';
+import MusicContent from '../TabsContent/MusicContent';
+import FriendContent from '../TabsContent/FriendContent';
+import InfoContent from '../TabsContent/InfoContent';
 
 @withRouter
 @inject('commonStore', 'socketioStore')
@@ -33,11 +21,11 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            activeTab: 0, // 当前选中功能Tab
             activeChat: null, // 当前选中的聊天室
             msg: '', // 聊天框消息
             waringInfo: '请选择聊天室', // 未进入聊天室提示信息
             isClearMsgList: false, // 是否清空聊天室信息
-            editorState: BraftEditor.createEditorState(null),  // 聊天消息
         };
     }
 
@@ -49,20 +37,24 @@ class Home extends Component {
         }
     }
 
+    // 生成功能选项卡
+    createTabs = activeTab => {
+        const list = ['聊天', '音乐', '好友', '资料'].map((item, index) => {
+            const cls = activeTab === index ? 'features-item active' : 'features-item';
+            return <li className={cls} key={[index]} onClick={() => this.changeTabs(index)}>{item}</li>;
+        });
+        return list;
+    }
+
+    // 切换功能选项卡
+    changeTabs = activeTab => {
+        this.setState({ activeTab });
+    }
+
     // 聊天消息
     handleChangeEditor = (editorState) => {
         const htmlString = editorState.toHTML();
         this.setState({ editorState });
-    }
-
-    // 生成聊天室
-    createChat = (index) => {
-        const { activeChat } = this.state;
-        const list = roomMenu.map((item, index) => {
-            const cls = activeChat === index ? 'chat_item active' : 'chat_item';
-            return <li className={cls} key={[index]} onClick={() => this.changeChat(index)}>{item}</li>;
-        });
-        return list;
     }
 
     // 切换聊天室
@@ -104,18 +96,6 @@ class Home extends Component {
         });
     }
 
-    // 发送消息
-    sendmsg = () => {
-        const { editorState } = this.state;
-        const htmlString = editorState.toHTML();
-        // 发送消息
-        this.props.socketioStore.socketSend(htmlString);
-        // 重置消息框
-        this.setState({
-            editorState: BraftEditor.createEditorState(null)
-        });
-    }
-
     // 退出登陆
     logout = () => {
         this.props.commonStore.logout(() => {
@@ -124,7 +104,7 @@ class Home extends Component {
     }
 
     render() {
-        const { activeChat, waringInfo, msg } = this.state;
+        const { activeTab, activeChat, activeMusic, waringInfo } = this.state;
         const { username, level, levelLogo, userAvatar } = this.props.commonStore;
         const { onlineCount, onlineUsers, user, chatMsg } = this.props.socketioStore;
 
@@ -138,10 +118,15 @@ class Home extends Component {
                         <span>等级：</span>
                         <img src={levelLogo} alt="等级" title={level} />
                     </div>
-                    {/* 聊天列表 */}
-                    <ul className="chat_box">
-                        {this.createChat()}
+                    {/* 功能Tab */}
+                    <ul className="features-Tabs">
+                        {this.createTabs(activeTab)}
                     </ul>
+                    {/* 聊天列表、音乐列表、好友列表、资料列表 */}
+                    {activeTab === 0 && <ChatTab activeChat={activeChat} changeChat={this.changeChat} />}
+                    {activeTab === 1 && <MusicTab />}
+                    {activeTab === 2 && <FriendTab />}
+                    {activeTab === 3 && <InfoTab />}
                 </div>
                 <div className="right">
                     {/* 聊天框用户信息 */}
@@ -149,32 +134,16 @@ class Home extends Component {
                         当前在线人数：<span>{onlineCount}</span>
                         <span className="logout" onClick={() => this.logout()}>退出</span>
                     </div>
-                    {/* 判断是否进入聊天室 */}
-                    {activeChat || activeChat === 0 ?
-                        <Fragment>
-                            {/* 消息盒子 */}
-                            <ChatRoom 
-                                chatMsg={chatMsg}
-                                user={user}
-                                clearMsgList={this.clearMsgList}
-                                isClearMsgList={this.state.isClearMsgList}
-                            />
-                            {/* 发送框 */}
-                            <div className="send_msg">
-                                {/* 富文本 */}
-                                <BraftEditor
-                                    id="demo-editor-with-emoticon"
-                                    controls={controls}
-                                    contentStyle={{ height: 124, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
-                                    value={this.state.editorState} 
-                                    onChange={this.handleChangeEditor}
-                                />
-                                {/* 自定义富文本 */}
-                                <Button type="primary" className="send_btn" onClick={() => this.sendmsg()}>发送</Button>
-                            </div>
-                        </Fragment> :
-                        <div className="no-chatroom">{waringInfo}</div>
-                    }
+                    {/* 聊天室、音乐室、好友资料页面、个人资料页面 */}
+                    {activeTab === 0 && <ChatContent 
+                        activeChat={activeChat} 
+                        clearMsgList={this.clearMsgList}
+                        isClearMsgList={this.state.isClearMsgList}
+                        waringInfo={waringInfo}
+                    />}
+                    {activeTab === 1 && <MusicContent />}
+                    {activeTab === 2 && <FriendContent />}
+                    {activeTab === 3 && <InfoContent />}
                 </div>
             </div>
         )

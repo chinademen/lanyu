@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const config = require('../config');
 /*
 * @sql       mysql语句
 * @value     数据
@@ -6,11 +7,11 @@ const mysql = require('mysql');
 */
 module.exports = (sql, value, callback) => {
     let config = mysql.createConnection({
-        host: '207.148.73.3',
-        user: 'root',
-        password: '123456',
-        port: '3306',
-        database: 'chatroom',
+        host: config.domain,
+        user: config.mysql.user,
+        password: config.mysql.password,
+        port:  config.mysql.port,
+        database: config.mysql.database,
         multipleStatements: true,       // 可以同时执行多条sql语句
     });
 

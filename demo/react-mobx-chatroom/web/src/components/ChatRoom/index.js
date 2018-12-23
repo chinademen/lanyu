@@ -55,7 +55,7 @@ class ChatRoom extends Component {
                 if (username === this.props.commonStore.username) {
                     return (
                         <li className="msg_box_right" key={[index]}>
-                            <img src={userAvatar} alt="头像" title={level} />
+                            <img src={userAvatar} alt="头像" title={`${username}、等级：${level}`} />
                             <span className="msg_item" dangerouslySetInnerHTML={{__html: content}}></span>
                         </li>
                     );
@@ -72,7 +72,8 @@ class ChatRoom extends Component {
                 // 新用户进入聊天室
                 return (
                     <li className="msg_box_middle" key={[index]}>
-                        用户 {username} 加入了 {roomName[index]}
+                        {/* 用户 {username} 加入了 {roomName[index]} */}
+                        用户 {username} 加入了房间
                     </li>
                 );
             }

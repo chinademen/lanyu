@@ -1,8 +1,8 @@
+const config = require('../config');
 const redis = require('redis');
-const client = redis.createClient('6379', '207.148.73.3');
+const client = redis.createClient(config.redis.port, config.domain);
 const sql = require('../mysql/index');
 const md5 = require('md5');
-const config = require('../config');
 
 // 登入
 const login = (req, res) => {

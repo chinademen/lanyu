@@ -17,6 +17,12 @@ class Login extends Component {
 
     componentDidMount() {
         this.props.socketioStore.clearChatMsg();
+        // 回车触发登陆
+        document.onkeydown = (e => {
+            if (e.keyCode === 13) {
+                this.login()
+            }
+        });
     }
 
     // 监听并记录用户名
