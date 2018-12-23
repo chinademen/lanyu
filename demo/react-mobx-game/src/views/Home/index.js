@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { inject, observer } from 'mobx-react';
 import Header from '@/components/Header';
 import Msg from '@/components/Msg';
+
+// console.log(lodash.chunk);
+var users = [
+    { 'user': 'barney',  'active': true },
+    { 'user': 'fred' },
+    { 'user': 'pebbles', 'active': false }
+];
+console.log(_.dropRightWhile(users, 'active'))
+// => objects for ['barney']
 
 @inject('commonStore', 'homeStore', 'lotteryStore')
 @observer
