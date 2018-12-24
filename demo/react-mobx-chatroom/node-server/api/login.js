@@ -1,16 +1,27 @@
 const config = require('../config');
 const redis = require('redis');
-const client = redis.createClient(config.redis.port, config.domain);
+const client = redis.createClient(config.redis.port, config.domain, { password: 'gPj-Z9qw' });
 const sql = require('../mysql/index');
 const md5 = require('md5');
+const util = require('../util/index');
 
 // 登入
 const login = (req, res) => {
+    const ip = util.getClientIP(req);
     let { username } = req.body;
     if (!username) username = '游客';
+    // 校验该ip是否有其他用户在线，如果有，将其他用户踢下线
+    util.signInCheck('ip', ip);
+    // 校验该用户是否在线，如果有，将该用户踢下线、游客除外
+    if (username !== '游客') {
+        util.signInCheck('username', username);
+    }
+
     const authorization = md5(username + new Date().getTime());
+    // 在session中保存用户名，自定义身份标识，客户端ip
     req.session.username = username;
     req.session.authorization = authorization;
+    req.session.ip = ip;
     
     var level = '1级小菜鸡';
     var levelLogo = config.baseUrl + '/images/level/1.png';

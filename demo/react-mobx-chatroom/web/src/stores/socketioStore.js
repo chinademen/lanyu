@@ -2,6 +2,10 @@ import { observable, action, runInAction } from 'mobx';
 import io from 'socket.io-client';
 import baseURL from '@/config/domain';
 import commonStore from './commonStore';
+import { opStorage } from '@/utils/db';
+
+const db = opStorage('mobx-chat');
+const { authorization } = db;
 
 // socket.io   on('msg')监听msg事件  emit('msg)发送msg事件
 class SocketioStore {
@@ -10,6 +14,7 @@ class SocketioStore {
     @observable onlineUsers = null; // 当前在线的所有人名
     @observable user = null; // 最后加入的新用户
     @observable chatMsg = null; // 聊天实时消息对象(包括发送者，消息实体)
+    @observable authorization = commonStore.authorization || authorization;
 
     // 连接后台socket
     @action socketInit(username) {
@@ -19,7 +24,7 @@ class SocketioStore {
             // reconnectionDelay : 5000
         });
         // 告诉后台有用户登录
-        this.socket.emit('login', { username });
+        this.socket.emit('login', { username, authorization });
     }
 
     // 监听用户登陆消息
@@ -49,6 +54,7 @@ class SocketioStore {
             userAvatar,
             level,
             levelLogo,
+            authorization
         }
         // console.log('发送事件: ', obj);
         this.socket.emit('chat message', obj);
