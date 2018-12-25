@@ -8,7 +8,7 @@ const baseUrl = protocol + '://' + domain + ':' + + port;
 const redis = {
     port: 6379,  // 端口
     user: 'root',  // 用户名
-    password: '123456', // 密码
+    password: 'gPj-Z9qw', // 密码
     db: 0 // 数据库 
 };
 

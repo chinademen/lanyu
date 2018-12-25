@@ -1,6 +1,7 @@
 const config = require('../config');
 const redis = require('redis');
-const client = redis.createClient(config.redis.port, config.domain);
+let client = redis.createClient(config.redis.port, config.domain, { auth_pass: config.redis.password });
+client.auth(config.redis.password)
 
 // 获取用户 ip 地址
 function getClientIP(req) {
