@@ -61,7 +61,7 @@ var sessionStore = new redisStore({
 
 // 设置session缓存到redis
 app.use(session({           // session
-	// store: sessionStore,    // 设置session存储在redis中
+	store: sessionStore,    // 设置session存储在redis中
 	secret: 'keyboard cat',
 	genid: function (req) { // 生成一个自定义的sessionid串，实际值： sessionid:xxx...
 		const { username } = req.body;

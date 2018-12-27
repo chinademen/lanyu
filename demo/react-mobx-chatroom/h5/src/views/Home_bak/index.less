@@ -1,0 +1,107 @@
+.home_page {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    left: calc(50% - 400px);
+    top: calc(50% - 300px);
+    border-radius: 5px;
+    background: #fff;
+    color: #333;
+    .left {
+        float: left;
+        box-sizing: border-box;
+        width: 240px;
+        height: 100%;
+        border-right: 1px solid #ddd;
+        // 用户信息
+        .header {
+            box-sizing: border-box;
+            display: inline-block;
+            padding: 5px 10px;
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #ddd;
+            span {
+                display: inline-block;
+                overflow: hidden;
+                // 用户头像logo
+                &:nth-of-type(1) {
+                    width: 20px;
+                    height: 20px;
+                    // background-image: url('~@/static/images/user.gif');
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;   
+                }
+                // 用户名
+                &:nth-of-type(2) {
+                    box-sizing: border-box;
+                    width: 100px;
+                    height: 20px;
+                    line-height: 20px;
+                    padding: 0 5px;
+                }
+                // 等级
+                &:nth-of-type(3) {
+                    box-sizing: border-box;
+                    width: 40px;
+                    height: 20px;
+                    line-height: 20px;
+                    font-size: 12px;
+                }
+            }
+            // 等级图标
+            img {
+                position: absolute;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        }
+        // 功能Tab
+        .features-Tabs {
+            box-sizing: border-box;
+            display: inline-block;
+            width: 100%;
+            height: 30px;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            .features-item {
+                padding: 5px 0;
+                box-sizing: border-box;
+                display: inline-block;
+                width: 25%;
+                height: 100%;
+                background: #2196f3;
+                color: #fff;
+                border-right: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+            .active {
+                color: #ffc107;
+            }
+        }
+    }
+    .right {
+        box-sizing: border-box;
+        float: left;
+        width: 560px;
+        height: 100%;
+        // 聊天框用户信息
+        .header {
+            box-sizing: border-box;
+            display: inline-block;
+            padding: 5px 30px;
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #ddd;
+            // 退出
+            .logout {
+                position: absolute;
+                cursor: pointer;
+                right: 10px;
+            }
+        }
+    }
+}
