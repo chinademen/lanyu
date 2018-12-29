@@ -71,7 +71,6 @@ class Content extends Component {
 
     // 改变玩法群
     changeMethods(methodName) {
-        console.log(methodName);
         this.setState({ methodName });
     }
 
