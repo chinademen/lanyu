@@ -1,6 +1,7 @@
+window.carouselAnimation = null;
+
 // 创建一个requestAnimationFrame动画
 export function createAnimation(fn, param) {
-    let animation;
     // 这才是requestAnimationFrame真正的回调函数
     function callback(param) {
         fn();
@@ -12,10 +13,10 @@ export function createAnimation(fn, param) {
             callback(param);
         }
     }
-    animation = window.requestAnimationFrame(F(param));
+    carouselAnimation = window.requestAnimationFrame(F(param));
 }
 
 // 移除requestAnimationFrame动画
-export function clearAnimation(animationName) {
-    window.cancelAnimationFrame(animationName);
+export function clearAnimation(name) {
+    window.cancelAnimationFrame(name);
 }
