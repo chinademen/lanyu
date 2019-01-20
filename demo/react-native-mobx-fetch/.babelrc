@@ -9,6 +9,16 @@
       {
         "legacy": true
       }
+    ],
+    [
+      "babel-plugin-root-import", {
+        "path": [
+          {
+            "rootPathPrefix": "@",
+            "rootPathSuffix": "src/"
+          }
+        ]
+      }
     ]
   ]
 }

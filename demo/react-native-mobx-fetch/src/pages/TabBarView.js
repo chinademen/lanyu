@@ -7,21 +7,21 @@ import Feed from './feed/Feed'
 import FoodEncyclopedia from './home/FoodEncyclopedia'
 import Report from './report'
 import Profile from './profile/Profile'
-import TabBar from '../components/TabBar'
+import TabBar from '@/components/TabBar'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 const tabTitles = ['彩票', '开奖', '报表', '我的']
 const tabIcons = [
-    require('../resource/ic_tab_homepage.png'),
-    require('../resource/ic_tab_search.png'),
-    require('../resource/ic_album_default.png'),
-    require('../resource/ic_tab_my.png'),
+    require('~/resource/ic_tab_homepage.png'),
+    require('~/resource/ic_tab_search.png'),
+    require('~/resource/ic_album_default.png'),
+    require('~/resource/ic_tab_my.png'),
 ]
 const tabSelectedIcon = [
-    require('../resource/ic_tab_homepage_select.png'),
-    require('../resource/ic_tab_search_select.png'),
-    require('../resource/ic_album_selected.png'),
-    require('../resource/ic_tab_my_select.png'),
+    require('~/resource/ic_tab_homepage_select.png'),
+    require('~/resource/ic_tab_search_select.png'),
+    require('~/resource/ic_album_selected.png'),
+    require('~/resource/ic_tab_my_select.png'),
 ]
 
 @inject('app')

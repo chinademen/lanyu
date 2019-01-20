@@ -13,10 +13,10 @@ import {
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
-import FoodEncyclopediaStore from '../../store/foodEncyclopediaStore'
-import NetInfoDecorator from '../../common/NetInfoDecorator'
+import FoodEncyclopediaStore from '@/store/foodEncyclopediaStore'
+import NetInfoDecorator from '@/common/NetInfoDecorator'
 import Toast from 'react-native-easy-toast'
-import Loading from '../../components/Loading'
+import Loading from '@/components/Loading'
 
 @NetInfoDecorator
 @inject('account', 'app')

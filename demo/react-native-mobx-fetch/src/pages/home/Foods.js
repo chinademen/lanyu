@@ -16,9 +16,9 @@ import {
 import PropTypes from 'prop-types'
 import {observer} from 'mobx-react/native'
 import {observable, runInAction, reaction, action, computed} from 'mobx'
-import Header from '../../components/Header'
-import Loading from '../../components/Loading'
-import LoadMoreFooter from "../../components/LoadMoreFooter"
+import Header from '@/components/Header'
+import Loading from '@/components/Loading'
+import LoadMoreFooter from "@/components/LoadMoreFooter"
 
 class FoodsStore {
     @observable foods = []
