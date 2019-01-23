@@ -1,5 +1,5 @@
 /**
- * Created by ljunb on 2017/5/25.
+ * 主入口
  */
 import React, {PureComponent} from 'react'
 import {
@@ -8,32 +8,42 @@ import {
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
-import Router from './common/Routers'
+import Router from '@/route'
 
-@inject('app')
+@inject(({ app }) => {
+    return {
+        barStyle: app.barStyle
+    }
+})
 @observer
 export default class App extends PureComponent {
 
+    // 场景转换动画配置
     configureScene = route => {
-        if (route.sceneConfig) return route.sceneConfig
-
+        if (route.sceneConfig) return route.sceneConfig;
         return {
             ...Navigator.SceneConfigs.PushFromRight,
             gestures: {}    // 禁用左滑返回手势
         }
     }
 
+    // 路由跳转 渲染场景
     renderScene = (route, navigator) => {
-        let Component = Router[route.id].default
-        return <Component navigator={navigator} {...route.passProps}/>
+        let Component = Router[route.id].default;
+        return <Component navigator={navigator} {...route.passProps}/>;
     }
 
     render() {
-        const initialPage = __IOS__ ? 'TabBarView' : 'Splash'
+        const { barStyle } = this.props;
+        // 初始化页面
+        const initialPage = __IOS__ ? 'TabBarView' : 'Splash';
         return (
             <View style={{flex: 1}}>
-                <StatusBar barStyle={this.props.app.barStyle} animated />
+                {/* 设备顶部状态栏组件 */}
+                <StatusBar barStyle={barStyle} animated />
+                {/* 路由导航组件 */}
                 <Navigator
+                    // 路由初始化配置信息 
                     initialRoute={{id: initialPage}}
                     configureScene={this.configureScene}
                     renderScene={this.renderScene}

@@ -1,12 +1,13 @@
 /**
- * Created by ljunb on 16/8/21.
+ * 初始化过渡页面
  */
 import React, { Component } from 'react'
 import { Image } from 'react-native'
 
 export default class Splash extends Component {
     componentDidMount() {
-        const { navigator } = this.props
+        const { navigator } = this.props;
+        // 2秒后调到首页
         this.timer = setTimeout(() => {
             navigator.resetTo({id: 'TabBarView'})
         }, 2000)
@@ -20,7 +21,7 @@ export default class Splash extends Component {
         return (
             <Image
                 style={{width: gScreen.width, height: gScreen.height}}
-                source={require('../resource/img_intro_4.png')}
+                source={require('@/assets/images/splash.png')}
             />
         )
     }

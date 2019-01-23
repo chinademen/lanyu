@@ -1,14 +1,14 @@
 import * as fetch from 'isomorphic-fetch';
-import { message } from 'antd';
-import createHistory from 'history/createHashHistory';
-const history = createHistory();
+// import { message } from 'antd';
+// import createHistory from 'history/createHashHistory';
+// const history = createHistory();
 
 // 提示框
-message.config({
-    top: 100,
-    delay: 3,
-    maxCount: 1,
-});
+// message.config({
+//     top: 100,
+//     delay: 3,
+//     maxCount: 1,
+// });
 
 // 处理状态码
 function checkStatus(response) {
@@ -48,6 +48,6 @@ export default function request(url, options) {
             return response.json();
         })
         .catch(e => {
-            message.error(e + '');
+            // message.error(e + '');
         });
 };

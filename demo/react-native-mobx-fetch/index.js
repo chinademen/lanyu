@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { Component } from 'react'
 import {Platform, Animated, StyleSheet, View, Text, AppRegistry} from 'react-native'
 import {Provider} from 'mobx-react/native'
