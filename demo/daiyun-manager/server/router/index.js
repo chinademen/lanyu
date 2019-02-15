@@ -9,6 +9,7 @@ const loginApi = require('../api/login');
 const adminApi = require('../api/admin');
 const userApi = require('../api/user');
 const articleApi = require('../api/article');
+const webApi = require('../api/web');
 
 // 登录
 router.post('/api/login', loginApi.login);
@@ -35,6 +36,12 @@ router.post('/api/articlelist', articleApi.articlelist);
 router.post('/api/articleadd', articleApi.articleadd);
 // 修改文章详情
 router.post('/api/articleedit', articleApi.articleedit);
+
+// web推广页文章列表
+router.post('/api/webarticlelist', webApi.webarticlelist);
+// 用户提交信息页面
+router.post('/api/webuseradd', webApi.webuseradd);
+
 
 // 上传LOGO
 // router.post('/api/web/webSet', multipartMiddleware, webApi.uploadCompanyLogo);

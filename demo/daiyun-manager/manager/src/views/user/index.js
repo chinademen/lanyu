@@ -52,6 +52,11 @@ class User extends Component {
         this.childTable = ref;
     }
 
+    // 备注栏
+    getFooter = () => {
+        return <span style={{ color: 'red' }}>备注：有"提交日期"时间的客户是访问推广页自己提交信息的！！！</span>;
+    }
+
     // 表格渲染
     renderTable = (params = this.state.initPage) => {
         this.props.userList(params)
@@ -152,6 +157,12 @@ class User extends Component {
                 align: 'center',
             },
             {
+                title: '提交日期',
+                dataIndex: 'starttime',
+                key: 'starttime',
+                align: 'center',
+            },
+            {
                 title: '操作',
                 key: 'opration',
                 align: 'center',
@@ -187,6 +198,7 @@ class User extends Component {
                         onChange={this.handleBasicTableChange}
                         onRef={this.onRef}
                         rowKey='id'
+                        getFooter={this.getFooter}
                     />
                 </div>
                 <AddUser {...modalProps} modalVisible={addModalVisible} />

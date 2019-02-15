@@ -1,6 +1,6 @@
 const protocol = 'http';
-// const domain = '207.148.73.3';
-const domain = '127.0.0.1';
+const domain = '39.98.181.80';
+// const domain = '127.0.0.1';
 const port = 8080; // 服务器端口
 const baseUrl = protocol + '://' + domain + ':' + + port;
 
@@ -16,7 +16,7 @@ const redis = {
 const mysql = {
     port: 3306,  // 端口
     user: 'root',  // 用户名
-    password: '123456', // 密码
+    password: 'gPj-Z9qw', // 密码
     database: 'yunjian' // 数据库名
 };
 

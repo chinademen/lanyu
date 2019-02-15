@@ -77,10 +77,11 @@ const server = http.createServer(app);
 
 /**
  * 	监听指定端口 + 域名, 
- *  server.listen(port, host, backlog, callback])  启动一个TCP服务监听输入的 port 和 host.
+ *  server.listen(port, host, backlog, callback)  启动一个TCP服务监听输入的 port 和 host.
  *  注意：如果 host 省略，如果 ipv6 可用，使用req.headers['x-forwarded-for']获取客户端域名的时候会返回类似：::ffff:127.0.0.1的连接，所以想获取正常的客户端域名，最好不要省略host
+ *  如果在启动时报错:  Error: listen EADDRNOTAVAIL: address not available xxx.xxx.xxx.xxx:port， 将参数host去掉，即 server.listen(port, callback)
 */
-server.listen(config.port, config.domain, function () {
+server.listen(config.port, function () {
 	console.log('listen ' + config.baseUrl);
 });
 

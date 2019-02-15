@@ -109,7 +109,7 @@ class SiderMenu extends PureComponent {
           collapsed={collapsed}
         >
           <div className="logo" key="logo">
-            <Link to="/" replace>
+            <Link to="/views/admin" replace>
                 <img src={require("@/static/images/logo.jpg")} alt="logo" style={{ borderRadius: '50%' }} />
                 {collapsed || <h1>{ '香港孕检' }</h1>}
             </Link>

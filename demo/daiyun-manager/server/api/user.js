@@ -5,7 +5,7 @@ const checkout = require('../util/checkout');
 // 客户列表
 const userlist = (req, res) => {
     util.logout(req, res, () => {
-        util.tablePaging(req, res, sql, 'user_info', ['id', 'username', 'telphone', 'qq', 'wechat', 'address', 'remark'])
+        util.tablePaging(req, res, sql, 'user_info', ['id', 'username', 'telphone', 'qq', 'wechat', 'address', 'remark', 'starttime'])
     })
 }
 
@@ -14,8 +14,8 @@ const useradd = (req, res) => {
     util.logout(req, res, () => {
         const { username, telphone, qq, wechat, address, remark } = req.body;
         // 客户可以重复新增
-        const insertStr = `INSERT user_info (username, telphone, qq, wechat, address, remark) values (?, ?, ?, ?, ?, ?);`;
-        sql(insertStr, [username, telphone, qq, wechat, address, remark], (err, data) => {
+        const insertStr = `INSERT user_info (username, telphone, qq, wechat, address, remark, starttime) values (?, ?, ?, ?, ?, ?, ?);`;
+        sql(insertStr, [username, telphone, qq, wechat, address, remark, '-'], (err, data) => {
             if (err) {
                     res.json({
                     status: -1,
