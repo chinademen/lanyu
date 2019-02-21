@@ -3,8 +3,17 @@
 // 管理员信息
 import Admin from '@/views/admin';
 
-// 文章信息
-import Article from '@/views/article'; 
+// 行业资讯
+import Article from '@/views/article';
+
+// 成功案例
+import Case from '@/views/case'; 
+
+// 鉴定攻略
+import Raiders from '@/views/raiders'; 
+
+// DNA检测
+import Dna from '@/views/dna'; 
 
 // 客户信息
 import User from '@/views/user';
@@ -20,10 +29,25 @@ export const routerConfig = {
         component: Admin,
         name: ['管理员列表'],
     },
-    // 文章信息
+    // 行业资讯
     '/views/article': {
         component: Article,
-        name: ['文章列表'],
+        name: ['行业资讯'],
+    },
+    // 成功案例
+    '/views/case': {
+        component: Case,
+        name: ['成功案例'],
+    },
+    // 鉴定攻略
+    '/views/raiders': {
+        component: Raiders,
+        name: ['鉴定攻略'],
+    },
+    // DNA检测
+    '/views/dna': {
+        component: Dna,
+        name: ['DNA检测'],
     },
     // 客户信息
     '/views/user': {

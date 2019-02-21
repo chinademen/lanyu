@@ -1,9 +1,24 @@
 const sql = require('../mysql/index');
 const util = require('../util');
 
-// web推广页文章列表(不需要登录)
+// 行业资讯文章列表(不需要登录)
 const webarticlelist = (req, res) => {
     util.tablePaging(req, res, sql, 'article_info', ['id', 'title', 'author', 'views', 'points', 'content'])
+}
+
+// 鉴定攻略列表(不需要登录)
+const webraiderslist = (req, res) => {
+    util.tablePaging(req, res, sql, 'raiders_info', ['id', 'title', 'author', 'views', 'points', 'content'])
+}
+
+// DNA检测文章列表(不需要登录)
+const webdnalist = (req, res) => {
+    util.tablePaging(req, res, sql, 'dna_info', ['id', 'title', 'author', 'views', 'points', 'content'])
+}
+
+// 成功案例文章列表(不需要登录)
+const webcaselist = (req, res) => {
+    util.tablePaging(req, res, sql, 'case_info', ['id', 'title', 'author', 'views', 'points', 'content'])
 }
 
 // 用户提交信息页面
@@ -30,5 +45,8 @@ const webuseradd = (req, res) => {
 
 module.exports = {
     webarticlelist,
+    webraiderslist,
+    webdnalist,
+    webcaselist,
     webuseradd
 };

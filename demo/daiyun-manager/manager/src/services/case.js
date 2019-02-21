@@ -1,27 +1,27 @@
 import request from '@/axios/request';
 import api from '@/config/api';
 
-// 行业资讯列表
-export function articleList(params) {
-    return request(api.article.list, {
+// 成功案例列表
+export function caseList(params) {
+    return request(api.case.list, {
         method: 'POST',
         data: params,
         dataType: 'FormData'
     });
 }
 
-// 新增行业资讯
-export function articleAdd(params) {
-    return request(api.article.add, {
+// 成功案例资讯
+export function caseAdd(params) {
+    return request(api.case.add, {
         method: 'POST',
         data: params,
         dataType: 'FormData'
     });
 }
 
-// 修改行业资讯信息
-export function articleEdit(params) {
-    return request(api.article.edit, {
+// 修改成功案例信息
+export function caseEdit(params) {
+    return request(api.case.edit, {
         method: 'POST',
         data: params,
         dataType: 'FormData'

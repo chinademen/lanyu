@@ -1,20 +1,20 @@
-// 行业资讯
+// 鉴定攻略
 const sql = require('../mysql/index');
 const util = require('../util');
 
-// 行业资讯文章列表
-const articlelist = (req, res) => {
+// 鉴定攻略文章列表
+const raiderslist = (req, res) => {
     util.logout(req, res, () => {
-        util.tablePaging(req, res, sql, 'article_info', ['id', 'title', 'author', 'views', 'points', 'content'])
+        util.tablePaging(req, res, sql, 'raiders_info', ['id', 'title', 'author', 'views', 'points', 'content'])
     })
 }
 
-// 新增行业资讯文章
-const articleadd = (req, res) => {
+// 新增鉴定攻略文章
+const raidersadd = (req, res) => {
     util.logout(req, res, () => {
         const { title, author, views, points, content } = req.body;
-        // 行业资讯文章可以重复新增
-        const insertStr = `INSERT article_info (title, author, views, points, content) values (?, ?, ?, ?, ?);`;
+        // 鉴定攻略可以重复新增
+        const insertStr = `INSERT raiders_info (title, author, views, points, content) values (?, ?, ?, ?, ?);`;
         sql(insertStr, [title, author, views, points, content], (err, data) => {
             if (err) {
                     res.json({
@@ -31,11 +31,11 @@ const articleadd = (req, res) => {
     })
 }
 
-// 修改行业资讯文章详情
-const articleedit = (req, res) => {
+// 修改鉴定攻略详情
+const raidersedit = (req, res) => {
     util.logout(req, res, () => {
         const { title, author, views, points, content, id } = req.body;
-        const updateStr = `UPDATE article_info set title = ?, author = ?, views = ?, points = ?, content = ? WHERE id = ?`;
+        const updateStr = `UPDATE raiders_info set title = ?, author = ?, views = ?, points = ?, content = ? WHERE id = ?`;
         sql(updateStr, [title, author, views, points, content, id], (err, data) => {
             if (err) {
                 res.json({
@@ -53,7 +53,7 @@ const articleedit = (req, res) => {
 }
 
 module.exports = {
-    articlelist,
-    articleadd,
-    articleedit
+    raiderslist,
+    raidersadd,
+    raidersedit
 };

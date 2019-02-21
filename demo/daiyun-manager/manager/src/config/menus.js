@@ -12,7 +12,10 @@ export const menusData = [ // 侧边栏目录树
       iconUrl: 'read',
       resourceName: '文章管理',
       children: [
-        { resourceId: 21, resourceName: '文章列表', resourceUrl: '/views/article', iconUrl: 'read' }
+        { resourceId: 21, resourceName: '行业资讯', resourceUrl: '/views/article', iconUrl: 'read' },
+        { resourceId: 22, resourceName: '成功案例', resourceUrl: '/views/case', iconUrl: 'read' },
+        { resourceId: 23, resourceName: 'DNA检测', resourceUrl: '/views/dna', iconUrl: 'read' },
+        { resourceId: 24, resourceName: '鉴定攻略', resourceUrl: '/views/raiders', iconUrl: 'read' },
       ]
     },
     {
@@ -22,5 +25,5 @@ export const menusData = [ // 侧边栏目录树
       children: [
         { resourceId: 31, resourceName: '客户列表', resourceUrl: '/views/user', iconUrl: 'team' }
       ]
-    },
+    }
 ];
