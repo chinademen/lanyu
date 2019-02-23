@@ -2,12 +2,13 @@ export default {
     // 公共接口
     common: {
         getLotteryBetMode: 'lottery/get-lottery-bet-mode',              // 获取用户投注金额模式(元角分厘)
-        getNotice: '/website/get-notice',                               // 公告详情
+        getNotice: '/website/get-notice',                               // 公告详情，首页的通知的效果跑马灯
         getMethodList: '/lottery/get-method-list',                      // 获取彩种玩法
         getIssueList: '/lottery/get-issue-list',                        // 获取奖期
     },
     // 登录
     login: {
+        // getServerApi: '/api/get-server-api',                            // 获取域名
         userLogin: '/passport/user-login',                              // 用户登录
         userLogout: '/user/user-logout',                                // 用户登出
         userCheckFundPassword: '/passport/user-check-fund-password',    // 忘记密码第一步

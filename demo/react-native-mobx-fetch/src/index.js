@@ -10,13 +10,13 @@ import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import Router from '@/route'
 
-@inject(({ app }) => {
-    return {
-        barStyle: app.barStyle
-    }
-})
+@inject('app', 'loginStore')
 @observer
 export default class App extends PureComponent {
+    componentDidMount() {
+        alert(JSON.stringify(this.props))
+        // this.props.getServerApi({ host: 'www.yuleyun.app' })
+    }
 
     // 场景转换动画配置
     configureScene = route => {
@@ -34,7 +34,7 @@ export default class App extends PureComponent {
     }
 
     render() {
-        const { barStyle } = this.props;
+        const { barStyle } = this.props.app;
         // 初始化页面
         const initialPage = __IOS__ ? 'TabBarView' : 'Splash';
         return (
