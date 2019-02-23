@@ -4,6 +4,7 @@ import { Card, Button, Icon, message, Form, Dropdown, Menu, Tag, DatePicker } fr
 import BasicTable from '@/components/BasicTable';
 import AddCase from './addCase';  
 import EditCase from './editCase';
+import UpdateImage from './updateImage';
 import './index.less';
 
 const getValue = obj =>
@@ -14,6 +15,7 @@ const getValue = obj =>
 const Action = {
     add: 'add',
     edit: 'edit',
+    update: 'update',
 };
 
 @Form.create()
@@ -22,7 +24,8 @@ const Action = {
         data: caseStore.data,
         caseList: caseStore.caseList,
         caseAdd: caseStore.caseAdd,
-        caseEdit: caseStore.caseEdit
+        caseEdit: caseStore.caseEdit,
+        updateImage: caseStore.updateImage,
     }
 })
 @observer
@@ -34,8 +37,9 @@ class Case extends Component {
                 pageNo: 1,
                 pageSize: 10,
             },
-            addModalVisible: false,     // 新增会员弹窗开关
-            editModalVisible: false,    // 修改会员弹窗开关
+            addModalVisible: false,    
+            editModalVisible: false,    
+            updateModalVisible: false,
             selectedRows: [],           // 被选中行数据
             componentKey: 1,            // 判断组件的key
             recode: {},  
@@ -120,6 +124,13 @@ class Case extends Component {
             })
         }
 
+        if (action === 'update') {
+            this.props.updateImage(fields, res => {
+                message.success(res.message)
+                this.renderTable()
+            })
+        }
+
         this.handleModalVisible(action, false);
     }
 
@@ -133,7 +144,7 @@ class Case extends Component {
 
     render() {
         const { data } = this.props;
-        const { selectedRows, addModalVisible, editModalVisible } = this.state;
+        const { selectedRows, addModalVisible, editModalVisible, updateModalVisible } = this.state;
 
         const columns = [
             {
@@ -141,6 +152,15 @@ class Case extends Component {
                 dataIndex: 'title',
                 key: 'title',
                 align: 'center',
+            },
+            {
+                title: '简介图片',
+                dataIndex: 'imageurl',
+                key: 'imageurl',
+                align: 'center',
+                render: (text) => {
+                    return <img src={text} style={{ width: 60, height: 60}} alt="暂无图片" />;
+                }
             },
             {
                 title: '作者',
@@ -174,6 +194,7 @@ class Case extends Component {
                     return (
                         <span>
                             <Tag color="blue" key="edit" onClick={() => this.handleModalVisible(Action.edit, true, recode)}>修改文章详情</Tag>
+                            <Tag color="blue" key="update" onClick={() => this.handleModalVisible(Action.update, true, recode)}>上传图片</Tag>
                         </span>
                     )
                 }
@@ -205,6 +226,7 @@ class Case extends Component {
                 </div>
                 <AddCase {...modalProps} modalVisible={addModalVisible} />
                 <EditCase {...modalProps} modalVisible={editModalVisible} selectedRows={selectedRows} />
+                <UpdateImage {...modalProps} modalVisible={updateModalVisible} selectedRows={selectedRows} />
             </Card>
         );
     }

@@ -1,5 +1,5 @@
 import { observable, action, runInAction } from 'mobx'
-import { dnaList, dnaAdd, dnaEdit } from '@/services/dna'
+import { dnaList, dnaAdd, dnaEdit, updateImage } from '@/services/dna'
 
 class DnaStore {
     @observable data = {    // 成功案例数据 
@@ -34,6 +34,16 @@ class DnaStore {
     @action.bound
     async dnaEdit(params, callback) {
         const res = await dnaEdit(params);
+        runInAction(() => {
+            if(!res) return;
+            if (callback) callback(res);
+        })
+    }
+
+    // 上传图片
+    @action.bound
+    async updateImage(params, callback) {
+        const res = await updateImage(params);
         runInAction(() => {
             if(!res) return;
             if (callback) callback(res);

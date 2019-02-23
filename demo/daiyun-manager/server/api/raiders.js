@@ -1,11 +1,14 @@
 // 鉴定攻略
+const fs = require('fs');
+const path = require('path');
 const sql = require('../mysql/index');
 const util = require('../util');
+const config = require('../config');
 
 // 鉴定攻略文章列表
 const raiderslist = (req, res) => {
     util.logout(req, res, () => {
-        util.tablePaging(req, res, sql, 'raiders_info', ['id', 'title', 'author', 'views', 'points', 'content'])
+        util.tablePaging(req, res, sql, 'raiders_info', ['id', 'title', 'author', 'views', 'points', 'content', 'imageurl'])
     })
 }
 
@@ -52,8 +55,34 @@ const raidersedit = (req, res) => {
     })
 }
 
+// 上传图片
+const raidersimage = (req, res) => {
+    util.logout(req, res, () => {
+        const { id } = req.body;
+        const source = fs.createReadStream(req.files.file.path);
+        const dest = fs.createWriteStream(path.join(process.cwd() + '/public/images/raiders/' + req.files.file.name)); 
+        const newPath = config.baseUrl + '/images/raiders/' + req.files.file.name; 
+        source.pipe(dest);
+        source.on('end', function () {
+                // 更新数据库路径
+                const sqlStr = `UPDATE raiders_info SET imageurl=? WHERE id=${id};`
+                sql(sqlStr, [newPath], (err, data) => {
+                    res.json({
+                        status: 1,
+                        message: '上传成功'
+                    });
+                });
+        });
+        source.on('error', function (err) {
+            console.log(err);
+        });
+    })
+}
+
+
 module.exports = {
     raiderslist,
     raidersadd,
-    raidersedit
+    raidersedit,
+    raidersimage
 };

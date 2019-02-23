@@ -1,11 +1,14 @@
 // 行业资讯
+const fs = require('fs');
+const path = require('path');
 const sql = require('../mysql/index');
 const util = require('../util');
+const config = require('../config');
 
 // 行业资讯文章列表
 const articlelist = (req, res) => {
     util.logout(req, res, () => {
-        util.tablePaging(req, res, sql, 'article_info', ['id', 'title', 'author', 'views', 'points', 'content'])
+        util.tablePaging(req, res, sql, 'article_info', ['id', 'title', 'author', 'views', 'points', 'content', 'imageurl'])
     })
 }
 
@@ -52,8 +55,33 @@ const articleedit = (req, res) => {
     })
 }
 
+// 上传图片
+const articleimage = (req, res) => {
+    util.logout(req, res, () => {
+        const { id } = req.body;
+        const source = fs.createReadStream(req.files.file.path);
+        const dest = fs.createWriteStream(path.join(process.cwd() + '/public/images/article/' + req.files.file.name)); 
+        const newPath = config.baseUrl + '/images/article/' + req.files.file.name; 
+        source.pipe(dest);
+        source.on('end', function () {
+                // 更新数据库路径
+                const sqlStr = `UPDATE article_info SET imageurl=? WHERE id=${id};`
+                sql(sqlStr, [newPath], (err, data) => {
+                    res.json({
+                        status: 1,
+                        message: '上传成功'
+                    });
+                });
+        });
+        source.on('error', function (err) {
+            console.log(err);
+        });
+    })
+}
+
 module.exports = {
     articlelist,
     articleadd,
-    articleedit
+    articleedit,
+    articleimage
 };

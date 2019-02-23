@@ -27,3 +27,14 @@ export function articleEdit(params) {
         dataType: 'FormData'
     });
 }
+
+// 上传图片
+export function updateImage(params) {
+    return request(api.article.updateImage, {
+        method: 'POST',
+        data: params,
+        header: {
+            'content-type': false,
+        }
+    });
+}

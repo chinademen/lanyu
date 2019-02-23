@@ -1,5 +1,5 @@
 import { observable, action, runInAction } from 'mobx'
-import { articleList, articleAdd, articleEdit } from '@/services/article'
+import { articleList, articleAdd, articleEdit, updateImage } from '@/services/article'
 
 class ArticleStore {
     @observable data = {    // 文章列表数据 
@@ -34,6 +34,16 @@ class ArticleStore {
     @action.bound
     async articleEdit(params, callback) {
         const res = await articleEdit(params);
+        runInAction(() => {
+            if(!res) return;
+            if (callback) callback(res);
+        })
+    }
+
+    // 上传图片
+    @action.bound
+    async updateImage(params, callback) {
+        const res = await updateImage(params);
         runInAction(() => {
             if(!res) return;
             if (callback) callback(res);

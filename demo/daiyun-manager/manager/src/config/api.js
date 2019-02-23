@@ -17,24 +17,28 @@ export default {
     article: {
         list: '/api/articlelist', // 行业资讯列表
         add: '/api/articleadd', // 新增行业资讯
-        edit: '/api/articleedit' // 修改行业资讯详情
+        edit: '/api/articleedit', // 修改行业资讯详情
+        updateImage: '/api/articleimage', // 上传图片
     },
     // 成功案例
     case: {
         list: '/api/caselist', // 成功案例列表
         add: '/api/caseadd', // 新增成功案例
-        edit: '/api/caseedit' // 修改成功案例详情
+        edit: '/api/caseedit', // 修改成功案例详情
+        updateImage: '/api/caseimage', // 上传图片
     },
     // DNA检测
     dna: {
         list: '/api/dnalist', // DNA检测列表
         add: '/api/dnaadd', // 新增DNA检测
-        edit: '/api/dnaedit' // 修改DNA检测详情
+        edit: '/api/dnaedit', // 修改DNA检测详情
+        updateImage: '/api/dnaimage', // 上传图片
     },
     // 鉴定攻略
     raiders: {
         list: '/api/raiderslist', // 鉴定攻略列表
         add: '/api/raidersadd', // 新增鉴定攻略
-        edit: '/api/raidersedit' // 修改鉴定攻略详情
+        edit: '/api/raidersedit', // 修改鉴定攻略详情
+        updateImage: '/api/raidersimage', // 上传图片
     }
 }   

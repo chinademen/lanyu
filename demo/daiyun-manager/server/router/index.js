@@ -39,6 +39,8 @@ router.post('/api/articlelist', articleApi.articlelist);
 router.post('/api/articleadd', articleApi.articleadd);
 // 修改行业资讯文章详情
 router.post('/api/articleedit', articleApi.articleedit);
+// 上传图片
+router.post('/api/articleimage', multipartMiddleware, articleApi.articleimage);
 
 // 成功案例文章列表
 router.post('/api/caselist', caseApi.caselist);
@@ -46,6 +48,8 @@ router.post('/api/caselist', caseApi.caselist);
 router.post('/api/caseadd', caseApi.caseadd);
 // 修改成功案例文章详情
 router.post('/api/caseedit', caseApi.caseedit);
+// 上传图片
+router.post('/api/caseimage', multipartMiddleware, caseApi.caseimage);
 
 // DNA检测文章列表
 router.post('/api/dnalist', dnaApi.dnalist);
@@ -53,6 +57,8 @@ router.post('/api/dnalist', dnaApi.dnalist);
 router.post('/api/dnaadd', dnaApi.dnaadd);
 // 修改DNA检测详情
 router.post('/api/dnaedit', dnaApi.dnaedit);
+// 上传图片
+router.post('/api/dnaimage', multipartMiddleware, dnaApi.dnaimage);
 
 // 鉴定攻略文章列表
 router.post('/api/raiderslist', raidersApi.raiderslist);
@@ -60,6 +66,8 @@ router.post('/api/raiderslist', raidersApi.raiderslist);
 router.post('/api/raidersadd', raidersApi.raidersadd);
 // 修改鉴定攻略详情
 router.post('/api/raidersedit', raidersApi.raidersedit);
+// 上传图片
+router.post('/api/raidersimage', multipartMiddleware, raidersApi.raidersimage);
 
 // 行业资讯文章列表
 router.post('/api/webarticlelist', webApi.webarticlelist);
@@ -72,8 +80,5 @@ router.post('/api/webcaselist', webApi.webcaselist);
 // 用户提交信息页面
 router.post('/api/webuseradd', webApi.webuseradd);
 
-
-// 上传LOGO
-// router.post('/api/web/webSet', multipartMiddleware, webApi.uploadCompanyLogo);
 
 module.exports = router;

@@ -2,7 +2,7 @@ const protocol = 'http';
 const domain = '39.98.181.80';
 // const domain = '127.0.0.1';
 const port = 8080; // 服务器端口
-const baseUrl = protocol + '://' + domain + ':' + + port;
+const baseUrl = protocol + '://' + domain + ':'+ port;
 
 // redis
 const redis = {

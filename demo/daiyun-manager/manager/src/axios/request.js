@@ -12,6 +12,7 @@ message.config({ top: 100, delay: 3, maxCount: 1 });
 const service = axios.create({
     // 配置默认域名
     baseURL: 'http://39.98.181.80:8080/',
+    // baseURL: 'http://127.0.0.1:8080/',
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    

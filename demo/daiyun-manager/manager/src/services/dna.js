@@ -27,3 +27,14 @@ export function dnaEdit(params) {
         dataType: 'FormData'
     });
 }
+
+// 上传图片
+export function updateImage(params) {
+    return request(api.dna.updateImage, {
+        method: 'POST',
+        data: params,
+        header: {
+            'content-type': false,
+        }
+    });
+}

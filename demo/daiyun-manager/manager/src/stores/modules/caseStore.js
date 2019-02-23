@@ -1,5 +1,5 @@
 import { observable, action, runInAction } from 'mobx'
-import { caseList, caseAdd, caseEdit } from '@/services/case'
+import { caseList, caseAdd, caseEdit, updateImage } from '@/services/case'
 
 class CaseStore {
     @observable data = {    // 成功案例数据 
@@ -34,6 +34,16 @@ class CaseStore {
     @action.bound
     async caseEdit(params, callback) {
         const res = await caseEdit(params);
+        runInAction(() => {
+            if(!res) return;
+            if (callback) callback(res);
+        })
+    }
+
+    // 上传图片
+    @action.bound
+    async updateImage(params, callback) {
+        const res = await updateImage(params);
         runInAction(() => {
             if(!res) return;
             if (callback) callback(res);

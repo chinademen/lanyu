@@ -1,5 +1,5 @@
 import { observable, action, runInAction } from 'mobx'
-import { raidersList, raidersAdd, raidersEdit } from '@/services/raiders'
+import { raidersList, raidersAdd, raidersEdit, updateImage } from '@/services/raiders'
 
 class RaidersStore {
     @observable data = {    // 成功案例数据 
@@ -34,6 +34,16 @@ class RaidersStore {
     @action.bound
     async raidersEdit(params, callback) {
         const res = await raidersEdit(params);
+        runInAction(() => {
+            if(!res) return;
+            if (callback) callback(res);
+        })
+    }
+
+    // 上传图片
+    @action.bound
+    async updateImage(params, callback) {
+        const res = await updateImage(params);
         runInAction(() => {
             if(!res) return;
             if (callback) callback(res);
