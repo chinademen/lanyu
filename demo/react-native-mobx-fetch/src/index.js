@@ -10,6 +10,10 @@ import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import Router from '@/route'
 
+let asyncStorage = require('@/util/asyncStorage');
+let storage = asyncStorage.storage;
+
+
 @inject(({app, loginStore}) => {
     return {
         barStyle: app.barStyle,
@@ -54,6 +58,18 @@ export default class App extends PureComponent {
     }
 
     componentDidMount() {
+        let a = {
+            name: 'A',
+        };
+        _saveData11 =()=> {
+            storage.save({
+                key: 'user',  // 注意:请不要在key中使用_下划线符号!
+                id: '1001',   // 注意:请不要在id中使用_下划线符号!
+                data: userA,
+                expires: 1000 * 6
+            });
+        };
+
         const params = {
             username: 'amao001',
             password: '123qwe'

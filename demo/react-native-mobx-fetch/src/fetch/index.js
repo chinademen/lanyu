@@ -3,7 +3,8 @@ import axios from "axios"
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    baseURL: 'https://frontapi.yuleyun.app',
+    // baseURL: 'https://frontapi.yuleyun.app', // pre环境
+    baseURL: 'https://frontapi.donghuang918.com', // 正式环境
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
@@ -78,14 +79,14 @@ service.interceptors.response.use(
 
         // 统一post提交的提示信息
         if (data.status === 0) {
-            // alert(JSON.stringify(data))
+            alert(JSON.stringify(data))
             return data;
         }
 
     },
     error => {
         let errortext = error + '';
-        // alert(JSON.stringify(error))
+        alert(JSON.stringify(error))
         return Promise.reject({
             success: false,
             statusCode: errortext.substr(-3),
