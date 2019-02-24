@@ -50,4 +50,5 @@ global.gSortTypeUnitMapper = {
     'iodine': '毫克'
 }
 
+
 export default global
