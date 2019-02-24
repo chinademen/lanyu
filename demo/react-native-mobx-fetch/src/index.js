@@ -9,29 +9,6 @@ import {
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import Router from '@/route'
-// import LoginStore from '@/store/loginStore';
-// import FoodEncyclopediaStore from '@/store/foodEncyclopediaStore'
-
-// 处理application/x-www-form-urlencoded格式数据
-function toFormData(config) {
-    config.transformRequest = [function (data) {
-        let res = '';
-        for (let i in data) {
-            // 数组处理
-            if (data[i] instanceof Array) {
-                let len = data[i].length;
-                for (let j = 0; j < len; j++) {
-                    res += encodeURIComponent(i + '[' + j + ']') + '=' + encodeURIComponent(data[i][j]) + '&';
-                }
-            } else {
-                // 非数组数据处理
-                res += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&';
-            }
-        }
-        res = res.slice(0, res.length - 1);
-        return res;
-    }];
-}
 
 @inject(({app, loginStore}) => {
     return {
@@ -41,8 +18,6 @@ function toFormData(config) {
 })
 @observer
 export default class App extends PureComponent {
-    // loginStore = new LoginStore()
-    // foodEncyclopediaStore = new FoodEncyclopediaStore()
 
     // 场景转换动画配置
     configureScene = route => {
@@ -79,31 +54,11 @@ export default class App extends PureComponent {
     }
 
     componentDidMount() {
-        // const params = {
-        //     username: 'amao001',
-        //     password: '123qwe'
-        // };
-        // this.props.userLogin(params)
-        fetch('https://frontapi.yuleyun.app/passport/user-login', {
-        // fetch('http://39.98.181.80/api/webarticlelist', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json', 
-                'Content-Type': 'application/json; charset=utf-8',
-            },
-            body: JSON.stringify({ 
-                // pageSize: 10, 
-                // pageNo: 1
-                username: 'amao001',
-                password: '123qwe',
-                devicetype: 1,
-                deviceno: 1
-            })
-        }).then(res => {
-            alert(111)
-        }).catch(e => {
-            alert(JSON.stringify(e))
-        })
+        const params = {
+            username: 'amao001',
+            password: '123qwe'
+        };
+        this.props.userLogin(params)
     }
 
 }

@@ -3,7 +3,7 @@ import axios from "axios"
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    // baseURL: baseURL,
+    baseURL: 'https://frontapi.yuleyun.app',
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
@@ -45,9 +45,6 @@ function toFormData(config) {
 // request拦截器
 service.interceptors.request.use(
     config => {
-        // 如果当前请求没有传入url 使用后台传入的默认url
-        config.baseURL = 'https://frontapi.yuleyun.app';
-        
         // 添加公共参数
         let dataList = config.data;
         dataList.devicetype = 1;
@@ -57,12 +54,12 @@ service.interceptors.request.use(
         
         config.data = dataList;
         
-        // alert(JSON.stringify(config.data))
         // FormData格式  其余方法使用json格式  提交数据使用multipart/form-data提交
         if (config.dataType === 'FormData') {
             toFormData(config);
         }
-
+        
+        // alert(JSON.stringify(config))
         return config;
     },
     error => {
@@ -75,13 +72,13 @@ service.interceptors.response.use(
     response => {
         // 这里处理响应数据, 比如保存响应头中的  authorization
         const { config: { method }, data } = response;
-        alert(JSON.stringify(data))
 
         // 处理状态码(非浏览器自带状态码)
         checkStatus(data);
 
         // 统一post提交的提示信息
         if (data.status === 0) {
+            // alert(JSON.stringify(data))
             return data;
         }
 
