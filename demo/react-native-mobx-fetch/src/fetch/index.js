@@ -41,6 +41,9 @@ function checkStatus(response) {
 }
 
 export default function request(url, options) {
+    // alert(url)
+    // alert(JSON.stringify(options.body))
+    alert(options.body instanceof FormData)
     // 设置 cookie可以跨域
     // options.credentials = 'include';
 
@@ -58,7 +61,7 @@ export default function request(url, options) {
             Accept: 'application/json', 'Content-Type': 'multipart/form-data',
             ...options.headers,
         };
-        // alert(options.body)
+        alert(options.body)
         // options.body = toFormData(config);
     }
 

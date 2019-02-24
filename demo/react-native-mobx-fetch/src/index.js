@@ -9,14 +9,18 @@ import {
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import Router from '@/route'
+import LoginStore from '@/store/loginStore';
+import FoodEncyclopediaStore from '@/store/foodEncyclopediaStore'
 
-@inject('app', 'loginStore')
+@inject(({app}) => {
+    return {
+        barStyle: app.barStyle,
+    }
+})
 @observer
 export default class App extends PureComponent {
-    componentDidMount() {
-        alert(JSON.stringify(this.props))
-        // this.props.getServerApi({ host: 'www.yuleyun.app' })
-    }
+    loginStore = new LoginStore()
+    foodEncyclopediaStore = new FoodEncyclopediaStore()
 
     // 场景转换动画配置
     configureScene = route => {
@@ -34,7 +38,7 @@ export default class App extends PureComponent {
     }
 
     render() {
-        const { barStyle } = this.props.app;
+        const { barStyle } = this.props;
         // 初始化页面
         const initialPage = __IOS__ ? 'TabBarView' : 'Splash';
         return (
@@ -51,4 +55,11 @@ export default class App extends PureComponent {
             </View>
         )
     }
+
+    componentDidMount() {
+        // alert(this.loginStore.getServerApi)
+        // this.foodEncyclopediaStore.fetchCategoryList
+        this.loginStore.getServerApi({ host: 'www.yuleyun.app' })
+    }
+
 }

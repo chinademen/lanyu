@@ -1,13 +1,15 @@
 import { observable, computed, action, runInAction } from 'mobx'
 import { getServerApi } from '@/services/login'
 
-class LoginStore {
+export default class LoginStore {
     @observable username = '';
-    @observable getServerApi = '111'
+    // constructor(params) {
+    //     this.getServerApi(params)
+    // }
 
     // 获取域名
-    @action
-    getServerApi = async(params) => {
+    @action.bound
+    async getServerApi(params) {
         const res = await getServerApi(params);
         runInAction(() => {
             if (!res) return;
@@ -15,5 +17,3 @@ class LoginStore {
         })
     }
 }
-
-export default new LoginStore()

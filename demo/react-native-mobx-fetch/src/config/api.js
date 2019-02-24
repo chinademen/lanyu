@@ -8,7 +8,7 @@ export default {
     },
     // 登录
     login: {
-        // getServerApi: '/api/get-server-api',                            // 获取域名
+        getServerApi: '/api/get-server-api',                            // 获取域名
         userLogin: '/passport/user-login',                              // 用户登录
         userLogout: '/user/user-logout',                                // 用户登出
         userCheckFundPassword: '/passport/user-check-fund-password',    // 忘记密码第一步
