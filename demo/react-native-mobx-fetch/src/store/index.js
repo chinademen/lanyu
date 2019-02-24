@@ -1,10 +1,9 @@
-/**
- * Created by ljunb on 2017/5/24.
- */
-import app from './common/app'
 import account from './common/account'
+import app from './common/app'
+import loginStore from './loginStore'
 
 export default {
-    app,
     account,
+    app,
+    loginStore,
 }

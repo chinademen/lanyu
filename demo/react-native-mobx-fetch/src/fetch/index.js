@@ -1,22 +1,24 @@
-// import { message } from 'antd';
-// import createHistory from 'history/createHashHistory';
-// const history = createHistory();
+import axios from "axios"
 
-// 提示框
-// message.config({
-//     top: 100,
-//     delay: 3,
-//     maxCount: 1,
-// });
+// axios公共配置
+const service = axios.create({
+    // 配置默认域名
+    // baseURL: baseURL,
+    // 配置超时
+    timeout: 15000,     
+    // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
+});
 
-// 加密
-function encrypt() {
-
-}
-
-// 解密
-function decode() {
-
+// 处理状态码(这里处理的是项目约定的状态码, 非浏览器自带的状态码)
+function checkStatus(data) {
+    const status = data.status;
+    // 401用户没有权限
+    if (status === 401) {
+        // 这里做清除storage等操作
+        // 返回登录界面
+        // return history.replace('/login');
+    }
+    // 其他状态码操作
 }
 
 // 处理application/x-www-form-urlencoded格式数据
@@ -24,61 +26,75 @@ function toFormData(config) {
     config.transformRequest = [function (data) {
         let res = '';
         for (let i in data) {
-			// 如果传输的是数组， key为 key[]
-            i = (data[i] instanceof Array) ? `${i}[]` : i;
-            res += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&';
+            // 数组处理
+            if (data[i] instanceof Array) {
+                let len = data[i].length;
+                for (let j = 0; j < len; j++) {
+                    res += encodeURIComponent(i + '[' + j + ']') + '=' + encodeURIComponent(data[i][j]) + '&';
+                }
+            } else {
+                // 非数组数据处理
+                res += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&';
+            }
         }
         res = res.slice(0, res.length - 1);
         return res;
     }];
 }
 
-// 处理状态码
-function checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-        return response;
+// request拦截器
+service.interceptors.request.use(
+    config => {
+        // 如果当前请求没有传入url 使用后台传入的默认url
+        config.baseURL = 'https://frontapi.yuleyun.app';
+        
+        // 添加公共参数
+        let dataList = config.data;
+        dataList.devicetype = 1;
+        dataList.deviceno = 1;
+        
+        // 加密
+        
+        config.data = dataList;
+        
+        // alert(JSON.stringify(config.data))
+        // FormData格式  其余方法使用json格式  提交数据使用multipart/form-data提交
+        if (config.dataType === 'FormData') {
+            toFormData(config);
+        }
+
+        return config;
+    },
+    error => {
+        Promise.reject(error);
     }
-}
+);
 
-export default function request(url, options) {
-    // alert(url)
-    // alert(JSON.stringify(options.body))
-    alert(options.body instanceof FormData)
-    // 设置 cookie可以跨域
-    // options.credentials = 'include';
+// respone拦截器
+service.interceptors.response.use(
+    response => {
+        // 这里处理响应数据, 比如保存响应头中的  authorization
+        const { config: { method }, data } = response;
+        alert(JSON.stringify(data))
 
-    // token  devicetype=1  deviceno=1
+        // 处理状态码(非浏览器自带状态码)
+        checkStatus(data);
 
-    // JSON格式数据
-    if (!(options.body instanceof FormData)) {
-        options.headers = {
-            Accept: 'application/json', 'Content-Type': 'application/json; charset=utf-8',
-        };
-        options.body = JSON.stringify(options.body);
-    } else {
-        // FormData格式数据
-        options.headers = {
-            Accept: 'application/json', 'Content-Type': 'multipart/form-data',
-            ...options.headers,
-        };
-        alert(options.body)
-        // options.body = toFormData(config);
-    }
+        // 统一post提交的提示信息
+        if (data.status === 0) {
+            return data;
+        }
 
-    // 设置链接超时
-    const xhr = Promise.race([
-        fetch(url, options),
-        new Promise((resolve, reject) => {
-            setTimeout(() => reject(new Error('请求链接超时')), 15000)  // 设置超时时间
-        })
-    ]);
-
-    return xhr.then(checkStatus)
-        .then(response => {
-            // alert(response.json())
-            return response.json();
-        })
-        .catch(e => {
-            // message.error(e + '');
+    },
+    error => {
+        let errortext = error + '';
+        // alert(JSON.stringify(error))
+        return Promise.reject({
+            success: false,
+            statusCode: errortext.substr(-3),
+            message: errortext
         });
-};  
+    }
+);
+
+export default service;

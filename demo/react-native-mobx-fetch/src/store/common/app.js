@@ -1,6 +1,3 @@
-/**
- * Created by ljunb on 2017/5/25.
- */
 import {observable, action} from 'mobx'
 
 class App {

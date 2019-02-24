@@ -21,6 +21,7 @@ if (Platform.OS === "ios") {
     global.__ANDROID__ = true;
 }
 
+// 网络状态检测高阶组件NetInfoDecorator
 @NetInfoDecorator
 export default class Root extends Component {
     constructor(props) {
@@ -53,6 +54,7 @@ export default class Root extends Component {
             inputRange: [0, 1],
             outputRange: [-30, __IOS__ ? 20 : 0]
         });
+
         return (
             <View style={{flex: 1}}>
                 <Provider {...stores}>

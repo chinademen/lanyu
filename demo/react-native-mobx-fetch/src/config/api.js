@@ -8,7 +8,7 @@ export default {
     },
     // 登录
     login: {
-        getServerApi: '/api/get-server-api',                            // 获取域名
+        // getServerApi: '/api/get-server-api',                            // 获取域名
         userLogin: '/passport/user-login',                              // 用户登录
         userLogout: '/user/user-logout',                                // 用户登出
         userCheckFundPassword: '/passport/user-check-fund-password',    // 忘记密码第一步
@@ -51,9 +51,22 @@ export default {
         setUserMail: '/user/set-user-mail',                 // 删除站内信
     },
     // 资金管理
-
+    fund: {
+        fundList: '/fund/fund-list',                                // 账变明细
+        transferList: '/fund/transfer-list',                        // 转账记录
+        withdrawList: '/fund/withdraw-list',                        // 提款列表
+        getFundOrdertypeid: '/fund/get-fund-ordertypeid',           // 彩票账变列表的账变类型
+        getTransferOrderTypeid: '/fund/get-transfer-ordertypeid',   // 根据平台获取账变类型
+    },
     // 第三方游戏
-
+    game: {
+        workroomThirdgameList: '/thirdgame/workroom-thirdgame-list',// 第三方游戏列表
+        startGame: '/thirdgame/start-game',                         // 第三方游戏开始的列表
+        getPtgame: '/website/get-ptgame',                           // 得到PT的所有游戏列表
+        getBalance: '/thirdgame/get-balance',                       // 获取每一个平台余额
+        fundTransfer: '/thirdgame/fund-transfer',                   // 平台转账的接口
+        getPromo: '/website/get-promo',                             // 活动的接口
+    },
     // 注册
     register: {
         userView: '/passport/user-view',                    // 注册前验证用户
@@ -78,11 +91,24 @@ export default {
         getTaskList: '/report/get-task-list',                               // 投注记录 ---> 追号查询
         getTaskDetail: '/report/get-task-detail',                           // 投注记录 ---> 追号详情
         getBetHistory: '/thirdgame/get-bet-history',                        // 第三方投注记录 (PT/AG)
-        getApcpProfitReport: '/report/get-apcp-profit-report',              // 
-    }
-
+        getApcpProfitReport: '/report/get-apcp-profit-report',              // 盈亏报表 ---> 彩票盈亏
+        getThirdProfitReport: '/report/get-third-profit-report',            // 第三方游戏盈亏报表 (PT/AG)
+        lotteryFundflow: '/report/lottery-fundflow',                        // 彩票账变
+        getThirdFundflow: '/report/get-third-fundflow',                     // 第三方账变(AG/PT)
+        getRechargeDepositReport: '/report/get-recharge-deposit-report',    // 日结报表 ---> 充提数据
+        getActiveReport: '/report/get-active-report',                       // 日结报表 ---> 活跃数据
+        getSettlementReport: '/report/get-settlement-report',               // 日结报表 ---> AG/ PT 查询
+        getApcpSettlementReport: '/report/get-apcp-settlement-report',      // 日结报表 ---> 彩票
+        reportOverview: '/report/overview',                                 // 总览
+    },
     //  契约模块
-
-    // 上下级聊天
-
+    contract: {
+        getContract: '/contract/get-contract',              // 基础契约
+        signContract: '/contract/sign-contract',            // 签订契约
+        contractReport: '/contract/contract-report',        // 契约报表
+        contractList: '/contract/contract-list',            // 下级契约
+        getContractTopup: '/contract/get-contract-topup',   // 契约发放列表
+        createContract: '/contract/create-contract',        // 创建契约
+        contractTopup: '/contract/contract-topup',          // 契约发放操作
+    }
 }
