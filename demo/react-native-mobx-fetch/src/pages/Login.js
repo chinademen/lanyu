@@ -9,7 +9,6 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native'
-import Header from '../components/Header'
 import {observer, inject} from 'mobx-react/native'
 
 @inject('app')
@@ -28,69 +27,41 @@ export default class Login extends PureComponent {
         app.barStyle === 'light-content' && app.updateBarStyle('default')
     }
 
-    onBack = () => {
-        const {navigator, onResetBarStyle} = this.props
-        onResetBarStyle && onResetBarStyle()
-        navigator.pop()
-    }
-
-    _renderAccountView = (account, key) => {
-        const {name, icon} = account
-        return (
-            <TouchableOpacity
-                activeOpacity={0.75}
-                key={`${name}-${key}`}
-                onPress={()=>alert(name)}
-                style={styles.accountItem}
-            >
-                <Image style={{width: 50, height: 50, marginBottom: 5}} source={icon}/>
-                <Text style={{color: '#999999', fontSize: 13}}>{name}</Text>
-            </TouchableOpacity>
-        )
-    }
-
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
-                {/* <Header title="登录" onBack={this.onBack}/> */}
+            <View style={styles.container}>
                 <View style={styles.content}>
-                    <Text style={{textAlign: 'center'}}>不用注册，用以下账号直接登录</Text>
-                    <View style={styles.accountWrapper}>
-                        {this.accounts.map(this._renderAccountView)}
-                    </View>
-                    <Text style={{textAlign: 'center'}}>没有以上账号？</Text>
                     <TouchableOpacity
                         activeOpacity={0.75}
-                        style={styles.registerBtn}
+                        style={styles.loginBtn}
                     >
-                        <Text style={{fontSize: 16, color: 'red'}}>注册</Text>
+                        <Text style={{fontSize: 16, color: '#fff'}}>登录</Text>
                     </TouchableOpacity>
                 </View>
+                <Text style={{textAlign: 'center'}}>Copyright @ 东皇娱乐 版权所有</Text>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        backgroundColor: '#f5f5f5'
+    }, 
     content: {
         paddingTop: 50
-    },
-    accountWrapper: {
-        flexDirection: 'row',
-        paddingHorizontal: 20,
-        paddingTop: 15,
-        paddingBottom: 30,
-        justifyContent: 'space-between',
     },
     accountItem: {
         alignItems: 'center'
     },
-    registerBtn: {
-        width: gScreen.width * 0.4,
+    loginBtn: {
+        width: gScreen.width * 0.8,
         marginTop: 20,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
+        // boxShadow: '0px 2px 3px #bbbbb8 !important',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center'

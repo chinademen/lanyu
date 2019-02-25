@@ -57,10 +57,10 @@ export default class App extends PureComponent {
 
     componentDidMount() {
         // 存
-        storage.set('dh', { key: '1234123412ABCDEF' })
+        // storage.set('dh', { key: '1234123412ABCDEF' })
 
         // 取
-        this.getStorage();
+        // this.getStorage();
 
 
         // alert(storage)
