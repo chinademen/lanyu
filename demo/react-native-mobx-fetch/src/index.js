@@ -36,8 +36,10 @@ export default class App extends PureComponent {
 
     render() {
         const { barStyle } = this.props;
+        // 初始化登录页面  (ios自带过渡页，直接进入Login页)
+        const initialPage = __IOS__ ? 'Login' : 'Splash';
         // 初始化页面
-        const initialPage = __IOS__ ? 'TabBarView' : 'Splash';
+        // const initialPage = __IOS__ ? 'TabBarView' : 'Splash';
         return (
             <View style={{flex: 1}}>
                 {/* 设备顶部状态栏组件 */}
@@ -54,12 +56,24 @@ export default class App extends PureComponent {
     }
 
     componentDidMount() {
-        alert(global.storage)
-        const params = {
-            username: 'amao001',
-            password: '123qwe'
-        };
-        this.props.userLogin(params)
+        // 存
+        storage.set('dh', { key: '1234123412ABCDEF' })
+
+        // 取
+        this.getStorage();
+
+
+        // alert(storage)
+        // const params = {
+        //     username: 'amao001',
+        //     password: '123qwe'
+        // };
+        // this.props.userLogin(params)
+    }
+
+    async getStorage() {
+        let s = await storage.get('dh');
+        alert(JSON.stringify(s))
     }
 
 }

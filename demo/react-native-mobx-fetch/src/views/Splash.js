@@ -7,9 +7,9 @@ import { Image } from 'react-native'
 export default class Splash extends Component {
     componentDidMount() {
         const { navigator } = this.props;
-        // 2秒后调到首页
+        // 2秒后调到登录
         this.timer = setTimeout(() => {
-            navigator.resetTo({id: 'TabBarView'})
+            navigator.resetTo({id: 'Login'})
         }, 2000)
     }
 

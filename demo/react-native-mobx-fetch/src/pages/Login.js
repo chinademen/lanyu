@@ -52,7 +52,7 @@ export default class Login extends PureComponent {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
-                <Header title="登录" onBack={this.onBack}/>
+                {/* <Header title="登录" onBack={this.onBack}/> */}
                 <View style={styles.content}>
                     <Text style={{textAlign: 'center'}}>不用注册，用以下账号直接登录</Text>
                     <View style={styles.accountWrapper}>

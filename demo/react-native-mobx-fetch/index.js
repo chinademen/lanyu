@@ -6,6 +6,9 @@ import {name as appName} from './app.json'
 import App from './src'
 import stores from './src/store'
 import NetInfoDecorator from './src/common/NetInfoDecorator'
+import storage from './src/util/storage'
+
+global.storage = storage;
 
 if (!__DEV__) {
     global.console = {

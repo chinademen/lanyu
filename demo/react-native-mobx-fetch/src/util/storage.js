@@ -2,6 +2,7 @@ import Storage from 'react-native-storage';
 
 import { AsyncStorage } from 'react-native';
 
+// storage实例化
 let storage = new Storage({
     // 最大容量，默认值1000条数据循环存储
     size: 1000,
@@ -23,17 +24,79 @@ let storage = new Storage({
     // 或是写到另一个文件里，这里require引入
     // 或是在任何时候，直接对storage.sync进行赋值修改
     // sync: require('./syncStorage')  // 这个sync文件是要你自己写的
-  })  
-    
-  // 最好在全局范围内创建一个（且只有一个）storage实例，方便直接调用
-    
-  // 对于web
-  // window.storage = storage;
-    
-  // 对于react native
-  global.storage = storage;
-  
-  // 这样，在此**之后**的任意位置即可以直接调用storage
-  // 注意：全局变量一定是先声明，后使用
-  // 如果你在某处调用storage报错未定义
-  // 请检查global.storage = storage语句是否确实已经执行过了
+});
+
+// 存  (使用key来保存数据)
+storage.set = (key, data, expires) => {
+    storage.save({
+      key,
+      data,
+      expires: expires || null // null为永不过期
+    })
+}
+
+// 取
+storage.get = (key) => {
+    return storage.load({
+        key: key,
+        autoSync: true, // autoSync(默认为true)意味着在没有找到数据或数据过期时自动调用相应的sync方法
+        // syncInBackground(默认为true)意味着如果数据过期，在调用sync方法的同时先返回已经过期的数据。
+        // 设置为false的话，则始终强制返回sync方法提供的最新数据(当然会需要更多等待时间)。
+        syncInBackground: true,
+        // 你还可以给sync方法传递额外的参数
+        syncParams: {
+          extraFetchOptions: {
+            // 各种参数
+          },
+          someFlag: true,
+        },
+      }).then(res => {
+        return res;
+      }).catch(err => {
+        //如果没有找到数据且没有sync方法，或者有其他异常，则在catch中返回
+        alert('storage读取失败失败')
+        switch (err.name) {
+            case 'NotFoundError':
+                // TODO;
+                break;
+            case 'ExpiredError':
+                // TODO
+                break;
+        }
+      })
+}
+
+// 删除单个数据
+storage.remove = (key) => {
+  storage.remove({
+    key: key
+  })
+}
+
+
+// 获取某个key下的所有id(仅key-id数据)
+storage.getIdsForKey = (id, callback) => {
+  storage.getIdsForKey(id).then(ids => {
+    callback && callback(ids)
+  })
+}
+
+// 获取某个key下的所有数据(仅key-id数据)
+storage.getAllDataForKey = (key, callback) => {
+  storage.getAllDataForKey(key).then(res => {
+    callback && callback(res)
+  })
+}
+
+// 清除某个key下的所有数据(仅key-id数据)
+storage.clearMapForKey = (key) => {
+  storage.clearMapForKey(key)
+}
+
+// 清空map，移除所有"key-id"数据（但会保留只有key的数据）
+storage.clearMap = () => {
+  storage.clearMap()
+}
+
+
+export default storage
