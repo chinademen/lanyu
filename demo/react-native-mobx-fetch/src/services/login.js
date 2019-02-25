@@ -1,4 +1,4 @@
-import request from '@/fetch'
+import request from '@/axios'
 import api from '@/config/api'
 
 // 登录

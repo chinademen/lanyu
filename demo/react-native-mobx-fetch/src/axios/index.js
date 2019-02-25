@@ -79,8 +79,8 @@ service.interceptors.response.use(
 
         // 统一post提交的提示信息
         if (data.status === 0) {
-            alert(JSON.stringify(data))
-            return data;
+            // alert(JSON.stringify(data))
+            return data.data;
         }
 
     },

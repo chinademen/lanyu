@@ -5,7 +5,7 @@ const router = {
     // 初始化页面
     'Splash': require('@/views/Splash'),
     // 登录页面
-    'Login': require('@/pages/Login'),
+    'Login': require('@/views/login'),
     // 首页
     'TabBarView': require('@/pages/TabBarView'),
     // 'Scanner': require('../components/Scanner'),
