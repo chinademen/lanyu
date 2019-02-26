@@ -4,13 +4,12 @@ import { userLogin } from '@/services/login'
 class LoginStore {
     @observable username = '';
 
-    // ????
+    // login
     @action.bound
     async userLogin(params, callback) {
         const res = await userLogin(params);
         runInAction(() => {
             if (!res) return;
-            storage.set('token', res.token) // ??token
             callback(res)
         })
     }

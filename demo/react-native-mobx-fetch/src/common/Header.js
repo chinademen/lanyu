@@ -1,5 +1,5 @@
 /**
- * Created by ljunb on 2017/3/15.
+ * 公共头部
  */
 import React, {Component} from 'react'
 import {
@@ -22,7 +22,7 @@ const LeftItem = ({onPress}) => {
             onPress={onPress}
         >
             <Image style={{width: 20, height: 20}}
-                   source={require('../resource/ic_back_dark.png')}
+                   source={require('@/assets/images/ic_back_dark.png')}
                    resizeMode={"contain"}
             />
         </TouchableOpacity>
@@ -97,28 +97,29 @@ export default class Header extends Component {
         )
     }
 }
-console.warn(global)
+
 const styles = StyleSheet.create({
     header: {
-        height: Platform.OS !== "ios" ? 50 : 64,
+        // height: Platform.OS !== "ios" ? 50 : 64,
+        height: 37.5,
         width: gScreen.width,
         paddingTop: Platform.OS !== "ios" ? 0 : 20,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: gColors.border,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        backgroundColor: '#fff'
+        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important'
     },
     title: {
         textAlign: 'center',
-        color: '#666',
-        fontSize: 18,
+        color: '#fff',
+        fontSize: 16,
     },
     leftItem: {
         position: 'absolute',
-        top: Platform.OS !== "ios" ? 0 : 20,
+        top: Platform.OS !== "ios" ? 0 : 10,
         left: 0,
-        height: Platform.OS !== "ios" ? 50 : 44,
+        height: Platform.OS !== "ios" ? 37.5 : 33,
         width: 60,
         paddingLeft: 5,
         justifyContent: 'center'

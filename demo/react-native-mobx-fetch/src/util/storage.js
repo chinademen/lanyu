@@ -28,6 +28,7 @@ let storage = new Storage({
 
 // 存  (使用key来保存数据)
 storage.set = (key, data, expires) => {
+	alert('set')
     storage.save({
       key,
       data,
@@ -54,7 +55,6 @@ storage.get = (key) => {
         return res;
       }).catch(err => {
         //如果没有找到数据且没有sync方法，或者有其他异常，则在catch中返回
-        alert('storage读取失败失败')
         switch (err.name) {
             case 'NotFoundError':
                 // TODO;
@@ -68,10 +68,12 @@ storage.get = (key) => {
 
 // 删除单个数据
 storage.remove = (key) => {
-  storage.remove({
-    key: key
-  })
+	alert('remove')
+    storage.remove({
+      key: key
+    })
 }
+
 
 
 // 获取某个key下的所有id(仅key-id数据)

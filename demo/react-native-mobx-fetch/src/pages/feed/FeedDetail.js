@@ -12,7 +12,7 @@ import {
     ScrollView,
     Platform
 } from 'react-native';
-import Header from '../../components/Header'
+import Header from '../../common/Header'
 import ShareView from '../../components/ShareView'
 
 export default class FeedDetail extends Component {

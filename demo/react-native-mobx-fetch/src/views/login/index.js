@@ -38,29 +38,15 @@ export default class Login extends PureComponent {
         app.barStyle === 'light-content' && app.updateBarStyle('default')
     }
 
-    // 监听用户名框改变
-    usernameChange = v => {
-        const { usernameError } = this.state;
-        if (v !== '' && usernameError !== '') {
+    // 输入框监听
+    handleInput = (v, name) => {
+        if (v !== '' && this.state[name] !== '') {
             this.setState({ 
-                username: v,
-                usernameError: '' 
+                [name]: v,
+                [`${name}Error`]: '' 
             })
         } else {
-            this.setState({ username: v })
-        }
-    }
-
-    // 监听密码框改变
-    passwordChange = v => {
-        const { passwordError } = this.state;
-        if (v !== '' && passwordError !== '') {
-            this.setState({ 
-                password: v,
-                passwordError: ''
-            })
-        } else {
-            this.setState({ password: v })
+            this.setState({ [name]: v })
         }
     }
 
@@ -90,12 +76,37 @@ export default class Login extends PureComponent {
             password,
         };
         this.props.userLogin(params, res => {
+            storage.set('token', res.token)
+            this.saveUserInfo()
             // 跳转主页
-            this.props.navigator.push({
-                id: 'TabBarView',
-                // passProps: {feed}
-            })
+            // this.props.navigator.push({
+            //     id: 'TabBarView',
+            //     // passProps: {feed}
+            // })
         })
+    }
+
+    // 判断是否需要保存用户名密码
+    saveUserInfo() {
+        const { username, password, isChecked } = this.state;
+        // 保存
+        
+        if (isChecked) {
+            alert(1)
+            storage.set('userInfo', {
+                username,
+                password
+            })
+        } else {
+            alert(2)
+            storage.remove('userInfo')
+        }
+        this.getUser()
+    }
+
+    async getUser() {
+        const a = await storage.get('userInfo');
+        alert(JSON.stringify(a))
     }
 
     render() {
@@ -113,7 +124,7 @@ export default class Login extends PureComponent {
                         placeholder="请输入您的用户名"
                         // autoFocus={true}
                         maxLength={16}
-                        onChangeText={this.usernameChange}
+                        onChangeText={val => this.handleInput(val, 'username')}
                     ></TextInput>
                     <Text style={styles.error}>{usernameError}</Text>
                     <TextInput 
@@ -121,7 +132,7 @@ export default class Login extends PureComponent {
                         placeholder="请输入您的密码"
                         maxLength={16}
                         secureTextEntry
-                        onChangeText={this.passwordChange}
+                        onChangeText={val => this.handleInput(val, 'password')}
                     ></TextInput>
                     <Text style={styles.error}>{passwordError}</Text>
                     <View style={styles.checkboxContainer}>
@@ -164,12 +175,12 @@ const styles = StyleSheet.create({
         marginBottom: 40,
     },
     input: { // 输入框
-        height: 40,
+        height: 50,
         width: gScreen.width * 0.8,
         marginTop: 10,
         borderColor: 'gray',
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 25,
         alignSelf: 'center', // 自身居中
         paddingHorizontal: 20, // paddingLeft + paddingRight
     },
@@ -191,8 +202,8 @@ const styles = StyleSheet.create({
     loginBtn: { // 登陆按钮
         width: gScreen.width * 0.8,
         marginTop: 10,
-        height: 40,
-        borderRadius: 20,
+        height: 50,
+        borderRadius: 25,
         backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
         // boxShadow: '0px 2px 3px #bbbbb8 !important',
         // shadowColor: 'gray',

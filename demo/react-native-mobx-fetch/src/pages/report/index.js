@@ -95,7 +95,7 @@ const HeaderView = ({pictureAction}) => {
         <View style={[styles.header, {borderBottomWidth: gScreen.onePix}]}>
             {/* <Image
                 style={{width: 20, height: 20, alignSelf: 'flex-start', left: 10}}
-                source={require('../../resource/ic_back_dark.png')}
+                source={require('@/assets/images/ic_back_dark.png')}
                 resizeMode="contain"
             /> */}
             <Text style={{color: 'white', fontSize: 16}}>报表查询</Text>
