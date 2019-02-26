@@ -2,10 +2,12 @@
  * 路由
  */
 const router = {
-    // 初始化页面
+    // 初始化过渡页面
     'Splash': require('@/views/Splash'),
     // 登录页面
     'Login': require('@/views/login'),
+    // 忘记密码
+    'forgetPassword': require('@/views/forgetPassword'),
     // 首页
     'TabBarView': require('@/pages/TabBarView'),
     // 'Scanner': require('../components/Scanner'),

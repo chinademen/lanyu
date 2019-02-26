@@ -1,5 +1,5 @@
 /**
- * Created by ljunb on 2017/2/22.
+ * 登陆
  */
 import React, { PureComponent } from 'react'
 import {
@@ -12,6 +12,7 @@ import {
     Alert,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
+import CheckBox from 'react-native-check-box'
 
 @inject(({ app, loginStore }) => {
     return {
@@ -28,6 +29,7 @@ export default class Login extends PureComponent {
             password: '', // 密码
             usernameError: '', // 用户名输入错误提示
             passwordError: '', // 密码输入错误提示
+            isChecked: false, // 忘记密码
         }
     }
 
@@ -60,7 +62,21 @@ export default class Login extends PureComponent {
         } else {
             this.setState({ password: v })
         }
-        
+    }
+
+    // 忘记密码
+    rememberPassword = () => {
+        this.setState({
+            isChecked: !this.state.isChecked
+        })
+    }
+
+    // 忘记密码
+    forgetPassword = () => {
+        // 跳转验证账号页
+        this.props.navigator.push({
+            id: 'forgetPassword'
+        })
     }
 
     // 登陆
@@ -83,7 +99,7 @@ export default class Login extends PureComponent {
     }
 
     render() {
-        const { usernameError, passwordError } = this.state;
+        const { usernameError, passwordError, isChecked } = this.state;
 
         return (
             <View style={styles.container}>
@@ -97,7 +113,7 @@ export default class Login extends PureComponent {
                         placeholder="请输入您的用户名"
                         // autoFocus={true}
                         maxLength={16}
-                        onChangeText = {val => this.usernameChange(val)}
+                        onChangeText={this.usernameChange}
                     ></TextInput>
                     <Text style={styles.error}>{usernameError}</Text>
                     <TextInput 
@@ -105,9 +121,18 @@ export default class Login extends PureComponent {
                         placeholder="请输入您的密码"
                         maxLength={16}
                         secureTextEntry
-                        onChangeText = {val => this.passwordChange(val)}
+                        onChangeText={this.passwordChange}
                     ></TextInput>
                     <Text style={styles.error}>{passwordError}</Text>
+                    <View style={styles.checkboxContainer}>
+                        <CheckBox
+                            style={styles.checkBox}
+                            onClick={this.rememberPassword}
+                            isChecked={isChecked}
+                            rightText={"记住密码"}
+                        />
+                        <Text style={styles.forgetPassword} onPress={this.forgetPassword}>忘记密码？</Text>
+                    </View>
                     <TouchableOpacity
                         activeOpacity={0.75}
                         style={styles.loginBtn}
@@ -153,6 +178,16 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingTop: 10
     },
+    checkboxContainer: { // 忘记密码/记住密码 外层
+        flexDirection: 'row',
+    },
+    checkBox: { // 记住密码
+        left: gScreen.width * 0.1,
+        width: gScreen.width * 0.7,
+    },
+    forgetPassword: { // 忘记密码
+        textDecorationLine:'underline'
+    },
     loginBtn: { // 登陆按钮
         width: gScreen.width * 0.8,
         marginTop: 10,
@@ -160,6 +195,10 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
         // boxShadow: '0px 2px 3px #bbbbb8 !important',
+        // shadowColor: 'gray',
+        // shadowOpacity: 0.3,
+        // shadowOffset: {width: 1, height: -1},
+        // shadowRadius: 2,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center'
