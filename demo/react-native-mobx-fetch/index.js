@@ -36,13 +36,7 @@ export default class Root extends Component {
     }
 
     componentDidMount() {
-        this.timer = setTimeout(() => {
-            SplashScreen.hide(); // 隐藏启动页
-        }, 2000)
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.timer)
+        SplashScreen.hide(); // 隐藏启动页
     }
 
     componentWillReceiveProps(nextProps) {

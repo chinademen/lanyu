@@ -1,10 +1,11 @@
 import axios from "axios"
+import { Alert } from 'react-native'
 
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    // baseURL: 'https://frontapi.yuleyun.app', // pre环境
-    baseURL: 'https://frontapi.donghuang918.com', // 正式环境
+    baseURL: 'https://frontapi.yuleyun.app', // pre环境
+    // baseURL: 'https://frontapi.donghuang918.com', // 正式环境
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
@@ -12,14 +13,17 @@ const service = axios.create({
 
 // 处理状态码(这里处理的是项目约定的状态码, 非浏览器自带的状态码)
 function checkStatus(data) {
-    const status = data.status;
+    const { status, msg } = data;
     // 401用户没有权限
     if (status === 401) {
         // 这里做清除storage等操作
         // 返回登录界面
         // return history.replace('/login');
     }
-    // 其他状态码操作
+    // 13参数错误
+    if (status === 13) {
+        Alert.alert(data.msg)
+    }
 }
 
 // 处理application/x-www-form-urlencoded格式数据
@@ -79,14 +83,13 @@ service.interceptors.response.use(
 
         // 统一post提交的提示信息
         if (data.status === 0) {
-            // alert(JSON.stringify(data))
             return data.data;
         }
 
     },
     error => {
         let errortext = error + '';
-        alert(JSON.stringify(error))
+        // alert(JSON.stringify(error))
         return Promise.reject({
             success: false,
             statusCode: errortext.substr(-3),

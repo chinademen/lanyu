@@ -38,8 +38,6 @@ export default class App extends Component {
         const { barStyle } = this.props;
         // 初始化登录页面  (ios自带过渡页，直接进入Login页)
         const initialPage = __IOS__ ? 'Login' : 'Splash';
-        // 初始化页面
-        // const initialPage = __IOS__ ? 'TabBarView' : 'Splash';
         return (
             <View style={{flex: 1}}>
                 {/* 设备顶部状态栏组件 */}

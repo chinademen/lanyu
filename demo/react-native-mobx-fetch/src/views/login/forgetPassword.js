@@ -40,9 +40,30 @@ export default class ForgetPassword extends Component {
 
     // 返回上一页
     onBack = () => {
-        const { navigator, onResetBarStyle } = this.props
-        onResetBarStyle && onResetBarStyle()
-        navigator.pop()
+        const { navigator, onResetBarStyle } = this.props;
+        const { pageIndex } = this.state;
+        if (pageIndex === 1) {
+            onResetBarStyle && onResetBarStyle()
+            navigator.pop()
+        } else {
+            this.resetState()
+        }
+    }
+
+    // 状态重置
+    resetState = () => {
+        this.setState({
+            pageIndex: 1,
+            username: '',
+            usernameError: '',
+            fundsPassword: '',
+            fundsPasswordError: '',
+            newPassword: '',
+            newPasswordError: '',
+            confirmPassword: '',
+            confirmPasswordError: '',
+            userid: '',
+        })
     }
 
     // 输入框监听
@@ -64,23 +85,18 @@ export default class ForgetPassword extends Component {
             username, 
             fundsPassword, 
             newPassword, 
-            confirmPassword, 
-            userCheckFundPassword,
-            userFindPassword,
+            confirmPassword,
             userid,
         } = this.state;
-        if (username === '') return this.setState({ usernameError: '请输入用户名' });
-        if (fundsPassword === '') return this.setState({ fundsPasswordError: '请输入密码' });
-        if (newPassword === '') return this.setState({ newPasswordError: '请输入新密码' });
-        if (confirmPassword === '') return this.setState({ confirmPasswordError: '再次输入密码' });
         // 账号验证提交
         if (pageIndex === 1) {
+            if (username === '') return this.setState({ usernameError: '请输入用户名' });
+            if (fundsPassword === '') return this.setState({ fundsPasswordError: '请输入资金密码' });
             const params = {
-                username: username,
-                fundspassword: fundsPassword
+                username,
+                fundpassword: fundsPassword
             };
-            userCheckFundPassword(params, res => {
-                // 返回 { userid: xxx }
+            this.props.userCheckFundPassword(params, res => {
                 this.setState({
                     pageIndex: 2,
                     userid: res.userid
@@ -88,13 +104,22 @@ export default class ForgetPassword extends Component {
             })
         } else {
             // 重置密码提交
+            if (newPassword === '') return this.setState({ newPasswordError: '请输入新密码' });
+            if (confirmPassword === '') return this.setState({ confirmPasswordError: '再次输入密码' });
+            if (newPassword !== confirmPassword) return Alert.alert('两次密码不一致');
             const params = {
                 userid,
                 password: newPassword,
                 repeat_password: confirmPassword, 
             };
-            userFindPassword(params, res => {
-                
+            this.props.userFindPassword(params, res => {
+                Alert.alert('恭喜你，修改密码成功');
+                this.timer = setTimeout(() => {
+                    // 跳回登陆页
+                    this.props.navigator.push({
+                        id: 'Login' 
+                    })
+                }, 1500)
             })
         }
     }
@@ -134,6 +159,7 @@ export default class ForgetPassword extends Component {
                         style={styles.input} 
                         placeholder="请输入新密码"
                         maxLength={16}
+                        secureTextEntry
                         onChangeText={val => this.handleInput(val, 'newPassword')}
                     ></TextInput>
                     <Text style={styles.error}>{newPasswordError}</Text>
@@ -165,10 +191,14 @@ export default class ForgetPassword extends Component {
                         style={styles.submitBtn}
                         onPress={this.submitEvent}
                     >
-                        <Text style={{fontSize: 16, color: '#fff'}}>登录</Text>
+                        <Text style={{fontSize: 16, color: '#fff'}}>提交</Text>
                 </TouchableOpacity>
             </View>
         )
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer)
     }
 }
 

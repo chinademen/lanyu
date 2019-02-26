@@ -2,7 +2,6 @@ export default {
     // 公共接口
     common: {
         getLotteryBetMode: 'lottery/get-lottery-bet-mode',              // 获取用户投注金额模式(元角分厘)
-        getNotice: '/website/get-notice',                               // 公告详情，首页的通知的效果跑马灯
         getMethodList: '/lottery/get-method-list',                      // 获取彩种玩法
         getIssueList: '/lottery/get-issue-list',                        // 获取奖期
     },
@@ -17,14 +16,16 @@ export default {
         getAllDomain: '/website/get-all-domain',                        // 获取域名接口
         getWebsiteTime: '/assets/images/greenline.png',                 // 域名测试访问文件
     },
-    // 主页
+    // 首页
     home: {
         getBanner: '/website/get-banner',                               // 获取banner图
+        getNotice: '/website/get-notice',                               // 公告详情，首页的通知的效果跑马灯
+        getUserInfo: '/user/get-user-info',                             // 得到用户信息
         getUserLotteryList: '/lottery/get-user-lottery-list',           // 获取彩种列表
+        workroomThirdgameList: '/thirdgame/workroom-thirdgame-list',    // 第三方游戏列表
     },
     // 用户相关
     userInfo: {
-        getUserInfo: '/user/get-user-info',                 // 得到用户信息
         enterLottery: '/lottery/enter-lottery',             // 彩种入口
         workroomBankList: '/user/workroom-bank-list',       // 银行列表
         districtList :'user/district-list',                 // 地区列表
@@ -60,7 +61,6 @@ export default {
     },
     // 第三方游戏
     game: {
-        workroomThirdgameList: '/thirdgame/workroom-thirdgame-list',// 第三方游戏列表
         startGame: '/thirdgame/start-game',                         // 第三方游戏开始的列表
         getPtgame: '/website/get-ptgame',                           // 得到PT的所有游戏列表
         getBalance: '/thirdgame/get-balance',                       // 获取每一个平台余额
