@@ -1,7 +1,7 @@
 /**
  * 主入口
  */
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {
     View,
     StatusBar
@@ -17,7 +17,7 @@ import Router from '@/route'
     }
 })
 @observer
-export default class App extends PureComponent {
+export default class App extends Component {
 
     // 场景转换动画配置
     configureScene = route => {
@@ -71,9 +71,6 @@ export default class App extends PureComponent {
         // this.props.userLogin(params)
     }
 
-    async getStorage() {
-        let s = await storage.get('dh');
-        alert(JSON.stringify(s))
-    }
+    
 
 }

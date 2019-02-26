@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {Platform, Animated, StyleSheet, View, Text, AppRegistry} from 'react-native'
 import {Provider} from 'mobx-react/native'
-import global from './src/common/GlobalContants';
+import SplashScreen from 'react-native-splash-screen'
+import global from './src/common/GlobalContants'
 import {name as appName} from './app.json'
 import App from './src'
 import stores from './src/store'
@@ -32,6 +33,16 @@ export default class Root extends Component {
         this.state = {
             promptPosition: new Animated.Value(0)
         }
+    }
+
+    componentDidMount() {
+        this.timer = setTimeout(() => {
+            SplashScreen.hide(); // 隐藏启动页
+        }, 2000)
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer)
     }
 
     componentWillReceiveProps(nextProps) {

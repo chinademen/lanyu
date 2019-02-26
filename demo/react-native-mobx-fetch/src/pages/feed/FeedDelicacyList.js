@@ -2,7 +2,7 @@
  * Created by ljunb on 2016/11/19.
  * 逛吃-知识
  */
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {
     StyleSheet,
     View,
@@ -22,7 +22,7 @@ import FeedBaseStore from '../../store/feedBaseStore'
 const DELICACY_ID = 4
 
 @observer
-export default class FeedDelicacyList extends PureComponent {
+export default class FeedDelicacyList extends Component {
 
     state = {
         dataSource: new ListView.DataSource({
@@ -97,7 +97,7 @@ export default class FeedDelicacyList extends PureComponent {
     }
 }
 
-class DelicacyItem extends PureComponent {
+class DelicacyItem extends Component {
 
     static propTypes = {
         feed: PropTypes.object,

@@ -2,7 +2,7 @@
  * Created by ljunb on 2016/11/19.
  * 逛吃-知识
  */
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {
     StyleSheet,
     View,
@@ -22,7 +22,7 @@ import FeedBaseStore from '../../store/feedBaseStore'
 const KNOWLEDGE_ID = 3
 
 @observer
-export default class FeedKnowledgeList extends PureComponent {
+export default class FeedKnowledgeList extends Component {
 
     state = {
         dataSource: new ListView.DataSource({
@@ -92,7 +92,7 @@ export default class FeedKnowledgeList extends PureComponent {
     }
 }
 
-class KnowledgeItem extends PureComponent {
+class KnowledgeItem extends Component {
 
     static propTypes = {
         feed: PropTypes.object,

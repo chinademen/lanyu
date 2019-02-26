@@ -1,7 +1,7 @@
 /**
  * 登陆
  */
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
     View,
@@ -21,7 +21,7 @@ import CheckBox from 'react-native-check-box'
     }
 })
 @observer
-export default class Login extends PureComponent {
+export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,13 +29,35 @@ export default class Login extends PureComponent {
             password: '', // 密码
             usernameError: '', // 用户名输入错误提示
             passwordError: '', // 密码输入错误提示
-            isChecked: false, // 忘记密码
+            isChecked: false, // 记住密码
         }
     }
 
     componentWillMount() {
         const { app } = this.props;
-        app.barStyle === 'light-content' && app.updateBarStyle('default')
+        app.barStyle === 'light-content' && app.updateBarStyle('default');
+        this.getIsChecked();
+    }
+
+    // 初始化是否记住密码
+    async getIsChecked() {
+        let isChecked = await storage.get('isChecked');
+        this.setState({ isChecked });
+        if (isChecked) {
+            this.getUserInfo()
+        }
+    }
+
+    // 自动填写用户名密码
+    async getUserInfo() {
+        let userInfo = await storage.get('userInfo');
+        const { username, password } = userInfo;
+        if (username && password) {
+            this.setState({
+                username,
+                password
+            })
+        }
     }
 
     // 输入框监听
@@ -67,7 +89,6 @@ export default class Login extends PureComponent {
 
     // 登陆
     loginEvent = () => {
-        // alert(JSON.stringify(this.state))
         const { username, password } = this.state;
         if (username === '') return this.setState({ usernameError: '请输入用户名' });
         if (password === '') return this.setState({ passwordError: '请输入密码' });
@@ -79,38 +100,36 @@ export default class Login extends PureComponent {
             storage.set('token', res.token)
             this.saveUserInfo()
             // 跳转主页
-            // this.props.navigator.push({
-            //     id: 'TabBarView',
-            //     // passProps: {feed}
-            // })
+            this.props.navigator.push({
+                id: 'TabBarView',
+                // passProps: {feed}
+            })
         })
     }
 
     // 判断是否需要保存用户名密码
     saveUserInfo() {
         const { username, password, isChecked } = this.state;
-        // 保存
-        
+        // 保存用户名密码
         if (isChecked) {
-            alert(1)
+            storage.set('isChecked', true)
             storage.set('userInfo', {
                 username,
                 password
             })
         } else {
-            alert(2)
-            storage.remove('userInfo')
+            storage.set('isChecked', false)
+            this.removeUser()
         }
-        this.getUser()
     }
 
-    async getUser() {
-        const a = await storage.get('userInfo');
-        alert(JSON.stringify(a))
+    // 移除用户名密码
+    async removeUser() {
+        const res = await storage.remove('userInfo');
     }
 
     render() {
-        const { usernameError, passwordError, isChecked } = this.state;
+        const { username, password, usernameError, passwordError, isChecked } = this.state;
 
         return (
             <View style={styles.container}>
@@ -125,6 +144,7 @@ export default class Login extends PureComponent {
                         // autoFocus={true}
                         maxLength={16}
                         onChangeText={val => this.handleInput(val, 'username')}
+                        value={username}
                     ></TextInput>
                     <Text style={styles.error}>{usernameError}</Text>
                     <TextInput 
@@ -133,6 +153,7 @@ export default class Login extends PureComponent {
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'password')}
+                        value={password}
                     ></TextInput>
                     <Text style={styles.error}>{passwordError}</Text>
                     <View style={styles.checkboxContainer}>
@@ -195,9 +216,11 @@ const styles = StyleSheet.create({
     checkBox: { // 记住密码
         left: gScreen.width * 0.1,
         width: gScreen.width * 0.7,
+        marginTop: 0,
     },
     forgetPassword: { // 忘记密码
-        textDecorationLine:'underline'
+        textDecorationLine:'underline',
+        marginTop: 6,
     },
     loginBtn: { // 登陆按钮
         width: gScreen.width * 0.8,

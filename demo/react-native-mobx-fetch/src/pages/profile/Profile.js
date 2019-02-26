@@ -1,7 +1,7 @@
 /**
  * 我的
  */
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {
     StyleSheet,
     View,
@@ -15,7 +15,7 @@ import {observer, inject} from 'mobx-react/native'
 
 @inject('app')
 @observer
-export default class Profile extends PureComponent {
+export default class Profile extends Component {
 
     _settingAction = () => alert('setting')
 

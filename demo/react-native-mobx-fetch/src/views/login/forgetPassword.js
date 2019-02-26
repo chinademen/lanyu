@@ -1,7 +1,7 @@
 /**
  * 忘记密码 ---> 验证账号 ---> 重置密码
  */
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
     View,
@@ -20,7 +20,7 @@ import Header from '@/common/Header'
     }
 })
 @observer
-export default class ForgetPassword extends PureComponent {
+export default class ForgetPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +29,9 @@ export default class ForgetPassword extends PureComponent {
             fundsPassword: '', // 密码
             fundsPasswordError: '', // 资金密码输入错误提示
             newPassword: '', // 新密码
-            newPasswordError: '',
+            newPasswordError: '', // 新密码输入错误提示
             confirmPassword: '', // 确认密码
-            confirmPasswordError: '',
+            confirmPasswordError: '', // 确认密码输入错误提示
         }
     }
 

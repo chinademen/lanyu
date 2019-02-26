@@ -1,7 +1,7 @@
 /**
  * Created by ljunb on 16/8/21.
  */
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import {
     View,
     Image,
@@ -27,7 +27,7 @@ const controllers = [
 
 @inject('account')
 @observer
-export default class Home extends PureComponent {
+export default class Home extends Component {
 
     _pictureAction = () => {
         const {account: {name}} = this.props

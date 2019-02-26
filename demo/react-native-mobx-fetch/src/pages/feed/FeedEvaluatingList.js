@@ -2,7 +2,7 @@
  * Created by ljunb on 2016/11/19.
  * 逛吃-评测
  */
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {
     StyleSheet,
     View,
@@ -24,7 +24,7 @@ import FeedBaseStore from '../../store/feedBaseStore'
 const EVALUATING_ID = 2
 
 @observer
-export default class FeedEvaluatingList extends PureComponent {
+export default class FeedEvaluatingList extends Component {
 
     state = {
         dataSource: new ListView.DataSource({
@@ -94,7 +94,7 @@ export default class FeedEvaluatingList extends PureComponent {
     }
 }
 
-class EvaluatingItem extends PureComponent {
+class EvaluatingItem extends Component {
 
     static propTypes = {
         feed: PropTypes.object,

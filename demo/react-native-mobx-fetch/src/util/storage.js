@@ -28,7 +28,6 @@ let storage = new Storage({
 
 // 存  (使用key来保存数据)
 storage.set = (key, data, expires) => {
-	alert('set')
     storage.save({
       key,
       data,
@@ -68,9 +67,12 @@ storage.get = (key) => {
 
 // 删除单个数据
 storage.remove = (key) => {
-	alert('remove')
-    storage.remove({
+    return storage.remove({
       key: key
+    }).then(res => {
+      return res;
+    }).catch(err => {
+      
     })
 }
 

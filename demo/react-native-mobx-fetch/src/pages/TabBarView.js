@@ -1,7 +1,7 @@
 /**
  * 底部导航
  */
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {observer, inject} from 'mobx-react/native'
 import Feed from './feed/Feed'
 import FoodEncyclopedia from './home/FoodEncyclopedia'
@@ -26,7 +26,7 @@ const tabSelectedIcon = [
 
 @inject('app')
 @observer
-export default class TabBarView extends PureComponent {
+export default class TabBarView extends Component {
 
     onChangeTab = ({i}) => {
         const {app} = this.props
