@@ -76,8 +76,6 @@ storage.remove = (key) => {
     })
 }
 
-
-
 // 获取某个key下的所有id(仅key-id数据)
 storage.getIdsForKey = (id, callback) => {
   storage.getIdsForKey(id).then(ids => {

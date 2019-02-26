@@ -9,6 +9,7 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
+    ImageBackground,
     Alert,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
@@ -132,7 +133,10 @@ export default class Login extends Component {
         const { username, password, usernameError, passwordError, isChecked } = this.state;
 
         return (
-            <View style={styles.container}>
+            <ImageBackground
+                source={require('@/assets/images/loginbg.png')}
+                style={styles.container}
+            >
                 <View style={styles.content}>
                     <Image  
                         style={styles.logo}
@@ -174,7 +178,7 @@ export default class Login extends Component {
                     </TouchableOpacity>
                 </View>
                 <Text style={{textAlign: 'center', bottom: 60 }}>Copyright @ 东皇娱乐 版权所有</Text>
-            </View>
+            </ImageBackground>
         )
     }
 }
@@ -182,7 +186,6 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
     container: { // 容器
         flex: 1, 
-        backgroundColor: '#f5f5f5'
     }, 
     content: { // 盒子
         // paddingTop: 50
@@ -196,10 +199,10 @@ const styles = StyleSheet.create({
         marginBottom: 40,
     },
     input: { // 输入框
-        height: 50,
+        height: 45,
         width: gScreen.width * 0.8,
-        marginTop: 10,
-        borderColor: 'gray',
+        marginTop: 5,
+        borderColor: '#c0bebc',
         borderWidth: 1,
         borderRadius: 25,
         alignSelf: 'center', // 自身居中
@@ -219,17 +222,18 @@ const styles = StyleSheet.create({
         marginTop: 0,
     },
     forgetPassword: { // 忘记密码
+        left: 12,
         textDecorationLine:'underline',
-        marginTop: 6,
+        marginTop: 4,
     },
     loginBtn: { // 登陆按钮
         width: gScreen.width * 0.8,
         marginTop: 10,
-        height: 50,
+        height: 45,
         borderRadius: 25,
         backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
         // boxShadow: '0px 2px 3px #bbbbb8 !important',
-        // shadowColor: 'gray',
+        // shadowColor: '#bbbbb8',
         // shadowOpacity: 0.3,
         // shadowOffset: {width: 1, height: -1},
         // shadowRadius: 2,

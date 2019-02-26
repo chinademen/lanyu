@@ -54,23 +54,4 @@ export default class App extends Component {
             </View>
         )
     }
-
-    componentDidMount() {
-        // 存
-        // storage.set('dh', { key: '1234123412ABCDEF' })
-
-        // 取
-        // this.getStorage();
-
-
-        // alert(storage)
-        // const params = {
-        //     username: 'amao001',
-        //     password: '123qwe'
-        // };
-        // this.props.userLogin(params)
-    }
-
-    
-
 }

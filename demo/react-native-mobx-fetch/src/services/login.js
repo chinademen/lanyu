@@ -9,3 +9,21 @@ export function userLogin(params) {
         dataType: 'FormData'
     })
 }
+
+// 忘记密码1 ---> 账号验证
+export function userCheckFundPassword(params) {
+    return request(api.login.userCheckFundPassword, {
+        method: 'POST',
+        data: params,
+        dataType: 'FormData'
+    })
+}
+
+// 忘记密码 ---> 密码重置
+export function userFindPassword(params) {
+    return request(api.login.userFindPassword, {
+        method: 'POST',
+        data: params,
+        dataType: 'FormData'
+    })
+}
