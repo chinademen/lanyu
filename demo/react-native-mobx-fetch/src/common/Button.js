@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
     StyleSheet,
     TouchableOpacity,
@@ -6,7 +6,7 @@ import {
     ActivityIndicator,
 } from 'react-native'
 
-export default class Button extends Component {
+export default class Button extends PureComponent {
 
     render() {
         /**
@@ -16,10 +16,12 @@ export default class Button extends Component {
          * @param color     [{color}]       字体颜色
          */ 
         const { activeOpacity, style, onPress, submiting, fontSize, color, text } = this.props;
+        alert(submiting)
+        let opacity = submiting ? 0.75 : 1;
         return (
             <TouchableOpacity
                 activeOpacity={activeOpacity || 0.75}
-                style={[styles.btn, style]}
+                style={[styles.btn, style, { opacity: opacity }]}
                 onPress={onPress}
             >
                 {submiting && <ActivityIndicator color="white" />}

@@ -1,7 +1,7 @@
 /**
  * 登陆
  */
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
     StyleSheet,
     View,
@@ -24,7 +24,7 @@ import Button from '@/common/Button'
     }
 })
 @observer
-export default class Login extends Component {
+export default class Login extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -101,7 +101,7 @@ export default class Login extends Component {
     loginEvent = () => {
         const { changeSubmit } = this.props;
         const { username, password } = this.state;
-        if (username === '') return this.setState({ usernameError: '请输入用户名' });
+        if (username === '') return this.setState({ usernameError: '请输入账号' });
         if (password === '') return this.setState({ passwordError: '请输入密码' });
         const params = {
             username,
@@ -162,7 +162,7 @@ export default class Login extends Component {
                     />
                     <TextInput 
                         style={styles.input} 
-                        placeholder="请输入您的用户名"
+                        placeholder="请输入您的账号"
                         maxLength={16}
                         onChangeText={val => this.handleInput(val, 'username')}
                         value={username}
@@ -226,10 +226,11 @@ const styles = StyleSheet.create({
     error: { // 用户名/密码 输入错误提示
         textAlign: 'center',
         color: 'red',
-        paddingTop: 10
+        paddingTop: 5
     },
     checkboxContainer: { // 忘记密码/记住密码 外层
         flexDirection: 'row',
+        marginBottom: 10,
     },
     checkBox: { // 记住密码
         left: gScreen.width * 0.1,
@@ -237,8 +238,10 @@ const styles = StyleSheet.create({
         marginTop: 0,
     },
     forgetPassword: { // 忘记密码
-        left: 12,
+        left: 6,
         textDecorationLine:'underline',
         marginTop: 4,
     }
 })
+
+    

@@ -11,12 +11,6 @@ import storage from './src/util/storage'
 
 global.storage = storage;
 
-if (!__DEV__) {
-    global.console = {
-        log: () => {}
-    }
-}
-
 if (Platform.OS === "ios") {
     global.__IOS__ = true;
     global.__ANDROID__ = false;
@@ -92,4 +86,7 @@ const styles = StyleSheet.create({
     }
 })
         
+console.ignoredYellowBox = ['Warning: BackAndroid is deprecated. Please use BackHandler instead.','source.uri should not be an empty string','Invalid props.style key'];
+console.disableYellowBox = true // 关闭全部黄色警告
+
 AppRegistry.registerComponent(appName, () => Root);

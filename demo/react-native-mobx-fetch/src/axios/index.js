@@ -5,8 +5,8 @@ import app from '@/store/common/app'
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    // baseURL: 'https://frontapi.yuleyun.app', // pre环境
-    baseURL: 'https://frontapi.donghuang918.com', // 正式环境
+    baseURL: 'https://frontapi.yuleyun.app', // pre环境
+    // baseURL: 'https://frontapi.donghuang918.com', // 正式环境
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    

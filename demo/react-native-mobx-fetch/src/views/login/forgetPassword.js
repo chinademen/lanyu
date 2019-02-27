@@ -93,7 +93,7 @@ export default class ForgetPassword extends Component {
         } = this.state;
         // 账号验证提交
         if (pageIndex === 1) {
-            if (username === '') return this.setState({ usernameError: '请输入用户名' });
+            if (username === '') return this.setState({ usernameError: '请输入账号' });
             if (fundsPassword === '') return this.setState({ fundsPasswordError: '请输入资金密码' });
             this.setSubmitBtn()
             const params = {
@@ -125,13 +125,11 @@ export default class ForgetPassword extends Component {
             this.props.userFindPassword(params, res => {
                 changeSubmit(false)
                 this.setState({ submitText: '提交' })
+                // 跳回登陆页
+                this.props.navigator.push({
+                    id: 'Login' 
+                })
                 Alert.alert('恭喜你，修改密码成功');
-                this.timer = setTimeout(() => {
-                    // 跳回登陆页
-                    this.props.navigator.push({
-                        id: 'Login' 
-                    })
-                }, 1500)
             }).catch(err => {
                 changeSubmit(false)
                 this.setState({ submitText: '登录' })
@@ -153,14 +151,14 @@ export default class ForgetPassword extends Component {
                 <Text style={styles.title}>账号验证</Text>
                     <TextInput 
                         style={styles.input} 
-                        placeholder="请输入您的用户名"
+                        placeholder="请输入您的账号"
                         maxLength={16}
                         onChangeText={val => this.handleInput(val, 'username')}
                     ></TextInput>
                     <Text style={styles.error}>{usernameError}</Text>
                     <TextInput 
                         style={styles.input}
-                        placeholder="请输入您的资金密码"
+                        placeholder="请输入资金密码"
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'fundsPassword')}
@@ -178,7 +176,7 @@ export default class ForgetPassword extends Component {
                 <Text style={styles.title}>重置密码</Text>
                     <TextInput 
                         style={styles.input} 
-                        placeholder="请输入新密码"
+                        placeholder="请输入6-16位数字+字母组合"
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'newPassword')}
@@ -186,7 +184,7 @@ export default class ForgetPassword extends Component {
                     <Text style={styles.error}>{newPasswordError}</Text>
                     <TextInput 
                         style={styles.input}
-                        placeholder="再次输入密码"
+                        placeholder="请输入6-16位数字+字母组合"
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'confirmPassword')}
