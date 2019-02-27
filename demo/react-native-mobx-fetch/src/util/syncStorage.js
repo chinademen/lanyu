@@ -18,7 +18,6 @@
 //       return response.json()
 //     }).then(json => {
 
-//       //console.log(json)
 //       if(json && json.user){
 //         storage.save({
 //           key: 'user',
@@ -36,7 +35,6 @@
 //         reject && reject(new Error('data parse error'))
 //       }
 //     }).catch(err => {
-//       console.warn(err)
 //       reject && reject(err)
 //     })
 //   }

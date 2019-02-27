@@ -96,8 +96,6 @@ def enableProguardInReleaseBuilds = false
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-    // aaptOptions.cruncherEnabled = false
-    // aaptOptions.useNewCruncher = false
 
     defaultConfig {
         applicationId "com.awesomeproject"
@@ -118,10 +116,10 @@ android {
                 keyAlias MYAPP_RELEASE_KEY_ALIAS
                 keyPassword MYAPP_RELEASE_KEY_PASSWORD
             }
-            keyAlias 'my-key-alias'
-            keyPassword '123qwe'
-            storeFile file('D:/github/lanyu/demo/react-native-mobx-fetch/android/app/my-release-key.keystore')
-            storePassword '123qwe'
+            // keyAlias 'my-key-alias'
+            // keyPassword '123qwe'
+            // storeFile file('D:/github/lanyu/demo/react-native-mobx-fetch/android/app/my-release-key.keystore')
+            // storePassword '123qwe'
         }
     }
     splits {
