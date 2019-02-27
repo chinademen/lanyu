@@ -2,7 +2,6 @@
  * Created by ljunb on 2016/11/19.
  */
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {
     StyleSheet,
     View,
@@ -16,13 +15,6 @@ const DEFAULT_COLOR = 'black'
 const SELECT_COLOR = 'red'
 
 export default class FeedsCategoryBar extends Component {
-    static propType = {
-        goToPage: PropTypes.func,
-        activeTab: PropTypes.number,
-        tabs: PropTypes.array,
-
-        tabNames: PropTypes.array
-    }
 
     offsetX = new Animated.Value(0)
 

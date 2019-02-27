@@ -10,8 +10,6 @@ import {
     Image,
     Platform
 } from 'react-native'
-import PropTypes from 'prop-types'
-import ViewPropTypes from 'ViewPropTypes'
 
 
 const LeftItem = ({onPress}) => {
@@ -54,17 +52,6 @@ const RightIconItem = ({onPress, icon}) => {
 }
 
 export default class Header extends Component {
-    static propTypes = {
-        style: ViewPropTypes.style,
-        title: PropTypes.string,
-        showGoBack: PropTypes.bool,
-        onBack: PropTypes.func,
-        titleStyle: PropTypes.object,
-        rightTitle: PropTypes.string,
-        onRight: PropTypes.func,
-        rightIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        renderRightItem: PropTypes.func
-    }
 
     static defaultProps = {
         showGoBack: true

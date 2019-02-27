@@ -9,16 +9,8 @@ import {
     TouchableOpacity,
     Image,
 } from 'react-native'
-import PropTypes from 'prop-types'
 
 export default class TabBar extends Component {
-    static propType = {
-        goToPage    : PropTypes.func,
-        activeTab   : PropTypes.number,
-        tabs        : PropTypes.array,
-        tabNames    : PropTypes.array,
-        tabIconNames: PropTypes.array
-    }
 
     render() {
         const { activeTab, selectedTabIconNames, tabIconNames, tabNames, goToPage } = this.props

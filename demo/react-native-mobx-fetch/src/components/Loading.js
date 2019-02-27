@@ -8,13 +8,8 @@ import {
     Text,
     ActivityIndicator
 } from 'react-native'
-import PropTypes from 'prop-types'
 
 export default class Loading extends Component {
-    static propTypes = {
-        isShow: PropTypes.bool
-    }
-
     render() {
         if (!this.props.isShow) return null;
 

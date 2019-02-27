@@ -9,7 +9,6 @@ import {
     ListView,
     RefreshControl
 } from 'react-native'
-import PropTypes from 'prop-types'
 import {observer} from 'mobx-react/native'
 import {reaction} from 'mobx'
 import Loading from '../../components/Loading'
@@ -98,11 +97,6 @@ export default class FeedDelicacyList extends Component {
 }
 
 class DelicacyItem extends Component {
-
-    static propTypes = {
-        feed: PropTypes.object,
-        onPress: PropTypes.func
-    }
 
     _onPress = () => {
         const {feed, onPress} = this.props

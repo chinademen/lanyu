@@ -8,12 +8,8 @@ import {
     Text,
     StyleSheet,
 } from 'react-native'
-import PropTypes from 'prop-types'
 
 export default class LoadMoreFooter extends Component {
-    static propTypes = {
-        isNoMore: PropTypes.bool,
-    }
 
     static defaultProps = {
         isNoMore: false
