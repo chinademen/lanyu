@@ -1,17 +1,14 @@
 /**
  * 登陆
  */
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
     View,
     Image,
     Text,
     TextInput,
-    TouchableOpacity,
     ImageBackground,
-    ActivityIndicator,
-    Alert,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
@@ -19,7 +16,10 @@ import Button from '@/common/Button'
 
 @inject(({ app, loginStore }) => {
     return {
-        app,
+        barStyle: app.barStyle,
+        updateBarStyle: app.updateBarStyle,
+        submiting: app.submiting,
+        changeSubmit: app.changeSubmit,
         userLogin: loginStore.userLogin,
     }
 })
@@ -33,14 +33,13 @@ export default class Login extends Component {
             usernameError: '',  // 用户名输入错误提示
             passwordError: '',  // 密码输入错误提示
             isChecked: false,   // 记住密码
-            logining: false,    // 正在登陆
             loginText: '登录',  // 登录 | 登录中...
         }
     }
 
     componentWillMount() {
-        const { app } = this.props;
-        app.barStyle === 'light-content' && app.updateBarStyle('default');
+        const { barStyle, updateBarStyle } = this.props;
+        barStyle === 'light-content' && updateBarStyle('default');
         this.getIsChecked();
     }
 
@@ -86,6 +85,12 @@ export default class Login extends Component {
 
     // 忘记密码
     forgetPassword = () => {
+        this.setState({
+            username: '',
+            password: '', 
+            usernameError: '',
+            passwordError: ''
+        });
         // 跳转验证账号页
         this.props.navigator.push({
             id: 'forgetPassword'
@@ -94,6 +99,7 @@ export default class Login extends Component {
 
     // 登陆
     loginEvent = () => {
+        const { changeSubmit } = this.props;
         const { username, password } = this.state;
         if (username === '') return this.setState({ usernameError: '请输入用户名' });
         if (password === '') return this.setState({ passwordError: '请输入密码' });
@@ -101,28 +107,21 @@ export default class Login extends Component {
             username,
             password,
         };
-        this.setState({ 
-            logining: true,
-            loginText: '登录中...'
-        })
+        changeSubmit(true)
+        this.setState({ loginText: '登录中...' })
         this.props.userLogin(params, res => {
-            storage.set('token', res.token)
+            storage.set('token', res.token) // 保存token
             this.saveUserInfo()
-            this.setState({ 
-                logining: false,
-                loginText: '登录'
-            })
+            changeSubmit(false)
+            this.setState({ loginText: '登录' })
             // 跳转主页
             this.props.navigator.push({
                 id: 'TabBarView',
                 // passProps: {feed}
             })
         }).catch(err => {
-            Alert.alert('登录失败，请重新登录')
-            this.setState({ 
-                logining: false,
-                loginText: '登录'
-            })
+            changeSubmit(false)
+            this.setState({ loginText: '登录' })
         })
     }
 
@@ -148,7 +147,8 @@ export default class Login extends Component {
     }
 
     render() {
-        const { username, password, usernameError, passwordError, isChecked, logining, loginText } = this.state;
+        const { submiting } = this.props;
+        const { username, password, usernameError, passwordError, isChecked, loginText } = this.state;
 
         return (
             <ImageBackground
@@ -163,7 +163,6 @@ export default class Login extends Component {
                     <TextInput 
                         style={styles.input} 
                         placeholder="请输入您的用户名"
-                        // autoFocus={true}
                         maxLength={16}
                         onChangeText={val => this.handleInput(val, 'username')}
                         value={username}
@@ -187,20 +186,9 @@ export default class Login extends Component {
                         />
                         <Text style={styles.forgetPassword} onPress={this.forgetPassword}>忘记密码？</Text>
                     </View>
-                    {/* <TouchableOpacity
-                        activeOpacity={0.75}
-                        style={styles.loginBtn}
-                        onPress={this.loginEvent}
-                    >
-                        {logining && <Fragment>
-                            <ActivityIndicator color="white" />
-                            <Text style={{fontSize: 16, color: '#fff'}}>登录中...</Text>
-                        </Fragment> || <Text style={{fontSize: 16, color: '#fff'}}>登录</Text>}
-                    </TouchableOpacity> */}
                     <Button
-                        // style={styles.loginBtn}
                         onPress={this.loginEvent}
-                        submiting={logining}
+                        submiting={submiting}
                         text={loginText}
                     />
                 </View>
@@ -252,21 +240,5 @@ const styles = StyleSheet.create({
         left: 12,
         textDecorationLine:'underline',
         marginTop: 4,
-    },
-    loginBtn: { // 登陆按钮
-        flexDirection: 'row',
-        width: gScreen.width * 0.8,
-        marginTop: 10,
-        height: 45,
-        borderRadius: 25,
-        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
-        // boxShadow: '0px 2px 3px #bbbbb8 !important',
-        // shadowColor: '#bbbbb8',
-        // shadowOpacity: 0.3,
-        // shadowOffset: {width: 1, height: -1},
-        // shadowRadius: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center'
     }
 })

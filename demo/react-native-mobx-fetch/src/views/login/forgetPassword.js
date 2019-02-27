@@ -7,15 +7,16 @@ import {
     View,
     Text,
     TextInput,
-    TouchableOpacity,
     Alert,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import Header from '@/common/Header'
+import Button from '@/common/Button'
 
 @inject(({ app, loginStore }) => {
     return {
-        app,
+        submiting: app.submiting,
+        changeSubmit: app.changeSubmit,
         userCheckFundPassword: loginStore.userCheckFundPassword,
         userFindPassword: loginStore.userFindPassword,
     }
@@ -25,16 +26,17 @@ export default class ForgetPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pageIndex: 1, // 1 账号验证, 2 密码重置
-            username: '', // 用户名
-            usernameError: '', // 用户名输入错误提示
-            fundsPassword: '', // 密码
-            fundsPasswordError: '', // 资金密码输入错误提示
-            newPassword: '', // 新密码
-            newPasswordError: '', // 新密码输入错误提示
-            confirmPassword: '', // 确认密码
-            confirmPasswordError: '', // 确认密码输入错误提示
-            userid: '', // 验证资金密码返回的用户id
+            pageIndex: 1,               // 1 账号验证, 2 密码重置
+            username: '',               // 用户名
+            usernameError: '',          // 用户名输入错误提示
+            fundsPassword: '',          // 密码
+            fundsPasswordError: '',     // 资金密码输入错误提示
+            newPassword: '',            // 新密码
+            newPasswordError: '',       // 新密码输入错误提示
+            confirmPassword: '',        // 确认密码
+            confirmPasswordError: '',   // 确认密码输入错误提示
+            userid: '',                 // 验证资金密码返回的用户id
+            submitText: '提交',         // 提交 | 正在提交...
         }
     }
 
@@ -80,6 +82,7 @@ export default class ForgetPassword extends Component {
 
     // 提交
     submitEvent = () => {
+        const { changeSubmit } = this.props;
         const { 
             pageIndex, 
             username, 
@@ -92,27 +95,36 @@ export default class ForgetPassword extends Component {
         if (pageIndex === 1) {
             if (username === '') return this.setState({ usernameError: '请输入用户名' });
             if (fundsPassword === '') return this.setState({ fundsPasswordError: '请输入资金密码' });
+            this.setSubmitBtn()
             const params = {
                 username,
                 fundpassword: fundsPassword
             };
             this.props.userCheckFundPassword(params, res => {
+                changeSubmit(false)
                 this.setState({
                     pageIndex: 2,
-                    userid: res.userid
+                    userid: res.userid,
+                    submitText: '提交'
                 })
+            }).catch(err => {
+                changeSubmit(false)
+                this.setState({ submitText: '登录' })
             })
         } else {
             // 重置密码提交
             if (newPassword === '') return this.setState({ newPasswordError: '请输入新密码' });
             if (confirmPassword === '') return this.setState({ confirmPasswordError: '再次输入密码' });
             if (newPassword !== confirmPassword) return Alert.alert('两次密码不一致');
+            this.setSubmitBtn()
             const params = {
                 userid,
                 password: newPassword,
                 repeat_password: confirmPassword, 
             };
             this.props.userFindPassword(params, res => {
+                changeSubmit(false)
+                this.setState({ submitText: '提交' })
                 Alert.alert('恭喜你，修改密码成功');
                 this.timer = setTimeout(() => {
                     // 跳回登陆页
@@ -120,9 +132,18 @@ export default class ForgetPassword extends Component {
                         id: 'Login' 
                     })
                 }, 1500)
+            }).catch(err => {
+                changeSubmit(false)
+                this.setState({ submitText: '登录' })
             })
         }
     }
+
+    // 设置提交按钮状态
+    setSubmitBtn = () => {
+        this.props.changeSubmit(true)
+        this.setState({ submitText: '正在提交...' })
+    } 
 
     // 账号验证
     checkAccount = () => {
@@ -176,7 +197,8 @@ export default class ForgetPassword extends Component {
     }
 
     render() {
-        const { pageIndex } = this.state;
+        const { pageIndex, submitText } = this.state;
+        const { submiting } = this.props;
 
         return (
             <View style={styles.container}>
@@ -186,13 +208,11 @@ export default class ForgetPassword extends Component {
                 {/* 重置密码 */}
                 {pageIndex === 2 && this.resetPassword()}
                 {/* 提交 */}
-                <TouchableOpacity
-                        activeOpacity={0.75}
-                        style={styles.submitBtn}
-                        onPress={this.submitEvent}
-                    >
-                        <Text style={{fontSize: 16, color: '#fff'}}>提交</Text>
-                </TouchableOpacity>
+                <Button
+                    onPress={this.submitEvent}
+                    submiting={submiting}
+                    text={submitText}
+                />
             </View>
         )
     }
@@ -227,20 +247,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'red',
         paddingTop: 5
-    },
-    submitBtn: { // 登陆按钮
-        width: gScreen.width * 0.8,
-        marginTop: 5,
-        height: 45,
-        borderRadius: 25,
-        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
-        // boxShadow: '0px 2px 3px #bbbbb8 !important',
-        // shadowColor: 'gray',
-        // shadowOpacity: 0.3,
-        // shadowOffset: {width: 1, height: -1},
-        // shadowRadius: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center'
     }
 })
