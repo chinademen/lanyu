@@ -13,6 +13,7 @@ import {
 import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
 import Button from '@/common/Button'
+import { checkUserName, checkPassWord } from '@/util/filter'
 
 @inject(({ app, loginStore }) => {
     return {
@@ -102,7 +103,9 @@ export default class Login extends PureComponent {
         const { changeSubmit } = this.props;
         const { username, password } = this.state;
         if (username === '') return this.setState({ usernameError: '请输入账号' });
+        if (!checkUserName(username)) return this.setState({ usernameError: '账号不正确' });
         if (password === '') return this.setState({ passwordError: '请输入密码' });
+        if (!checkPassWord(password)) return this.setState({ passwordError: '密码不正确' });
         const params = {
             username,
             password,

@@ -16,7 +16,6 @@ export default class Button extends PureComponent {
          * @param color     [{color}]       字体颜色
          */ 
         const { activeOpacity, style, onPress, submiting, fontSize, color, text } = this.props;
-        alert(submiting)
         let opacity = submiting ? 0.75 : 1;
         return (
             <TouchableOpacity

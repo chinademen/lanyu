@@ -1,0 +1,17 @@
+<svg id="组_98" data-name="组 98" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #ff4d4d;
+      }
+    </style>
+  </defs>
+  <g id="组_97" data-name="组 97">
+    <rect id="矩形_167" data-name="矩形 167" class="cls-1" width="16" height="16"/>
+  </g>
+  <path id="路径_88" data-name="路径 88" class="cls-2" d="M14,0H2A.945.945,0,0,0,1,1V15a.945.945,0,0,0,1,1H14a.945.945,0,0,0,1-1V1A.945.945,0,0,0,14,0Zm0,15H2V13.2H14Zm0-2.8H2V1H14ZM8.8,5.9H7.3V7.4H8.8Zm2.9,2.8H10.2v1.5h1.5Zm0-5.7H10.2V4.5h1.5Zm0,2.9H10.2V7.4h1.5ZM8.8,3H7.3V4.5H8.8Zm-3,5.7H4.3v1.5H5.8Zm0-2.8H4.3V7.4H5.8ZM5.8,3H4.3V4.5H5.8Zm3,5.7H7.3v1.5H8.8Z"/>
+</svg>

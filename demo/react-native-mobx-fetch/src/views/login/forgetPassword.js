@@ -12,6 +12,7 @@ import {
 import {observer, inject} from 'mobx-react/native'
 import Header from '@/common/Header'
 import Button from '@/common/Button'
+import { checkUserName, checkPassWord } from '@/util/filter'
 
 @inject(({ app, loginStore }) => {
     return {
@@ -94,7 +95,9 @@ export default class ForgetPassword extends Component {
         // 账号验证提交
         if (pageIndex === 1) {
             if (username === '') return this.setState({ usernameError: '请输入账号' });
+            if (!checkUserName(username)) return this.setState({ usernameError: '账号不正确' });
             if (fundsPassword === '') return this.setState({ fundsPasswordError: '请输入资金密码' });
+            if (!checkPassWord(fundsPassword)) return this.setState({ fundsPasswordError: '资金密码不正确' });
             this.setSubmitBtn()
             const params = {
                 username,
@@ -114,7 +117,9 @@ export default class ForgetPassword extends Component {
         } else {
             // 重置密码提交
             if (newPassword === '') return this.setState({ newPasswordError: '请输入新密码' });
+            if (!checkPassWord(newPassword)) return this.setState({ newPasswordError: '密码不正确' });
             if (confirmPassword === '') return this.setState({ confirmPasswordError: '再次输入密码' });
+            if (!checkPassWord(confirmPassword)) return this.setState({ confirmPasswordError: '密码不正确' });
             if (newPassword !== confirmPassword) return Alert.alert('两次密码不一致');
             this.setSubmitBtn()
             const params = {
