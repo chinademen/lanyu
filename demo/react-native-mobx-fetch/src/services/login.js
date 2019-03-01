@@ -6,7 +6,8 @@ export function userLogin(params) {
     return request(api.login.userLogin, {
         method: 'POST',
         data: params,
-        dataType: 'FormData'
+        dataType: 'FormData',
+        // noToken: true,
     })
 }
 
@@ -15,7 +16,8 @@ export function userCheckFundPassword(params) {
     return request(api.login.userCheckFundPassword, {
         method: 'POST',
         data: params,
-        dataType: 'FormData'
+        dataType: 'FormData',
+        noToken: true,
     })
 }
 
@@ -24,6 +26,7 @@ export function userFindPassword(params) {
     return request(api.login.userFindPassword, {
         method: 'POST',
         data: params,
-        dataType: 'FormData'
+        dataType: 'FormData',
+        noToken: true,
     })
 }

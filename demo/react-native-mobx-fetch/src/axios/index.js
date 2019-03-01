@@ -1,12 +1,12 @@
-import axios from "axios"
+import axios from 'axios'
 import { Alert } from 'react-native'
 import app from '@/store/common/app'
 
 // axios公共配置
 const service = axios.create({
     // 配置默认域名
-    baseURL: 'https://frontapi.yuleyun.app', // pre环境
-    // baseURL: 'https://frontapi.donghuang918.com', // 正式环境
+    // baseURL: 'https://frontapi.yuleyun.app', // pre环境
+    baseURL: 'https://frontapi.donghuang918.com', // 正式环境
     // 配置超时
     timeout: 15000,     
     // 这里可以配置终止axios请求的开关, 但是saga的takeLatest可以代替, 这里就不需要配置了    
@@ -27,6 +27,11 @@ function checkStatus(data) {
         app.submiting = fasle;
         return;
     }
+}
+
+// 获取token
+async function getToken() {
+    let token = await storage.get('token');
 }
 
 // 处理application/x-www-form-urlencoded格式数据
@@ -53,14 +58,22 @@ function toFormData(config) {
 // request拦截器
 service.interceptors.request.use(
     config => {
+        // alert(JSON.stringify(config.data))
+        // 通过参数判断是否需要携带token，接口默认携带token
+        let { data, noToken } = config;
+        if (!data) data = {};
+        if (!noToken) {
+            data.token = app.token || getToken();
+        }
+
         // 添加公共参数
-        let dataList = config.data;
-        dataList.devicetype = 1;
-        dataList.deviceno = 1;
+        data.devicetype = 1;
+        data.deviceno = 1;
         
         // 加密
-        
-        config.data = dataList;
+
+        // 重新赋值
+        config.data = data;
         
         // FormData格式  其余方法使用json格式  提交数据使用multipart/form-data提交
         if (config.dataType === 'FormData') {

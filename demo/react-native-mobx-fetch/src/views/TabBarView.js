@@ -3,10 +3,10 @@
  */
 import React, {Component} from 'react'
 import {observer, inject} from 'mobx-react/native'
-import Feed from './feed/Feed'
-import FoodEncyclopedia from './home/FoodEncyclopedia'
-import Report from './report'
-import Profile from './profile/Profile'
+import Feed from '@/pages/feed/Feed'
+import Home from '@/views/home'
+import Report from '@/pages/report'
+import Profile from '@/pages/profile/Profile'
 import TabBar from '@/components/TabBar'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
@@ -56,7 +56,7 @@ export default class TabBarView extends Component {
                 tabBarPosition='bottom'
                 onChangeTab={this.onChangeTab}
             >
-                <FoodEncyclopedia tabLabel="Food" navigator={this.props.navigator} />
+                <Home tabLabel="Food" navigator={this.props.navigator} />
                 <Feed tabLabel="Home" navigator={this.props.navigator} />
                 <Report tabLabel="Report" navigator={this.props.navigator} />
                 <Profile tabLabel="Profile" navigator={this.props.navigator} />

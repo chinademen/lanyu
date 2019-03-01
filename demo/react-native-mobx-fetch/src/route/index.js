@@ -9,7 +9,7 @@ const router = {
     // 忘记密码
     'forgetPassword': require('@/views/login/forgetPassword'),
     // 首页
-    'TabBarView': require('@/pages/TabBarView'),
+    'TabBarView': require('@/views/TabBarView'),
     // 'Scanner': require('../components/Scanner'),
 
     // home

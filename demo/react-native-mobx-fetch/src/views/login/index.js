@@ -21,6 +21,7 @@ import { checkUserName, checkPassWord } from '@/util/filter'
         updateBarStyle: app.updateBarStyle,
         submiting: app.submiting,
         changeSubmit: app.changeSubmit,
+        setToken: app.setToken,
         userLogin: loginStore.userLogin,
     }
 })
@@ -100,7 +101,7 @@ export default class Login extends PureComponent {
 
     // 登陆
     loginEvent = () => {
-        const { changeSubmit } = this.props;
+        const { setToken, changeSubmit } = this.props;
         const { username, password } = this.state;
         if (username === '') return this.setState({ usernameError: '请输入账号' });
         if (!checkUserName(username)) return this.setState({ usernameError: '账号不正确' });
@@ -113,7 +114,9 @@ export default class Login extends PureComponent {
         changeSubmit(true)
         this.setState({ loginText: '登录中...' })
         this.props.userLogin(params, res => {
-            storage.set('token', res.token) // 保存token
+            // 保存token
+            setToken(res.token)
+            storage.set('token', res.token)
             this.saveUserInfo()
             changeSubmit(false)
             this.setState({ loginText: '登录' })
@@ -155,13 +158,13 @@ export default class Login extends PureComponent {
 
         return (
             <ImageBackground
-                source={require('@/assets/images/loginbg.png')}
+                source={require('@/assets/images/login/loginbg.png')}
                 style={styles.container}
             >
                 <View style={styles.content}>
                     <Image  
                         style={styles.logo}
-                        source={require('@/assets/images/logo.png')}
+                        source={require('@/assets/images/login/logo.png')}
                     />
                     <TextInput 
                         style={styles.input} 

@@ -1,5 +1,5 @@
 /**
- * 食物百科页面
+ * 主页
  */
 import React, {Component} from 'react';
 import {
@@ -13,42 +13,67 @@ import {
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
-import FoodEncyclopediaStore from '@/store/foodEncyclopediaStore'
 import NetInfoDecorator from '@/common/NetInfoDecorator'
 import Toast from 'react-native-easy-toast'
 import Loading from '@/components/Loading'
 
 @NetInfoDecorator
-@inject('account', 'app')
+@inject(({ account, app, homeStore }) => {
+    return {
+        bannerList: homeStore.bannerList,
+        noticeList: homeStore.noticeList,
+        userInfo: homeStore.userInfo,
+        lotteryList: homeStore.lotteryList,
+        thirdGameList: homeStore.thirdGameList,
+        getBanner: homeStore.getBanner,
+        getNotice: homeStore.getNotice,
+        getUserInfo: homeStore.getUserInfo,
+        getUserLotteryList: homeStore.getUserLotteryList,
+        workroomThirdgameList: homeStore.workroomThirdgameList,
+        name: account.name,
+        updateBarStyle: app.updateBarStyle,
+        errorMsg: homeStore.errorMsg,
+        isNoResult: homeStore.isNoResult,
+        fetchCategoryList: homeStore.fetchCategoryList,
+        foodCategoryList: homeStore.foodCategoryList,
+    }
+})
 @observer
 export default class Home extends Component {
-    foodEncyclopediaStore = new FoodEncyclopediaStore()
+    componentDidMount() {
+        const { getBanner,  getNotice,  getUserInfo,  getUserLotteryList,  workroomThirdgameList } = this.props;
+        getBanner()  
+        getNotice()  
+        getUserInfo()  
+        getUserLotteryList()  
+        workroomThirdgameList()
+    }
 
     componentWillReact() {
-        const {errorMsg} = FoodEncyclopediaStore
+        const {errorMsg} = this.props;
         errorMsg && this.toast && this.toast.show(errorMsg)
     }
 
     componentWillReceiveProps(nextProps) {
-        const {isConnected} = nextProps
-        const {isNoResult} = this.foodEncyclopediaStore
+        const { isConnected } = nextProps;
+        const { isNoResult, fetchCategoryList } = this.props;
         if (isConnected && isNoResult) {
-            this.foodEncyclopediaStore.fetchCategoryList()
+            fetchCategoryList()
         }
     }
 
     searchAction = () => alert('search')
 
-    resetBarStyle = () => this.props.app.updateBarStyle('light-content')
+    resetBarStyle = () => this.props.updateBarStyle('light-content')
 
     foodHandleAction = (handleTitle) => {
-        const {account: {name}, app} = this.props
+        const { name, navigator } = this.props
         switch (handleTitle) {
             case '饮食分析':
                 if (name) {
                     alert(name)
                 } else {
-                    this.props.navigator.push({
+                    navigator.push({
                         id: 'Login',
                         sceneConfig: Navigator.SceneConfigs.FloatFromBottom,
                         passProps: {onResetBarStyle: this.resetBarStyle}
@@ -59,15 +84,15 @@ export default class Home extends Component {
                 if (name) {
                     alert(name)
                 } else {
-                    this.props.navigator.push({
+                    navigator.push({
                         id: 'Login',
                         sceneConfig: Navigator.SceneConfigs.FloatFromBottom,
-                        passProps: {onResetBarStyle: this.resetBarStyle}
+                        passProps: { onResetBarStyle: this.resetBarStyle }
                     })
                 }
                 break
             case '扫码对比':
-                this.props.navigator.push({
+                navigator.push({
                     id: 'Scanner',
                     passProps: {
                         onBarCodeRead: obj => alert(JSON.stringify(obj))
@@ -82,8 +107,8 @@ export default class Home extends Component {
     }
 
     _onPressCategoryItem = (kind, category) => {
-        const {app, navigator} = this.props
-        app.updateBarStyle('default')
+        const { updateBarStyle, navigator } = this.props;
+        updateBarStyle('default');
 
         navigator.push({
             id: 'Foods',
@@ -96,13 +121,12 @@ export default class Home extends Component {
     }
 
     _reconnectHandle = () => {
-        this.foodEncyclopediaStore.fetchCategoryList()
+        this.props.fetchCategoryList()
     }
 
     render() {
-        const {foodCategoryList, isFetching} = this.foodEncyclopediaStore
-        const {isConnected} = this.props
-
+        const { bannerList, foodCategoryList, isConnected } = this.props;
+        alert(JSON.stringify(bannerList));
         return (
             <View style={{flex: 1}}>
                 <ScrollView
@@ -110,36 +134,36 @@ export default class Home extends Component {
                     showsVerticalScrollIndicator={false}
                     automaticallyAdjustContentInsets={false}
                     removeClippedSubviews
-                    style={{width: gScreen.width, height: gScreen.height}}
-                    contentContainerStyle={{alignItems: 'center', backgroundColor: '#f5f5f5', paddingBottom: 10}}
+                    style={{ width: gScreen.width, height: gScreen.height }}
+                    contentContainerStyle={{ alignItems: 'center', backgroundColor: '#f5f5f5', paddingBottom: 10 }}
                 >
-                    <HeaderView searchAction={this.searchAction}/>
+                    <HeaderView searchAction={this.searchAction}/> 
                     {/* 高频彩 */}
                     <ProfileStaticCell
                         title="高频彩"
-                        style={{borderBottomWidth: gScreen.onePix}}
+                        style={{ borderBottomWidth: gScreen.onePix }}
                     />
                     <FoodHandleView handleAction={this.foodHandleAction}/>
                     <FoodHandleView2 handleAction={this.foodHandleAction}/>
                     {/* 快3系列 */}
                     <ProfileStaticCell
                         title="快3系列"
-                        style={{borderBottomWidth: gScreen.onePix}}
+                        style={{ borderBottomWidth: gScreen.onePix }}
                     />
                     {/* 11选5系列 */}
                     <ProfileStaticCell
                         title="11选5系列"
-                        style={{borderBottomWidth: gScreen.onePix}}
+                        style={{ borderBottomWidth: gScreen.onePix }}
                     />
                     {/* 30秒彩系列 */}
                     <ProfileStaticCell
                         title="30秒彩系列"
-                        style={{borderBottomWidth: gScreen.onePix}}
+                        style={{ borderBottomWidth: gScreen.onePix }}
                     />
                     {/* 低频彩 */}
                     <ProfileStaticCell
                         title="低频彩"
-                        style={{borderBottomWidth: gScreen.onePix}}
+                        style={{ borderBottomWidth: gScreen.onePix }}
                     />
                     {isConnected ?
                         <View>
