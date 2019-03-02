@@ -14,23 +14,21 @@ class HomeStore {
 
     // 获取banner图 res=[{id,title,target,url}]
     @action.bound
-    async getBanner(params, callback) {
+    async getBanner() {
         const res = await getBanner(params);
         runInAction(() => {
             if (!res) return;
             this.bannerList = res;
-            // if (callback) callback(res)
         })
     }
     
     // 获取公告 res={list:[{id,isnew,title,content,updatetime}],currentpage,pagesize,totalcount,totalpage}
     @action.bound
-    async getNotice(params, callback) {
+    async getNotice() {
         const res = await getNotice(params);
         runInAction(() => {
             if (!res) return;
             this.noticeList = res;
-            // if (callback) callback(res)
         })
     }
     
@@ -38,34 +36,31 @@ class HomeStore {
     // res = {id,balance,islockbank,issetfundpassword,issetsafequesion,
     // istester,istopproxy,mailcount,nickname,phone,qq,rebate,username}
     @action.bound
-    async getUserInfo(params, callback) {
+    async getUserInfo() {
         const res = await getUserInfo(params);
         runInAction(() => {
             if (!res) return;
             this.userInfo = res;
-            // if (callback) callback(res)
         })
     }
 
     // 获取彩种列表 res=[{lotteryid,tag,isshow,fronttype,cnname,typecode}]
     @action.bound
-    async getUserLotteryList(params, callback) {
+    async getUserLotteryList() {
         const res = await getUserLotteryList(params);
         runInAction(() => {
             if (!res) return;
             this.lotteryList = res;
-            // if (callback) callback(res)
         })
     }
 
     // 获取第三方游戏列表 res=[{id,createtime,gamename,maxtransfer,mintransfer,status,thirdgameid,updatetime,workroomid}]
     @action.bound
-    async workroomThirdgameList(params, callback) {
+    async workroomThirdgameList() {
         const res = await workroomThirdgameList(params);
         runInAction(() => {
             if (!res) return;
             this.thirdGameList = res;
-            // if (callback) callback(res)
         })
     }
 

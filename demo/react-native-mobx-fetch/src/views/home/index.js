@@ -10,12 +10,15 @@ import {
     ImageBackground,
     TouchableOpacity,
     ScrollView,
-} from 'react-native';
-import {Navigator} from 'react-native-deprecated-custom-components'
-import {observer, inject} from 'mobx-react/native'
-import NetInfoDecorator from '@/common/NetInfoDecorator'
+} from 'react-native'
+import { Navigator } from 'react-native-deprecated-custom-components'
+import { observer, inject } from 'mobx-react/native'
 import Toast from 'react-native-easy-toast'
-import Loading from '@/components/Loading'
+import Swiper from 'react-native-swiper'
+import api from '@/config/api'
+import NetInfoDecorator from '@/common/NetInfoDecorator'
+import imgSrc from '@/config/imgSrc'
+// import Loading from '@/components/Loading'
 
 @NetInfoDecorator
 @inject(({ account, app, homeStore }) => {
@@ -61,6 +64,24 @@ export default class Home extends Component {
             fetchCategoryList()
         }
     }
+
+    // 头部轮播图
+    HeaderView = () => {
+        const { bannerList } = this.props;
+        alert(api.baseURL)
+        // 后台返回banner
+        if (bannerList && bannerList.length > 0) {
+
+        } else {
+            return (
+                <Swiper style={styles.headerContainer} showsPagination={false}>
+                    {imgSrc.bannerSrc.map((a, i) => {
+                        return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
+                    })}
+                </Swiper>
+            )
+        }
+    };
 
     searchAction = () => alert('search')
 
@@ -125,8 +146,8 @@ export default class Home extends Component {
     }
 
     render() {
-        const { bannerList, foodCategoryList, isConnected } = this.props;
-        alert(JSON.stringify(bannerList));
+        const { foodCategoryList, isConnected } = this.props;
+
         return (
             <View style={{flex: 1}}>
                 <ScrollView
@@ -137,7 +158,8 @@ export default class Home extends Component {
                     style={{ width: gScreen.width, height: gScreen.height }}
                     contentContainerStyle={{ alignItems: 'center', backgroundColor: '#f5f5f5', paddingBottom: 10 }}
                 >
-                    <HeaderView searchAction={this.searchAction}/> 
+                    {/* <HeaderView searchAction={this.searchAction}/> */}
+                    {this.HeaderView()}
                     {/* 高频彩 */}
                     <ProfileStaticCell
                         title="高频彩"
@@ -197,15 +219,36 @@ const ReconnectView = ({onPress}) => {
     )
 }
 
-const HeaderView = ({searchAction}) => {
-    return (
-        <ImageBackground
-            style={styles.headerContainer}
-            source={require('../../resource/h5-1.png')}
-        >
-        </ImageBackground>
-    )
-};
+// 头部轮播图
+// const HeaderView = ({searchAction}) => {
+//     // const { bannerList } = this.props;
+//     // alert(api.baseURL)
+//     // alert(bannerList)
+//     return (
+//         <Swiper style={styles.headerContainer} showsPagination={false}>
+//             {imgSrc.bannerSrc.map((a, i) => {
+//                 return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
+//             })}
+//         </Swiper>
+//     )
+// };
+
+// 生成轮播图
+// const createBanner = (bannerList) => {
+//     // if (bannerList && bannerList.length > 0) {
+//     //     return bannerList.map(() => {
+
+//     //     })
+//     // } else {
+//         return (
+//             <ImageBackground
+//                 style={styles.headerContainer}
+//                 source={require('@/assets/images/home/banner/banner0.png')}
+//             >
+//             </ImageBackground>
+//         )
+//     // }
+// }
 
 const ProfileStaticCell = ({
     title,
@@ -311,6 +354,16 @@ const FoodCategoryView = ({
 const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    slide: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    text: {
+        color: '#fff',
+        fontSize: 30,
+        fontWeight: 'bold'
     },
     headerContainer: {
         width: gScreen.width,

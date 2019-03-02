@@ -12,16 +12,16 @@ import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 const tabTitles = ['彩票', '开奖', '报表', '我的']
 const tabIcons = [
-    require('@/resource/ic_tab_homepage.png'),
-    require('@/resource/ic_tab_search.png'),
-    require('@/resource/ic_album_default.png'),
-    require('@/resource/ic_tab_my.png'),
+    require('@/assets/images/navbar/hotlottery_nor.png'),
+    require('@/assets/images/navbar/kaijiang_nor.png'),
+    require('@/assets/images/navbar/stats_w.png'),
+    require('@/assets/images/navbar/my_nor.png'),
 ]
 const tabSelectedIcon = [
-    require('@/resource/ic_tab_homepage_select.png'),
-    require('@/resource/ic_tab_search_select.png'),
-    require('@/resource/ic_album_selected.png'),
-    require('@/resource/ic_tab_my_select.png'),
+    require('@/assets/images/navbar/hotlottery_press.png'),
+    require('@/assets/images/navbar/kaijiang_press.png'),
+    require('@/assets/images/navbar/stats_b.png'),
+    require('@/assets/images/navbar/my_press.png'),
 ]
 
 @inject('app')
@@ -56,8 +56,8 @@ export default class TabBarView extends Component {
                 tabBarPosition='bottom'
                 onChangeTab={this.onChangeTab}
             >
-                <Home tabLabel="Food" navigator={this.props.navigator} />
-                <Feed tabLabel="Home" navigator={this.props.navigator} />
+                <Home tabLabel="Home" navigator={this.props.navigator} />
+                <Feed tabLabel="Feed" navigator={this.props.navigator} />
                 <Report tabLabel="Report" navigator={this.props.navigator} />
                 <Profile tabLabel="Profile" navigator={this.props.navigator} />
             </ScrollableTabView>
