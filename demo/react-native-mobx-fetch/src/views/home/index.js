@@ -15,7 +15,6 @@ import { Navigator } from 'react-native-deprecated-custom-components'
 import { observer, inject } from 'mobx-react/native'
 import Toast from 'react-native-easy-toast'
 import Swiper from 'react-native-swiper'
-import api from '@/config/api'
 import NetInfoDecorator from '@/common/NetInfoDecorator'
 import imgSrc from '@/config/imgSrc'
 // import Loading from '@/components/Loading'
@@ -45,11 +44,11 @@ import imgSrc from '@/config/imgSrc'
 export default class Home extends Component {
     componentDidMount() {
         const { getBanner,  getNotice,  getUserInfo,  getUserLotteryList,  workroomThirdgameList } = this.props;
-        getBanner()  
-        getNotice()  
-        getUserInfo()  
-        getUserLotteryList()  
-        workroomThirdgameList()
+        getBanner()
+        // getNotice()  
+        // getUserInfo()  
+        // getUserLotteryList()  
+        // workroomThirdgameList()
     }
 
     componentWillReact() {
@@ -67,11 +66,17 @@ export default class Home extends Component {
 
     // 头部轮播图
     HeaderView = () => {
-        const { bannerList } = this.props;
-        alert(api.baseURL)
+        let { bannerList } = this.props;
+        alert(JSON.stringify(bannerList))
         // 后台返回banner
         if (bannerList && bannerList.length > 0) {
-
+            return (
+                <Swiper style={styles.headerContainer} showsPagination={false}>
+                    {bannerList.map((a, i) => {
+                        return <ImageBackground style={styles.slide} source={a.url}></ImageBackground>;
+                    })}
+                </Swiper>
+            )
         } else {
             return (
                 <Swiper style={styles.headerContainer} showsPagination={false}>

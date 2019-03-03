@@ -2,7 +2,7 @@ import request from '@/axios'
 import api from '@/config/api'
 
 // 获取banner图
-export function getBanner(params) {
+export function getBanner(params = {}) {
     return request(api.home.getBanner, {
         method: 'POST',
         data: params,
