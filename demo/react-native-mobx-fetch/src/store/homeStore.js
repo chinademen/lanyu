@@ -4,7 +4,7 @@ import { getBanner,  getNotice,  getUserInfo,  getUserLotteryList,  workroomThir
 
 class HomeStore {
     @observable bannerList = []      // banner数组
-    @observable noticeList = {}      // 公告列表
+    @observable noticeList = []      // 公告列表
     @observable userInfo = {}        // 用户信息
     @observable lotteryList = []     // 彩种列表
     @observable thirdGameList = []   // 第三方游戏列表
@@ -20,8 +20,10 @@ class HomeStore {
         runInAction(() => {
             if (!res) return;
             if (res.length > 0) {
-                res.forEach((a, i) => {
-                    a.url = api.baseURL + a.url;
+                res.forEach((a) => {
+                    let url = a.url;
+                    url = (url[0] === '.') ? url.substring(1, url.length) : url;
+                    a.url = api.baseURL + url;
                 })
             }
             this.bannerList.splice(res.length, 0, ...res)
@@ -34,7 +36,10 @@ class HomeStore {
         const res = await getNotice();
         runInAction(() => {
             if (!res) return;
-            this.noticeList = res;
+            let { list } = res;
+            if (list.length > 0) {
+                this.noticeList.splice(list.length, 0, ...list)
+            }
         })
     }
     

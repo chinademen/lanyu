@@ -14,21 +14,18 @@ import {
 import { Navigator } from 'react-native-deprecated-custom-components'
 import { observer, inject } from 'mobx-react/native'
 import Toast from 'react-native-easy-toast'
-import Swiper from 'react-native-swiper'
 import NetInfoDecorator from '@/common/NetInfoDecorator'
-import imgSrc from '@/config/imgSrc'
+// import ScrollVertical from '@/components/ScrollVertical'
 // import Loading from '@/components/Loading'
+import Banner from './Banner'
+import Notice from './Notice'
 
 @NetInfoDecorator
 @inject(({ account, app, homeStore }) => {
     return {
-        bannerList: homeStore.bannerList,
-        noticeList: homeStore.noticeList,
         userInfo: homeStore.userInfo,
         lotteryList: homeStore.lotteryList,
         thirdGameList: homeStore.thirdGameList,
-        getBanner: homeStore.getBanner,
-        getNotice: homeStore.getNotice,
         getUserInfo: homeStore.getUserInfo,
         getUserLotteryList: homeStore.getUserLotteryList,
         workroomThirdgameList: homeStore.workroomThirdgameList,
@@ -43,9 +40,7 @@ import imgSrc from '@/config/imgSrc'
 @observer
 export default class Home extends Component {
     componentDidMount() {
-        const { getBanner,  getNotice,  getUserInfo,  getUserLotteryList,  workroomThirdgameList } = this.props;
-        getBanner()
-        // getNotice()  
+        const { getUserInfo,  getUserLotteryList,  workroomThirdgameList } = this.props;
         // getUserInfo()  
         // getUserLotteryList()  
         // workroomThirdgameList()
@@ -63,32 +58,6 @@ export default class Home extends Component {
             fetchCategoryList()
         }
     }
-
-    // 头部轮播图
-    HeaderView = () => {
-        let { bannerList } = this.props;
-        // alert(JSON.stringify(bannerList))
-        // 后台返回banner
-        if (bannerList && bannerList.length > 0) {
-            // return (
-            //     <Swiper style={styles.headerContainer} showsPagination={false}>
-            //         {bannerList.map((a, i) => {
-                        return <Image style={styles.headerContainer} source={{ uri: 'https://frontapi.donghuang918.com/banner/h5/h5-1.png' }}></Image>;
-                    // })}
-                // </Swiper>
-            // )
-        } else {
-            return (
-                <Swiper style={styles.headerContainer} showsPagination={false}>
-                    {imgSrc.bannerSrc.map((a, i) => {
-                        return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
-                    })}
-                </Swiper>
-            )
-        }
-    };
-
-    searchAction = () => alert('search')
 
     resetBarStyle = () => this.props.updateBarStyle('light-content')
 
@@ -163,8 +132,11 @@ export default class Home extends Component {
                     style={{ width: gScreen.width, height: gScreen.height }}
                     contentContainerStyle={{ alignItems: 'center', backgroundColor: '#f5f5f5', paddingBottom: 10 }}
                 >
-                    {/* <HeaderView searchAction={this.searchAction}/> */}
-                    {this.HeaderView()}
+                    {/* banner轮播 */}
+                    <Banner />
+                    {/* 公告 */}
+                    <Notice />
+                    
                     {/* 高频彩 */}
                     <ProfileStaticCell
                         title="高频彩"
@@ -223,37 +195,6 @@ const ReconnectView = ({onPress}) => {
         </TouchableOpacity>
     )
 }
-
-// 头部轮播图
-// const HeaderView = ({searchAction}) => {
-//     // const { bannerList } = this.props;
-//     // alert(api.baseURL)
-//     // alert(bannerList)
-//     return (
-//         <Swiper style={styles.headerContainer} showsPagination={false}>
-//             {imgSrc.bannerSrc.map((a, i) => {
-//                 return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
-//             })}
-//         </Swiper>
-//     )
-// };
-
-// 生成轮播图
-// const createBanner = (bannerList) => {
-//     // if (bannerList && bannerList.length > 0) {
-//     //     return bannerList.map(() => {
-
-//     //     })
-//     // } else {
-//         return (
-//             <ImageBackground
-//                 style={styles.headerContainer}
-//                 source={require('@/assets/images/home/banner/banner0.png')}
-//             >
-//             </ImageBackground>
-//         )
-//     // }
-// }
 
 const ProfileStaticCell = ({
     title,
@@ -360,22 +301,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    slide: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: gScreen.width,
-        height: 200,
-    },
     text: {
         color: '#fff',
         fontSize: 30,
         fontWeight: 'bold'
-    },
-    headerContainer: {
-        width: gScreen.width,
-        height: 200,
-        alignItems: 'center'
     },
     headerLogo: {
         width: 66,
