@@ -67,16 +67,16 @@ export default class Home extends Component {
     // 头部轮播图
     HeaderView = () => {
         let { bannerList } = this.props;
-        alert(JSON.stringify(bannerList))
+        // alert(JSON.stringify(bannerList))
         // 后台返回banner
         if (bannerList && bannerList.length > 0) {
-            return (
-                <Swiper style={styles.headerContainer} showsPagination={false}>
-                    {bannerList.map((a, i) => {
-                        return <ImageBackground style={styles.slide} source={a.url}></ImageBackground>;
-                    })}
-                </Swiper>
-            )
+            // return (
+            //     <Swiper style={styles.headerContainer} showsPagination={false}>
+            //         {bannerList.map((a, i) => {
+                        return <Image style={styles.headerContainer} source={{ uri: 'https://frontapi.donghuang918.com/banner/h5/h5-1.png' }}></Image>;
+                    // })}
+                // </Swiper>
+            // )
         } else {
             return (
                 <Swiper style={styles.headerContainer} showsPagination={false}>
@@ -364,6 +364,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        width: gScreen.width,
+        height: 200,
     },
     text: {
         color: '#fff',

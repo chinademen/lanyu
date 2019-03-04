@@ -21,7 +21,7 @@ class HomeStore {
             if (!res) return;
             if (res.length > 0) {
                 res.forEach((a, i) => {
-                    a.url = require(api.baseURL + a.url);
+                    a.url = api.baseURL + a.url;
                 })
             }
             this.bannerList.splice(res.length, 0, ...res)
