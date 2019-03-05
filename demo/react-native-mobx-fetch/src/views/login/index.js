@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
-import Button from '@/common/Button'
+import Button from '@/components/Button'
 import { checkUserName, checkPassWord } from '@/util/filter'
 
 @inject(({ app, loginStore }) => {

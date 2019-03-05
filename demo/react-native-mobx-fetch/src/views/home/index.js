@@ -14,7 +14,7 @@ import {
 import { Navigator } from 'react-native-deprecated-custom-components'
 import { observer, inject } from 'mobx-react/native'
 import Toast from 'react-native-easy-toast'
-import NetInfoDecorator from '@/common/NetInfoDecorator'
+import NetInfoDecorator from '@/components/NetInfoDecorator'
 // import ScrollVertical from '@/components/ScrollVertical'
 // import Loading from '@/components/Loading'
 import Banner from './Banner'
@@ -270,7 +270,7 @@ const FoodCategoryView = ({
                 <Text style={{color: 'gray'}}>{title}</Text>
                 <View style={{width: gScreen.width - 16 * 2, height: 14, backgroundColor: '#f5f5f5'}}>
                     <Image style={{width: gScreen.width - 16 * 2, height: 14}}
-                           source={require('../../resource/img_home_list_bg.png')}
+                           source={require('@/assets/images/resource/img_home_list_bg.png')}
                     />
                 </View>
             </View>

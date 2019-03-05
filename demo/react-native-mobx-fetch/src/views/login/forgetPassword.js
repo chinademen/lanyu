@@ -10,8 +10,8 @@ import {
     Alert,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
-import Header from '@/common/Header'
-import Button from '@/common/Button'
+import Header from '@/components/Header'
+import Button from '@/components/Button'
 import { checkUserName, checkPassWord } from '@/util/filter'
 
 @inject(({ app, loginStore }) => {

@@ -11,12 +11,12 @@ import {
 } from 'react-native'
 import {observer} from 'mobx-react/native'
 import {reaction} from 'mobx'
-import Loading from '../../components/Loading'
-import LoadMoreFooter from '../../components/LoadMoreFooter'
-import FeedSingleImageCell from '../../components/FeedSingleImageCell'
-import FeedMultiImageCell from '../../components/FeedMultiImageCell'
+import Loading from '@/components/Loading'
+import LoadMoreFooter from '@/components/LoadMoreFooter'
+import FeedSingleImageCell from '@/components/FeedSingleImageCell'
+import FeedMultiImageCell from '@/components/FeedMultiImageCell'
 import Toast from 'react-native-easy-toast'
-import FeedBaseStore from '../../store/feedBaseStore'
+import FeedBaseStore from '@/store/feedBaseStore'
 
 const KNOWLEDGE_ID = 3
 

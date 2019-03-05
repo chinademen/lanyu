@@ -12,8 +12,8 @@ import {
     ScrollView,
     Platform
 } from 'react-native';
-import Header from '../../common/Header'
-import ShareView from '../../components/ShareView'
+import Header from '@/components/Header'
+import ShareView from '@/components/ShareView'
 
 export default class FeedDetail extends Component {
 
@@ -84,7 +84,7 @@ const FoodCardComponent = ({
         <View style={{flex: 1, backgroundColor: 'white'}}>
             <Header
                 title='查看详情'
-                rightIcon={require('../../resource/ic_photo_share.png')}
+                rightIcon={require('@/assets/images/resource/ic_photo_share.png')}
                 onBack={popAction}
                 onRight={shareAction}
             />
@@ -105,7 +105,7 @@ const FoodCardComponent = ({
                         <Image
                             style={{width: 40, height: 40, borderRadius: 20}}
                             source={{uri: feed.publisher_avatar}}
-                            defaultSource={require('../../resource/img_default_avatar.png')}
+                            defaultSource={require('@/assets/images/resource/img_default_avatar.png')}
                         />
                         <View style={{marginLeft: 10}}>
                             <Text style={{color: 'black'}}>{feed.publisher}</Text>
@@ -115,7 +115,7 @@ const FoodCardComponent = ({
                     <Image
                         style={{width: gScreen.width, height: cardImageH, marginTop: platformMargin}}
                         source={{uri: cardImageSrc}}
-                        defaultSource={require('../../resource/img_horizontal_default.png')}
+                        defaultSource={require('@/assets/images/resource/img_horizontal_default.png')}
                         resizeMode={'contain'}
                     />
                     {feed.description !== '' &&
@@ -138,7 +138,7 @@ const FoodCardComponent = ({
                 style={[styles.bottomToolBar, {borderTopWidth: gScreen.onePix}]}
                 onPress={collectAction}
             >
-                <Image style={{width: 18, height: 18}} source={require('../../resource/ic_feed_like.png')}/>
+                <Image style={{width: 18, height: 18}} source={require('@/assets/images/resource/ic_feed_like.png')}/>
                 <Text style={{color: 'black', marginLeft: 5}}>{feed.like_ct}</Text>
             </TouchableOpacity>
         </View>
@@ -165,7 +165,7 @@ const FoodNewsComponent = ({ popAction, uri }) => {
                 >
                     <Image
                         style={{width: 14, height: 14}}
-                        source={require('../../resource/ic_share_black.png')}
+                        source={require('@/assets/images/resource/ic_share_black.png')}
                         resizeMode="contain"
                     />
                     <Text style={{marginLeft: 5}}>分享</Text>
@@ -178,7 +178,7 @@ const FoodNewsComponent = ({ popAction, uri }) => {
                 >
                     <Image
                         style={{width: 18, height: 18}}
-                        source={require('../../resource/ic_article_collect.png')}
+                        source={require('@/assets/images/resource/ic_article_collect.png')}
                         resizeMode="contain"
                     />
                     <Text style={{marginLeft: 5}}>收藏</Text>

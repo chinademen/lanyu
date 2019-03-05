@@ -15,8 +15,8 @@ import {
     ActivityIndicator
 } from 'react-native'
 import {reaction} from 'mobx'
-import Loading from '../../components/Loading'
-import FeedBaseStore from '../../store/feedBaseStore'
+import Loading from '@/components/Loading'
+import FeedBaseStore from '@/store/feedBaseStore'
 import AutoResponisve from 'autoresponsive-react-native'
 
 const DELICACY_ID = 1
@@ -164,7 +164,7 @@ class HomeItem extends Component {
         let imageH = feed.content_type != 5 ? style.width + 50 : style.width;
 
         // 返回的数据中，头像出现null的情况，所以source仍然做个判断
-        let publisherAvatar = feed.publisher_avatar ? {uri: feed.publisher_avatar} : require('../../resource/img_default_avatar.png');
+        let publisherAvatar = feed.publisher_avatar ? {uri: feed.publisher_avatar} : require('@/assets/images/resource/img_default_avatar.png');
 
         return (
             <TouchableOpacity
@@ -175,7 +175,7 @@ class HomeItem extends Component {
                 <Image
                     style={{width: style.width, height: imageH}}
                     source={{uri: feed.card_image.split('?')[0]}}
-                    defaultSource={require('../../resource/img_horizontal_default.png')}
+                    defaultSource={require('@/assets/images/resource/img_horizontal_default.png')}
                 />
                 {feed.content_type == 5 &&
                 <View style={{
@@ -210,7 +210,7 @@ class HomeItem extends Component {
                         <Image
                             style={{height: 30, width: 30, borderRadius: 15}}
                             source={publisherAvatar}
-                            defaultSource={require('../../resource/img_default_avatar.png')}
+                            defaultSource={require('@/assets/images/resource/img_default_avatar.png')}
                         />
                         <Text
                             style={{fontSize: 11, color: 'gray', marginLeft: 8, width: style.width * 0.4}}
@@ -220,7 +220,7 @@ class HomeItem extends Component {
                         </Text>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Image style={{height: 12, width: 12}} source={require('../../resource/ic_feed_like.png')}/>
+                        <Image style={{height: 12, width: 12}} source={require('@/assets/images/resource/ic_feed_like.png')}/>
                         <Text style={{fontSize: 11, color: 'gray', marginLeft: 2}}>{feed.like_ct}</Text>
                     </View>
                 </View>

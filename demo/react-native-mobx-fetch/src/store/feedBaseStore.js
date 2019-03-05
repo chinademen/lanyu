@@ -2,7 +2,7 @@
  * Created by ljunb on 2017/02/28.
  */
 import {observable, computed, action, runInAction} from 'mobx'
-import {get} from '../common/HttpTool'
+import {get} from '../components/HttpTool'
 
 export default class FeedStore {
     @observable feedList = [];

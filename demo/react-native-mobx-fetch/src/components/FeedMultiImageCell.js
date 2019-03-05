@@ -33,7 +33,7 @@ const FeedMultiImageCell = ({
                             key={`${img}-${i}`}
                             style={{height: 80, width: (screenW - 15 * 2 - 10 * 2) / 3}}
                             source={{uri: img}}
-                            defaultSource={require('../resource/img_news_default.png')}
+                            defaultSource={require('@/assets/images/resource/img_news_default.png')}
                         />
                     )
                 })}
@@ -43,7 +43,7 @@ const FeedMultiImageCell = ({
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginLeft: 20}}>
                     <Image
                         style={{width: 14, height: 14, marginRight: 3}}
-                        source={require('../resource/ic_feed_watch.png')}
+                        source={require('@/assets/images/resource/ic_feed_watch.png')}
                     />
                     <Text style={{color: 'rgb(150,150,150)', fontSize: 13}}>{viewCount}</Text>
                 </View>

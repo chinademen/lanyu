@@ -15,10 +15,10 @@ import {
 } from 'react-native'
 import {observer} from 'mobx-react/native'
 import {reaction} from 'mobx'
-import Loading from '../../components/Loading'
-import LoadMoreFooter from '../../components/LoadMoreFooter'
+import Loading from '@/components/Loading'
+import LoadMoreFooter from '@/components/LoadMoreFooter'
 import Toast from 'react-native-easy-toast'
-import FeedBaseStore from '../../store/feedBaseStore'
+import FeedBaseStore from '@/store/feedBaseStore'
 
 const EVALUATING_ID = 2
 
@@ -114,7 +114,7 @@ class EvaluatingItem extends Component {
                     <View style={styles.imageContentWrapper}>
                         <Image
                             style={{width: 12, height: 12, marginRight: 3}}
-                            source={require('../../resource/ic_feed_read.png')}
+                            source={require('@/assets/images/resource/ic_feed_read.png')}
                         />
                         <Text style={{color: '#fff', fontSize: 13}}>{feed.tail}</Text>
                     </View>

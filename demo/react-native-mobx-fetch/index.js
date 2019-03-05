@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import {Platform, Animated, StyleSheet, View, Text, AppRegistry} from 'react-native'
 import {Provider} from 'mobx-react/native'
 import SplashScreen from 'react-native-splash-screen'
-import global from './src/common/GlobalContants'
+import global from './src/config/GlobalContants'
 import {name as appName} from './app.json'
 import App from './src'
 import stores from './src/store'
-import NetInfoDecorator from './src/common/NetInfoDecorator'
+import NetInfoDecorator from './src/components/NetInfoDecorator'
 import storage from './src/util/storage'
 
 global.storage = storage;

@@ -11,11 +11,11 @@ import {
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-import FeedsCategoryBar from '../../components/FeedsCategoryBar'
+import FeedsCategoryBar from '@/components/FeedsCategoryBar'
 import FeedHomeList from './FeedHomeList';
-import FeedEvaluatingList from '../../pages/feed/FeedEvaluatingList'
-import FeedKnowledgeList from '../../pages/feed/FeedKnowledgeList';
-import FeedDelicacyList from '../../pages/feed/FeedDelicacyList';
+import FeedEvaluatingList from '@/views/award/FeedEvaluatingList'
+import FeedKnowledgeList from '@/views/award/FeedKnowledgeList';
+import FeedDelicacyList from '@/views/award/FeedDelicacyList';
 
 const titles = ['首页', '评测', '知识', '美食'];
 const controllers = [
@@ -74,7 +74,7 @@ const HeaderView = ({pictureAction}) => {
         <View style={[styles.header, {borderBottomWidth: gScreen.onePix}]}>
             <Image
                 style={{width: 60, height: 30}}
-                source={require('../../resource/ic_feed_nav.png')}
+                source={require('@/assets/images/resource/ic_feed_nav.png')}
                 resizeMode="contain"
             />
             <TouchableOpacity
@@ -84,7 +84,7 @@ const HeaderView = ({pictureAction}) => {
             >
                 <Image
                     style={{width: 20, height: 20}}
-                    source={require('../../resource/ic_feed_camera.png')}
+                    source={require('@/assets/images/resource/ic_feed_camera.png')}
                     resizeMode="contain"
                 />
             </TouchableOpacity>

@@ -15,7 +15,7 @@ import {
 } from 'react-native'
 import {observer} from 'mobx-react/native'
 import {observable, runInAction, reaction, action, computed} from 'mobx'
-import Header from '@/common/Header'
+import Header from '@/components/Header'
 import Loading from '@/components/Loading'
 import LoadMoreFooter from "@/components/LoadMoreFooter"
 
@@ -164,7 +164,7 @@ export default class Foods extends Component {
                 onPress={this._onPressRightItem}
             >
                 <Text style={{color: 'gray', fontSize: 12, marginRight: 3}}>{subCategory}</Text>
-                <Image source={require('../../resource/ic_bullet_down_gray.png')} style={{width: 13, height: 16}}
+                <Image source={require('@/assets/images/resource/ic_bullet_down_gray.png')} style={{width: 13, height: 16}}
                        resizeMode="contain"/>
             </TouchableOpacity>
         )
@@ -384,7 +384,7 @@ class FoodSiftHandleView extends Component {
         })
 
         const rotate = isShow ? '180deg' : '0deg'
-        const orderAscSrc = orderAsc == 1 ? require('../../resource/ic_food_ordering_down.png') : require('../../resource/ic_food_ordering_up.png')
+        const orderAscSrc = orderAsc == 1 ? require('@/assets/images/resource/ic_food_ordering_down.png') : require('@/assets/images/resource/ic_food_ordering_up.png')
         const orderAscStr = orderAsc == 1 ? '由高到低' : '由低到高'
 
         return (
@@ -399,7 +399,7 @@ class FoodSiftHandleView extends Component {
                         <Text style={styles.orderByFont}>{currentType}</Text>
                         <Image
                             style={{width: 16, height: 16, transform: [{rotate}]}}
-                            source={require('../../resource/ic_food_ordering.png')}
+                            source={require('@/assets/images/resource/ic_food_ordering.png')}
                         />
                     </TouchableOpacity>
                     {currentType == '常见' ?
@@ -463,7 +463,7 @@ class FoodItem extends Component {
             lightStyle.push({backgroundColor: gColors.healthRed})
         }
 
-        const defaultImg = require('../../resource/img_default_food_thumbnail.png')
+        const defaultImg = require('@/assets/images/resource/img_default_food_thumbnail.png')
         const imgSrc = food.thumb_image_url ? {uri: food.thumb_image_url} : defaultImg
 
         return (

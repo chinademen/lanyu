@@ -13,10 +13,10 @@ const router = {
     // 'Scanner': require('../components/Scanner'),
 
     // home
-    'Foods': require('@/pages/home/Foods'),
+    'Foods': require('@/views/home/Foods'),
 
-    // feed
-    'FeedDetail': require('@/pages/feed/FeedDetail'),
+    // 开奖号码
+    'FeedDetail': require('@/views/award/FeedDetail'),
 
     // profile
 }

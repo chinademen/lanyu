@@ -1,5 +1,5 @@
 /**
- * Created by ljunb on 2017/1/7.
+ * 网络状态检测高阶组件
  */
 import React, {Component} from 'react'
 import {NetInfo} from 'react-native'

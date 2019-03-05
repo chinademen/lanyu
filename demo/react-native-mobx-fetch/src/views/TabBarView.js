@@ -3,10 +3,10 @@
  */
 import React, {Component} from 'react'
 import {observer, inject} from 'mobx-react/native'
-import Feed from '@/pages/feed/Feed'
+import Feed from '@/views/award/Feed'
 import Home from '@/views/home'
-import Report from '@/pages/report'
-import Profile from '@/pages/profile/Profile'
+import Report from '@/views/report'
+import Profile from '@/views/profile'
 import TabBar from '@/components/TabBar'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
