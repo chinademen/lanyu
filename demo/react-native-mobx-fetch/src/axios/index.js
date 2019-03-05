@@ -109,6 +109,7 @@ service.interceptors.response.use(
         let errortext = error + '';
         // alert(JSON.stringify(error))
         Alert.alert('服务器出错，请稍后重试');
+        app.submiting = fasle;
         return Promise.reject({
             success: false,
             statusCode: errortext.substr(-3),

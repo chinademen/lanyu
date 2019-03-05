@@ -15,25 +15,13 @@ import ScrollVertical from '@/components/ScrollVertical'
 
 const dataArray = [
     {
-        title: `降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了
-        降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了
-        降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了
-        降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了
-        降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了`,
+        content: `降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了`,
     },
     {
-        title: `全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折
-        全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折
-        全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折
-        全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折
-        全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折`,
+        content: `全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折`,
     },
     {
-        title: `打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折
-        打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折
-        打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折
-        打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折
-        打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折`,
+        content: `打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折`,
     }
 ];
 
@@ -52,11 +40,11 @@ export default class Notice extends PureComponent {
     
     render() {
         let { noticeList } = this.props;
-        alert(JSON.stringify(noticeList))
         let list = [];
-        for (let item of noticeList) {
+        for (let item of noticeList.slice()) {
             list.push({ content: item.content});
         }
+        alert(JSON.stringify(list))
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => {
@@ -89,7 +77,7 @@ export default class Notice extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
-        paddingLeft: 5, 
+        paddingLeft: 5,
         backgroundColor: '#FFF', 
         width: gScreen.width
     },
