@@ -58,28 +58,35 @@ export default class ScrollVertical extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { data, enableAnimation } = nextProps;
-        this.updateData(data, data, enableAnimation)
+        // 更新公告列表，最大偏移量
+        let h = (nextProps.data.length + 1) * nextProps.scrollHeight
+        this.setState({
+                data: nextProps.data,
+                y: h,
+                enableAnimation: nextProps.enableAnimation ? true : false,
+            }, () => {
+                this.startAnimation();
+            }
+        )
     }
 
     componentDidMount() {
-        let data = this.props.data || [];
+        let data = this.props.data || []
         if (data.length !== 0) {
-            this.updateData(data, data.concat(data[0]), true)
+            let h = (data.length + 1) * this.state.scrollHeight
+            this.setState({
+                data: data.concat(data[0]),
+                y: h
+            })
+
+            // 开始动画
+            // this._startAnimation()
+            this.startAnimation();
         }
     }
 
     // 更新列表数据，最大偏移量
-    updateData = (data, dataValue, enableAnimation) => {
-        let h = (data.length + 1) * this.state.scrollHeight;
-        this.setState({
-            data: dataValue,
-            y: h,
-            enableAnimation: enableAnimation
-        }, () => {
-            this.startAnimation();
-        })
-    }
+
 
     _createKbItem(item, index) {
         return (
@@ -89,7 +96,8 @@ export default class ScrollVertical extends Component {
             </View>
         )
     }
-    
+
+  
     componentWillUnmount() {
         if (this.animation) {
             clearTimeout(this.animation);
@@ -112,6 +120,7 @@ export default class ScrollVertical extends Component {
         }
 
     }
+
 
     // 执行动画
     _startAnimation = () => {
