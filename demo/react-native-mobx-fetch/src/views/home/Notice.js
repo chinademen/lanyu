@@ -13,18 +13,6 @@ import { toJS } from 'mobx'
 import { observer, inject } from 'mobx-react/native'
 import ScrollVertical from '@/components/ScrollVertical'
 
-const dataArray = [
-    {
-        content: `降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了降价了`,
-    },
-    {
-        content: `全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折全场五折`,
-    },
-    {
-        content: `打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折打到骨折`,
-    }
-];
-
 @inject(({ homeStore }) => {
     return {
         noticeList: homeStore.noticeList,
@@ -40,36 +28,31 @@ export default class Notice extends PureComponent {
     
     render() {
         let { noticeList } = this.props;
-        let list = [];
-        for (let item of noticeList.slice()) {
-            list.push({ content: item.content});
-        }
-        // alert(JSON.stringify(list))
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => {
-                                        if (noticeList && noticeList.length > 0) {
-                                            alert(noticeList[this.index].title)
-                                        }
-                                    }} 
-                    style={styles.box}>
                     <Image source={require('@/assets/images/home/sound.png')}></Image>
-                    <View style={styles.scrollBox}>
+                    <TouchableOpacity style={styles.scrollBox} onPress={() => {
+                                    if (noticeList && noticeList.length > 0) {
+                                            // alert(noticeList[this.index].title)
+                                            // alert('跳转到公告详情页')
+                                        }
+                                    }} >
                         <ScrollVertical
                             onChange={(index => {
                                 this.index = index;
                             })}
                             enableAnimation={true}
-                            data={list}
+                            data={toJS(noticeList)}
                             delay={2500}
                             duration={1000}
                             scrollHeight={34}
                             scrollStyle={styles.scrollStyle}
                             textStyle={styles.textStyle}
                         />
-                    </View>
-                    <Text style={styles.more}>更多>></Text>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    <Text style={styles.more} onPress={() => {
+                                        alert('跳转到公告列表页')
+                                    }}>更多>></Text>
             </View>
         )
     }
@@ -79,12 +62,9 @@ const styles = StyleSheet.create({
     container: {
         paddingLeft: 10,
         backgroundColor: '#FFF', 
-        width: gScreen.width
-    },
-    box: {
-        flexDirection: 'row', 
-        backgroundColor: "#FFF", 
-        alignItems: 'center'
+        width: gScreen.width,
+        flexDirection: 'row',
+        alignItems: 'center', // 子元素上下居中
     },
     scrollBox: {
         position: 'relative'
