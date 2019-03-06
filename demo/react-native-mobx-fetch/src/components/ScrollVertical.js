@@ -13,8 +13,8 @@ export default class ScrollVertical extends Component {
     };
 
     constructor(props) {
-        super(props)
-        let translateValue= new Animated.ValueXY({x: 0, y: 0})
+        super(props);
+        let translateValue = new Animated.ValueXY({ x: 0, y: 0 })
         translateValue.addListener(({x,y})=>{
            // alert('value',x,y)
         })
@@ -23,11 +23,11 @@ export default class ScrollVertical extends Component {
             // 滚屏高度
             scrollHeight: this.props.scrollHeight || 32,
             // 滚屏内容
-            kb_content: [],
+            data: [],
             // Animated.View 滚动到的 y轴坐标
-            kb_tempValue: 0,
+            currentY: 0,
             // 最大偏移量
-            kb_contentOffsetY: 0,
+            y: 0,
             // 每一次滚动切换之前延迟的时间
             delay: this.props.delay || 500,
             // 每一次滚动切换的持续时间
@@ -40,7 +40,7 @@ export default class ScrollVertical extends Component {
         return (
             <View style={[styles.kbContainer, {height: this.state.scrollHeight}, this.props.kbContainer]}>
                 {
-                    this.state.kb_content.length !== 0 ?
+                    this.state.data.length !== 0 ?
                         <Animated.View
                             style={[
                                 {flexDirection: 'column'},
@@ -50,7 +50,7 @@ export default class ScrollVertical extends Component {
                                     ]
                                 }
                             ]}>
-                            {this.state.kb_content.map(this._createKbItem.bind(this))}
+                            {this.state.data.map(this._createKbItem.bind(this))}
                         </Animated.View> : null
                 }
             </View>
@@ -58,52 +58,38 @@ export default class ScrollVertical extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-            this.setState({
-                    enableAnimation: nextProps.enableAnimation?true:false
-                }, () => {
-                    this.startAnimation();
-                }
-            )
+        const { data, enableAnimation } = nextProps;
+        this.updateData(data, data, enableAnimation)
     }
 
     componentDidMount() {
-        let content = this.props.data || []
-        if (content.length !== 0) {
-            let h = (content.length + 1) * this.state.scrollHeight
-            this.setState({
-                kb_content: content.concat(content[0]),
-                kb_contentOffsetY: h
-            })
-
-            // 开始动画
-            // this._startAnimation()
-            this.startAnimation();
+        let data = this.props.data || [];
+        if (data.length !== 0) {
+            this.updateData(data, data.concat(data[0]), true)
         }
     }
 
+    // 更新列表数据，最大偏移量
+    updateData = (data, dataValue, enableAnimation) => {
+        let h = (data.length + 1) * this.state.scrollHeight;
+        this.setState({
+            data: dataValue,
+            y: h,
+            enableAnimation: enableAnimation
+        }, () => {
+            this.startAnimation();
+        })
+    }
 
-    _createKbItem(kbItem, index) {
+    _createKbItem(item, index) {
         return (
             <View key={index}
-                  style={[{justifyContent: 'center', height: this.state.scrollHeight}, this.props.scrollStyle]}>
-                <Text style={[styles.kb_text_c, this.props.textStyle]}>{kbItem.content}</Text>
+                  style={[{ justifyContent: 'center', height: this.state.scrollHeight }, this.props.scrollStyle]}>
+                <Text style={[styles.kb_text_c, this.props.textStyle]}>{item.content}</Text>
             </View>
         )
     }
-
-    startAnimation = () => {
-        if (this.state.enableAnimation) {
-            if(!this.animation){
-                this.animation = setTimeout(() => {
-                    this.animation=null;
-                    this._startAnimation();
-                }, this.state.delay);
-            }
-
-        }
-
-    }
-
+    
     componentWillUnmount() {
         if (this.animation) {
             clearTimeout(this.animation);
@@ -113,11 +99,27 @@ export default class ScrollVertical extends Component {
         }
     }
 
+    // 初始 / 刷新动画
+    startAnimation = () => {
+        if (this.state.enableAnimation) {
+            if (!this.animation) {
+                this.animation = setTimeout(() => {
+                    this.animation = null;
+                    this._startAnimation();
+                }, this.state.delay);
+            }
+
+        }
+
+    }
+
+    // 执行动画
     _startAnimation = () => {
-        this.state.kb_tempValue -= this.state.scrollHeight;
+        // 向上滚动
+        this.state.currentY -= this.state.scrollHeight;
         if (this.props.onChange) {
-            let index = Math.abs(this.state.kb_tempValue) / (this.state.scrollHeight);
-            this.props.onChange(index<this.state.kb_content.length-1?index:0);
+            let index = Math.abs(this.state.currentY) / (this.state.scrollHeight);
+            this.props.onChange(index < this.state.data.length -1 ? index : 0);
         }
         Animated.sequence([
 
@@ -126,7 +128,7 @@ export default class ScrollVertical extends Component {
                 this.state.translateValue,
                 {
                     isInteraction: false,
-                    toValue: {x: 0, y: this.state.kb_tempValue},
+                    toValue: {x: 0, y: this.state.currentY},
                     duration: this.state.duration, // 动画持续的时间（单位是毫秒），默认为500
                     easing: Easing.linear
                 }
@@ -134,10 +136,10 @@ export default class ScrollVertical extends Component {
         ])
             .start(() => {
                 // 无缝切换
-                if (this.state.kb_tempValue - this.state.scrollHeight === -this.state.kb_contentOffsetY) {
+                if (this.state.currentY - this.state.scrollHeight === -this.state.y) {
                     // 快速拉回到初始状态
                     this.state.translateValue.setValue({x: 0, y: 0});
-                    this.state.kb_tempValue = 0;
+                    this.state.currentY = 0;
                 }
                 this.startAnimation();
 

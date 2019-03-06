@@ -44,7 +44,7 @@ export default class Notice extends PureComponent {
         for (let item of noticeList.slice()) {
             list.push({ content: item.content});
         }
-        alert(JSON.stringify(list))
+        // alert(JSON.stringify(list))
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => {
@@ -77,7 +77,7 @@ export default class Notice extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
-        paddingLeft: 5,
+        paddingLeft: 10,
         backgroundColor: '#FFF', 
         width: gScreen.width
     },
