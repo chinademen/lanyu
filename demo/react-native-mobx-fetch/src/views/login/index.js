@@ -206,7 +206,7 @@ export default class Login extends PureComponent {
 
 const styles = StyleSheet.create({
     container: { // 容器
-        flex: 1, 
+        flex: 1,
     }, 
     content: { // 盒子
         // paddingTop: 50
