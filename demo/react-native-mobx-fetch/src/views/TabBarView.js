@@ -3,26 +3,16 @@
  */
 import React, {Component} from 'react'
 import {observer, inject} from 'mobx-react/native'
+import ScrollableTabView from 'react-native-scrollable-tab-view'
 import Feed from '@/views/award/Feed'
 import Home from '@/views/home'
 import Report from '@/views/report'
 import Profile from '@/views/profile'
 import TabBar from '@/components/TabBar'
-import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 const tabTitles = ['彩票', '开奖', '报表', '我的']
-const tabIcons = [
-    require('@/assets/images/navbar/hotlottery_nor.png'),
-    require('@/assets/images/navbar/kaijiang_nor.png'),
-    require('@/assets/images/navbar/stats_w.png'),
-    require('@/assets/images/navbar/my_nor.png'),
-]
-const tabSelectedIcon = [
-    require('@/assets/images/navbar/hotlottery_press.png'),
-    require('@/assets/images/navbar/kaijiang_press.png'),
-    require('@/assets/images/navbar/stats_b.png'),
-    require('@/assets/images/navbar/my_press.png'),
-]
+const tabIcons = ['hotlottery_nor', 'kaijiang_nor', 'stats_w', 'my_nor'];
+const tabSelectedIcon = ['hotlottery_press', 'kaijiang_press', 'stats_b', 'my_press'];
 
 @inject('app')
 @observer

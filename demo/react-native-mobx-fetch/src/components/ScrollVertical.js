@@ -80,7 +80,6 @@ export default class ScrollVertical extends Component {
             })
 
             // 开始动画
-            // this._startAnimation()
             this.startAnimation();
         }
     }

@@ -15,7 +15,6 @@ import { Navigator } from 'react-native-deprecated-custom-components'
 import { observer, inject } from 'mobx-react/native'
 import Toast from 'react-native-easy-toast'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
-// import ScrollVertical from '@/components/ScrollVertical'
 // import Loading from '@/components/Loading'
 import Banner from './Banner'
 import Notice from './Notice'
@@ -39,6 +38,13 @@ import Notice from './Notice'
 })
 @observer
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            icon: 'hotlottery_nor'
+        }
+    }
+
     componentDidMount() {
         const { getUserInfo,  getUserLotteryList,  workroomThirdgameList } = this.props;
         // getUserInfo()  
