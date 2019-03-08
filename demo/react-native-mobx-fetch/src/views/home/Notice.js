@@ -28,6 +28,17 @@ export default class Notice extends PureComponent {
     
     render() {
         let { noticeList } = this.props;
+        noticeList = [
+            { 
+                content: `的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩` 
+            },
+            { 
+                content: `的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩`
+            },
+            { 
+                content: `的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩的开奖扩绿军奥所多扩绿军奥所绿多军军军军军绿扩`
+            }
+        ];
         return (
             <View style={styles.container}>
                 <Image source={require('@/assets/dh/images/home/sound.png')}></Image>
@@ -72,13 +83,18 @@ const styles = StyleSheet.create({
         height: 30,
     },
     scrollStyle: {
-        alignItems: 'flex-start'
+        flexWrap: 'nowrap', 
+        flexDirection: 'row', 
+        alignItems:'center', 
+        minWidth: 3000, 
+        overflow: 'hidden',
     },
     textStyle: {
         paddingLeft: 10, 
         color: '#333', 
         fontSize: 14, 
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        flexDirection:'row',
     },
     more: {
         height: 30,

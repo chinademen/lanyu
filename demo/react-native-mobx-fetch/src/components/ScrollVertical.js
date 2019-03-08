@@ -90,7 +90,7 @@ export default class ScrollVertical extends Component {
     _createKbItem(item, index) {
         return (
             <View key={index}
-                  style={[{ justifyContent: 'center', height: this.state.scrollHeight }, this.props.scrollStyle]}>
+                  style={[{ height: this.state.scrollHeight }, this.props.scrollStyle]}>
                 <Text style={[styles.kb_text_c, this.props.textStyle]}>{item.content}</Text>
             </View>
         )
