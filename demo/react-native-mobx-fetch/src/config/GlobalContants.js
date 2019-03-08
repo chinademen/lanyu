@@ -3,6 +3,7 @@
  */
 import { Dimensions, Platform, PixelRatio } from 'react-native'
 
+global.iphoneX = false;
 global.__IOS__ = false;
 global.__ANDROID__ = true;
 

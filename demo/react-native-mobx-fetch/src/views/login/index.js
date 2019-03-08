@@ -154,55 +154,62 @@ export default class Login extends PureComponent {
     render() {
         const { submiting } = this.props;
         const { username, password, usernameError, passwordError, isChecked, loginText } = this.state;
+        const platStyle = {
+            content: {
+                paddingTop: iphoneX ? 64 : 0,
+            },
+            checkBox: {
+                width: __IOS__ ? gScreen.width * 0.6 : gScreen.width * 0.7,
+            },
+            forgetPassword: {
+                left: __IOS__ ? 20 : 6,
+            }
+        };
 
         return (
-            <Container>
-                <Content>
-                    <ImageBackground
-                        source={require('@/assets/dh/images/login/loginbg.png')}
-                        style={styles.container}
-                    >
-                        <View style={styles.content}>
-                            <Image  
-                                style={styles.logo}
-                                source={require('@/assets/dh/images/login/logo.png')}
-                            />
-                            <TextInput 
-                                style={styles.input} 
-                                placeholder="请输入您的账号"
-                                maxLength={16}
-                                onChangeText={val => this.handleInput(val, 'username')}
-                                value={username}
-                            ></TextInput>
-                            <Text style={styles.error}>{usernameError}</Text>
-                            <TextInput 
-                                style={styles.input}
-                                placeholder="请输入您的密码"
-                                maxLength={16}
-                                secureTextEntry
-                                onChangeText={val => this.handleInput(val, 'password')}
-                                value={password}
-                            ></TextInput>
-                            <Text style={styles.error}>{passwordError}</Text>
-                            <View style={styles.checkboxContainer}>
-                                <CheckBox
-                                    style={styles.checkBox}
-                                    onClick={this.rememberPassword}
-                                    isChecked={isChecked}
-                                    rightText={"记住密码"}
-                                />
-                                <Text style={styles.forgetPassword} onPress={this.forgetPassword}>忘记密码？</Text>
-                            </View>
-                            <LodingBtn
-                                onPress={this.loginEvent}
-                                submiting={submiting}
-                                text={loginText}
-                            />
-                        </View>
-                        <Text style={{textAlign: 'center', bottom: 60 }}>Copyright @ 东皇娱乐 版权所有</Text>
-                    </ImageBackground>
-                </Content>
-            </Container>
+            <ImageBackground
+                source={require('@/assets/dh/images/login/loginbg.png')}
+                style={styles.container}
+            >
+                <View style={[styles.content, platStyle.content]}>
+                    <Image  
+                        style={styles.logo}
+                        source={require('@/assets/dh/images/login/logo.png')}
+                    />
+                    <TextInput 
+                        style={styles.input} 
+                        placeholder="请输入您的账号"
+                        maxLength={16}
+                        onChangeText={val => this.handleInput(val, 'username')}
+                        value={username}
+                    ></TextInput>
+                    <Text style={styles.error}>{usernameError}</Text>
+                    <TextInput 
+                        style={styles.input}
+                        placeholder="请输入您的密码"
+                        maxLength={16}
+                        secureTextEntry
+                        onChangeText={val => this.handleInput(val, 'password')}
+                        value={password}
+                    ></TextInput>
+                    <Text style={styles.error}>{passwordError}</Text>
+                    <View style={styles.checkboxContainer}>
+                        <CheckBox
+                            style={[styles.checkBox, platStyle.checkBox]}
+                            onClick={this.rememberPassword}
+                            isChecked={isChecked}
+                            rightText={"记住密码"}
+                        />
+                        <Text style={[styles.forgetPassword, platStyle.forgetPassword]} onPress={this.forgetPassword}>忘记密码？</Text>
+                    </View>
+                    <LodingBtn
+                        onPress={this.loginEvent}
+                        submiting={submiting}
+                        text={loginText}
+                    />
+                </View>
+                <Text style={{ textAlign: 'center', bottom: 60 }}>Copyright @ 东皇娱乐 版权所有</Text>
+            </ImageBackground>
         )
     }
 }
@@ -212,9 +219,7 @@ const styles = StyleSheet.create({
         flex: 1,
     }, 
     content: { // 盒子
-        // ios8(50) ios(30) android: (0)
-        paddingTop: __IOS__ ? 25 : 0,
-        height: gScreen.height * 1
+        height: gScreen.height * 1,
     },
     logo: { // logo
         width: 100,
@@ -244,11 +249,9 @@ const styles = StyleSheet.create({
     },
     checkBox: { // 记住密码
         left: gScreen.width * 0.1,
-        width: gScreen.width * 0.7,
         marginTop: 0,
     },
     forgetPassword: { // 忘记密码
-        left: 6,
         textDecorationLine:'underline',
         marginTop: 4,
     }

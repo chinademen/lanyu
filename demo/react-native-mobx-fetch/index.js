@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Platform, Animated, StyleSheet, View, Text, AppRegistry} from 'react-native'
+import {Platform, Dimensions, Animated, StyleSheet, View, Text, AppRegistry} from 'react-native'
 import {Provider} from 'mobx-react/native'
 import SplashScreen from 'react-native-splash-screen'
 import global from './src/config/GlobalContants'
@@ -14,10 +14,12 @@ global.storage = storage;
 if (Platform.OS === "ios") {
     global.__IOS__ = true;
     global.__ANDROID__ = false;
-} else {
-    global.__IOS__ = false;
-    global.__ANDROID__ = true;
-}
+    // iphoneX判断
+    const { height, width } = global.gScreen;
+    if ((height === 375 || width === 812) || (height === 812 || width === 375)) {
+        global.iphoneX = true;
+    }
+} 
 
 // 网络状态检测高阶组件NetInfoDecorator
 @NetInfoDecorator
