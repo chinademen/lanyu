@@ -27,25 +27,49 @@ export default class Banner extends PureComponent {
 
     render() {
         let { bannerList } = this.props;
-        if (bannerList && bannerList.length > 0) {
-            // 网络获取
-            return (
-                <Swiper style={styles.headerContainer} showsPagination={false}>
-                    {toJS(bannerList).map((a, i) => {
-                        return <Image style={styles.headerContainer} source={{ uri: a.url }}></Image>;
-                    })}
-                </Swiper>
-            )
+        //  ios中 Swiper 的 style需要换成 containerStyle
+        if (__IOS__) {
+            if (bannerList && bannerList.length > 0) {
+                // 网络获取
+                return (
+                    <Swiper containerStyle={styles.headerContainer} showsPagination={false}>
+                        {toJS(bannerList).map((a, i) => {
+                            return <Image style={styles.headerContainer} source={{ uri: a.url }}></Image>;
+                        })}
+                    </Swiper>
+                )
+            } else {
+                // 本地获取
+                return (
+                    <Swiper containerStyle={styles.headerContainer} showsPagination={false}>
+                        {imgSrc.bannerSrc.map((a, i) => {
+                            return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
+                        })}
+                    </Swiper>
+                )
+            }
         } else {
-            // 本地获取
-            return (
-                <Swiper style={styles.headerContainer} showsPagination={false}>
-                    {imgSrc.bannerSrc.map((a, i) => {
-                        return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
-                    })}
-                </Swiper>
-            )
+            if (bannerList && bannerList.length > 0) {
+                // 网络获取
+                return (
+                    <Swiper style={styles.headerContainer} showsPagination={false}>
+                        {toJS(bannerList).map((a, i) => {
+                            return <Image style={styles.headerContainer} source={{ uri: a.url }}></Image>;
+                        })}
+                    </Swiper>
+                )
+            } else {
+                // 本地获取
+                return (
+                    <Swiper style={styles.headerContainer} showsPagination={false}>
+                        {imgSrc.bannerSrc.map((a, i) => {
+                            return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
+                        })}
+                    </Swiper>
+                )
+            }
         }
+       
     }
 }
 
