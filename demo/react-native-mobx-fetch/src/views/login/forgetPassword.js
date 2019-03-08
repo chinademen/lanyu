@@ -9,9 +9,9 @@ import {
     Image,
     Alert,
 } from 'react-native'
-import { Container, Header, Title, Content, Footer, FooterTab, Left, Right, Body, Text, Button } from 'native-base'
+import { Container, Header, Title, Content, Left, Right, Body, Text, Button } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
-// import Header from '@/components/Header'
+import CommonHeader from '@/components/Header'
 import LodingBtn from '@/components/LodingBtn'
 import { checkUserName, checkPassWord } from '@/util/filter'
 
@@ -154,7 +154,7 @@ export default class ForgetPassword extends Component {
         const { usernameError, fundsPasswordError } = this.state;
         return (
             <Fragment>
-                <Text style={styles.title}>账号验证</Text>
+                <Text style={styles.titletwo}>账号验证</Text>
                     <TextInput 
                         style={styles.input} 
                         placeholder="请输入您的账号"
@@ -179,7 +179,7 @@ export default class ForgetPassword extends Component {
         const { newPasswordError, confirmPasswordError } = this.state;
         return (
             <Fragment>
-                <Text style={styles.title}>重置密码</Text>
+                <Text style={styles.titletwo}>重置密码</Text>
                     <TextInput 
                         style={styles.input} 
                         placeholder="请输入6-16位数字+字母组合"
@@ -204,33 +204,34 @@ export default class ForgetPassword extends Component {
         const { pageIndex, submitText } = this.state;
         const { submiting } = this.props;
 
-        return (
-            <Container>
-                <Header style={styles.header}>
-                    <Left>
-                        <Button onPress={this.onBack} style={styles.backBtn}>
-                            <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')} />
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title style={styles.headertitle}>重置密码</Title>
-                    </Body>
-                <Right />
-                </Header>
-                <Content>
-                    {/* 账号验证 */}
-                    {pageIndex === 1 && this.checkAccount()}
-                    {/* 重置密码 */}
-                    {pageIndex === 2 && this.resetPassword()}
-                     {/* 提交 */}
-                    <LodingBtn
-                        onPress={this.submitEvent}
-                        submiting={submiting}
-                        text={submitText}
-                    />
-                </Content>
-            </Container>
-        )
+            return (
+                <Container>
+                    {/* <Header style={styles.header}>
+                        <Left>
+                            <Button onPress={this.onBack} style={styles.backBtn}>
+                                <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Title style={styles.headertitle}>重置密码</Title>
+                        </Body>
+                        <Right />
+                    </Header> */}
+                    <CommonHeader title="重置密码" onBack={this.onBack}/>
+                    <Content>
+                        {/* 账号验证 */}
+                        {pageIndex === 1 && this.checkAccount()}
+                        {/* 重置密码 */}
+                        {pageIndex === 2 && this.resetPassword()}
+                        {/* 提交 */}
+                        <LodingBtn
+                            onPress={this.submitEvent}
+                            submiting={submiting}
+                            text={submitText}
+                        />
+                    </Content>
+                </Container>
+            )
     }
 
     componentWillUnmount() {
@@ -240,7 +241,7 @@ export default class ForgetPassword extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
+        // flex: 1,
         backgroundColor: '#f5f5f5'
     },
     header: {
@@ -254,9 +255,10 @@ const styles = StyleSheet.create({
         height: 14
     },
     headertitle: {
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center',
     },
-    title: {
+    titletwo: {
         left: gScreen.width * 0.15,
         height: 20,
         marginTop: 15,

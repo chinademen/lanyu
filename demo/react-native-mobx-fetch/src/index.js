@@ -41,12 +41,7 @@ export default class App extends Component {
         return (
             <View style={{flex: 1}}>
                 {/* 设备顶部状态栏组件 */}
-                <StatusBar 
-                    barStyle={barStyle} 
-                    animated  
-                    hidden={false}
-                    translucent={true}
-                />
+                <StatusBar barStyle={barStyle} animated />
                 {/* 路由导航组件 */}
                 <Navigator
                     // 路由初始化配置信息 
