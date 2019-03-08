@@ -142,7 +142,11 @@ export default class Home extends Component {
                     <Banner />
                     {/* 公告 */}
                     <Notice />
-                    
+                    {/* 余额 */}
+
+                    {/* 中奖公告 */}
+
+                    {/* 时时彩 分分彩 11选5 低频彩  PK10/赛马 其他 */}
                     {/* 高频彩 */}
                     <ProfileStaticCell
                         title="高频彩"
