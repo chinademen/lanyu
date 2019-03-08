@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import {observer, inject} from 'mobx-react/native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-import Feed from '@/views/award/Feed'
+import Feed from '@/views/award'
 import Home from '@/views/home'
 import Report from '@/views/report'
 import Profile from '@/views/profile'

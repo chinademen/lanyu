@@ -8,15 +8,13 @@ const router = {
     'Login': require('@/views/login'),
     // 忘记密码
     'forgetPassword': require('@/views/login/forgetPassword'),
-    // 首页
+    // 导航
     'TabBarView': require('@/views/TabBarView'),
-    // 'Scanner': require('../components/Scanner'),
 
     // home
-    'Foods': require('@/views/home/Foods'),
 
     // 开奖号码
-    'FeedDetail': require('@/views/award/FeedDetail'),
+    'award': require('@/views/award'),
 
     // profile
 }

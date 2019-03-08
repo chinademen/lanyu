@@ -16,7 +16,7 @@ if (Platform.OS === "ios") {
     global.__ANDROID__ = false;
     // iphoneX判断
     const { height, width } = global.gScreen;
-    if ((height === 375 || width === 812) || (height === 812 || width === 375)) {
+    if (height === 812 || width === 812 || height === 896 || width === 896) {
         global.iphoneX = true;
     }
 } 

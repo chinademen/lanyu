@@ -9,8 +9,6 @@ class HomeStore {
     @observable lotteryList = []     // 彩种列表
     @observable thirdGameList = []   // 第三方游戏列表
     @observable username = ''
-    @observable foodCategoryList = []
-    @observable errorMsg = ''
 
 
     // 获取banner图 res=[{id,title,target,url}]
@@ -75,34 +73,6 @@ class HomeStore {
         })
     }
 
-    @action
-    fetchCategoryList = async() => {
-        try {
-            const url = 'http://food.boohee.com/fb/v1/categories/list'
-            const responseData = await get({url, timeout: 30}).then(res => res.json())
-
-            runInAction(() => {
-                this.foodCategoryList.replace(responseData.group)
-                this.errorMsg = ''
-            })
-        } catch (error) {
-            if (error.msg) {
-                this.errorMsg = error.msg
-            } else {
-                this.errorMsg = error
-            }
-        }
-    }
-
-    @computed
-    get isFetching() {
-        return this.foodCategoryList.length === 0 && this.errorMsg === ''
-    }
-
-    @computed
-    get isNoResult() {
-        return this.foodCategoryList.length === 0
-    }
 }
 
 export default new HomeStore()
