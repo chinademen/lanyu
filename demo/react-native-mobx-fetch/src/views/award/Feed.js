@@ -74,7 +74,7 @@ const HeaderView = ({pictureAction}) => {
         <View style={[styles.header, {borderBottomWidth: gScreen.onePix}]}>
             <Image
                 style={{width: 60, height: 30}}
-                source={require('@/assets/images/resource/ic_feed_nav.png')}
+                source={require('@/assets/dh/images/resource/ic_feed_nav.png')}
                 resizeMode="contain"
             />
             <TouchableOpacity
@@ -84,7 +84,7 @@ const HeaderView = ({pictureAction}) => {
             >
                 <Image
                     style={{width: 20, height: 20}}
-                    source={require('@/assets/images/resource/ic_feed_camera.png')}
+                    source={require('@/assets/dh/images/resource/ic_feed_camera.png')}
                     resizeMode="contain"
                 />
             </TouchableOpacity>

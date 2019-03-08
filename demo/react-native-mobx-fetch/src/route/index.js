@@ -6,6 +6,7 @@ const router = {
     'Splash': require('@/views/Splash'),
     // 登录页面
     'Login': require('@/views/login'),
+    'Test': require('@/views/test'),
     // 忘记密码
     'forgetPassword': require('@/views/login/forgetPassword'),
     // 首页

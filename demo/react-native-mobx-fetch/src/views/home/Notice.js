@@ -30,7 +30,7 @@ export default class Notice extends PureComponent {
         let { noticeList } = this.props;
         return (
             <View style={styles.container}>
-                    <Image source={require('@/assets/images/home/sound.png')}></Image>
+                    <Image source={require('@/assets/dh/images/home/sound.png')}></Image>
                     <TouchableOpacity style={styles.scrollBox} onPress={() => {
                                     if (noticeList && noticeList.length > 0) {
                                             // alert(noticeList[this.index].title)

@@ -9,7 +9,7 @@ export default class Splash extends Component {
         const { navigator } = this.props;
         // 2秒后调到登录
         this.timer = setTimeout(() => {
-            navigator.resetTo({id: 'Login'})
+            navigator.resetTo({id: 'Test'})
         }, 2000)
     }
 
@@ -21,7 +21,7 @@ export default class Splash extends Component {
         return (
             <Image
                 style={{width: gScreen.width, height: gScreen.height}}
-                source={require('@/assets/images/splash.png')}
+                source={require('@/assets/dh/images/splash.png')}
             />
         )
     }

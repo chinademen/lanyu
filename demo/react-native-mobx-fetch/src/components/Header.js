@@ -20,7 +20,7 @@ const LeftItem = ({onPress}) => {
             onPress={onPress}
         >
             <Image style={{width: 20, height: 20}}
-                   source={require('@/assets/images/ic_back_dark.png')}
+                   source={require('@/assets/dh/images/ic_back_dark.png')}
                    resizeMode={"contain"}
             />
         </TouchableOpacity>

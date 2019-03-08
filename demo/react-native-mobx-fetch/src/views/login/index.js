@@ -158,13 +158,13 @@ export default class Login extends PureComponent {
 
         return (
             <ImageBackground
-                source={require('@/assets/images/login/loginbg.png')}
+                source={require('@/assets/dh/images/login/loginbg.png')}
                 style={styles.container}
             >
                 <View style={styles.content}>
                     <Image  
                         style={styles.logo}
-                        source={require('@/assets/images/login/logo.png')}
+                        source={require('@/assets/dh/images/login/logo.png')}
                     />
                     <TextInput 
                         style={styles.input} 

@@ -44,18 +44,18 @@ export default class Profile extends Component {
                     <ProfileStaticCell
                         title="充值取款"
                         style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/images/resource/ic_my_photos.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_my_photos.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ProfileStaticCell
                         title="报表查询"
                         style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/images/resource/ic_my_collect.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_my_collect.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ProfileStaticCell
                         title="契约分红"
-                        imageName={require('@/assets/images/resource/ic_my_upload.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_my_upload.png')}
                         onPress={this._onPressStaticCell}
                     />
                 </View>
@@ -68,7 +68,7 @@ const HeaderView = ({settingAction, loginAction}) => {
     return (
         <ImageBackground
             style={{width: gScreen.width, height: 200, alignItems: 'center', backgroundColor: 'transparent'}}
-            source={require('@/assets/images/resource/top.png')}
+            source={require('@/assets/dh/images/resource/top.png')}
         >
             <View style={[styles.header, {width: gScreen.width}]}>
                 <Text style={{color: 'white', fontSize: 16, marginTop: 50}}>amao001</Text>
@@ -80,7 +80,7 @@ const HeaderView = ({settingAction, loginAction}) => {
                 >
                     <Image
                         style={{width: 20, height: 20}}
-                        source={require('@/assets/images/resource/ic_my_setting.png')}
+                        source={require('@/assets/dh/images/resource/ic_my_setting.png')}
                     />
                 </TouchableOpacity>
             </View>
@@ -127,7 +127,7 @@ const ProfileStaticCell = ({
             <Image style={{width: 20, height: 20, marginHorizontal: 15}} source={imageName}/>
             <View style={[styles.cellStyle, style || style]}>
                 <Text style={{color: 'gray'}}>{title}</Text>
-                <Image style={{width: 20, height: 20}} source={require('@/assets/images/resource/ic_my_right.png')}/>
+                <Image style={{width: 20, height: 20}} source={require('@/assets/dh/images/resource/ic_my_right.png')}/>
             </View>
         </TouchableOpacity>
     )

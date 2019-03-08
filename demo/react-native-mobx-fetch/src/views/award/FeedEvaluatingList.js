@@ -114,7 +114,7 @@ class EvaluatingItem extends Component {
                     <View style={styles.imageContentWrapper}>
                         <Image
                             style={{width: 12, height: 12, marginRight: 3}}
-                            source={require('@/assets/images/resource/ic_feed_read.png')}
+                            source={require('@/assets/dh/images/resource/ic_feed_read.png')}
                         />
                         <Text style={{color: '#fff', fontSize: 13}}>{feed.tail}</Text>
                     </View>

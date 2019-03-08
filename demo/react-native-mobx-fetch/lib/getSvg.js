@@ -1,7 +1,7 @@
 //  getSvg.js
 var fs = require('fs');
 var path = require('path');
-const svgDir = path.resolve(__dirname, '../src/assets/images/svg');
+const svgDir = path.resolve(__dirname, '../src/assets/dh/images/svg');
  
 // 读取单个文件
 function readfile(filename) {
@@ -31,7 +31,7 @@ function readSvgs() {
 // 生成js文件
 readSvgs().then(data => {
   let svgFile = 'export default ' + JSON.stringify(Object.assign.apply(this, data));
-  fs.writeFile(path.resolve(__dirname, '../src/assets/svgs.js'), svgFile, function(err) {
+  fs.writeFile(path.resolve(__dirname, '../src/assets/dh/svgs.js'), svgFile, function(err) {
     if(err) throw new Error(err);
   })
 }).catch(err => {

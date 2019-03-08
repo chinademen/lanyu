@@ -45,43 +45,43 @@ export default class Report extends Component {
                     <ReportStaticCell
                         title="总览"
                         style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="盈亏报表"
                         style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="账变报表"
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="日结报表"
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="充提报表"
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="投注记录"
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="契约分红"
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ReportStaticCell
                         title="代理中心"
-                        imageName={require('@/assets/images/resource/ic_album_selected.png')}
+                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
                         onPress={this._onPressStaticCell}
                     />
                 </View>
@@ -95,7 +95,7 @@ const HeaderView = ({pictureAction}) => {
         <View style={[styles.header, {borderBottomWidth: gScreen.onePix}]}>
             {/* <Image
                 style={{width: 20, height: 20, alignSelf: 'flex-start', left: 10}}
-                source={require('@/assets/images/ic_back_dark.png')}
+                source={require('@/assets/dh/images/ic_back_dark.png')}
                 resizeMode="contain"
             /> */}
             <Text style={{color: 'white', fontSize: 16}}>报表查询</Text>
@@ -106,7 +106,7 @@ const HeaderView = ({pictureAction}) => {
 //     return (
 //         <ImageBackground
 //             style={{width: gScreen.width, height: 230, alignItems: 'center', backgroundColor: 'transparent'}}
-//             source={require('@/assets/images/resource/img_my_head.png')}
+//             source={require('@/assets/dh/images/resource/img_my_head.png')}
 //         >
 //             <View style={[styles.header, {width: gScreen.width}]}>
 //                 <Text style={{color: 'white', fontSize: 16}}>我的</Text>
@@ -117,7 +117,7 @@ const HeaderView = ({pictureAction}) => {
 //                 >
 //                     <Image
 //                         style={{width: 20, height: 20}}
-//                         source={require('@/assets/images/resource/ic_my_setting.png')}
+//                         source={require('@/assets/dh/images/resource/ic_my_setting.png')}
 //                     />
 //                 </TouchableOpacity>
 //             </View>
@@ -128,7 +128,7 @@ const HeaderView = ({pictureAction}) => {
 //                 <View style={styles.avatarContainer}>
 //                     <Image
 //                         style={{width: 80, height: 80}}
-//                         source={require('@/assets/images/resource/img_default_avatar.png')}
+//                         source={require('@/assets/dh/images/resource/img_default_avatar.png')}
 //                     />
 //                 </View>
 //                 <TouchableOpacity
@@ -158,7 +158,7 @@ const ReportStaticCell = ({
             <Image style={{width: 20, height: 20, marginHorizontal: 15}} source={imageName}/>
             <View style={[styles.cellStyle, style || style]}>
                 <Text style={{color: 'gray'}}>{title}</Text>
-                <Image style={{width: 20, height: 20}} source={require('@/assets/images/resource/ic_my_right.png')}/>
+                <Image style={{width: 20, height: 20}} source={require('@/assets/dh/images/resource/ic_my_right.png')}/>
             </View>
         </TouchableOpacity>
     )
