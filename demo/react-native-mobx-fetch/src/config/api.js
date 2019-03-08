@@ -1,6 +1,6 @@
 export default {
-    // baseURL: 'https://frontapi.yuleyun.app', // pre环境
-    baseURL: 'https://frontapi.donghuang918.com', // 正式环境
+    baseURL: 'https://frontapi.yuleyun.app', // pre环境
+    // baseURL: 'https://frontapi.donghuang918.com', // 正式环境
     // 公共接口
     common: {
         getLotteryBetMode: 'lottery/get-lottery-bet-mode',              // 获取用户投注金额模式(元角分厘)

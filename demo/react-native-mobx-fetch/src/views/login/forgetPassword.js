@@ -5,13 +5,14 @@ import React, { Component, Fragment } from 'react'
 import {
     StyleSheet,
     View,
-    Text,
     TextInput,
+    Image,
     Alert,
 } from 'react-native'
+import { Container, Header, Title, Content, Footer, FooterTab, Left, Right, Body, Text, Button } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
-import Header from '@/components/Header'
-import Button from '@/components/Button'
+// import Header from '@/components/Header'
+import LodingBtn from '@/components/LodingBtn'
 import { checkUserName, checkPassWord } from '@/util/filter'
 
 @inject(({ app, loginStore }) => {
@@ -204,19 +205,31 @@ export default class ForgetPassword extends Component {
         const { submiting } = this.props;
 
         return (
-            <View style={styles.container}>
-                <Header title="重置密码" onBack={this.onBack}/>
-                {/* 账号验证 */}
-                {pageIndex === 1 && this.checkAccount()}
-                {/* 重置密码 */}
-                {pageIndex === 2 && this.resetPassword()}
-                {/* 提交 */}
-                <Button
-                    onPress={this.submitEvent}
-                    submiting={submiting}
-                    text={submitText}
-                />
-            </View>
+            <Container>
+                <Header style={styles.header}>
+                    <Left>
+                        <Button onPress={this.onBack} style={styles.backBtn}>
+                            <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')} />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.headertitle}>重置密码</Title>
+                    </Body>
+                <Right />
+                </Header>
+                <Content>
+                    {/* 账号验证 */}
+                    {pageIndex === 1 && this.checkAccount()}
+                    {/* 重置密码 */}
+                    {pageIndex === 2 && this.resetPassword()}
+                     {/* 提交 */}
+                    <LodingBtn
+                        onPress={this.submitEvent}
+                        submiting={submiting}
+                        text={submitText}
+                    />
+                </Content>
+            </Container>
         )
     }
 
@@ -230,11 +243,24 @@ const styles = StyleSheet.create({
         flex: 1, 
         backgroundColor: '#f5f5f5'
     },
+    header: {
+        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important'
+    },
+    backBtn: {
+        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important'
+    },
+    back: {
+        width: 14,
+        height: 14
+    },
+    headertitle: {
+        color: '#fff'
+    },
     title: {
         left: gScreen.width * 0.15,
         height: 20,
         marginTop: 15,
-        marginBottom: 10
+        marginBottom: 10, 
     },
     input: {
         height: 45,

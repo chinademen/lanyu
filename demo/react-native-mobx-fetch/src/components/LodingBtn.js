@@ -6,7 +6,7 @@ import {
     ActivityIndicator,
 } from 'react-native'
 
-export default class Button extends PureComponent {
+export default class LodingBtn extends PureComponent {
 
     render() {
         /**

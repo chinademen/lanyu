@@ -6,13 +6,13 @@ import {
     StyleSheet,
     View,
     Image,
-    Text,
     TextInput,
     ImageBackground,
 } from 'react-native'
+import { Container, Content, Text } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
-import Button from '@/components/Button'
+import LodingBtn from '@/components/LodingBtn'
 import { checkUserName, checkPassWord } from '@/util/filter'
 
 @inject(({ app, loginStore }) => {
@@ -123,7 +123,6 @@ export default class Login extends PureComponent {
             // 跳转主页
             this.props.navigator.push({
                 id: 'TabBarView',
-                // passProps: {feed}
             })
         }).catch(err => {
             changeSubmit(false)
@@ -157,49 +156,53 @@ export default class Login extends PureComponent {
         const { username, password, usernameError, passwordError, isChecked, loginText } = this.state;
 
         return (
-            <ImageBackground
-                source={require('@/assets/dh/images/login/loginbg.png')}
-                style={styles.container}
-            >
-                <View style={styles.content}>
-                    <Image  
-                        style={styles.logo}
-                        source={require('@/assets/dh/images/login/logo.png')}
-                    />
-                    <TextInput 
-                        style={styles.input} 
-                        placeholder="请输入您的账号"
-                        maxLength={16}
-                        onChangeText={val => this.handleInput(val, 'username')}
-                        value={username}
-                    ></TextInput>
-                    <Text style={styles.error}>{usernameError}</Text>
-                    <TextInput 
-                        style={styles.input}
-                        placeholder="请输入您的密码"
-                        maxLength={16}
-                        secureTextEntry
-                        onChangeText={val => this.handleInput(val, 'password')}
-                        value={password}
-                    ></TextInput>
-                    <Text style={styles.error}>{passwordError}</Text>
-                    <View style={styles.checkboxContainer}>
-                        <CheckBox
-                            style={styles.checkBox}
-                            onClick={this.rememberPassword}
-                            isChecked={isChecked}
-                            rightText={"记住密码"}
-                        />
-                        <Text style={styles.forgetPassword} onPress={this.forgetPassword}>忘记密码？</Text>
-                    </View>
-                    <Button
-                        onPress={this.loginEvent}
-                        submiting={submiting}
-                        text={loginText}
-                    />
-                </View>
-                <Text style={{textAlign: 'center', bottom: 60 }}>Copyright @ 东皇娱乐 版权所有</Text>
-            </ImageBackground>
+            <Container>
+                <Content>
+                    <ImageBackground
+                        source={require('@/assets/dh/images/login/loginbg.png')}
+                        style={styles.container}
+                    >
+                        <View style={styles.content}>
+                            <Image  
+                                style={styles.logo}
+                                source={require('@/assets/dh/images/login/logo.png')}
+                            />
+                            <TextInput 
+                                style={styles.input} 
+                                placeholder="请输入您的账号"
+                                maxLength={16}
+                                onChangeText={val => this.handleInput(val, 'username')}
+                                value={username}
+                            ></TextInput>
+                            <Text style={styles.error}>{usernameError}</Text>
+                            <TextInput 
+                                style={styles.input}
+                                placeholder="请输入您的密码"
+                                maxLength={16}
+                                secureTextEntry
+                                onChangeText={val => this.handleInput(val, 'password')}
+                                value={password}
+                            ></TextInput>
+                            <Text style={styles.error}>{passwordError}</Text>
+                            <View style={styles.checkboxContainer}>
+                                <CheckBox
+                                    style={styles.checkBox}
+                                    onClick={this.rememberPassword}
+                                    isChecked={isChecked}
+                                    rightText={"记住密码"}
+                                />
+                                <Text style={styles.forgetPassword} onPress={this.forgetPassword}>忘记密码？</Text>
+                            </View>
+                            <LodingBtn
+                                onPress={this.loginEvent}
+                                submiting={submiting}
+                                text={loginText}
+                            />
+                        </View>
+                        <Text style={{textAlign: 'center', bottom: 60 }}>Copyright @ 东皇娱乐 版权所有</Text>
+                    </ImageBackground>
+                </Content>
+            </Container>
         )
     }
 }
@@ -209,7 +212,8 @@ const styles = StyleSheet.create({
         flex: 1,
     }, 
     content: { // 盒子
-        // paddingTop: 50
+        // ios8(50) ios(30) android: (0)
+        paddingTop: __IOS__ ? 25 : 0,
         height: gScreen.height * 1
     },
     logo: { // logo

@@ -9,7 +9,7 @@ export default class Splash extends Component {
         const { navigator } = this.props;
         // 2秒后调到登录
         this.timer = setTimeout(() => {
-            navigator.resetTo({id: 'Test'})
+            navigator.resetTo({id: 'Login'})
         }, 2000)
     }
 
