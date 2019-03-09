@@ -1,0 +1,203 @@
+<nav class="nav_top">
+  <div class="nav_top_main">
+    <ul class="left">
+      <li onClick="pageGo('page/other/err.html')"> 手机版 </li>
+      <li onClick="pageGo('page/other/err.html')"> 线路测速 </li>
+    </ul>
+    <ul class="right" id="headerMeun">
+      <li> <span> 您好,shiyan2019 </span> <span> 余额:0.0000 <i class="iconfont icon-shuaxin"></i> </span> </li>
+      <li onClick="layerAlertGonGao()"> <i class="iconfont icon-informatiom"></i> 消息 ( 0 ) </li>
+      <li data-link="topUpMoney"> 充值 </li>
+      <li data-link="withdrawalsMoney"> 提款 </li>
+      <li data-link="transferMoney"> 转账 </li>
+      <li id="user_center">
+        <dd></dd> <i class="iconfont icon-yonghudianji"></i> 账户管理
+      </li>
+      <li onClick="layerAlertInfo()"> 退出 </li>
+    </ul>
+    <div class="user_meun" id="userCenter_meun">
+      <div>
+        <span> 游戏记录 </span>
+        <ul>
+          <li data-link="queryOrder"> 订单查询 </li>
+          <li data-link="chaseRecord"> 追号记录 </li>
+          <li data-link="ptRecord"> PT记录 </li>
+          <li data-link="gaRecord"> GA记录 </li>
+          <li data-link="shababRecord"> 沙巴记录 </li>
+          <li data-link="agRecord"> AG记录 </li>
+        </ul>
+      </div>
+      <div>
+        <span> 资金记录 </span>
+        <ul>
+          <li data-link="withdrawalsRecords"> 提款记录 </li>
+          <li data-link="moneyDetail"> 资金明细 </li>
+        </ul>
+      </div>
+      <div>
+        <span> 个人信息 </span>
+        <ul>
+          <li data-link="personalData"> 个人资料 </li>
+          <li data-link="changePassword"> 密码修改 </li>
+          <li data-link="bindCard"> 卡号绑定 </li>
+          <li data-link="bonusPlay"> 玩法奖金 </li>
+        </ul>
+      </div>
+      <div>
+        <span> 代理团队 </span>
+        <ul>
+          <li data-link="vipManagement"> 会员管理 </li>
+          <li data-link="vipReport"> 会员报表 </li>
+          <li data-link="lowerOrders"> 下级订单 </li>
+          <li data-link="preferentiallist"> 优惠列表 </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="nav_bottom">
+  <div class="nav_bottom_main">
+    <div class="left" onclick="pageGo('./index.html')">
+      <img class="logo" src="" alt="">
+    </div>
+    <ul class="right" id="headerNav">
+      <li data-link="home" class="active"> 首页 </li>
+      <li id="Lottery_zone"> 彩票专区 <i class="iconfont icon-xiala"></i> <img src="./image/index/new.png" alt="">
+        <dd> </dd>
+      </li>
+      <li class="e_game">
+        电子棋牌
+        <i class="iconfont icon-xiala"></i>
+        <div class="e_game_meun">
+          <ul>
+            <li> <a href="javascript:;" onclick="erdu()"> 沙巴游戏 </a> </li>
+            <li> <a href="javascript:;" onclick="erdu()"> 沙巴游戏 </a> </li>
+            <li> <a href="javascript:;" onclick="erdu()"> 沙巴游戏 </a> </li>
+            <li> <a href="javascript:;" onclick="erdu()"> 沙巴游戏 </a> </li>
+          </ul>
+          <dd> </dd>
+        </div>
+      </li>
+      <li> AG真人 </li>
+      <li data-link="active"> 优惠活动 </li>
+      <li data-link="download"> 下载中心 </li>
+      <li onClick="pageGo('page/other/err.html')"> 在线客服 </li>
+
+    </ul>
+    <div class="lottery_meun">
+      <div>
+        <span> 时时彩 </span>
+        <ul>
+          <li onclick="pageGo('page/game/caipiao.html')"> 重庆时时彩 <i class="new"> </i> </li>
+          <li> 腾讯分分彩 <i class="new"> </i> </li>
+          <li> 新疆时时彩 </li>
+          <li> 新疆时时彩 </li>
+          <li> 黑龙江时时彩 </li>
+          <li> 台湾5分彩 <i class="new"> </i> </li>
+          <li> 腾讯分分彩 </li>
+          <li> 北京5分彩 </li>
+          <li> 台湾5分彩 </li>
+          <li> 腾讯分分彩 </li>
+          <li> 北京5分彩 <i class="host"> </i></li>
+          <li> 黑龙江时时彩 </li>
+          <li> 台湾5分彩 </li>
+          <li> 腾讯分分彩 <i class="new"> </i> </li>
+          <li> 北京5分彩 </li>
+          <li> 台湾5分彩 </li>
+          <li> 腾讯分分彩 </li>
+          <li> 北京5分彩 <i class="host"> </i></li>
+        </ul>
+      </div>
+      <div>
+        <span> 11选5 </span>
+        <ul>
+          <li> 重庆时时彩 </li>
+          <li> 腾讯分分彩 </li>
+          <li> 新疆时时彩 </li>
+          <li> 新疆时时彩 </li>
+          <li> 黑龙江时时彩 </li>
+          <li> 台湾5分彩 <i class="host"> </i></li>
+          <li> 腾讯分分彩 </li>
+          <li> 北京5分彩 </li>
+          <li> 黑龙江时时彩 </li>
+          <li> 台湾5分彩 <i class="new"> </i> </li>
+          <li> 腾讯分分彩 </li>
+          <li> 北京5分彩 </li>
+        </ul>
+      </div>
+      <div>
+        <span> 快三 </span>
+        <ul>
+          <li> 快三分分彩 </li>
+          <li> 江苏快三 </li>
+          <li> 快三秒秒彩 <i class="new"> </i> </li>
+          <li> 安徽快三 </li>
+          <li> 湖北快三 </li>
+          <li> 河北快三 <i class="host"> </i></li>
+          <li> 河南快三 </li>
+          <li> 福建快三 </li>
+        </ul>
+      </div>
+      <div>
+        <span> 六合/低频 </span>
+        <ul>
+          <li> 香港六合彩 </li>
+          <li> 六合分分彩 <i class="new"> </i> </li>
+          <li> 福彩3D </li>
+          <li> 超快3D </li>
+          <li> 体彩P3P5 <i class="host"> </i></li>
+        </ul>
+      </div>
+      <div>
+        <span> 趣味 </span>
+        <ul>
+          <li> PK10分分彩 </li>
+          <li> PK10二分彩 </li>
+          <li> 北京PK10 </li>
+          <li> 山东快乐扑克3 </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<script>
+  function layerAlertGonGao() {
+    layer.open({
+      type: 1,
+      title: '系统公告_棋牌游戏种类公告',
+      area: ['610px', '378px'],
+      content: ' <div  class="layerGonGao" style="width:100%;height:100%"><h3> 尊敬的各位会员： </h3><p>为了给大家带来更好的娱乐体验，平台目前已经上线了开元棋牌和761棋牌供大家来娱乐，其中开元棋牌的游戏种类有：极速炸金花、炸金花、德州扑克、三公、二八杠、二十一点、通比牛牛、抢庄牛牛、百人牛牛、斗地主、森林舞会、抢庄牌九、压庄龙虎、百家乐、十三水；761棋牌的游戏种类有：李逵劈鱼、牛牛专区、炸金花、二八杠、欢乐十三秒、飞禽走兽、金蟾捕鱼、德州扑克、百人牛牛、龙虎、奔驰宝马。欢迎大家前来选择自己喜欢的游戏种类进行娱乐，如有任何问题请联系平台在线客服进行咨询，感谢大家长久以来对我们网站的大力支持！为了给大家带来更好的娱乐体验，平台目前已经上线了开元棋牌和761棋牌供大家来娱乐，其中开元棋牌的游戏种类有：极速炸金花、炸金花、德州扑克、三公、二八杠、二十一点、通比牛牛、抢庄牛牛、百人牛牛、斗地主、森林舞会、抢庄牌九、压庄龙虎、百家乐、十三水；761棋牌的游戏种类有：李逵劈鱼、牛牛专区、炸金花、二八杠、欢乐十三秒、飞禽走兽、金蟾捕鱼、德州扑克、百人牛牛、龙虎、奔驰宝马。欢迎大家前来选择自己喜欢的游戏种类进行娱乐，如有任何问题请联系平台在线客服进行咨询，感谢大家长久以来对我们网站的大力支持！</p><h4> 诚信为本，服务至上 ---- 娱乐平台 </h4></div>'
+    });
+  }
+  // <div class="layerInfo"> <img src="./image/index/err.png" alt=""><p> 手机号用作您的身份认证，便于忘记找回密码，请您认真填 写您的手机号 </p> </div>
+  function layerAlertInfo() {
+    layer.confirm('手机号用作您的身份认证 ', {
+      btn: ['确定', '取消'], //按钮
+      title: '提示',
+      icon: 5,
+    }, function (index, layero) { //确定回调
+      layer.msg('你点击了确定按钮');
+    }, function (index) { //取消回调
+      layer.msg('你点击了取消按钮');
+    });
+  }
+
+  function erdu(params) {
+    var erdu = layer.open({
+      title: '额度互转',
+      skin: 'edu_huzhuang',
+      area: ['430px', '270px'],
+      type: 1,
+      resize: false,
+      content: '<ul class="content_ul"> <li> <span> AG余额 : </span>  <b>2198.20 </b>  </li> <li class="cunk"> <span > 现金余额 : </span>  <b>2198.20 </b> <a href="JavaScript:;">去存款</a> </li> <li  class="form-inline"> <span> 转账金额 : </span>  <input class="form-control" type="text"> <a href="JavaScript:;">确认转账</a>   </li> </ul><div class="content_btn"><a>进入游戏</a></div>',
+      success: function (layero, index) {
+        console.log(layero); 
+      }
+    });
+  }
+
+</script>

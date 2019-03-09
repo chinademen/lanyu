@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>首页</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/iconfont.css">
+  <link rel="stylesheet" href="./css/user.css">
+  <link rel="stylesheet" href="./lib/easyScroll.min.css">
+  <link rel="stylesheet" href="./lib/dcalendar.picker.css">
+  <link rel="stylesheet" href="./css/animate.css">
+  <script src="./lib/jquery-1.9.1.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+  <script src="./lib/dcalendar.picker.js"></script>
+  <script type="text/javascript" src="./lib/easyscroll.js"></script>
+  <script src="./layer/layer.js"></script>
+  <script src="./js/router.js"></script>
+</head>
+<script>
+  function pageGo(path) {
+    window.open(path, '_self')
+  }
+</script>
+
+<body>
+  <!-- 加载头部文件 -->
+  <div class="header" id="header"> </div>
+  <!-- 主要部分 -->
+  <div id='contantBox'></div>
+  <!-- 加载尾部文件 -->
+  <div class="footer" id="footer"> </div>
+
+  </div>
+
+</body>
+
+</html>
+
+<script>
+ 
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    $('#announcement_scroll').easyScroll({
+      scrollAutoHide: false,
+      scrollOffset: 0,
+      scrollButtons: true,
+      scrollHorizontal: true
+    });
+  })
+
+</script>
