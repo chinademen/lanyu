@@ -12,6 +12,9 @@ const router = {
     'TabBarView': require('@/views/TabBarView'),
 
     // home
+    // 公告
+    'NoticeList': require('@/views/notice/NoticeList'),
+    'NoticeDetails': require('@/views/notice/NoticeDetails'),
 
     // 开奖号码
     'award': require('@/views/award'),

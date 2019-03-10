@@ -1,5 +1,5 @@
 /**
- * 公告 
+ * 公告
  */
 import React, { PureComponent } from 'react';
 import {
@@ -21,11 +21,30 @@ import ScrollVertical from '@/components/ScrollVertical'
 })
 @observer
 export default class Notice extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
     componentDidMount() {
         const { getNotice } = this.props;
         getNotice()
     }
-    
+
+    // 跳转到详情页
+    // toNoticeDetails = () => {
+    //     this.props.navigator.push({
+    //         id: 'NoticeDetails',
+    //     })
+    // }
+
+    // 跳转到列表页
+    toNoticeList = () => {
+        this.props.navigator.push({
+            id: 'NoticeList',
+        })
+    }
+
     render() {
         let { noticeList } = this.props;
 
@@ -33,11 +52,11 @@ export default class Notice extends PureComponent {
             <View style={styles.container}>
                 <Image source={require('@/assets/dh/images/home/sound.png')}></Image>
                 <TouchableOpacity style={styles.scrollBox} onPress={() => {
-                                if (noticeList && noticeList.length > 0) {
-                                        // alert(noticeList[this.index].title)
-                                        // alert('跳转到公告详情页')
-                                    }
-                                }} >
+                    this.props.navigator.push({
+                        id: 'NoticeDetails',
+                        data: noticeList[this.index]
+                    })
+                }}>
                     <ScrollVertical
                         onChange={(index => {
                             this.index = index;
@@ -51,9 +70,9 @@ export default class Notice extends PureComponent {
                         textStyle={styles.textStyle}
                     />
                 </TouchableOpacity>
-                <View style={styles.more} onPress={() => { alert('跳转到公告列表页') }}>
+                <TouchableOpacity style={styles.more} onPress={() => this.toNoticeList()}>
                     <Text>更多>></Text>
-                </View>
+                </TouchableOpacity>
                 
             </View>
         )

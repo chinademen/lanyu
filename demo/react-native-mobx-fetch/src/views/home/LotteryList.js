@@ -7,12 +7,9 @@ import {
     View,
     Text,
     Image,
-    TouchableOpacity,
 } from 'react-native'
-import { toJS } from 'mobx'
 import { observer, inject } from 'mobx-react/native'
 import DashLine from '@/components/DashLine'
-import lotteryMenu from '@/config/lotteryMenu'
 
 @inject(({ homeStore }) => {
     return {
@@ -29,7 +26,6 @@ export default class LotteryList extends PureComponent {
 
     // 彩种分类  (彩种分类，是否为新彩种，是否为热门彩种，是否显示该彩种)
     createLottery = (newLotteryList) => {
-        alert(JSON.stringify(newLotteryList))
         return newLotteryList.map((item) => {
             return this.createLotteryType(item);
         })
@@ -71,7 +67,7 @@ export default class LotteryList extends PureComponent {
             (tag - 0) === 1 ? <Image style={styles.lotteryImg} source={require('@/assets/dh/images/home/hot.png')} /> 
             : (tag - 0) === 2 ? <Image style={styles.lotteryImg} source={require('@/assets/dh/images/home/new.png')} /> : <Text style={{ position: 'absolute' }}></Text>;
             return (
-                !!isshow && <View style={styles.lotteryItem} key={lotteryid}>
+                isshow !== '0' && <View style={styles.lotteryItem} key={lotteryid}>
                     {newOrHot}
                     <Text style={styles.lotteryText} >{cnname}</Text>
                 </View>

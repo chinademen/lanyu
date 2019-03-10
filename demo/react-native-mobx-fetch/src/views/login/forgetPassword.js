@@ -4,7 +4,6 @@
 import React, { Component, Fragment } from 'react'
 import {
     StyleSheet,
-    View,
     TextInput,
     Image,
     Alert,
@@ -204,38 +203,34 @@ export default class ForgetPassword extends Component {
         const { pageIndex, submitText } = this.state;
         const { submiting } = this.props;
 
-            return (
-                <Container>
-                    {__IOS__ ? <Header style={styles.header}>
-                        <Left>
-                            <Button onPress={this.onBack} style={styles.backBtn}>
-                                <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Title style={styles.headertitle}>重置密码</Title>
-                        </Body>
-                        <Right />
-                    </Header> : <CommonHeader title="重置密码" onBack={this.onBack}/>
-                    }
-                    <Content>
-                        {/* 账号验证 */}
-                        {pageIndex === 1 && this.checkAccount()}
-                        {/* 重置密码 */}
-                        {pageIndex === 2 && this.resetPassword()}
-                        {/* 提交 */}
-                        <LodingBtn
-                            onPress={this.submitEvent}
-                            submiting={submiting}
-                            text={submitText}
-                        />
-                    </Content>
-                </Container>
-            )
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.timer)
+        return (
+            <Container>
+                {__IOS__ ? <Header style={styles.header}>
+                    <Left>
+                        <Button onPress={this.onBack} style={styles.backBtn}>
+                            <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.headertitle}>重置密码</Title>
+                    </Body>
+                    <Right />
+                </Header> : <CommonHeader title="重置密码" onBack={this.onBack}/>
+                }
+                <Content>
+                    {/* 账号验证 */}
+                    {pageIndex === 1 && this.checkAccount()}
+                    {/* 重置密码 */}
+                    {pageIndex === 2 && this.resetPassword()}
+                    {/* 提交 */}
+                    <LodingBtn
+                        onPress={this.submitEvent}
+                        submiting={submiting}
+                        text={submitText}
+                    />
+                </Content>
+            </Container>
+        )
     }
 }
 
