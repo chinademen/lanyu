@@ -8,8 +8,8 @@ import {
     Image,
     TextInput,
     ImageBackground,
+    Text,
 } from 'react-native'
-import { Container, Content, Text } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
 import LodingBtn from '@/components/LodingBtn'

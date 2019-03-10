@@ -7,6 +7,7 @@ class HomeStore {
     @observable noticeList = []      // 公告列表
     @observable userInfo = {}        // 用户信息
     @observable lotteryList = []     // 彩种列表
+    @observable newLotteryList = []  // 处理彩种列表
     @observable thirdGameList = []   // 第三方游戏列表
     @observable username = ''
 
@@ -49,6 +50,7 @@ class HomeStore {
         const res = await getUserInfo();
         runInAction(() => {
             if (!res) return;
+            storage.set('user', res);
             this.userInfo = res;
         })
     }
@@ -59,7 +61,41 @@ class HomeStore {
         const res = await getUserLotteryList();
         runInAction(() => {
             if (!res) return;
-            this.lotteryList = res;
+            this.lotteryList.splice(res.length, 0, ...res)
+            // 处理彩种列表
+            let isssc = [], isffc = [], is11x5 = [], isdp = [], ispk10 = [], isqt = [];
+            this.lotteryList.forEach((item, index) => {
+                switch ((item.fronttype - 0)) {
+                    case 1:
+                        isssc.push(item);
+                        break;
+                    case 2:
+                        isffc.push(item);
+                        break;
+                    case 3:
+                        is11x5.push(item);
+                        break;
+                    case 4:
+                        isdp.push(item);
+                        break;
+                    case 5:
+                        ispk10.push(item);
+                        break;
+                    case 6:
+                        isqt.push(item);
+                        break;
+                    default: 
+                        break;
+                }
+            });
+            this.newLotteryList = [
+                { name: '时时彩', list: isssc },
+                { name: '分分彩', list: isffc },
+                { name: '11选5', list: is11x5 },
+                { name: '低频彩', list: isdp },
+                { name: 'PK10/赛马', list: ispk10 },
+                { name: '其他', list: isqt },
+            ]
         })
     }
 
