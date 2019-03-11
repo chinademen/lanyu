@@ -1,7 +1,8 @@
 /**
  * 底部导航
  */
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { View } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import Feed from '@/views/award'
@@ -9,6 +10,7 @@ import Home from '@/views/home'
 import Report from '@/views/report'
 import Profile from '@/views/profile'
 import TabBar from '@/components/TabBar'
+import { scaleSize, ifIphoneX } from '@/util/ScreenUtil'
 
 const tabTitles = ['彩票', '开奖', '报表', '我的']
 const tabIcons = ['hotlottery_nor', 'kaijiang_nor', 'stats_w', 'my_nor'];
@@ -38,8 +40,11 @@ export default class TabBarView extends Component {
     }
 
     render() {
+        let tabBottom = ifIphoneX({ paddingBottom: scaleSize(10) }, { paddingBottom: scaleSize(0) }, { paddingBottom: 0 })
+
         return (
             <ScrollableTabView
+                style={tabBottom}
                 locked
                 scrollWithoutAnimation
                 renderTabBar={this.renderTabBar}

@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
+    StatusBar,
     ScrollView,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
@@ -50,6 +51,7 @@ export default class Home extends Component {
 
     render() {
         let { navigator } = this.props;
+        
 
         return (
             <View style={{flex: 1}}>
@@ -81,7 +83,7 @@ export default class Home extends Component {
                     {/* 时时彩 分分彩 11选5 低频彩  PK10/赛马 其他 */}
                     <LotteryList navigator={navigator} />
                 </ScrollView>
-                <Toast ref={toast => this.toast = toast}/>
+                {/* <Toast ref={toast => this.toast = toast}/> */}
             </View>
         )
     }

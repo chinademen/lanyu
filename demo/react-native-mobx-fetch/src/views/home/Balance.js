@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
     left: {
         flex: 1,
         flexDirection: 'row',
-        width: gScreen.width * 0.7,
+        width: scaleSize(gScreen.width * 0.7),
         paddingLeft: 10,
         height: 40,
         alignItems: 'center',
     },
     balance: {
-        width: gScreen.width * 0.4,
+        width: scaleSize(gScreen.width * 0.4),
         color: '#ff4d4d',
-        fontSize: 18,
+        fontSize: scaleSize(18),
         fontWeight: 'bold'
     },
     // right: {

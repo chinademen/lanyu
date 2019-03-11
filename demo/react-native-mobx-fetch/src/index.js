@@ -9,6 +9,7 @@ import {
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import Router from '@/route'
+import { scaleSize, ifIphoneX } from '@/util/ScreenUtil'
 
 @inject(({app, loginStore}) => {
     return {
@@ -38,10 +39,17 @@ export default class App extends Component {
         const { barStyle } = this.props;
         // 初始化登录页面  (ios自带过渡页，直接进入Login页)
         const initialPage = __IOS__ ? 'Login' : 'Splash';
+        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: 0 })
+
         return (
-            <View style={{flex: 1}}>
+            <View style={[{flex: 1}, navPaddingTop]}>
                 {/* 设备顶部状态栏组件 */}
-                <StatusBar barStyle={barStyle} animated />
+                <StatusBar 
+                    barStyle={'dark-content'} 
+                    animated  
+                    hidden={false}
+                    translucent={true}
+                />
                 {/* 路由导航组件 */}
                 <Navigator
                     // 路由初始化配置信息 
