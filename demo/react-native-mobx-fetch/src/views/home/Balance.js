@@ -9,6 +9,7 @@ import {
 import { View, Text } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
 import DashLine from '@/components/DashLine'
+import { scaleSize } from '@/util/ScreenUtil'
 
 @inject(({ homeStore }) => {
     return {
@@ -88,20 +89,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold'
     },
-    right: {
-        flex: 1,
-        flexDirection: 'row',
-        width: gScreen.width * 0.2,
-        paddingRight: 10,
-    },
+    // right: {
+    //     flex: 1,
+    //     flexDirection: 'row',
+    //     width: gScreen.width * 0.2,
+    //     paddingRight: 10,
+    // },
     item: {
-        width: 50,
-        height: 40,
-        paddingTop: 3,
+        width: scaleSize(50),
+        height: scaleSize(40),
+        paddingTop: scaleSize(3),
     },
     img: {
-        width: 34,
-        height: 34,
+        width: scaleSize(34),
+        height: scaleSize(34),
         alignSelf: 'center',
     }
 })  
