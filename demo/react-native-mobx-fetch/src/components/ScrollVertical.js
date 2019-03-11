@@ -84,16 +84,25 @@ export default class ScrollVertical extends Component {
         }
     }
 
-    // 更新列表数据，最大偏移量
-
-
     _createKbItem(item, index) {
-        return (
-            <View key={index}
-                  style={[{ height: this.state.scrollHeight }, this.props.scrollStyle]}>
-                <Text style={[styles.kb_text_c, this.props.textStyle]}>{item.content}</Text>
-            </View>
-        )
+        // 外部传入字符串
+        if (typeof item.content === 'string') {
+            return (
+                <View key={index}
+                    style={[{ height: this.state.scrollHeight }, this.props.scrollStyle]}>
+                    <Text style={[styles.kb_text_c, this.props.textStyle]}>{item.content}</Text>
+                </View>
+            )
+        } else {
+            // 外部传入组件
+            return (
+                <View key={index}
+                    style={[{ height: this.state.scrollHeight }, this.props.scrollStyle]}>
+                    {item.content}
+                </View>
+            )
+        }
+        
     }
 
   

@@ -5,8 +5,15 @@ import {
     Text,
     ActivityIndicator,
 } from 'react-native'
+import throttle from 'lodash.throttle'
 
 export default class LodingBtn extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.onPress = this.props.onPress.bind(this);
+        this.onPressThrottle = throttle(this.onPress, 5000);
+    }
 
     render() {
         /**
@@ -21,10 +28,10 @@ export default class LodingBtn extends PureComponent {
             <TouchableOpacity
                 activeOpacity={activeOpacity || 0.75}
                 style={[styles.btn, style, { opacity: opacity }]}
-                onPress={onPress}
+                onPress={this.onPressThrottle}
             >
                 {submiting && <ActivityIndicator color="white" />}
-                <Text style={{fontSize: fontSize || 16, color: color || '#fff'}}>{text || '提交'}</Text>
+                <Text style={{fontSize: fontSize || scaleSize(16), color: color || '#fff'}}>{text || '提交'}</Text>
             </TouchableOpacity>
         )
     }
@@ -34,15 +41,15 @@ const styles = StyleSheet.create({
     btn: {
         flexDirection: 'row',
         width: gScreen.width * 0.8,
-        marginTop: 10,
-        height: 45,
-        borderRadius: 25,
+        marginTop: scaleSize(10),
+        height: scaleSize(45),
+        borderRadius: scaleSize(22.5),
         backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
-        // boxShadow: '0px 2px 3px #bbbbb8 !important',
-        // shadowColor: '#bbbbb8',
-        // shadowOpacity: 0.3,
-        // shadowOffset: {width: 1, height: -1},
-        // shadowRadius: 2,
+        elevation: 2,
+        shadowOffset: {width: 0, height: 0},
+        shadowColor: '#bbbbb8',
+        shadowOpacity: 1,
+        shadowRadius: scaleSize(8),
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center'

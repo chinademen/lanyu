@@ -61,6 +61,8 @@ class HomeStore {
         const res = await getUserLotteryList();
         runInAction(() => {
             if (!res) return;
+            // 每次先清空彩票按钮，防止连续点击登陆按钮，造成5秒节流结束后再次触发请求，造成采种数据叠加
+            this.lotteryList = [];
             this.lotteryList.splice(res.length, 0, ...res)
             // 处理彩种列表
             let isssc = [], isffc = [], is11x5 = [], isdp = [], ispk10 = [], isqt = [];

@@ -24,31 +24,57 @@ global.gColors = {
     healthRed: 'rgb(251, 25, 8)'
 }
 
-global.gSortTypeUnitMapper = {
-    'calory': '千卡',
-    'protein': '克',
-    'fat': '克',
-    'carbohydrate': '克',
-    'fiber_dietary': '克',
-    'vitamin_a': 'IU',
-    'vitamin_c': '毫克',
-    'vitamin_e': '毫克',
-    'carotene': '毫克',
-    'thiamine': '毫克',
-    'lactoflavin': '毫克',
-    'niacin': '毫克',
-    'cholesterol': '毫克',
-    'magnesium': '毫克',
-    'calcium': '毫克',
-    'iron': '毫克',
-    'zinc': '毫克',
-    'copper': '毫克',
-    'manganese': '毫克',
-    'kalium': '毫克',
-    'phosphor': '毫克',
-    'natrium': '毫克',
-    'selenium': '毫克',
-    'iodine': '毫克'
+/**
+ * 尺寸重置
+ */
+let screenW = Dimensions.get('window').width;
+let screenH = Dimensions.get('window').height;
+let pixelRatio = PixelRatio.get();
+//像素密度
+const DEFAULT_DENSITY = 2;
+//px转换成dp
+//以iphone6为基准,如果以其他尺寸为基准的话,请修改下面的defaultWidth和defaultHeight为对应尺寸即可. 以下为1倍图时
+const defaultWidth = 375;
+const defaultHeight = 667;
+const w2 = defaultWidth / DEFAULT_DENSITY;
+//px转换成dp
+const h2 = defaultHeight / DEFAULT_DENSITY;
+
+// 尺寸适配
+global.scaleSize = function (size) {
+    let scaleWidth = screenW / w2;
+    let scaleHeight = screenH / h2;
+    let scale = Math.min(scaleWidth, scaleHeight);
+    size = Math.round((size * scale + 0.5));
+    return size / DEFAULT_DENSITY;
+}
+
+/**
+ * 判断是否为iphoneX
+ * @returns {boolean}
+ */
+global.isIphoneX = function () {
+    return (
+        Platform.OS === 'ios' && (screenW === 812 || screenH === 812 || screenW === 896 || screenH === 896)
+    )
+}
+
+/**
+ * 根据是否是iPhoneX返回不同的样式
+ * @param iphoneXStyle
+ * @param iosStyle
+ * @param androidStyle
+ * @returns {*}
+ */
+global.ifIphoneX = function (iphoneXStyle, iosStyle = {}, androidStyle) {
+    if (global.isIphoneX()) {
+        return iphoneXStyle;
+    } else if (Platform.OS === 'ios') {
+        return iosStyle
+    } else {
+        if (androidStyle) return androidStyle;
+        return iosStyle
+    }
 }
 
 

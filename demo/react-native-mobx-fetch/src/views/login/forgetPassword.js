@@ -5,10 +5,9 @@ import React, { Component, Fragment } from 'react'
 import {
     StyleSheet,
     TextInput,
-    Image,
     Alert,
 } from 'react-native'
-import { Container, Header, Title, Content, Left, Right, Body, Text, Button } from 'native-base'
+import { Container, Content, Text } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
 import LodingBtn from '@/components/LodingBtn'
@@ -205,18 +204,6 @@ export default class ForgetPassword extends Component {
 
         return (
             <Container>
-                {/* {__IOS__ ? <Header style={styles.header}>
-                    <Left>
-                        <Button onPress={this.onBack} style={styles.backBtn}>
-                            <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
-                        </Button>
-                    </Left>
-                    <Body>
-                        <Title style={styles.headertitle}>重置密码</Title>
-                    </Body>
-                    <Right />
-                </Header> : <CommonHeader title="重置密码" onBack={this.onBack}/>
-                } */}
                 <CommonHeader title="重置密码" onBack={this.onBack}/>
                 <Content>
                     {/* 账号验证 */}
@@ -247,8 +234,8 @@ const styles = StyleSheet.create({
         backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important'
     },
     back: {
-        width: 14,
-        height: 14
+        width: scaleSize(14),
+        height: scaleSize(14)
     },
     headertitle: {
         color: '#fff',
@@ -256,23 +243,24 @@ const styles = StyleSheet.create({
     },
     titletwo: {
         left: gScreen.width * 0.15,
-        height: 20,
-        marginTop: 15,
-        marginBottom: 10, 
+        height: scaleSize(20),
+        marginTop: scaleSize(15),
+        marginBottom: scaleSize(10), 
     },
     input: {
-        height: 45,
+        height: scaleSize(45),
         width: gScreen.width * 0.8,
-        marginTop: 5,
-        borderColor: 'gray',
-        borderWidth: 1,
-        borderRadius: 25,
+        marginTop: scaleSize(5),
+        borderColor: '#c0bebc',
+        borderWidth: scaleSize(1),
+        borderRadius: scaleSize(22.5),
+        overflow: 'hidden',
         alignSelf: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: scaleSize(20),
     },
     error: {
         textAlign: 'center',
         color: 'red',
-        paddingTop: 5
+        paddingTop: scaleSize(5)
     }
 })

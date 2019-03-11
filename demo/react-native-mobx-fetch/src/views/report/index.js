@@ -10,7 +10,6 @@ import {
     Text,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
-import { scaleSize } from '@/util/ScreenUtil'
 import Svg from '@/components/Svg'
 
 const list = [

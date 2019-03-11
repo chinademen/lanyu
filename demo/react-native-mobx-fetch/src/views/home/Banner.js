@@ -76,7 +76,7 @@ export default class Banner extends PureComponent {
 const styles = StyleSheet.create({
     headerContainer: {
         width: gScreen.width,
-        height: 200,
+        height: scaleSize(200),
         alignItems: 'center'
     },
     slide: {
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: gScreen.width,
-        height: 200,
+        height: scaleSize(200),
     },
 })

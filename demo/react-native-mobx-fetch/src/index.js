@@ -9,7 +9,6 @@ import {
 import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
 import Router from '@/route'
-import { scaleSize, ifIphoneX } from '@/util/ScreenUtil'
 
 @inject(({app, loginStore}) => {
     return {

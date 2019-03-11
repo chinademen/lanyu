@@ -5,11 +5,18 @@ import React, { PureComponent } from 'react';
 import {
     StyleSheet,
     View,
+    Text,
     TouchableOpacity,
 } from 'react-native'
 import { toJS } from 'mobx'
 // import { observer, inject } from 'mobx-react/native'
 import ScrollVertical from '@/components/ScrollVertical'
+
+let list = [
+    { name: 'B25***', type: '福彩3D分分彩', number: '2812', time: '28分钟前' },
+    { name: 'B95***', type: '福彩分分彩', number: '4356', time: '12分钟前' },
+    { name: 'B15***', type: '福彩', number: '0356', time: '22分钟前' },
+]
 
 // @inject(({ homeStore }) => {
 //     return {
@@ -23,14 +30,28 @@ export default class WinnerList extends PureComponent {
     //     const { getNotice } = this.props;
     //     getNotice()
     // }
+
+    // 消息盒子
+    noticebox = () => {
+        let result = [];
+        list.forEach(item => {
+            let { name, type, number, time } = item;
+            let obj = {
+                content: <View style={{flex: 1, flexDirection: 'row', alignItems:'center'}}>
+                    <Text style={styles.text}>{name}</Text>
+                    <Text style={[styles.text, {color: '#06ce85'}]}>{type}</Text>
+                    <Text style={styles.text}>中奖：</Text>
+                    <Text style={[styles.text, {color: '#ff4d4d'}]}>{number}</Text>
+                    <Text style={[styles.text, {marginLeft: scaleSize(10)}]}>{`(${time})`}</Text>
+                </View>
+            }
+            result.push(obj)
+        });
+        return result;
+    }
     
     render() {
         // let { noticeList } = this.props;
-        let noticeList = [
-            { content: 'B25***福彩3D分分彩 中奖：2812                    （28分钟前）' },
-            { content: 'B95***福彩分分彩 中奖：4356                        （12分钟前）' },
-            { content: 'B15***福彩 中奖：0356                                     （22分钟前）' },
-        ]
 
         return (
             <View style={styles.container}>
@@ -40,7 +61,8 @@ export default class WinnerList extends PureComponent {
                             this.index = index;
                         })}
                         enableAnimation={true}
-                        data={toJS(noticeList)}
+                        // data={toJS(noticeList)}
+                        data={this.noticebox()}
                         delay={2500}
                         duration={1000}
                         scrollHeight={38}
@@ -55,7 +77,7 @@ export default class WinnerList extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
-        height: 38,
+        height: scaleSize(38),
         backgroundColor: '#FFF', 
         width: gScreen.width,
         paddingHorizontal: gScreen.width * 0.05,
@@ -63,7 +85,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', // 子元素上下居中
     },
     scrollBox: {
-        height: 38,
+        height: scaleSize(38),
         width: gScreen.width * 0.9,
     },
     scrollStyle: {
@@ -75,8 +97,11 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         color: '#333', 
-        fontSize: 14, 
+        fontSize: scaleSize(14), 
         backgroundColor: '#fff',
         flexDirection:'row',
+    },
+    text: {
+        fontSize: scaleSize(12),
     }
 })

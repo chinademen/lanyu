@@ -65,13 +65,13 @@ export default class Notice extends PureComponent {
                         data={toJS(noticeList)}
                         delay={2500}
                         duration={1000}
-                        scrollHeight={30}
+                        scrollHeight={scaleSize(30)}
                         scrollStyle={styles.scrollStyle}
                         textStyle={styles.textStyle}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.more} onPress={() => this.toNoticeList()}>
-                    <Text>更多>></Text>
+                    <Text style={{fontSize: scaleSize(14)}}>更多>></Text>
                 </TouchableOpacity>
                 
             </View>
@@ -81,7 +81,7 @@ export default class Notice extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
-        height: 30,
+        height: scaleSize(30),
         paddingLeft: gScreen.width * 0.05,
         backgroundColor: '#FFF', 
         width: gScreen.width,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', // 子元素上下居中
     },
     scrollBox: {
-        height: 30,
+        height: scaleSize(30),
     },
     scrollStyle: {
         flexWrap: 'nowrap', 
@@ -101,19 +101,18 @@ const styles = StyleSheet.create({
     textStyle: {
         paddingLeft: 10, 
         color: '#333', 
-        fontSize: 14, 
+        fontSize: scaleSize(14), 
         backgroundColor: '#fff',
         flexDirection:'row',
     },
     more: {
-        height: 30,
-        paddingLeft: 5,
-        paddingRight: 15,
+        height: scaleSize(30),
+        paddingLeft: scaleSize(5),
+        paddingRight: scaleSize(15),
         color: '#333',
         alignItems:'center',
         justifyContent: 'center',
-        backgroundColor:'#fff',
-        fontSize: 14, 
+        backgroundColor:'#fff', 
         position: 'absolute', 
         right: 0, 
         top: 0, 

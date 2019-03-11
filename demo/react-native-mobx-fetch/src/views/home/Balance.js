@@ -9,7 +9,6 @@ import {
 import { View, Text } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
 import DashLine from '@/components/DashLine'
-import { scaleSize } from '@/util/ScreenUtil'
 
 @inject(({ homeStore }) => {
     return {
@@ -32,9 +31,9 @@ export default class Balance extends PureComponent {
             <View style={styles.container}>
                 <View style={styles.card}>
                     <View style={styles.left}>
-                        <Text>余额：</Text>
+                        <Text style={{fontSize: scaleSize(12)}}>余额：</Text>
                         <Text style={styles.balance}>{balance}</Text>
-                        <Text>元</Text>
+                        <Text style={{fontSize: scaleSize(12)}}>元</Text>
                     </View>
                     <DashLine type="vertical" backgroundColor='#d9d7ef' len={6} width={36}></DashLine>
                     <View style={styles.item}>
@@ -55,21 +54,22 @@ export default class Balance extends PureComponent {
 const styles = StyleSheet.create({
     container: {
         width: gScreen.width,
-        padding: 10,
+        padding: scaleSize(10),
         backgroundColor: '#eff3f9',
     },
     card: {
         width: gScreen.width * 0.9,
         backgroundColor: '#fff',
-        borderRadius: 10,
-        height: 40,
+        borderRadius: scaleSize(10),
+        overflow: 'hidden',
+        height: scaleSize(40),
         flex: 1,
         flexDirection: 'row',
         elevation: 2,
         shadowOffset: {width: 0, height: 0},
         shadowColor: '#ccd4f8',
         shadowOpacity: 1,
-        shadowRadius: 5,
+        shadowRadius: scaleSize(5),
         alignSelf: 'center',
     },
     line: {
@@ -79,14 +79,14 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         width: scaleSize(gScreen.width * 0.7),
-        paddingLeft: 10,
-        height: 40,
+        paddingLeft: scaleSize(10),
+        height: scaleSize(40),
         alignItems: 'center',
     },
     balance: {
         width: scaleSize(gScreen.width * 0.4),
         color: '#ff4d4d',
-        fontSize: scaleSize(18),
+        fontSize: scaleSize(16),
         fontWeight: 'bold'
     },
     // right: {

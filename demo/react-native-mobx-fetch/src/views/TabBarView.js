@@ -10,7 +10,6 @@ import Home from '@/views/home'
 import Report from '@/views/report'
 import Profile from '@/views/profile'
 import TabBar from '@/components/TabBar'
-import { scaleSize, ifIphoneX } from '@/util/ScreenUtil'
 
 const tabTitles = ['彩票', '开奖', '报表', '我的']
 const tabIcons = ['hotlottery_nor', 'kaijiang_nor', 'stats_w', 'my_nor'];

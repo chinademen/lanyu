@@ -14,7 +14,6 @@ import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
 import LodingBtn from '@/components/LodingBtn'
 import { checkUserName, checkPassWord } from '@/util/filter'
-import { scaleSize } from '@/util/ScreenUtil'
 
 @inject(({ app, loginStore }) => {
     return {
@@ -235,7 +234,8 @@ const styles = StyleSheet.create({
         marginTop: scaleSize(5),
         borderColor: '#c0bebc',
         borderWidth: scaleSize(1),
-        borderRadius: scaleSize(25),
+        borderRadius: scaleSize(22.5),
+        overflow: 'hidden',
         alignSelf: 'center', // 自身居中
         paddingHorizontal: scaleSize(20), // paddingLeft + paddingRight
     },

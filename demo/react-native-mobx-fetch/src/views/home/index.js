@@ -41,18 +41,9 @@ export default class Home extends Component {
         // workroomThirdgameList()
     }
 
-    componentWillReact() {
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
     render() {
         let { navigator } = this.props;
         
-
         return (
             <View style={{flex: 1}}>
                 <ScrollView

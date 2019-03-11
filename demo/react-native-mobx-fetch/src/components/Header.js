@@ -10,7 +10,6 @@ import {
     Image,
     Platform
 } from 'react-native'
-import { scaleSize } from '@/util/ScreenUtil'
 
 
 const LeftItem = ({onPress}) => {
@@ -107,8 +106,8 @@ const styles = StyleSheet.create({
         top: !__IOS__ ? 0 : 10,
         left: 0,
         height: !__IOS__ ? scaleSize(37.5) : scaleSize(33),
-        width: 60,
-        paddingLeft: scaleSize(5),
+        width: scaleSize(40),
+        paddingLeft: 5,
         justifyContent: 'center',
         alignItems: 'center',
     },
