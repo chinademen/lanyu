@@ -14,6 +14,7 @@ import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
 import LodingBtn from '@/components/LodingBtn'
 import { checkUserName, checkPassWord } from '@/util/filter'
+import { scaleSize } from '@/util/ScreenUtil'
 
 @inject(({ app, loginStore }) => {
     return {
@@ -222,30 +223,30 @@ const styles = StyleSheet.create({
         height: gScreen.height * 1,
     },
     logo: { // logo
-        width: 100,
-        height: 100,
+        width: scaleSize(100),
+        height: scaleSize(100),
         alignSelf: 'center',
-        marginTop: 80,
-        marginBottom: 40,
+        marginTop: scaleSize(80),
+        marginBottom: scaleSize(40),
     },
     input: { // 输入框
-        height: 45,
+        height: scaleSize(45),
         width: gScreen.width * 0.8,
-        marginTop: 5,
+        marginTop: scaleSize(5),
         borderColor: '#c0bebc',
-        borderWidth: 1,
-        borderRadius: 25,
+        borderWidth: scaleSize(1),
+        borderRadius: scaleSize(25),
         alignSelf: 'center', // 自身居中
-        paddingHorizontal: 20, // paddingLeft + paddingRight
+        paddingHorizontal: scaleSize(20), // paddingLeft + paddingRight
     },
     error: { // 用户名/密码 输入错误提示
         textAlign: 'center',
         color: 'red',
-        paddingTop: 5
+        paddingTop: scaleSize(5)
     },
     checkboxContainer: { // 忘记密码/记住密码 外层
         flexDirection: 'row',
-        marginBottom: 10,
+        marginBottom: scaleSize(10),
     },
     checkBox: { // 记住密码
         left: gScreen.width * 0.1,
@@ -253,7 +254,7 @@ const styles = StyleSheet.create({
     },
     forgetPassword: { // 忘记密码
         textDecorationLine:'underline',
-        marginTop: 4,
+        marginTop: scaleSize(4),
     }
 })
 

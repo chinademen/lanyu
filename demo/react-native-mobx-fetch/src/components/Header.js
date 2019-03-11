@@ -10,6 +10,7 @@ import {
     Image,
     Platform
 } from 'react-native'
+import { scaleSize } from '@/util/ScreenUtil'
 
 
 const LeftItem = ({onPress}) => {
@@ -19,7 +20,7 @@ const LeftItem = ({onPress}) => {
             style={styles.leftItem}
             onPress={onPress}
         >
-            <Image style={{width: 20, height: 20}}
+            <Image style={{width: scaleSize(20), height: scaleSize(20)}}
                    source={require('@/assets/dh/images/ic_back_dark.png')}
                    resizeMode={"contain"}
             />
@@ -87,10 +88,9 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
     header: {
-        // height: Platform.OS !== "ios" ? 50 : 64,
-        height: 37.5,
+        // height: !__IOS__ ? 50 : 64,
+        height: scaleSize(37.5),
         width: gScreen.width,
-        paddingTop: Platform.OS !== "ios" ? 0 : 20,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: gColors.border,
@@ -100,40 +100,41 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         color: '#fff',
-        fontSize: 16,
+        fontSize: scaleSize(16),
     },
     leftItem: {
         position: 'absolute',
-        top: Platform.OS !== "ios" ? 0 : 10,
+        top: !__IOS__ ? 0 : 10,
         left: 0,
-        height: Platform.OS !== "ios" ? 37.5 : 33,
+        height: !__IOS__ ? scaleSize(37.5) : scaleSize(33),
         width: 60,
-        paddingLeft: 5,
-        justifyContent: 'center'
+        paddingLeft: scaleSize(5),
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     rightItem: {
         position: 'absolute',
-        top: Platform.OS !== "ios" ? 0 : 20,
+        top: !__IOS__ ? 0 : 20,
         right: 0,
-        height: Platform.OS !== "ios" ? 50 : 44,
+        height: !__IOS__ ? 50 : 44,
         paddingRight: 10,
         justifyContent: 'center',
         alignItems: 'flex-end'
     },
     rightIconItem: {
         position: 'absolute',
-        top: Platform.OS !== "ios" ? 0 : 20,
+        top: !__IOS__ ? 0 : 20,
         right: 0,
-        height: Platform.OS !== "ios" ? 50 : 44,
+        height: !__IOS__ ? 50 : 44,
         paddingRight: 10,
         justifyContent: 'center',
         alignItems: 'flex-end'
     },
     renderRight: {
         position: 'absolute',
-        top: Platform.OS !== "ios" ? 0 : 20,
+        top: !__IOS__ ? 0 : 20,
         right: 0,
-        height: Platform.OS !== "ios" ? 50 : 44,
+        height: !__IOS__ ? 50 : 44,
         paddingRight: 10,
         justifyContent: 'center',
         alignItems: 'flex-end'
