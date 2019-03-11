@@ -36,16 +36,17 @@ export default class App extends Component {
     }
 
     render() {
-        const { barStyle } = this.props;
+        let { barStyle } = this.props;
         // 初始化登录页面  (ios自带过渡页，直接进入Login页)
         const initialPage = __IOS__ ? 'Login' : 'Splash';
-        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: 0 })
+        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: 20 });
+        barStyle = __IOS__ ? 'dark-content' : barStyle;
 
         return (
             <View style={[{flex: 1}, navPaddingTop]}>
                 {/* 设备顶部状态栏组件 */}
                 <StatusBar 
-                    barStyle={'dark-content'} 
+                    barStyle={barStyle} 
                     animated  
                     hidden={false}
                     translucent={true}
