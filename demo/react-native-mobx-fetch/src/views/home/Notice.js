@@ -45,6 +45,11 @@ export default class Notice extends PureComponent {
         })
     }
 
+    // 公告切换
+    changeNotice = (index) => {
+        alert(index)
+    }
+
     render() {
         let { noticeList } = this.props;
 
@@ -52,6 +57,7 @@ export default class Notice extends PureComponent {
             <View style={styles.container}>
                 <Image source={require('@/assets/dh/images/home/sound.png')}></Image>
                 <TouchableOpacity style={styles.scrollBox} onPress={() => {
+                    // alert(this.index)
                     this.props.navigator.push({
                         id: 'NoticeDetails',
                         data: noticeList[this.index]
