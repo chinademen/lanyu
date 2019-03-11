@@ -36,7 +36,7 @@ export default class NoticeDetails extends PureComponent {
 
         return (
             <Container>
-                    {__IOS__ ? <Header style={styles.header}>
+                    {/* {__IOS__ ? <Header style={styles.header}>
                         <Left>
                             <Button onPress={this.onBack} style={styles.backBtn}>
                                 <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
@@ -47,7 +47,8 @@ export default class NoticeDetails extends PureComponent {
                         </Body>
                         <Right />
                     </Header> : <CommonHeader title="公告信息" onBack={this.onBack}/>
-                    }
+                    } */}
+                    <CommonHeader title="公告信息" onBack={this.onBack}/>
                     <Content>
                         <Text>公告信息</Text>
                     </Content>

@@ -1,5 +1,5 @@
 /**
- * 报表 
+ * 报表查询
  */
 
 import React, {Component} from 'react'
@@ -8,29 +8,56 @@ import {
     View,
     TouchableOpacity,
     Text,
-    Image,
-    ImageBackground,
 } from 'react-native'
-import {Navigator} from 'react-native-deprecated-custom-components'
 import {observer, inject} from 'mobx-react/native'
+import { scaleSize } from '@/util/ScreenUtil'
+import Svg from '@/components/Svg'
+
+const list = [
+    { key: 'overview', title: '总览', icon: 'item_top_all', page: 'Overview' },
+    { key: 'profitloss', title: '盈亏报表', icon: 'item_top_yk', page: 'ProfitLoss' },
+    { key: 'accountchange', title: '账变报表', icon: 'item_top_gg', page: 'AccountChange' },
+    { key: 'dayknot', title: '日结报表', icon: 'item_top_bank', page: 'DayKnot' },
+    { key: 'recharge', title: '充提报表', icon: 'item_top_ct', page: 'Recharge' },
+    { key: 'bet', title: '投注记录', icon: 'item_top_tz', page: 'Bet' },
+    { key: 'contract', title: '契约分红', icon: 'item_top_xg', page: 'Contract' },
+    { key: 'proxy', title: '代理中心', icon: 'item_top_dl', page: 'Proxy' },
+];
 
 @inject('app')
 @observer
 export default class Report extends Component {
 
-    _settingAction = () => alert('setting')
+    _onPressStaticCell = title => alert(title)
 
-    _onLogin = () => {
-        const {app, navigator} = this.props
-        app.updateBarStyle('default')
-        navigator.push({
-            id: 'Login',
-            sceneConfig: Navigator.SceneConfigs.FloatFromBottom,
-            passProps: {onResetBarStyle: ()=>app.updateBarStyle('light-content')}
+    // 报表tab列表渲染
+    reportList = () => {
+        return list.map(item => {
+            let { key, title, icon, page } = item;
+            return (
+                <TouchableOpacity
+                    activeOpacity={0.75}
+                    style={styles.staticCell}
+                    onPress={() => this.toPage(page)}
+                    key={key}
+                >
+                    <View style={styles.svgBox}>
+                        <Svg icon={icon} size="20" />
+                    </View>
+                    <View style={[styles.cellStyle]}>
+                        <Text style={{color: 'gray'}}>{title}</Text>
+                    </View>
+                </TouchableOpacity>
+            )
         })
     }
 
-    _onPressStaticCell = title => alert(title)
+    // 跳转事件
+    toPage = (page) => {
+        this.props.navigator.push({
+            id: page
+        })
+    }
 
     render() {
         let cellStyle = {
@@ -39,138 +66,34 @@ export default class Report extends Component {
         }
 
         return (
-            <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
-                <HeaderView settingAction={this._settingAction} loginAction={this._onLogin}/>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>报表查询</Text>
+                </View>
                 <View style={[styles.cellContainer, cellStyle]}>
-                    <ReportStaticCell
-                        title="总览"
-                        style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="盈亏报表"
-                        style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="账变报表"
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="日结报表"
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="充提报表"
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="投注记录"
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="契约分红"
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
-                    <ReportStaticCell
-                        title="代理中心"
-                        imageName={require('@/assets/dh/images/resource/ic_album_selected.png')}
-                        onPress={this._onPressStaticCell}
-                    />
+                    {this.reportList()}
                 </View>
             </View>
         )
     }
 }
 
-const HeaderView = ({pictureAction}) => {
-    return (
-        <View style={[styles.header, {borderBottomWidth: gScreen.onePix}]}>
-            {/* <Image
-                style={{width: 20, height: 20, alignSelf: 'flex-start', left: 10}}
-                source={require('@/assets/dh/images/ic_back_dark.png')}
-                resizeMode="contain"
-            /> */}
-            <Text style={{color: 'white', fontSize: 16}}>报表查询</Text>
-        </View>
-    )
-}
-// const HeaderView = ({settingAction, loginAction}) => {
-//     return (
-//         <ImageBackground
-//             style={{width: gScreen.width, height: 230, alignItems: 'center', backgroundColor: 'transparent'}}
-//             source={require('@/assets/dh/images/resource/img_my_head.png')}
-//         >
-//             <View style={[styles.header, {width: gScreen.width}]}>
-//                 <Text style={{color: 'white', fontSize: 16}}>我的</Text>
-//                 <TouchableOpacity
-//                     activeOpacity={0.75}
-//                     style={styles.settingContainer}
-//                     onPress={settingAction}
-//                 >
-//                     <Image
-//                         style={{width: 20, height: 20}}
-//                         source={require('@/assets/dh/images/resource/ic_my_setting.png')}
-//                     />
-//                 </TouchableOpacity>
-//             </View>
-//             <View style={{
-//                 alignItems: 'center',
-//                 justifyContent: 'center'
-//             }}>
-//                 <View style={styles.avatarContainer}>
-//                     <Image
-//                         style={{width: 80, height: 80}}
-//                         source={require('@/assets/dh/images/resource/img_default_avatar.png')}
-//                     />
-//                 </View>
-//                 <TouchableOpacity
-//                     activeOpacity={0.75}
-//                     style={styles.loginContainer}
-//                     onPress={loginAction}
-//                 >
-//                     <Text style={{color: 'white'}}>点击登录</Text>
-//                 </TouchableOpacity>
-//             </View>
-//         </ImageBackground>
-//     )
-// };
-
-const ReportStaticCell = ({
-    title,
-    imageName,
-    style,
-    onPress
-}) => {
-    return (
-        <TouchableOpacity
-            activeOpacity={0.75}
-            style={styles.staticCell}
-            onPress={()=>onPress(title)}
-        >
-            <Image style={{width: 20, height: 20, marginHorizontal: 15}} source={imageName}/>
-            <View style={[styles.cellStyle, style || style]}>
-                <Text style={{color: 'gray'}}>{title}</Text>
-                <Image style={{width: 20, height: 20}} source={require('@/assets/dh/images/resource/ic_my_right.png')}/>
-            </View>
-        </TouchableOpacity>
-    )
-}
-
 const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        backgroundColor: '#f5f5f5'
+    },
     header: {
-        height: __IOS__ ? 44 : 50,
+        height: scaleSize(37.5),
+        width: gScreen.width,
         marginTop: __IOS__ ? 20 : 0,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fb5458'
+    },
+    headerText: {
+        color: 'white', 
+        fontSize: scaleSize(16)
     },
     settingContainer: {
         height: __IOS__ ? 44 : 50,
@@ -199,14 +122,18 @@ const styles = StyleSheet.create({
     },
     cellContainer: {
         borderColor: '#d9d9d9',
-        marginTop: 15,
         backgroundColor: 'white'
     },
     staticCell: {
         flexDirection: 'row',
-        height: 46,
+        height: scaleSize(48),
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderBottomWidth: scaleSize(1),
+        borderColor: '#e5e5e5'
+    },
+    svgBox: {
+        marginHorizontal: scaleSize(15)
     },
     cellStyle: {
         flex: 1,

@@ -1,5 +1,5 @@
 /**
- * ????
+ * 公告详情
 */
 import React, { PureComponent } from 'react';
 import {
@@ -21,7 +21,6 @@ import CommonHeader from '@/components/Header'
 @observer
 export default class NoticeDetails extends PureComponent {
 
-    // ?????
     onBack = () => {
         const { navigator } = this.props;
         navigator.pop()
@@ -34,24 +33,25 @@ export default class NoticeDetails extends PureComponent {
 
         return (
             <Container>
-                    {__IOS__ ? <Header style={styles.header}>
+                    {/* {__IOS__ ? <Header style={styles.header}>
                         <Left>
                             <Button onPress={this.onBack} style={styles.backBtn}>
                                 <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Title style={styles.headertitle}>????</Title>
+                            <Title style={styles.headertitle}>公告详情</Title>
                         </Body>
                         <Right />
-                    </Header> : <CommonHeader title="????" onBack={this.onBack}/>
-                    }
-                    <Content>
-                        <Text style={{ fontSize: 16 }}>{'ask?????????????'}</Text>
+                    </Header> : <CommonHeader title="公告详情" onBack={this.onBack}/>
+                    } */}
+                    <CommonHeader title="公告详情" onBack={this.onBack}/>
+                    <Content style={{ padding: 20 }}>
+                        <Text style={{ fontSize: 16 }}>{'文章标题1'}</Text>
                         <Text style={{ fontSize: 10, color: 'gray', textAlign: 'center' }}>{'2019-3-11'}</Text>
-                        <Text style={{ fontSize: 14 }}>?????</Text>
-                        <Text style={{ fontSize: 14 }}>{'askldjaskldjasjdkjalkdjl??????'}</Text>
-                        <Text style={{ fontSize: 12, textAlign: 'right' }}>?????</Text>
+                        <Text style={{ fontSize: 14 }}>亲爱的用户：</Text>
+                        <Text style={{ fontSize: 14 }}>{'公告内容测试'}</Text>
+                        <Text style={{ fontSize: 12, textAlign: 'right' }}>东皇运营部</Text>
                         <Text style={{ fontSize: 12, textAlign: 'right' }}>{'2019-3-11'}</Text>
                     </Content>
             </Container>

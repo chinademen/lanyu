@@ -19,6 +19,16 @@ const router = {
     // 开奖号码
     'award': require('@/views/award'),
 
+    // 报表
+    'Overview': require('@/views/report/overview'),
+    'ProfitLoss': require('@/views/report/profitloss'),
+    'AccountChange': require('@/views/report/accountchange'),
+    'DayKnot': require('@/views/report/dayknot'),
+    'Recharge': require('@/views/report/recharge'),
+    'Bet': require('@/views/report/bet'),
+    'Contract': require('@/views/report/contract'),
+    'Proxy': require('@/views/report/proxy'),
+
     // profile
 }
 

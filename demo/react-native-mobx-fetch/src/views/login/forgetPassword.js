@@ -205,7 +205,7 @@ export default class ForgetPassword extends Component {
 
         return (
             <Container>
-                {__IOS__ ? <Header style={styles.header}>
+                {/* {__IOS__ ? <Header style={styles.header}>
                     <Left>
                         <Button onPress={this.onBack} style={styles.backBtn}>
                             <Image style={styles.back} source={require('@/assets/dh/images/login/left.png')}/>
@@ -216,7 +216,8 @@ export default class ForgetPassword extends Component {
                     </Body>
                     <Right />
                 </Header> : <CommonHeader title="重置密码" onBack={this.onBack}/>
-                }
+                } */}
+                <CommonHeader title="重置密码" onBack={this.onBack}/>
                 <Content>
                     {/* 账号验证 */}
                     {pageIndex === 1 && this.checkAccount()}
