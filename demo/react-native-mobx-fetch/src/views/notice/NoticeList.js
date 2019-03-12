@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import { Container, Content } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
+import { toJS } from 'mobx'
 import CommonHeader from '@/components/Header'
 
 let pageNo = 1; //当前第几页
@@ -51,13 +52,13 @@ export default class NoticeDetails extends PureComponent {
 
     render() {
         let { noticeList } = this.props;
-        // alert(JSON.stringify(noticeList))
+        alert(JSON.stringify(noticeList))
 
         return (
             <Container>
                     <CommonHeader title="公告信息" onBack={this.onBack}/>
                     <Content style={styles.container}>
-                        {noticeList && noticeList.length > 0 && this.renderData() || this.createNoData()}
+                        {noticeList && noticeList.length > 0 && this.renderData(noticeList) || this.createNoData()}
                     </Content>
             </Container>
         )
@@ -73,10 +74,10 @@ export default class NoticeDetails extends PureComponent {
     }
 
     // 渲染数据
-    renderData() {
+    renderData(noticeList) {
         return (
             <FlatList
-                data={this.state.dataArray}
+                data={noticeList}
                 renderItem={this.renderItemView}
                 ListFooterComponent={this.renderFooter.bind(this)}
                 onEndReached={this.onEndReached.bind(this)}
@@ -91,9 +92,8 @@ export default class NoticeDetails extends PureComponent {
     renderItemView({item}) {
         return (
             <View style={styles.itembox}>
-                <Text style={styles.itemtext}>name: {item.name} ({item.stargazers_count}
-                    stars)</Text>
-                <Text style={styles.itemtext}>description: {item.description}</Text>
+                <Text style={styles.itemtext}>{item.title} ({item.updatetime}</Text>
+                <Text style={styles.itemtext}>{item.content}</Text>
             </View>
         );
     }
