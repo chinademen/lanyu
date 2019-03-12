@@ -17,7 +17,7 @@ import CommonHeader from '@/components/Header'
 
 let page = 1; // 当前第几页
 let pagesize = 10; // 每页显示条数
-let totalpage = 5; // 总的页数
+let totalpage = 1; // 总的页数
 
 @inject(({ homeStore }) => {
     return {
@@ -44,8 +44,7 @@ export default class NoticeDetails extends PureComponent {
             this.setState({
                 list: this.state.list.concat(res.list)
             })
-        });
-       
+        }); 
     }
 
     // 请求数据
@@ -78,12 +77,12 @@ export default class NoticeDetails extends PureComponent {
 
     render() {
         let { list } = this.state;
-
+        
         return (
             <Container>
                 <CommonHeader title="公告信息" onBack={this.onBack}/>
                 <Content style={styles.container}>
-                    {this.renderData(list)}
+                    {list.length > 0 ? this.renderData(list) : this.renderNoData()}
                 </Content>
             </Container>
         )
@@ -100,13 +99,13 @@ export default class NoticeDetails extends PureComponent {
 
     // 渲染数据
     renderData(list) {
+        alert(11)
         return (
             <FlatList
                 data={list}
-                ListEmptyComponent={this.renderNoData}
                 renderItem={this.renderItemView}
-                ListFooterComponent={this.renderFooter.bind(this)}
-                onEndReached={this.renderEndReached.bind(this)}
+                ListFooterComponent={() => this.renderFooter()}
+                onEndReached={() => this.renderEndReached()}
                 onEndReachedThreshold={1}
                 ItemSeparatorComponent={this.line}
             />
@@ -174,12 +173,13 @@ export default class NoticeDetails extends PureComponent {
         if ((page != 1) && (page >= totalpage)) {
             return;
         } else {
-            page++;
+            // page++;
         }
+        
         // 底部显示正在加载更多数据
         this.setState({ showFoot: 2 });
         // 获取数据
-        this.getData();
+        // this.getData();
     }
 
     // 分割线
