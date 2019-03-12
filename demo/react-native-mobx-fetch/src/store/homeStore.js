@@ -31,14 +31,15 @@ class HomeStore {
     
     // 获取公告 res={list:[{id,isnew,title,content,updatetime}],currentpage,pagesize,totalcount,totalpage}
     @action.bound
-    async getNotice() {
-        const res = await getNotice();
+    async getNotice(params, callback) {
+        const res = await getNotice(params);
         runInAction(() => {
             if (!res) return;
-            let { list } = res;
+            let { list, currentpage, totalpage } = res;
             if (list.length > 0) {
                 this.noticeList.splice(list.length, 0, ...list)
             }
+            if (callback) callback(res);
         })
     }
     

@@ -13,15 +13,14 @@ import {
 import { Container, Content } from 'native-base'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { observer, inject } from 'mobx-react/native'
-import { toJS } from 'mobx'
 import CommonHeader from '@/components/Header'
 
-let pageNo = 1; //当前第几页
-let totalPage = 5; //总的页数
+let page = 1; // 当前第几页
+let pagesize = 10; // 每页显示条数
+let totalpage = 5; // 总的页数
 
 @inject(({ homeStore }) => {
     return {
-        noticeList: homeStore.noticeList,
         getNotice: homeStore.getNotice,
     }
 })
@@ -30,21 +29,47 @@ export default class NoticeDetails extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            dataArray: [
-                { name: 'a', stargazers_count: 1, description: '1' },
-                { name: 'a', stargazers_count: 1, description: '1' },
-                { name: 'a', stargazers_count: 1, description: '1' },
-                { name: 'a', stargazers_count: 1, description: '1' },
-            ],
+            list: [],
+            isLoading: true, // 加载中
             showFoot: 0, // 控制foot， 0：隐藏footer  1：已加载完成,没有更多数据   2 ：显示加载中
             isRefreshing: false, // 下拉控制
         }
     }
 
     componentDidMount() {
-        const { getNotice } = this.props;
-        getNotice()
+        let params = { page, pagesize };
+        this.props.getNotice(params, res => {
+            page = res.currentpage;
+            totalpage = res.totalpage;
+            this.setState({
+                list: this.state.list.concat(res.list)
+            })
+        });
+       
     }
+
+    // 请求数据
+    getData() {
+        let params = { page, pagesize };
+        this.props.getNotice(params, res => {
+            page = res.currentpage;
+            totalpage = res.totalpage;
+            // 没有更多的数据了
+            let foot = 0;
+            if(page >= totalpage){
+                foot = 1;   // listView底部显示没有更多数据了
+            }
+            this.setState({
+                // 复制数据源
+                list: this.state.list.concat(res.list),
+                isLoading: false,
+                showFoot: foot,
+                isRefreshing: false,
+            });
+        })
+
+    }
+
     // 返回上一页
     onBack = () => {
         const { navigator } = this.props;
@@ -52,15 +77,14 @@ export default class NoticeDetails extends PureComponent {
     }
 
     render() {
-        let { noticeList } = this.props;
-        // alert(JSON.stringify(noticeList))
+        let { list } = this.state;
 
         return (
             <Container>
-                    <CommonHeader title="公告信息" onBack={this.onBack}/>
-                    <Content style={styles.container}>
-                        {this.renderData(noticeList)}
-                    </Content>
+                <CommonHeader title="公告信息" onBack={this.onBack}/>
+                <Content style={styles.container}>
+                    {this.renderData(list)}
+                </Content>
             </Container>
         )
     }
@@ -75,10 +99,10 @@ export default class NoticeDetails extends PureComponent {
     }
 
     // 渲染数据
-    renderData(noticeList) {
+    renderData(list) {
         return (
             <FlatList
-                data={noticeList}
+                data={list}
                 ListEmptyComponent={this.renderNoData}
                 renderItem={this.renderItemView}
                 ListFooterComponent={this.renderFooter.bind(this)}
@@ -86,7 +110,6 @@ export default class NoticeDetails extends PureComponent {
                 onEndReachedThreshold={1}
                 ItemSeparatorComponent={this.line}
             />
-
         );
     }
 
@@ -141,19 +164,22 @@ export default class NoticeDetails extends PureComponent {
         }
     }
 
-    onEndReached(){
+    // 列表到屏幕最底层
+    onEndReached() {
         // 如果是正在加载中或没有更多数据了，则返回
-        if(this.state.showFoot != 0 ){
+        if (this.state.showFoot != 0 ) {
             return;
         }
         // 如果当前页大于或等于总页数，那就是到最后一页了，返回
-        if((pageNo != 1) && (pageNo >= totalPage)){
+        if ((page != 1) && (page >= totalpage)) {
             return;
         } else {
-            pageNo++;
+            page++;
         }
         // 底部显示正在加载更多数据
-        this.setState({showFoot: 2});
+        this.setState({ showFoot: 2 });
+        // 获取数据
+        this.getData();
     }
 
     // 分割线

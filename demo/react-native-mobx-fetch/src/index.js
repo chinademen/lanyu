@@ -38,6 +38,7 @@ export default class App extends Component {
         let { barStyle } = this.props;
         // 初始化登录页面  (ios自带过渡页，直接进入Login页)
         const initialPage = __IOS__ ? 'Login' : 'Splash';
+        // const initialPage = 'Test';
         let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: 20 });
         barStyle = __IOS__ ? 'dark-content' : barStyle;
 

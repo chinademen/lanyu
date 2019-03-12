@@ -10,6 +10,7 @@ const router = {
     'forgetPassword': require('@/views/login/forgetPassword'),
     // 导航
     'TabBarView': require('@/views/TabBarView'),
+    'Test': require('@/views/test'),
 
     // home
     // 公告
