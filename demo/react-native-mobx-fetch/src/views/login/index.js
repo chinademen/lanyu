@@ -121,7 +121,7 @@ export default class Login extends PureComponent {
             changeSubmit(false)
             this.setState({ loginText: '登录' })
             // 跳转主页
-            this.props.navigator.push({
+            this.props.navigator.replace({
                 id: 'TabBarView',
             })
         }).catch(err => {

@@ -18,7 +18,6 @@ import Router from '@/route'
 })
 @observer
 export default class App extends Component {
-
     // 场景转换动画配置
     configureScene = route => {
         if (route.sceneConfig) return route.sceneConfig;
@@ -56,6 +55,7 @@ export default class App extends Component {
                     // 路由初始化配置信息 
                     initialRoute={{id: initialPage}}
                     configureScene={this.configureScene}
+                    // 返回需要渲染的场景的回调函数
                     renderScene={this.renderScene}
                 />
             </View>
