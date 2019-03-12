@@ -11,6 +11,7 @@ import {
     ActivityIndicator,
 } from 'react-native'
 import { Container, Content } from 'native-base'
+import { Col, Row, Grid } from 'react-native-easy-grid'
 import { observer, inject } from 'mobx-react/native'
 import { toJS } from 'mobx'
 import CommonHeader from '@/components/Header'
@@ -52,20 +53,20 @@ export default class NoticeDetails extends PureComponent {
 
     render() {
         let { noticeList } = this.props;
-        alert(JSON.stringify(noticeList))
+        // alert(JSON.stringify(noticeList))
 
         return (
             <Container>
                     <CommonHeader title="公告信息" onBack={this.onBack}/>
                     <Content style={styles.container}>
-                        {noticeList && noticeList.length > 0 && this.renderData(noticeList) || this.createNoData()}
+                        {this.renderData(noticeList)}
                     </Content>
             </Container>
         )
     }
 
     // 无数据
-    createNoData = () => {
+    renderNoData() {
         return (
             <View style={styles.noData}>
                 <Text>暂无数据</Text>
@@ -78,6 +79,7 @@ export default class NoticeDetails extends PureComponent {
         return (
             <FlatList
                 data={noticeList}
+                ListEmptyComponent={this.renderNoData}
                 renderItem={this.renderItemView}
                 ListFooterComponent={this.renderFooter.bind(this)}
                 onEndReached={this.onEndReached.bind(this)}
@@ -90,11 +92,23 @@ export default class NoticeDetails extends PureComponent {
 
     // 每列数据渲染
     renderItemView({item}) {
+        let { title, updatetime, content } = item;
         return (
-            <View style={styles.itembox}>
-                <Text style={styles.itemtext}>{item.title} ({item.updatetime}</Text>
-                <Text style={styles.itemtext}>{item.content}</Text>
-            </View>
+            <Grid style={styles.itembox}>
+                <Row>
+                    <Col size={6} style={styles.col}>
+                        <Text style={styles.itemtext}>{title ? (title.length > 5 ? title.substr(0, 10) + "..." : title) : ""}</Text>
+                    </Col>
+                    <Col size={2} style={styles.col}>
+                        <Text style={styles.itemtext}>{updatetime ? (updatetime.length > 10 ? updatetime.substr(0, 10) : updatetime) : ""}</Text>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size={6} style={styles.col}>
+                        <Text style={styles.itemtext}>{content ? (content.length > 20 ? content.substr(0, 20) + "..." : content) : ""}</Text>
+                    </Col>
+                </Row>
+            </Grid>
         );
     }
 
@@ -120,7 +134,7 @@ export default class NoticeDetails extends PureComponent {
             );
         } else if(this.state.showFoot === 0){
             return (
-                <View style={styles.footer}>
+                <View >
                     <Text></Text>
                 </View>
             );
@@ -157,6 +171,7 @@ const styles = StyleSheet.create({
     },
     noData: {
         height: scaleSize(42),
+        backgroundColor: '#fff',
         alignItems:'center',
         justifyContent: 'center',
     },
@@ -164,14 +179,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         width: gScreen.width,
         height: scaleSize(68),
-        paddingVertical: scaleSize(10),
+        paddingVertical: scaleSize(4),
         paddingHorizontal: scaleSize(15),
-        alignItems:'center',
-        justifyContent:'flex-start'
+    },
+    col: {
+        height: scaleSize(30),
+        justifyContent: 'center'
     },
     itemtext: {
         color:'#999',
         fontSize: scaleSize(14),
+        textAlign: 'left'
     },
     footer: {
         flex: 1,
