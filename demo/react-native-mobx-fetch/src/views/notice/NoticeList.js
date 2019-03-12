@@ -106,7 +106,7 @@ export default class NoticeDetails extends PureComponent {
                 ListEmptyComponent={this.renderNoData}
                 renderItem={this.renderItemView}
                 ListFooterComponent={this.renderFooter.bind(this)}
-                onEndReached={this._onEndReached.bind(this)}
+                onEndReached={this.renderEndReached.bind(this)}
                 onEndReachedThreshold={1}
                 ItemSeparatorComponent={this.line}
             />
@@ -165,7 +165,7 @@ export default class NoticeDetails extends PureComponent {
     }
 
     // 列表到屏幕最底层
-    _onEndReached() {
+    renderEndReached() {
         // 如果是正在加载中或没有更多数据了，则返回
         if (this.state.showFoot != 0 ) {
             return;
