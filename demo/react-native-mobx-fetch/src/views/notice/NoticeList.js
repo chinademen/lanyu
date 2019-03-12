@@ -14,10 +14,8 @@ import { Container, Content } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
 
-const REQUEST_URL = 'https://api.github.com/search/repositories?q=javascript&sort=stars&page=';
-let pageNo = 1;//当前第几页
-let totalPage=5;//总的页数
-let itemNo=0;//item的个数
+let pageNo = 1; //当前第几页
+let totalPage = 5; //总的页数
 
 @inject(({ homeStore }) => {
     return {
@@ -30,67 +28,21 @@ export default class NoticeDetails extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            //网络请求状态
-            error: false,
-            errorInfo: "",
-            dataArray: [],
-            showFoot:0, // 控制foot， 0：隐藏footer  1：已加载完成,没有更多数据   2 ：显示加载中
-            isRefreshing:false,//下拉控制
+            dataArray: [
+                { name: 'a', stargazers_count: 1, description: '1' },
+                { name: 'a', stargazers_count: 1, description: '1' },
+                { name: 'a', stargazers_count: 1, description: '1' },
+                { name: 'a', stargazers_count: 1, description: '1' },
+            ],
+            showFoot: 0, // 控制foot， 0：隐藏footer  1：已加载完成,没有更多数据   2 ：显示加载中
+            isRefreshing: false, // 下拉控制
         }
     }
 
     componentDidMount() {
         const { getNotice } = this.props;
         getNotice()
-        //请求数据
-        this.fetchData( pageNo );
     }
-
-    // 模拟获取数据
-    //网络请求——获取第pageNo页数据
-    fetchData(pageNo) {
-        //这个是js的访问网络的方法
-        fetch(REQUEST_URL+pageNo)
-            .then((response) => response.json())
-            .then((responseData) => {
-                let data = responseData.items;
-                let dataBlob = [];
-                let i = itemNo;
-
-                data.map(function (item) {
-                    dataBlob.push({
-                        key: I,
-                        value: item,
-                    })
-                    I++;
-                });
-                itemNo = I;
-                console.log("itemNo:"+itemNo);
-                let foot = 0;
-                if(pageNo>=totalPage){
-                    foot = 1;//listView底部显示没有更多数据了
-                }
-
-                this.setState({
-                    //复制数据源
-                    dataArray:this.state.dataArray.concat(dataBlob),
-                    isLoading: false,
-                    showFoot:foot,
-                    isRefreshing:false,
-                });
-                data = null;
-                dataBlob = null;
-            })
-            .catch((error) => {
-                this.setState({
-                    error: true,
-                    errorInfo: error
-                })
-            })
-            .done();
-    }
-
     // 返回上一页
     onBack = () => {
         const { navigator } = this.props;
@@ -99,74 +51,25 @@ export default class NoticeDetails extends PureComponent {
 
     render() {
         let { noticeList } = this.props;
-
         // alert(JSON.stringify(noticeList))
-        // 第一次加载等待的view
-        if (this.state.isLoading && !this.state.error) {
-            alert(1)
-            return this.renderLoadingView();
-        } else if (this.state.error) {
-            //请求失败view
-            alert(2)
-            return this.renderErrorView();
-        }
-        //加载数据
-        alert(3)
-        return this.renderData();
 
-        // return (
-        //     <Container>
-        //             <CommonHeader title="公告信息" onBack={this.onBack}/>
-        //             <Content>
-        //                 <ActivityIndicator
-        //                     animating={true}
-        //                     color="gray"
-        //                     size="large"
-        //                 />
-        //                 {/* <FlatList
-        //                     style={styles.container}
-        //                     data={this.state.data}
-        //                     //item显示的布局
-        //                     renderItem={({item}) => this._createListItem(item)}
-        //                     // 空布局
-        //                     ListEmptyComponent={this._createEmptyView}
-        //                     //添加头尾布局
-        //                     ListHeaderComponent={this._createListHeader}
-        //                     ListFooterComponent={this._createListFooter}
-        //                     //下拉刷新相关
-        //                     onRefresh={() => this._onRefresh()}
-        //                     refreshing={this.state.isRefresh}
-        //                     //加载更多
-        //                     onEndReached={() => this._onLoadMore()}
-        //                     onEndReachedThreshold={0.1}
-        //                 /> */}
-        //             </Content>
-        //     </Container>
-        // )
+        return (
+            <Container>
+                    <CommonHeader title="公告信息" onBack={this.onBack}/>
+                    <Content style={styles.container}>
+                        {noticeList && noticeList.length > 0 && this.renderData() || this.createNoData()}
+                    </Content>
+            </Container>
+        )
     }
 
     // 无数据
-    renderLoadingView() {
+    createNoData = () => {
         return (
-            <View style={styles.container}>
-                <ActivityIndicator
-                    animating={true}
-                    color='red'
-                    size="large"
-                />
-            </View>
-        );
-    }
-
-    //加载错误
-    renderErrorView() {
-        return (
-            <View style={styles.container}>
-                <Text>
-                    Fail
-                </Text>
-            </View>
-        );
+            <View style={styles.noData}>
+                <Text>暂无数据</Text>
+            </View> 
+        )
     }
 
     // 渲染数据
@@ -174,32 +77,33 @@ export default class NoticeDetails extends PureComponent {
         return (
             <FlatList
                 data={this.state.dataArray}
-                renderItem={this._renderItemView}
-                ListFooterComponent={this._renderFooter.bind(this)}
-                onEndReached={this._onEndReached.bind(this)}
+                renderItem={this.renderItemView}
+                ListFooterComponent={this.renderFooter.bind(this)}
+                onEndReached={this.onEndReached.bind(this)}
                 onEndReachedThreshold={1}
-                ItemSeparatorComponent={this._separator}
+                ItemSeparatorComponent={this.line}
             />
 
         );
     }
 
-    //返回itemView
-    _renderItemView({item}) {
+    // 每列数据渲染
+    renderItemView({item}) {
         return (
-            <View>
-                <Text style={styles.title}>name: {item.value.name} ({item.value.stargazers_count}
+            <View style={styles.itembox}>
+                <Text style={styles.itemtext}>name: {item.name} ({item.stargazers_count}
                     stars)</Text>
-                <Text style={styles.content}>description: {item.value.description}</Text>
+                <Text style={styles.itemtext}>description: {item.description}</Text>
             </View>
         );
     }
 
-    _renderFooter(){
+    // 加载数据状态
+    renderFooter() {
         if (this.state.showFoot === 1) {
             return (
-                <View style={{height:30,alignItems:'center',justifyContent:'flex-start',}}>
-                    <Text style={{color:'#999999',fontSize:14,marginTop:5,marginBottom:5,}}>
+                <View style={styles.footer}>
+                    <Text style={styles.itemtext}>
                         没有更多数据了
                     </Text>
                 </View>
@@ -207,8 +111,11 @@ export default class NoticeDetails extends PureComponent {
         } else if(this.state.showFoot === 2) {
             return (
                 <View style={styles.footer}>
-                    <ActivityIndicator />
-                    <Text>正在加载更多数据...</Text>
+                    <ActivityIndicator 
+                        animating={true}
+                        color="gray"
+                    />
+                    <Text>正在加载...</Text>
                 </View>
             );
         } else if(this.state.showFoot === 0){
@@ -220,29 +127,66 @@ export default class NoticeDetails extends PureComponent {
         }
     }
 
-    _onEndReached(){
-        //如果是正在加载中或没有更多数据了，则返回
+    onEndReached(){
+        // 如果是正在加载中或没有更多数据了，则返回
         if(this.state.showFoot != 0 ){
-            return ;
+            return;
         }
-        //如果当前页大于或等于总页数，那就是到最后一页了，返回
-        if((pageNo!=1) && (pageNo>=totalPage)){
+        // 如果当前页大于或等于总页数，那就是到最后一页了，返回
+        if((pageNo != 1) && (pageNo >= totalPage)){
             return;
         } else {
             pageNo++;
         }
-        //底部显示正在加载更多数据
-        this.setState({showFoot:2});
-        //获取数据
-        this.fetchData( pageNo );
+        // 底部显示正在加载更多数据
+        this.setState({showFoot: 2});
     }
 
-    _separator(){
-        return <View style={{height:1,backgroundColor:'#999999'}}/>;
+    // 分割线
+    line = () => {
+        return <View style={styles.line}/>;
     }
 
 }
 
 const styles = StyleSheet.create({
-   
+    container: {
+        backgroundColor: '#eff3f9', 
+        width: gScreen.width,
+        paddingTop: scaleSize(10)
+    },
+    noData: {
+        height: scaleSize(42),
+        alignItems:'center',
+        justifyContent: 'center',
+    },
+    itembox: {
+        backgroundColor: '#FFF',
+        width: gScreen.width,
+        height: scaleSize(68),
+        paddingVertical: scaleSize(10),
+        paddingHorizontal: scaleSize(15),
+        alignItems:'center',
+        justifyContent:'flex-start'
+    },
+    itemtext: {
+        color:'#999',
+        fontSize: scaleSize(14),
+    },
+    footer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems:'center',
+        justifyContent:'center',
+        height: scaleSize(40),
+        backgroundColor:'#fff',
+        borderTopWidth: scaleSize(1),
+        borderColor: '#f3f3f3',
+        marginBottom: scaleSize(20),
+        
+    },
+    line: {
+        height: scaleSize(1),
+        backgroundColor:'#f3f3f3'
+    }
 })
