@@ -29,7 +29,7 @@ export default class Recharge extends Component {
 
         return (
             <Container>
-                <CommonHeader title="充提报表" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_RECHARGE} onBack={this.onBack}/>
                 <Content>
                     <Text>充提报表</Text>
                 </Content>

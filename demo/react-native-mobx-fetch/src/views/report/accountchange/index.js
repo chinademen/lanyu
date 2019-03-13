@@ -29,9 +29,9 @@ export default class AccountChange extends Component {
 
         return (
             <Container>
-                <CommonHeader title="账变报表" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_ACCOUNTCHANGE} onBack={this.onBack}/>
                 <Content>
-                    <Text>账变报表</Text>
+                    <Text>{i18n.REPORT_MODULE_ACCOUNTCHANGE}</Text>
                 </Content>
             </Container>
         )

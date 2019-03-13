@@ -36,7 +36,7 @@ export default class ForgetPassword extends Component {
             confirmPassword: '',        // 确认密码
             confirmPasswordError: '',   // 确认密码输入错误提示
             userid: '',                 // 验证资金密码返回的用户id
-            submitText: '提交',         // 提交 | 正在提交...
+            submitText: i18n.FORGET_SUBMIT_BTN,         // 提交 | 正在提交...
         }
     }
 
@@ -93,10 +93,10 @@ export default class ForgetPassword extends Component {
         } = this.state;
         // 账号验证提交
         if (pageIndex === 1) {
-            if (username === '') return this.setState({ usernameError: '请输入账号' });
-            if (!checkUserName(username)) return this.setState({ usernameError: '账号不正确' });
-            if (fundsPassword === '') return this.setState({ fundsPasswordError: '请输入资金密码' });
-            if (!checkPassWord(fundsPassword)) return this.setState({ fundsPasswordError: '资金密码不正确' });
+            if (username === '') return this.setState({ usernameError: i18n.LOGIN_INPUT_ACCOUNT });
+            if (!checkUserName(username)) return this.setState({ usernameError: i18n.LOGIN_INCORRECT_ACCOUNT });
+            if (fundsPassword === '') return this.setState({ fundsPasswordError: i18n.LOGIN_INPUT_PASSWORD });
+            if (!checkPassWord(fundsPassword)) return this.setState({ fundsPasswordError: i18n.FORGET_INCORRECT_FUNDS_PASSWORD });
             this.setSubmitBtn()
             const params = {
                 username,
@@ -115,11 +115,11 @@ export default class ForgetPassword extends Component {
             })
         } else {
             // 重置密码提交
-            if (newPassword === '') return this.setState({ newPasswordError: '请输入新密码' });
-            if (!checkPassWord(newPassword)) return this.setState({ newPasswordError: '密码不正确' });
-            if (confirmPassword === '') return this.setState({ confirmPasswordError: '再次输入密码' });
-            if (!checkPassWord(confirmPassword)) return this.setState({ confirmPasswordError: '密码不正确' });
-            if (newPassword !== confirmPassword) return Alert.alert('两次密码不一致');
+            if (newPassword === '') return this.setState({ newPasswordError: i18n.FORGET_INPUT_NEW_PASSWORD });
+            if (!checkPassWord(newPassword)) return this.setState({ newPasswordError: i18n.LOGIN_INCORRECT_PASSWORD });
+            if (confirmPassword === '') return this.setState({ confirmPasswordError: i18n.FORGET_AGAIN_INPUT_PASSWORD });
+            if (!checkPassWord(confirmPassword)) return this.setState({ confirmPasswordError: i18n.LOGIN_INCORRECT_PASSWORD });
+            if (newPassword !== confirmPassword) return Alert.alert(i18n.FORGET_TWO_PASSWORD_DIFFERENT);
             this.setSubmitBtn()
             const params = {
                 userid,
@@ -128,15 +128,15 @@ export default class ForgetPassword extends Component {
             };
             this.props.userFindPassword(params, res => {
                 changeSubmit(false)
-                this.setState({ submitText: '提交' })
+                this.setState({ submitText: i18n.FORGET_SUBMIT_BTN })
                 // 跳回登陆页
                 this.props.navigator.push({
                     id: 'Login' 
                 })
-                Alert.alert('恭喜你，修改密码成功');
+                Alert.alert(i18n.FORGET_PASSWORD_UPDATEED);
             }).catch(err => {
                 changeSubmit(false)
-                this.setState({ submitText: '登录' })
+                this.setState({ submitText: i18n.LOGIN_LOGIN_BTN })
             })
         }
     }
@@ -144,7 +144,7 @@ export default class ForgetPassword extends Component {
     // 设置提交按钮状态
     setSubmitBtn = () => {
         this.props.changeSubmit(true)
-        this.setState({ submitText: '正在提交...' })
+        this.setState({ submitText: i18n.FORGET_SUBMITING_BTN })
     } 
 
     // 账号验证
@@ -152,17 +152,17 @@ export default class ForgetPassword extends Component {
         const { usernameError, fundsPasswordError } = this.state;
         return (
             <Fragment>
-                <Text style={styles.titletwo}>账号验证</Text>
+                <Text style={styles.titletwo}>{i18n.FORGET_ACCOUNT_CHECK}</Text>
                     <TextInput 
                         style={styles.input} 
-                        placeholder="请输入您的账号"
+                        placeholder={i18n.LOGIN_INPUT_ACCOUNT}
                         maxLength={16}
                         onChangeText={val => this.handleInput(val, 'username')}
                     ></TextInput>
                     <Text style={styles.error}>{usernameError}</Text>
                     <TextInput 
                         style={styles.input}
-                        placeholder="请输入资金密码"
+                        placeholder={i18n.FORGET_INPUT_FUNDS_PASSWORD}
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'fundsPassword')}
@@ -177,10 +177,10 @@ export default class ForgetPassword extends Component {
         const { newPasswordError, confirmPasswordError } = this.state;
         return (
             <Fragment>
-                <Text style={styles.titletwo}>重置密码</Text>
+                <Text style={styles.titletwo}>{i18n.FORGET_RESET_PASSWORD}</Text>
                     <TextInput 
                         style={styles.input} 
-                        placeholder="请输入6-16位数字+字母组合"
+                        placeholder={i18n.FORGET_CHECK_NUMBER_LETTER}
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'newPassword')}
@@ -188,7 +188,7 @@ export default class ForgetPassword extends Component {
                     <Text style={styles.error}>{newPasswordError}</Text>
                     <TextInput 
                         style={styles.input}
-                        placeholder="请输入6-16位数字+字母组合"
+                        placeholder={i18n.FORGET_CHECK_NUMBER_LETTER}
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'confirmPassword')}
@@ -204,7 +204,7 @@ export default class ForgetPassword extends Component {
 
         return (
             <Container>
-                <CommonHeader title="重置密码" onBack={this.onBack}/>
+                <CommonHeader title={i18n.FORGET_RESET_PASSWORD} onBack={this.onBack}/>
                 <Content>
                     {/* 账号验证 */}
                     {pageIndex === 1 && this.checkAccount()}

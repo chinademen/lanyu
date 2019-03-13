@@ -29,7 +29,7 @@ export default class DayKnot extends Component {
 
         return (
             <Container>
-                <CommonHeader title="日结报表" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_DAYKNOT} onBack={this.onBack}/>
                 <Content>
                     <Text>日结报表</Text>
                 </Content>

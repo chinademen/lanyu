@@ -2,6 +2,10 @@
  * 全局对象
  */
 import { Dimensions, Platform, PixelRatio } from 'react-native'
+import i18n from '@/assets/dh/i18n'
+
+global.projectName = 'dh';
+global.i18n = i18n;
 
 global.iphoneX = false;
 global.__IOS__ = false;

@@ -29,7 +29,7 @@ export default class Bet extends Component {
 
         return (
             <Container>
-                <CommonHeader title="投注记录" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_BET} onBack={this.onBack}/>
                 <Content>
                     <Text>投注记录</Text>
                 </Content>

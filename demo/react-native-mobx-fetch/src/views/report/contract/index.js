@@ -29,7 +29,7 @@ export default class Contract extends Component {
 
         return (
             <Container>
-                <CommonHeader title="契约分红" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_CONTRACT} onBack={this.onBack}/>
                 <Content>
                     <Text>契约分红</Text>
                 </Content>

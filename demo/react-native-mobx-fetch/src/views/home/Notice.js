@@ -77,7 +77,7 @@ export default class Notice extends PureComponent {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.more} onPress={() => this.toNoticeList()}>
-                    <Text style={{fontSize: scaleSize(14)}}>更多>></Text>
+                    <Text style={{fontSize: scaleSize(14)}}>{i18n.HOME_TEXT_MORE}</Text>
                 </TouchableOpacity>
                 
             </View>

@@ -35,7 +35,7 @@ export default class Login extends PureComponent {
             usernameError: '',  // 用户名输入错误提示
             passwordError: '',  // 密码输入错误提示
             isChecked: false,   // 记住密码
-            loginText: '登录',  // 登录 | 登录中...
+            loginText: i18n.LOGIN_LOGIN_BTN,  // 登录 | 登录中...
         }
     }
 
@@ -103,30 +103,30 @@ export default class Login extends PureComponent {
     loginEvent = () => {
         const { setToken, changeSubmit } = this.props;
         const { username, password } = this.state;
-        if (username === '') return this.setState({ usernameError: '请输入账号' });
-        if (!checkUserName(username)) return this.setState({ usernameError: '账号不正确' });
-        if (password === '') return this.setState({ passwordError: '请输入密码' });
-        if (!checkPassWord(password)) return this.setState({ passwordError: '密码不正确' });
+        if (username === '') return this.setState({ usernameError: i18n.LOGIN_INPUT_ACCOUNT });
+        if (!checkUserName(username)) return this.setState({ usernameError: i18n.LOGIN_INCORRECT_ACCOUNT });
+        if (password === '') return this.setState({ passwordError: i18n.LOGIN_INPUT_PASSWORD });
+        if (!checkPassWord(password)) return this.setState({ passwordError: i18n.LOGIN_INCORRECT_PASSWORD });
         const params = {
             username,
             password,
         };
         changeSubmit(true)
-        this.setState({ loginText: '登录中...' })
+        this.setState({ loginText: i18n.LOGIN_LOGINING_BTN })
         this.props.userLogin(params, res => {
             // 保存token
             setToken(res.token)
             storage.set('token', res.token)
             this.saveUserInfo()
             changeSubmit(false)
-            this.setState({ loginText: '登录' })
+            this.setState({ loginText: i18n.LOGIN_LOGIN_BTN })
             // 跳转主页
             this.props.navigator.replace({
                 id: 'TabBarView',
             })
         }).catch(err => {
             changeSubmit(false)
-            this.setState({ loginText: '登录' })
+            this.setState({ loginText: i18n.LOGIN_LOGIN_BTN })
         })
     }
 
@@ -198,9 +198,9 @@ export default class Login extends PureComponent {
                             style={[styles.checkBox, platStyle.checkBox]}
                             onClick={this.rememberPassword}
                             isChecked={isChecked}
-                            rightText={"记住密码"}
+                            rightText={i18n.LOGIN_REMEMBER_PASSWORD}
                         />
-                        <Text style={[styles.forgetPassword, platStyle.forgetPassword]} onPress={this.forgetPassword}>忘记密码？</Text>
+                        <Text style={[styles.forgetPassword, platStyle.forgetPassword]} onPress={this.forgetPassword}>{i18n.LOGIN_FORGET_PASSWORD}</Text>
                     </View>
                     <LodingBtn
                         onPress={this.loginEvent}
@@ -208,7 +208,7 @@ export default class Login extends PureComponent {
                         text={loginText}
                     />
                 </View>
-                <Text style={{ textAlign: 'center', bottom: 60 }}>Copyright @ 东皇娱乐 版权所有</Text>
+                <Text style={{ textAlign: 'center', bottom: 60 }}>{i18n.LOGIN_DONGHUANG_FOOTER}</Text>
             </ImageBackground>
         )
     }

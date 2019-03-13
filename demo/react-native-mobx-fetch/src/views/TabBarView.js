@@ -11,7 +11,7 @@ import Report from '@/views/report'
 import Profile from '@/views/profile'
 import TabBar from '@/components/TabBar'
 
-const tabTitles = ['彩票', '开奖', '报表', '我的']
+const tabTitles = [i18n.COMMON_TEXT_LOTTERY, i18n.COMMON_TEXT_WIN_NUMBER, i18n.COMMON_TEXT_REPORT, i18n.COMMON_TEXT_MY];
 const tabIcons = ['hotlottery_nor', 'kaijiang_nor', 'stats_w', 'my_nor'];
 const tabSelectedIcon = ['hotlottery_press', 'kaijiang_press', 'stats_b', 'my_press'];
 

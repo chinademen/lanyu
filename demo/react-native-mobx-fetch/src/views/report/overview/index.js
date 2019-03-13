@@ -29,7 +29,7 @@ export default class Overview extends Component {
 
         return (
             <Container>
-                <CommonHeader title="总览" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_OVERVIEW} onBack={this.onBack}/>
                 <Content>
                     <Text>总览</Text>
                 </Content>

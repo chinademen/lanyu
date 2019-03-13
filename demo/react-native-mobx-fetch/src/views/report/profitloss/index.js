@@ -29,7 +29,7 @@ export default class ProfitLoss extends Component {
 
         return (
             <Container>
-                <CommonHeader title="盈亏报表" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_PROFITLOSS} onBack={this.onBack}/>
                 <Content>
                     <Text>盈亏报表</Text>
                 </Content>

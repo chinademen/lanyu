@@ -40,7 +40,7 @@ export default class WinnerList extends PureComponent {
                 content: <View style={{flex: 1, flexDirection: 'row', alignItems:'center'}}>
                     <Text style={styles.text}>{name}</Text>
                     <Text style={[styles.text, {color: '#06ce85'}]}>{type}</Text>
-                    <Text style={styles.text}>中奖：</Text>
+                    <Text style={styles.text}>{i18n.HOME_TEXT_WIN}</Text>
                     <Text style={[styles.text, {color: '#ff4d4d'}]}>{number}</Text>
                     <Text style={[styles.text, {marginLeft: scaleSize(10)}]}>{`(${time})`}</Text>
                 </View>

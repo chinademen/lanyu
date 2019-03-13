@@ -31,9 +31,9 @@ export default class Balance extends PureComponent {
             <View style={styles.container}>
                 <View style={styles.card}>
                     <View style={styles.left}>
-                        <Text style={{fontSize: scaleSize(12)}}>余额：</Text>
+                        <Text style={{fontSize: scaleSize(12)}}>{i18n.HOME_TEXT_BALANCE}</Text>
                         <Text style={styles.balance}>{balance}</Text>
-                        <Text style={{fontSize: scaleSize(12)}}>元</Text>
+                        <Text style={{fontSize: scaleSize(12)}}>{i18n.HOME_MONEY_YUAN}</Text>
                     </View>
                     <DashLine type="vertical" backgroundColor='#d9d7ef' len={6} width={36}></DashLine>
                     <View style={styles.item}>

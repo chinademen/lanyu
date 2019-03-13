@@ -13,14 +13,14 @@ import {observer, inject} from 'mobx-react/native'
 import Svg from '@/components/Svg'
 
 const list = [
-    { key: 'overview', title: '总览', icon: 'item_top_all', page: 'Overview' },
-    { key: 'profitloss', title: '盈亏报表', icon: 'item_top_yk', page: 'ProfitLoss' },
-    { key: 'accountchange', title: '账变报表', icon: 'item_top_gg', page: 'AccountChange' },
-    { key: 'dayknot', title: '日结报表', icon: 'item_top_bank', page: 'DayKnot' },
-    { key: 'recharge', title: '充提报表', icon: 'item_top_ct', page: 'Recharge' },
-    { key: 'bet', title: '投注记录', icon: 'item_top_tz', page: 'Bet' },
-    { key: 'contract', title: '契约分红', icon: 'item_top_xg', page: 'Contract' },
-    { key: 'proxy', title: '代理中心', icon: 'item_top_dl', page: 'Proxy' },
+    { key: 'overview', title: i18n.REPORT_MODULE_OVERVIEW, icon: 'item_top_all', page: 'Overview' },
+    { key: 'profitloss', title: i18n.REPORT_MODULE_PROFITLOSS, icon: 'item_top_yk', page: 'ProfitLoss' },
+    { key: 'accountchange', title: i18n.REPORT_MODULE_ACCOUNTCHANGE, icon: 'item_top_gg', page: 'AccountChange' },
+    { key: 'dayknot', title: i18n.REPORT_MODULE_DAYKNOT, icon: 'item_top_bank', page: 'DayKnot' },
+    { key: 'recharge', title: i18n.REPORT_MODULE_RECHARGE, icon: 'item_top_ct', page: 'Recharge' },
+    { key: 'bet', title: i18n.REPORT_MODULE_BET, icon: 'item_top_tz', page: 'Bet' },
+    { key: 'contract', title: i18n.REPORT_MODULE_CONTRACT, icon: 'item_top_xg', page: 'Contract' },
+    { key: 'proxy', title: i18n.REPORT_MODULE_PROXY, icon: 'item_top_dl', page: 'Proxy' },
 ];
 
 @inject('app')
@@ -67,7 +67,7 @@ export default class Report extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.headerText}>报表查询</Text>
+                    <Text style={styles.headerText}>{i18n.REPORT_TITLE_REPORT_SERCH}</Text>
                 </View>
                 <View style={[styles.cellContainer, cellStyle]}>
                     {this.reportList()}

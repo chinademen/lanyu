@@ -29,7 +29,7 @@ export default class Proxy extends Component {
 
         return (
             <Container>
-                <CommonHeader title="代理中心" onBack={this.onBack}/>
+                <CommonHeader title={i18n.REPORT_MODULE_PROXY} onBack={this.onBack}/>
                 <Content>
                     <Text>代理中心</Text>
                 </Content>
