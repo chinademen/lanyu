@@ -22,7 +22,7 @@ export default class App extends Component {
     configureScene = route => {
         if (route.sceneConfig) return route.sceneConfig;
         return {
-            ...Navigator.SceneConfigs.PushFromRight,
+            ...Navigator.SceneConfigs.FloatFromRight,
             gestures: {}    // 禁用左滑返回手势
         }
     }
