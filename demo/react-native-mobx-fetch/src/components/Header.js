@@ -68,7 +68,9 @@ export default class Header extends Component {
         return (
             <View style={[styles.header, style]}>
                 {showGoBack && <LeftItem onPress={onBack}/>}
-                <Text style={[styles.title, titleStyle]}>{title || ''}</Text>
+                <View style={styles.titlebox}>
+                    <Text style={[styles.title, titleStyle]}>{title || ''}</Text>
+                </View>
                 {rightTitle && <RightItem text={rightTitle} onPress={onRight}/>}
                 {rightIcon && <RightIconItem icon={rightIcon} onPress={onRight}/>}
                 {renderRightItem &&
@@ -90,12 +92,17 @@ const styles = StyleSheet.create({
         // height: !__IOS__ ? 50 : 64,
         height: scaleSize(37.5),
         width: gScreen.width,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
         borderColor: gColors.border,
         borderBottomWidth: StyleSheet.hairlineWidth,
         backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important'
     },
+    titlebox: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },  
     title: {
         textAlign: 'center',
         color: '#fff',
@@ -103,7 +110,7 @@ const styles = StyleSheet.create({
     },
     leftItem: {
         position: 'absolute',
-        top: !__IOS__ ? 0 : 10,
+        top: !__IOS__ ? 0 : scaleSize(10),
         left: 0,
         height: !__IOS__ ? scaleSize(37.5) : scaleSize(33),
         width: scaleSize(40),

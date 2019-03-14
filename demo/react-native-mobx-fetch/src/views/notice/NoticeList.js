@@ -99,7 +99,7 @@ export default class NoticeDetails extends PureComponent {
 
     // 渲染数据
     renderData(list) {
-        alert(11)
+        // alert(11)
         return (
             <FlatList
                 data={list}

@@ -1,22 +1,25 @@
 /**
  * 主页
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    StatusBar,
     ScrollView,
 } from 'react-native'
+import { Tab, Tabs, ScrollableTab } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
-import Toast from 'react-native-easy-toast'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
-import DashLine from '@/components/DashLine'
 import Banner from './Banner'
 import Notice from './Notice'
 import Balance from './Balance'
-import WinnerList from './WinnerList'
-import LotteryList from './LotteryList'
+import LotteryTab from './lotteryTab'
+import ChessTab from './chessTab'
+import VideoTab from './videoTab'
+import SportTab from './sportTab'
+import ElectronTab from './electronTab'
+import FishTab from './fishTab'
+
 
 @NetInfoDecorator
 @inject(({ account, app, homeStore }) => {
@@ -60,21 +63,29 @@ export default class Home extends Component {
                     <Notice navigator={navigator} />
                     {/* 余额 */}
                     <Balance navigator={navigator} />
-                    {/* 中奖公告 */}
-                    <WinnerList />
-                    
-                    <DashLine 
-                        type="horizontal" 
-                        backgroundColor='#d9d7ef' 
-                        len={30} 
-                        width={gScreen.width} 
-                        style={{ paddingHorizontal:  gScreen.width * 0.05 }}
-                    ></DashLine>
-
-                    {/* 时时彩 分分彩 11选5 低频彩  PK10/赛马 其他 */}
-                    <LotteryList navigator={navigator} />
+                   
+                    <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
+                        <Tab heading="彩票">
+                            <LotteryTab />
+                        </Tab>
+                        <Tab heading="棋牌">
+                            <ChessTab />
+                        </Tab>
+                        <Tab heading="真人">
+                            <VideoTab />
+                        </Tab>
+                        <Tab heading="体育">
+                            <SportTab />
+                        </Tab>
+                        <Tab heading="电子">
+                            <ElectronTab />
+                        </Tab>
+                        <Tab heading="捕鱼">
+                            <FishTab />
+                        </Tab>
+                    </Tabs>
+                  
                 </ScrollView>
-                {/* <Toast ref={toast => this.toast = toast}/> */}
             </View>
         )
     }

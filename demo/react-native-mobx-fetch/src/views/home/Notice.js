@@ -47,7 +47,7 @@ export default class Notice extends PureComponent {
 
     // 公告切换
     changeNotice = (index) => {
-        alert(index)
+        // alert(index)
     }
 
     render() {
