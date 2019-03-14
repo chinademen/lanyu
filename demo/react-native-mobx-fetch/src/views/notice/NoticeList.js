@@ -32,7 +32,7 @@ export default class NoticeDetails extends PureComponent {
             list: [],
             isLoading: true, // 加载中
             showFoot: 0, // 控制foot， 0：隐藏footer  1：已加载完成,没有更多数据   2 ：显示加载中
-            isRefreshing: false, // 下拉控制
+            // isRefreshing: false, // 下拉控制
         }
     }
 
@@ -63,7 +63,7 @@ export default class NoticeDetails extends PureComponent {
                 list: this.state.list.concat(res.list),
                 isLoading: false,
                 showFoot: foot,
-                isRefreshing: false,
+                // isRefreshing: false,
             });
         })
 
@@ -173,13 +173,13 @@ export default class NoticeDetails extends PureComponent {
         if ((page != 1) && (page >= totalpage)) {
             return;
         } else {
-            // page++;
+            page++;
         }
         
         // 底部显示正在加载更多数据
         this.setState({ showFoot: 2 });
         // 获取数据
-        // this.getData();
+        this.getData();
     }
 
     // 分割线

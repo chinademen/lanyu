@@ -35,6 +35,13 @@ export default {
     HOME_MONEY_YUAN: '元',
     HOME_TEXT_MORE: '更多>>',
     HOME_TEXT_WIN: '中奖：',
+    HOME_TEXT_LOTTERY: '彩票',
+    HOME_TEXT_CHESS: '棋牌',
+    HOME_TEXT_VIDEO: '真人',
+    HOME_TEXT_SPORT: '体育',
+    HOME_TEXT_ELECTRON: '电子',
+    HOME_TEXT_FISH: '捕鱼',
+
 
     // 报表
     REPORT_TITLE_REPORT_SERCH: '报表查询',

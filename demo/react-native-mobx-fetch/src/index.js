@@ -22,7 +22,7 @@ export default class App extends Component {
     configureScene = route => {
         if (route.sceneConfig) return route.sceneConfig;
         return {
-            ...Navigator.SceneConfigs.FloatFromRight,
+            ...Navigator.SceneConfigs.PushFromRight,
             gestures: {}    // 禁用左滑返回手势
         }
     }
@@ -38,7 +38,7 @@ export default class App extends Component {
         // 初始化登录页面  (ios自带过渡页，直接进入Login页)
         const initialPage = __IOS__ ? 'Login' : 'Splash';
         // const initialPage = 'Test';
-        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: 20 });
+        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: StatusBar.currentHeight });
         barStyle = __IOS__ ? 'dark-content' : barStyle;
 
         return (
