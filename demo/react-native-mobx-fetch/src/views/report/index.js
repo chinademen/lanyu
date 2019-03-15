@@ -10,6 +10,7 @@ import {
     Text,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
+import LinearGradient from 'react-native-linear-gradient'
 import Svg from '@/components/Svg'
 
 const list = [
@@ -66,9 +67,13 @@ export default class Report extends Component {
 
         return (
             <View style={styles.container}>
-                <View style={styles.header}>
+                <LinearGradient
+                    start={{ x: 0.2, y: 0.2 }}
+                    end={{ x: 0.8, y: 0.8 }}
+                    colors={['#ff6830', '#f8486f']}
+                    style={styles.header}>
                     <Text style={styles.headerText}>{i18n.REPORT_TITLE_REPORT_SERCH}</Text>
-                </View>
+                </LinearGradient>
                 <View style={[styles.cellContainer, cellStyle]}>
                     {this.reportList()}
                 </View>

@@ -10,6 +10,7 @@ import {
     Image,
     Platform
 } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 
 
 const LeftItem = ({onPress}) => {
@@ -66,7 +67,12 @@ export default class Header extends Component {
         } = this.props
 
         return (
-            <View style={[styles.header, style]}>
+            <LinearGradient
+                start={{ x: 0.2, y: 0.2 }}
+                end={{ x: 0.8, y: 0.8 }}
+                colors={['#ff6830', '#f8486f']}
+                style={[styles.header, style]}
+            >
                 {showGoBack && <LeftItem onPress={onBack}/>}
                 <View style={styles.titlebox}>
                     <Text style={[styles.title, titleStyle]}>{title || ''}</Text>
@@ -82,7 +88,7 @@ export default class Header extends Component {
                         {renderRightItem()}
                     </TouchableOpacity>
                 }
-            </View>
+            </LinearGradient>
         )
     }
 }

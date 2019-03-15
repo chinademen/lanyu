@@ -31,6 +31,7 @@ export default {
     FORGET_CHECK_NUMBER_LETTER: '请输入6-16位数字+字母组合',
 
     // 首页
+    HOME_NOTICE_DETAILS: '公告详情',
     HOME_TEXT_BALANCE: '余额：',
     HOME_MONEY_YUAN: '元',
     HOME_TEXT_MORE: '更多>>',

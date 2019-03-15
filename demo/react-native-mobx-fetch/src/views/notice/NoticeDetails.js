@@ -29,12 +29,12 @@ export default class NoticeDetails extends PureComponent {
 
         return (
             <Container>
-                    <CommonHeader title="公告详情" onBack={this.onBack}/>
+                    <CommonHeader title={i18n.HOME_NOTICE_DETAILS} onBack={this.onBack}/>
                     <Content style={{ padding: 20 }}>
-                        <Text style={{ fontSize: 16 }}>{'文章标题1'}</Text>
-                        <Text style={{ fontSize: 10, color: 'gray', textAlign: 'center' }}>{'2019-3-11'}</Text>
+                        <Text style={{ fontSize: 16, textAlign: 'center' }}>{'文章标题1'}</Text>
+                        <Text style={{ fontSize: 12, color: 'gray', textAlign: 'center' }}>{'2019-3-11'}</Text>
                         <Text style={{ fontSize: 14 }}>亲爱的用户：</Text>
-                        <Text style={{ fontSize: 14 }}>{'公告内容测试'}</Text>
+                        <Text style={{ fontSize: 14, paddingVertical: scaleSize(15) }}>{'公告内容测试'}</Text>
                         <Text style={{ fontSize: 12, textAlign: 'right' }}>东皇运营部</Text>
                         <Text style={{ fontSize: 12, textAlign: 'right' }}>{'2019-3-11'}</Text>
                     </Content>

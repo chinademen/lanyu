@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     forgetPassword: { // 忘记密码
         textDecorationLine:'underline',
         marginTop: scaleSize(4),
-    }
+    },
 })
 
     
