@@ -95,7 +95,7 @@ export default class Login extends PureComponent {
         });
         // 跳转验证账号页
         this.props.navigator.push({
-            id: 'forgetPassword'
+            id: 'ForgetPassword'
         })
     }
 
