@@ -21,16 +21,18 @@ import CommonHeader from '@/components/Header'
     }
 })
 @observer
-export default class Bet extends PureComponent {
+export default class LotteryBet extends PureComponent {
     onBack = () => {
         this.props.navigator.pop()
     }
 
     render() {
+        // alert(JSON.stringify(this.props.navigator.state.routeStack[1].lotteryid))
         return (
             <View>
-                <CommonHeader title={i18n.REPORT_MODULE_BET} onBack={this.onBack}/>
-                <Text>投注页面</Text>
+                <CommonHeader title={'投注页面'} onBack={this.onBack}/>
+                <Text>{'投注页面'}</Text>
+                <Text>{this.props.navigator.state.routeStack[1].lotteryid || '预加载'}</Text>
             </View>
         )
     }
