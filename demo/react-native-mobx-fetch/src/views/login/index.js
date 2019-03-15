@@ -208,7 +208,7 @@ export default class Login extends PureComponent {
                         text={loginText}
                     />
                 </View>
-                <Text style={{ textAlign: 'center', bottom: 60 }}>{i18n.LOGIN_DONGHUANG_FOOTER}</Text>
+                <Text style={{ textAlign: 'center', bottom: scaleSize(70) }}>{i18n.LOGIN_DONGHUANG_FOOTER}</Text>
             </ImageBackground>
         )
     }

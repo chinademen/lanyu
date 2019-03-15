@@ -39,7 +39,7 @@ export default class TabBarView extends Component {
     }
 
     render() {
-        let tabBottom = ifIphoneX({ paddingBottom: scaleSize(10) }, { paddingBottom: scaleSize(0) }, { paddingBottom: 0 })
+        let tabBottom = ifIphoneX({ paddingBottom: scaleSize(12) }, { paddingBottom: scaleSize(0) }, { paddingBottom: 0 })
 
         return (
             <ScrollableTabView

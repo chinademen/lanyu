@@ -74,9 +74,7 @@ export default class Header extends Component {
                 style={[styles.header, style]}
             >
                 {showGoBack && <LeftItem onPress={onBack}/>}
-                <View style={styles.titlebox}>
-                    <Text style={[styles.title, titleStyle]}>{title || ''}</Text>
-                </View>
+                <Text style={[styles.title, titleStyle]}>{title || ''}</Text>
                 {rightTitle && <RightItem text={rightTitle} onPress={onRight}/>}
                 {rightIcon && <RightIconItem icon={rightIcon} onPress={onRight}/>}
                 {renderRightItem &&
@@ -98,19 +96,14 @@ const styles = StyleSheet.create({
         // height: !__IOS__ ? 50 : 64,
         height: scaleSize(37.5),
         width: gScreen.width,
-        // justifyContent: 'center',
+        justifyContent: 'center',
         // alignItems: 'center',
         borderColor: gColors.border,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important'
+        borderBottomWidth: StyleSheet.hairlineWidth
     },
-    titlebox: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },  
     title: {
         textAlign: 'center',
+        justifyContent: 'center',
         color: '#fff',
         fontSize: scaleSize(16),
     },
