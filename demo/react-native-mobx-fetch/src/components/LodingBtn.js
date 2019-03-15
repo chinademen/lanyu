@@ -6,6 +6,7 @@ import {
     ActivityIndicator,
 } from 'react-native'
 import throttle from 'lodash.throttle'
+import LinearGradient from 'react-native-linear-gradient'
 
 export default class LodingBtn extends PureComponent {
     constructor(props) {
@@ -25,14 +26,17 @@ export default class LodingBtn extends PureComponent {
         const { activeOpacity, style, onPress, submiting, fontSize, color, text } = this.props;
         let opacity = submiting ? 0.75 : 1;
         return (
-            <TouchableOpacity
-                activeOpacity={activeOpacity || 0.75}
-                style={[styles.btn, style, { opacity: opacity }]}
-                onPress={this.onPressThrottle}
-            >
-                {submiting && <ActivityIndicator color="white" />}
-                <Text style={{fontSize: fontSize || scaleSize(16), color: color || '#fff'}}>{text || '提交'}</Text>
-            </TouchableOpacity>
+           
+                <TouchableOpacity
+                    activeOpacity={activeOpacity || 0.75}
+                    style={[style, { opacity: opacity }]}
+                    onPress={this.onPressThrottle}
+                >
+                    <LinearGradient colors={['#fb4d7e', '#ff4d4f']} style={styles.btn}>
+                        {submiting && <ActivityIndicator color="white" />}
+                        <Text style={{fontSize: fontSize || scaleSize(16), color: color || '#fff'}}>{text || '提交'}</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
         )
     }
 }
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: scaleSize(10),
         height: scaleSize(45),
         borderRadius: scaleSize(22.5),
-        backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
+        // backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
         elevation: 2,
         shadowOffset: {width: 0, height: 0},
         shadowColor: '#bbbbb8',
