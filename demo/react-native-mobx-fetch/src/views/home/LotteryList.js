@@ -7,6 +7,7 @@ import {
     View,
     Text,
     Image,
+    TouchableOpacity,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
 import DashLine from '@/components/DashLine'
@@ -67,11 +68,23 @@ export default class LotteryList extends PureComponent {
             (tag - 0) === 1 ? <Image style={styles.lotteryImg} source={require('@/assets/dh/images/home/hot.png')} /> 
             : (tag - 0) === 2 ? <Image style={styles.lotteryImg} source={require('@/assets/dh/images/home/new.png')} /> : <Text style={{ position: 'absolute' }}></Text>;
             return (
-                isshow !== '0' && <View style={styles.lotteryItem} key={lotteryid}>
+                isshow !== '0' && <TouchableOpacity 
+                    activeOpacity={0.75}
+                    style={styles.lotteryItem}
+                    onPress={() => this.goBetPage(lotteryid)}
+                    key={lotteryid}>
                     {newOrHot}
                     <Text style={styles.lotteryText} >{cnname}</Text>
-                </View>
+                </TouchableOpacity>
             )
+        })
+    }
+
+    // 跳转投注页面
+    goBetPage(lotteryid) {
+        this.props.navigator.push({
+            id: 'LotteryBet',
+            lotteryid,
         })
     }
 
@@ -86,7 +99,7 @@ export default class LotteryList extends PureComponent {
 
     
     render() {
-        let { newLotteryList  } = this.props;
+        let { newLotteryList } = this.props;
         return (
             <View style={styles.container}>
                 {newLotteryList && newLotteryList.length > 0 && this.createLottery(newLotteryList) || this.createNoData()}

@@ -1,17 +1,19 @@
 /**
  * 日结报表
  */
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
-    TextInput,
-    Image,
-    Alert,
 } from 'react-native'
-import { Container, Header, Title, Content, Left, Right, Body, Text, Button } from 'native-base'
+import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
 import LodingBtn from '@/components/LodingBtn'
+import RechargeDayKnot from './RechargeDayKnot'
+import ActiveDayKnot from './ActiveDayKnot'
+import LotteryDayKnot from './LotteryDayKnot'
+import AgDayKnot from './AgDayKnot'
+import PtDayKnot from './PtDayKnot'
 
 @inject(({ app }) => {
     return {
@@ -26,21 +28,33 @@ export default class DayKnot extends Component {
     }
 
     render() {
+        const { navigator } = this.props;
 
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_DAYKNOT} onBack={this.onBack}/>
-                <Content>
-                    <Text>日结报表</Text>
-                </Content>
+                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
+                    <Tab heading={i18n.REPORT_TAB_DAYKNOT_RECHARGE}>
+                        <RechargeDayKnot />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_DAYKNOT_ACTIVE}>
+                        <ActiveDayKnot />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_DAYKNOT_LOTTERY}>
+                        <LotteryDayKnot />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_DAYKNOT_AG}>
+                        <AgDayKnot />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_DAYKNOT_PT}>
+                        <PtDayKnot />
+                    </Tab>
+                </Tabs>
             </Container>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5'
-    },
+
 })

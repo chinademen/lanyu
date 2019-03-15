@@ -17,6 +17,9 @@ const router = {
     'NoticeList': require('@/views/notice/NoticeList'),
     'NoticeDetails': require('@/views/notice/NoticeDetails'),
 
+    // 彩票投注页面
+    'LotteryBet': require('@/views/Bet'),
+
     // 开奖号码
     'award': require('@/views/award'),
 
@@ -31,6 +34,7 @@ const router = {
     'Proxy': require('@/views/report/proxy'),
 
     // profile
+
 }
 
 export default router

@@ -1,17 +1,16 @@
 /**
  * 契约分红
  */
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
-    TextInput,
-    Image,
-    Alert,
 } from 'react-native'
-import { Container, Header, Title, Content, Left, Right, Body, Text, Button } from 'native-base'
+import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
-import LodingBtn from '@/components/LodingBtn'
+import ContractBase from './ContractBase'
+import ContractLow from './ContractLow'
+import ContractReport from './ContractReport'
 
 @inject(({ app }) => {
     return {
@@ -26,21 +25,27 @@ export default class Contract extends Component {
     }
 
     render() {
+        const { navigator } = this.props;
 
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_CONTRACT} onBack={this.onBack}/>
-                <Content>
-                    <Text>契约分红</Text>
-                </Content>
+                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
+                    <Tab heading={i18n.REPORT_TAB_CONTRACT_BASE}>
+                        <ContractBase />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_CONTRACT_LOW}>
+                        <ContractLow />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_CONTRACT_REPORT}>
+                        <ContractReport />
+                    </Tab>
+                </Tabs>
             </Container>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5'
-    },
+
 })

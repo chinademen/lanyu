@@ -1,17 +1,16 @@
 /**
  * 账变报表
  */
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
-    TextInput,
-    Image,
-    Alert,
 } from 'react-native'
-import { Container, Header, Title, Content, Left, Right, Body, Text, Button } from 'native-base'
+import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
-import LodingBtn from '@/components/LodingBtn'
+import LotteryChangeReport from './LotteryChangeReport'
+import AgChangeReport from './AgChangeReport'
+import PtChangeReport from './PtChangeReport'
 
 @inject(({ app }) => {
     return {
@@ -26,13 +25,22 @@ export default class AccountChange extends Component {
     }
 
     render() {
+        const { navigator } = this.props;
 
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_ACCOUNTCHANGE} onBack={this.onBack}/>
-                <Content>
-                    <Text>{i18n.REPORT_MODULE_ACCOUNTCHANGE}</Text>
-                </Content>
+                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
+                    <Tab heading={i18n.REPORT_TAB_ACCOUNTCHANGE_LOTTERY}>
+                        <LotteryChangeReport />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_ACCOUNTCHANGE_AG}>
+                        <AgChangeReport />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_ACCOUNTCHANGE_PT}>
+                        <PtChangeReport />
+                    </Tab>
+                </Tabs>
             </Container>
         )
     }

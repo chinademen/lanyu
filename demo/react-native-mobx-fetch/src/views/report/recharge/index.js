@@ -1,17 +1,15 @@
 /**
  * 充提报表
  */
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
-    TextInput,
-    Image,
-    Alert,
 } from 'react-native'
-import { Container, Header, Title, Content, Left, Right, Body, Text, Button } from 'native-base'
+import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
-import LodingBtn from '@/components/LodingBtn'
+import AccountDetails from './AccountDetails'
+import Withdraw from './Withdraw'
 
 @inject(({ app }) => {
     return {
@@ -26,21 +24,24 @@ export default class Recharge extends Component {
     }
 
     render() {
+        const { navigator } = this.props;
 
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_RECHARGE} onBack={this.onBack}/>
-                <Content>
-                    <Text>充提报表</Text>
-                </Content>
+                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
+                    <Tab heading={i18n.REPORT_TAB_RECHARGE_DETAILS}>
+                        <AccountDetails />
+                    </Tab>
+                    <Tab heading={i18n.REPORT_TAB_RECHARGE_RECORD}>
+                        <Withdraw />
+                    </Tab>
+                </Tabs>
             </Container>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5'
-    },
+
 })

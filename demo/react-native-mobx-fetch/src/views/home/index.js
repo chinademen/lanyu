@@ -63,9 +63,9 @@ export default class Home extends Component {
                     <Balance navigator={navigator} />
                    
                     {/* 游戏 */}
-                    <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
+                    <Tabs renderTabBar={() => <ScrollableTab />}>
                         <Tab heading={i18n.HOME_TEXT_LOTTERY}>
-                            <LotteryTab />
+                            <LotteryTab navigator={navigator} />
                         </Tab>
                         <Tab heading={i18n.HOME_TEXT_CHESS}>
                             <ChessTab />

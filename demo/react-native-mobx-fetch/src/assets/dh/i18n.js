@@ -54,6 +54,45 @@ export default {
     REPORT_MODULE_BET: '投注记录',
     REPORT_MODULE_CONTRACT: '契约分红',
     REPORT_MODULE_PROXY: '代理中心',
+    // 总览
+    REPORT_TAB_OVERVIEW_PERSONAL: '个人',
+    REPORT_TAB_OVERVIEW_TEAM: '团队',
 
+    // 彩票盈亏
+    REPORT_TAB_PROFITLOS_LOTTERY: '彩票盈亏',
+    REPORT_TAB_PROFITLOS_AG: 'AG盈亏',
+    REPORT_TAB_PROFITLOS_PT: 'PT盈亏',
+
+    // 账变报表
+    REPORT_TAB_ACCOUNTCHANGE_LOTTERY: '彩票账变',
+    REPORT_TAB_ACCOUNTCHANGE_AG: 'AG账变',
+    REPORT_TAB_ACCOUNTCHANGE_PT: 'PT账变',
+
+    // 日结报表
+    REPORT_TAB_DAYKNOT_RECHARGE: '充提数据',
+    REPORT_TAB_DAYKNOT_ACTIVE: '活跃数据',
+    REPORT_TAB_DAYKNOT_LOTTERY: '彩票',
+    REPORT_TAB_DAYKNOT_AG: 'AG',
+    REPORT_TAB_DAYKNOT_PT: 'PT',
+
+    // 充提报表
+    REPORT_TAB_RECHARGE_DETAILS: '账变明细',
+    REPORT_TAB_RECHARGE_RECORD: '提款记录',
+
+    // 投注记录
+    REPORT_TAB_BET_BUYLOTTERY: '购彩查询',
+    REPORT_TAB_BET_TRACHNUMBER: '追号查询',
+    REPORT_TAB_BET_AG: 'AG查询',
+    REPORT_TAB_BET_PT: 'PT查询',
+    
+    // 契约分红
+    REPORT_TAB_CONTRACT_BASE: '基础契约',
+    REPORT_TAB_CONTRACT_LOW: '下级契约',
+    REPORT_TAB_CONTRACT_REPORT: '契约报表',
+    
+    // 代理中心
+    REPORT_TAB_PROXY_REBATE: '返点总额',
+    REPORT_TAB_PROXY_USERLIST: '用户列表',
+    REPORT_TAB_PROXY_REGIST: '推广注册',
 
 }

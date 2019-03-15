@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
         fontSize: scaleSize(16),
     },
     leftItem: {
+        zIndex: 1,
         position: 'absolute',
         top: !__IOS__ ? 0 : scaleSize(10),
         left: 0,
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
         height: !__IOS__ ? 50 : 44,
         paddingRight: 10,
         justifyContent: 'center',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
     },
     rightIconItem: {
         position: 'absolute',
