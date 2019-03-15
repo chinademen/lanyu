@@ -13,12 +13,12 @@ import NetInfoDecorator from '@/components/NetInfoDecorator'
 import Banner from './Banner'
 import Notice from './Notice'
 import Balance from './Balance'
-import LotteryTab from './lotteryTab'
-import ChessTab from './chessTab'
-import VideoTab from './videoTab'
-import SportTab from './sportTab'
-import ElectronTab from './electronTab'
-import FishTab from './fishTab'
+import LotteryTab from './LotteryTab'
+import ChessTab from './ChessTab'
+import VideoTab from './VideoTab'
+import SportTab from './SportTab'
+import ElectronTab from './ElectronTab'
+import FishTab from './FishTab'
 
 
 @NetInfoDecorator
@@ -40,6 +40,30 @@ export default class Home extends Component {
     componentDidMount() {
         const {  workroomThirdgameList } = this.props; 
         // workroomThirdgameList()
+    }
+
+    // 快速充提
+    FastCharge() {
+        return (
+            <Fab
+                active={this.state.active}
+                direction="up"
+                containerStyle={{ }}
+                style={{ backgroundColor: '#5067FF' }}
+                position="bottomRight"
+                onPress={() => this.setState({ active: !this.state.active })}>
+                <Icon name="share" />
+                <Button style={{ backgroundColor: '#34A34F' }}>
+                <Icon name="logo-whatsapp" />
+                </Button>
+                <Button style={{ backgroundColor: '#3B5998' }}>
+                <Icon name="logo-facebook" />
+                </Button>
+                <Button disabled style={{ backgroundColor: '#DD5144' }}>
+                <Icon name="mail" />
+                </Button>
+            </Fab>
+        )
     }
 
     render() {
@@ -87,24 +111,7 @@ export default class Home extends Component {
                 </ScrollView>
                 
                 {/* 快速充提 */}
-                <Fab
-                    active={this.state.active}
-                    direction="up"
-                    containerStyle={{ }}
-                    style={{ backgroundColor: '#5067FF' }}
-                    position="bottomRight"
-                    onPress={() => this.setState({ active: !this.state.active })}>
-                    <Icon name="share" />
-                    <Button style={{ backgroundColor: '#34A34F' }}>
-                    <Icon name="logo-whatsapp" />
-                    </Button>
-                    <Button style={{ backgroundColor: '#3B5998' }}>
-                    <Icon name="logo-facebook" />
-                    </Button>
-                    <Button disabled style={{ backgroundColor: '#DD5144' }}>
-                    <Icon name="mail" />
-                    </Button>
-                </Fab>
+                {!__IOS__ && this.FastCharge()}
             </View>
         )
     }

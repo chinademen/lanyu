@@ -11,7 +11,7 @@ import {
 import { observer, inject } from 'mobx-react/native'
 import DashLine from '@/components/DashLine'
 import WinnerList from './WinnerList'
-import LotteryList from './lotteryList'
+import LotteryList from './LotteryList'
 
 @inject(({ app }) => {
     return {
