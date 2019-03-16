@@ -18,6 +18,13 @@ class LotteryStore {
         })
     }
 
+    // 第二次进入彩票投注页面
+    @action.bound
+    updateLotteryUrl(lotteryid) {
+        const arr = this.lotteryUrl.split('?');
+        this.lotteryUrl = `${arr[0]}lottery/${lotteryid}?${arr[1]}`;
+    }
+
 }
 
 export default new LotteryStore()

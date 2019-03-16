@@ -17,7 +17,6 @@ import { observer, inject } from 'mobx-react/native'
 export default class Award extends PureComponent {
     render() {
         const { awardUrl } = this.props;
-        alert(awardUrl)
         return (
             <View style={{flex: 1}}>
                 <WebView

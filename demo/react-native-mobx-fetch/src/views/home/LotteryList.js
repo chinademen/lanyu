@@ -19,7 +19,7 @@ import DashLine from '@/components/DashLine'
         appSkin: app.appSkin,
         newLotteryList: homeStore.newLotteryList,
         getUserLotteryList: homeStore.getUserLotteryList,
-        enterLottery: lotteryStore.enterLottery,
+        updateLotteryUrl: lotteryStore.updateLotteryUrl,
     }
 })
 @observer
@@ -89,7 +89,7 @@ export default class LotteryList extends PureComponent {
 
     // 跳转投注页面
     goBetPage(lotteryid) {
-        this.props.enterLottery({ lotteryid })
+        this.props.updateLotteryUrl(lotteryid)
         this.props.navigator.push({
             id: 'LotteryBet',
             sceneConfig: {
