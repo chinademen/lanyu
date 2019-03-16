@@ -3,9 +3,11 @@
  */
 import { Dimensions, Platform, PixelRatio } from 'react-native'
 import i18n from '@/assets/dh/i18n'
+import skin from '@/assets/dh/skin'
 
 global.projectName = 'dh';
 global.i18n = i18n;
+global.skin = skin.red;
 
 global.iphoneX = false;
 global.__IOS__ = false;

@@ -8,9 +8,16 @@ import {
 import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
+import CommonTab from '@/components/CommonTab'
 import LotteryChangeReport from './LotteryChangeReport'
 import AgChangeReport from './AgChangeReport'
 import PtChangeReport from './PtChangeReport'
+
+const tabs = [
+    { name: i18n.REPORT_TAB_ACCOUNTCHANGE_LOTTERY, component: LotteryChangeReport },
+    { name: i18n.REPORT_TAB_ACCOUNTCHANGE_AG, component: AgChangeReport },
+    { name: i18n.REPORT_TAB_ACCOUNTCHANGE_PT, component: PtChangeReport },
+];
 
 @inject(({ app }) => {
     return {
@@ -30,17 +37,7 @@ export default class AccountChange extends Component {
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_ACCOUNTCHANGE} onBack={this.onBack}/>
-                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
-                    <Tab heading={i18n.REPORT_TAB_ACCOUNTCHANGE_LOTTERY}>
-                        <LotteryChangeReport />
-                    </Tab>
-                    <Tab heading={i18n.REPORT_TAB_ACCOUNTCHANGE_AG}>
-                        <AgChangeReport />
-                    </Tab>
-                    <Tab heading={i18n.REPORT_TAB_ACCOUNTCHANGE_PT}>
-                        <PtChangeReport />
-                    </Tab>
-                </Tabs>
+                <CommonTab tabs={tabs} navigator={navigator} />
             </Container>
         )
     }

@@ -26,9 +26,12 @@ export default {
         getUserLotteryList: '/lottery/get-user-lottery-list',           // 获取彩种列表
         workroomThirdgameList: '/thirdgame/workroom-thirdgame-list',    // 第三方游戏列表
     },
+    // 彩票
+    lottery: {
+        enterLottery: '/lottery/enter-lottery',             // 彩票投注页面入口
+    },
     // 用户相关
     userInfo: {
-        enterLottery: '/lottery/enter-lottery',             // 彩种入口
         workroomBankList: '/user/workroom-bank-list',       // 银行列表
         districtList :'user/district-list',                 // 地区列表
         bankList: '/user/bank-list',                        // 用户绑定的银行卡列表

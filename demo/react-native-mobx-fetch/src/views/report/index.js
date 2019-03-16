@@ -18,13 +18,17 @@ const list = [
     { key: 'profitloss', title: i18n.REPORT_MODULE_PROFITLOSS, icon: 'item_top_yk', page: 'ProfitLoss' },
     { key: 'accountchange', title: i18n.REPORT_MODULE_ACCOUNTCHANGE, icon: 'item_top_gg', page: 'AccountChange' },
     { key: 'dayknot', title: i18n.REPORT_MODULE_DAYKNOT, icon: 'item_top_bank', page: 'DayKnot' },
-    { key: 'recharge', title: i18n.REPORT_MODULE_RECHARGE, icon: 'item_top_ct', page: 'Recharge' },
+    { key: 'recharge', title: i18n.REPORT_MODULE_RECHARGE, icon: 'item_top_yk', page: 'Recharge' },
     { key: 'bet', title: i18n.REPORT_MODULE_BET, icon: 'item_top_tz', page: 'Bet' },
     { key: 'contract', title: i18n.REPORT_MODULE_CONTRACT, icon: 'item_top_xg', page: 'Contract' },
     { key: 'proxy', title: i18n.REPORT_MODULE_PROXY, icon: 'item_top_dl', page: 'Proxy' },
 ];
 
-@inject('app')
+@inject(({ app }) => {
+    return {
+        appSkin: app.appSkin
+    }
+})
 @observer
 export default class Report extends Component {
 
@@ -33,6 +37,7 @@ export default class Report extends Component {
     // 报表tab列表渲染
     reportList = () => {
         return list.map(item => {
+            const { fill } = this.props.appSkin;
             let { key, title, icon, page } = item;
             return (
                 <TouchableOpacity
@@ -42,7 +47,7 @@ export default class Report extends Component {
                     key={key}
                 >
                     <View style={styles.svgBox}>
-                        <Svg icon={icon} size="20" />
+                        <Svg icon={icon} size="20" color={fill} />
                     </View>
                     <View style={[styles.cellStyle]}>
                         <Text style={{color: 'gray'}}>{title}</Text>
@@ -70,7 +75,7 @@ export default class Report extends Component {
                 <LinearGradient
                     start={{ x: 0.2, y: 0.2 }}
                     end={{ x: 0.8, y: 0.8 }}
-                    colors={['#ff6830', '#f8486f']}
+                    colors={this.props.appSkin.background}
                     style={styles.header}>
                     <Text style={styles.headerText}>{i18n.REPORT_TITLE_REPORT_SERCH}</Text>
                 </LinearGradient>

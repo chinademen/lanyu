@@ -14,12 +14,12 @@ import Svg from '@/components/Svg'
 export default class TabBar extends Component {
 
     render() {
-        const { activeTab, selectedTabIconNames, tabIconNames, tabNames, goToPage } = this.props
+        const { appSkin, activeTab, selectedTabIconNames, tabIconNames, tabNames, goToPage } = this.props
         
         return (
             <View style={[styles.tabs, {borderTopWidth: gScreen.onePix}]}>
                 {this.props.tabs.map((tab, i) => {
-                    let color = activeTab == i ? 'red' : 'gray';
+                    let color = activeTab == i ? appSkin.navbarText : 'gray';
                     let icon = activeTab == i ? selectedTabIconNames[i] : tabIconNames[i];
                
                     return (
@@ -31,7 +31,7 @@ export default class TabBar extends Component {
                         >
                             <View style={styles.tabItem}>
                                 {/* <Image style={styles.icon} source={icon}/> */}
-                                <Svg icon={icon} size="22" />
+                                <Svg icon={icon} size="22" color={appSkin.fill} />
                                 <Text style={{color: color, fontSize: 12}}>{tabNames[i]}</Text>
                             </View>
                         </TouchableOpacity>

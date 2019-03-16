@@ -2,7 +2,7 @@ import request from '@/axios'
 import api from '@/config/api'
 
 // 登录
-export function userLogin(params) {
+export function userLogin(params = {}) {
     return request(api.login.userLogin, {
         method: 'POST',
         data: params,
@@ -12,7 +12,7 @@ export function userLogin(params) {
 }
 
 // 忘记密码1 ---> 账号验证
-export function userCheckFundPassword(params) {
+export function userCheckFundPassword(params = {}) {
     return request(api.login.userCheckFundPassword, {
         method: 'POST',
         data: params,
@@ -22,7 +22,7 @@ export function userCheckFundPassword(params) {
 }
 
 // 忘记密码 ---> 密码重置
-export function userFindPassword(params) {
+export function userFindPassword(params = {}) {
     return request(api.login.userFindPassword, {
         method: 'POST',
         data: params,

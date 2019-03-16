@@ -8,9 +8,16 @@ import {
 import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
+import CommonTab from '@/components/CommonTab'
 import ContractBase from './ContractBase'
 import ContractLow from './ContractLow'
 import ContractReport from './ContractReport'
+
+const tabs = [
+    { name: i18n.REPORT_TAB_CONTRACT_BASE, component: ContractBase },
+    { name: i18n.REPORT_TAB_CONTRACT_LOW, component: ContractLow },
+    { name: i18n.REPORT_TAB_CONTRACT_REPORT, component: ContractReport },
+];
 
 @inject(({ app }) => {
     return {
@@ -30,17 +37,7 @@ export default class Contract extends Component {
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_CONTRACT} onBack={this.onBack}/>
-                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
-                    <Tab heading={i18n.REPORT_TAB_CONTRACT_BASE}>
-                        <ContractBase />
-                    </Tab>
-                    <Tab heading={i18n.REPORT_TAB_CONTRACT_LOW}>
-                        <ContractLow />
-                    </Tab>
-                    <Tab heading={i18n.REPORT_TAB_CONTRACT_REPORT}>
-                        <ContractReport />
-                    </Tab>
-                </Tabs>
+                <CommonTab tabs={tabs} navigator={navigator} />
             </Container>
         )
     }

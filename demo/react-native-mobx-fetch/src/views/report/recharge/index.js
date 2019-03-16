@@ -8,8 +8,14 @@ import {
 import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
+import CommonTab from '@/components/CommonTab'
 import AccountDetails from './AccountDetails'
 import Withdraw from './Withdraw'
+
+const tabs = [
+    { name: i18n.REPORT_TAB_RECHARGE_DETAILS, component: AccountDetails },
+    { name: i18n.REPORT_TAB_RECHARGE_RECORD, component: Withdraw },
+];
 
 @inject(({ app }) => {
     return {
@@ -29,14 +35,7 @@ export default class Recharge extends Component {
         return (
             <Container>
                 <CommonHeader title={i18n.REPORT_MODULE_RECHARGE} onBack={this.onBack}/>
-                <Tabs renderTabBar={() => <ScrollableTab navigator={navigator} />}>
-                    <Tab heading={i18n.REPORT_TAB_RECHARGE_DETAILS}>
-                        <AccountDetails />
-                    </Tab>
-                    <Tab heading={i18n.REPORT_TAB_RECHARGE_RECORD}>
-                        <Withdraw />
-                    </Tab>
-                </Tabs>
+                <CommonTab tabs={tabs} navigator={navigator} />
             </Container>
         )
     }

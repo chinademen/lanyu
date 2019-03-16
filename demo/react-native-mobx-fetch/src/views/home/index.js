@@ -7,9 +7,10 @@ import {
     View,
     ScrollView,
 } from 'react-native'
-import { Tab, Tabs, ScrollableTab } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
+import CommonTab from '@/components/CommonTab'
+import ChangeSkin from '@/components/ChangeSkin'
 import Banner from './Banner'
 import Notice from './Notice'
 import Balance from './Balance'
@@ -20,25 +21,29 @@ import SportTab from './SportTab'
 import ElectronTab from './ElectronTab'
 import FishTab from './FishTab'
 
+const tabs = [
+    { name: i18n.HOME_TEXT_LOTTERY, component: LotteryTab },
+    { name: i18n.HOME_TEXT_CHESS, component: ChessTab },
+    { name: i18n.HOME_TEXT_VIDEO, component: VideoTab },
+    { name: i18n.HOME_TEXT_SPORT, component: SportTab },
+    { name: i18n.HOME_TEXT_ELECTRON, component: ElectronTab },
+    { name: i18n.HOME_TEXT_FISH, component: FishTab },
+];
 
 @NetInfoDecorator
-@inject(({ homeStore }) => {
+@inject(({ homeStore, lotteryStore }) => {
     return {
         thirdGameList: homeStore.thirdGameList,
         workroomThirdgameList: homeStore.workroomThirdgameList,
+        enterLottery: lotteryStore.enterLottery
     }
 })
 @observer
 export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            active: false,
-        }
-    }
 
     componentDidMount() {
-        const {  workroomThirdgameList } = this.props; 
+        const {  workroomThirdgameList, enterLottery } = this.props;
+        enterLottery()
         // workroomThirdgameList()
     }
 
@@ -63,29 +68,10 @@ export default class Home extends Component {
                     <Balance navigator={navigator} />
                    
                     {/* 游戏 */}
-                    <Tabs renderTabBar={() => <ScrollableTab />}>
-                        <Tab heading={i18n.HOME_TEXT_LOTTERY}>
-                            <LotteryTab navigator={navigator} />
-                        </Tab>
-                        <Tab heading={i18n.HOME_TEXT_CHESS}>
-                            <ChessTab />
-                        </Tab>
-                        <Tab heading={i18n.HOME_TEXT_VIDEO}>
-                            <VideoTab />
-                        </Tab>
-                        <Tab heading={i18n.HOME_TEXT_SPORT}>
-                            <SportTab />
-                        </Tab>
-                        <Tab heading={i18n.HOME_TEXT_ELECTRON}>
-                            <ElectronTab />
-                        </Tab>
-                        <Tab heading={i18n.HOME_TEXT_FISH}>
-                            <FishTab />
-                        </Tab>
-                    </Tabs>
-                  
+                    <CommonTab tabs={tabs} navigator={navigator} />
                 </ScrollView>
-
+                {/* 一键换肤 */}
+                <ChangeSkin />
             </View>
         )
     }

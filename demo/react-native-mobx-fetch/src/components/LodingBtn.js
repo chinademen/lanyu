@@ -32,7 +32,7 @@ export default class LodingBtn extends PureComponent {
                     style={[style, { opacity: opacity }]}
                     onPress={this.onPressThrottle}
                 >
-                    <LinearGradient colors={['#fb4d7e', '#ff4d4f']} style={styles.btn}>
+                    <LinearGradient colors={skin.background} style={styles.btn}>
                         {submiting && <ActivityIndicator color="white" />}
                         <Text style={{fontSize: fontSize || scaleSize(16), color: color || '#fff'}}>{text || '提交'}</Text>
                     </LinearGradient>

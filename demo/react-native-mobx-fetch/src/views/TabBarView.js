@@ -15,22 +15,28 @@ const tabTitles = [i18n.COMMON_TEXT_LOTTERY, i18n.COMMON_TEXT_WIN_NUMBER, i18n.C
 const tabIcons = ['hotlottery_nor', 'kaijiang_nor', 'stats_w', 'my_nor'];
 const tabSelectedIcon = ['hotlottery_press', 'kaijiang_press', 'stats_b', 'my_press'];
 
-@inject('app')
+@inject(({ app }) => {
+    return {
+        updateBarStyle: app.updateBarStyle,
+        appSkin: app.appSkin,
+    }
+})
 @observer
 export default class TabBarView extends Component {
 
     onChangeTab = ({i}) => {
-        const {app} = this.props
+        const { updateBarStyle } = this.props;
         if (i === 1) {
-            app.updateBarStyle('default')
+            updateBarStyle('default')
         } else {
-            app.updateBarStyle('light-content')
+            updateBarStyle('light-content')
         }
     }
 
     renderTabBar = () => {
         return (
             <TabBar
+                appSkin={this.props.appSkin}
                 tabNames={tabTitles}
                 tabIconNames={tabIcons}
                 selectedTabIconNames={tabSelectedIcon}

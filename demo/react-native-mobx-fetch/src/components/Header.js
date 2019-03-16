@@ -70,7 +70,7 @@ export default class Header extends Component {
             <LinearGradient
                 start={{ x: 0.2, y: 0.2 }}
                 end={{ x: 0.8, y: 0.8 }}
-                colors={['#ff6830', '#f8486f']}
+                colors={skin.background}
                 style={[styles.header, style]}
             >
                 {showGoBack && <LeftItem onPress={onBack}/>}

@@ -10,12 +10,16 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
+import {Navigator} from 'react-native-deprecated-custom-components'
+import LinearGradient from 'react-native-linear-gradient'
 import DashLine from '@/components/DashLine'
 
-@inject(({ homeStore }) => {
+@inject(({ app, homeStore, lotteryStore }) => {
     return {
+        appSkin: app.appSkin,
         newLotteryList: homeStore.newLotteryList,
         getUserLotteryList: homeStore.getUserLotteryList,
+        enterLottery: lotteryStore.enterLottery,
     }
 })
 @observer
@@ -62,19 +66,22 @@ export default class LotteryList extends PureComponent {
 
     // 列表
     createLotteryList = (list) => {
+        const { background } = this.props.appSkin;
+        const { lotteryImg, lotteryItem, lotteryText } = styles;
         return list.map((item, index) => {
             const { isshow, cnname, lotteryid, tag } = item;
             let newOrHot = 
-            (tag - 0) === 1 ? <Image style={styles.lotteryImg} source={require('@/assets/dh/images/home/hot.png')} /> 
-            : (tag - 0) === 2 ? <Image style={styles.lotteryImg} source={require('@/assets/dh/images/home/new.png')} /> : <Text style={{ position: 'absolute' }}></Text>;
+            (tag - 0) === 1 ? <Image style={lotteryImg} source={require('@/assets/dh/images/home/hot.png')} /> 
+            : (tag - 0) === 2 ? <Image style={lotteryImg} source={require('@/assets/dh/images/home/new.png')} /> : <Text style={{ position: 'absolute' }}></Text>;
             return (
                 isshow !== '0' && <TouchableOpacity 
                     activeOpacity={0.75}
-                    style={styles.lotteryItem}
                     onPress={() => this.goBetPage(lotteryid)}
                     key={lotteryid}>
-                    {newOrHot}
-                    <Text style={styles.lotteryText} >{cnname}</Text>
+                    <LinearGradient colors={background} style={lotteryItem}>
+                        {newOrHot}
+                        <Text style={lotteryText} >{cnname}</Text>
+                    </LinearGradient>
                 </TouchableOpacity>
             )
         })
@@ -82,9 +89,13 @@ export default class LotteryList extends PureComponent {
 
     // 跳转投注页面
     goBetPage(lotteryid) {
+        this.props.enterLottery({ lotteryid })
         this.props.navigator.push({
             id: 'LotteryBet',
-            lotteryid,
+            sceneConfig: {
+                ...Navigator.SceneConfigs.FloatFromBottom,
+                gestures: {}    // 禁用左滑返回手势
+            }
         })
     }
 
@@ -156,11 +167,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: scaleSize(46),
         margin: gScreen.width * 0.0266,
-        borderWidth: scaleSize(1),
-        borderColor: '#ec5355',
+        // borderWidth: scaleSize(1),
+        // borderColor: '#ec5355',
         borderRadius: scaleSize(9),
         overflow: 'hidden',
-        backgroundColor: '#f5f3ff',
         elevation: 2,
         shadowOffset: {width: 0, height: 0},
         shadowColor: '#c1d6f8',
@@ -170,7 +180,7 @@ const styles = StyleSheet.create({
     lotteryText: {
         fontSize: scaleSize(16),
         fontWeight: 'bold',
-        color: '#b02534',
+        color: '#fff',
     },
     lotteryImg: {
         position: 'absolute',

@@ -3,28 +3,29 @@
  */
 import React, { PureComponent } from 'react'
 import {
-    StyleSheet,
     View,
-    Text,
-    Image,
-    TouchableOpacity,
+    WebView,
 } from 'react-native'
-import { toJS } from 'mobx'
 import { observer, inject } from 'mobx-react/native'
-import ScrollVertical from '@/components/ScrollVertical'
 
-@inject(({ homeStore }) => {
+@inject(({ lotteryStore }) => {
     return {
-        noticeList: homeStore.noticeList,
-        getNotice: homeStore.getNotice,
+        awardUrl: lotteryStore.awardUrl,
     }
 })
 @observer
 export default class Award extends PureComponent {
     render() {
+        const { awardUrl } = this.props;
+        alert(awardUrl)
         return (
-            <View>
-                <Text>开奖详情</Text>
+            <View style={{flex: 1}}>
+                <WebView
+                    source={{uri: awardUrl}}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    scalesPageToFit={true}
+                />
             </View>
         )
     }

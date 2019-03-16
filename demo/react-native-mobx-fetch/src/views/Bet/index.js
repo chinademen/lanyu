@@ -5,19 +5,15 @@ import React, { PureComponent } from 'react'
 import {
     StyleSheet,
     View,
-    Text,
     Image,
     TouchableOpacity,
+    WebView,
 } from 'react-native'
-import { toJS } from 'mobx'
 import { observer, inject } from 'mobx-react/native'
-import ScrollVertical from '@/components/ScrollVertical'
-import CommonHeader from '@/components/Header'
 
-@inject(({ homeStore }) => {
+@inject(({ lotteryStore }) => {
     return {
-        noticeList: homeStore.noticeList,
-        getNotice: homeStore.getNotice,
+        lotteryUrl: lotteryStore.lotteryUrl
     }
 })
 @observer
@@ -27,13 +23,41 @@ export default class LotteryBet extends PureComponent {
     }
 
     render() {
-        // alert(JSON.stringify(this.props.navigator.state.routeStack[1].lotteryid))
+        const { lotteryUrl } = this.props;
+
         return (
-            <View>
-                <CommonHeader title={'投注页面'} onBack={this.onBack}/>
-                <Text>{'投注页面'}</Text>
-                <Text>{this.props.navigator.state.routeStack[1].lotteryid || '预加载'}</Text>
+            <View style={{flex: 1}}>
+                <TouchableOpacity
+                    activeOpacity={0.75}
+                    style={styles.leftItem}
+                    onPress={this.onBack}
+                >
+                    <Image style={{width: scaleSize(18), height: scaleSize(18)}}
+                        source={require('@/assets/dh/images/ic_back_dark.png')}
+                        resizeMode={"contain"}
+                    />
+                </TouchableOpacity>
+                <WebView
+                    source={{uri: lotteryUrl}}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    scalesPageToFit={true}
+                />
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    leftItem: {
+        zIndex: 1,
+        position: 'absolute',
+        // top: !__IOS__ ? 0 : scaleSize(5),
+        left: 0,
+        height: !__IOS__ ? scaleSize(37) : scaleSize(32),
+        width: scaleSize(40),
+        paddingLeft: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
