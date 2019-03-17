@@ -5,13 +5,14 @@ import React, { PureComponent } from 'react';
 import {
     StyleSheet,
 } from 'react-native'
-import { Fab, Icon, Button } from 'native-base'
+import { Fab, Button } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
 import skinStyle from '@/assets/dh/skin'
 import Svg from '@/components/Svg'
 
 @inject(({ app }) => {
     return {
+        appSkin: app.appSkin,
         changeSkin: app.changeSkin
     }
 })
@@ -32,17 +33,19 @@ export default class ChangeSkin extends PureComponent {
     }
 
     render() {
+        const { appSkin } = this.props;
 
         return(
             <Fab
                 active={this.state.active}
                 direction="up"
                 containerStyle={{ }}
-                style={{ backgroundColor: '#5067FF' }}
+                style={{ backgroundColor: appSkin.skinbg }}
                 position="bottomRight"
                 onPress={() => this.setState({ active: !this.state.active })}
             >
-                <Icon name="share" />
+                {/* <Icon name="share" /> */}
+                <Svg icon={appSkin.icon} size="30" />
                 <Button style={{ backgroundColor: '#D82741' }} onPress={() => this.changeAllSkin(skinStyle.red)}>
                     <Svg icon={'skin_red'} size="30" />
                 </Button>

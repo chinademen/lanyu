@@ -11,6 +11,8 @@ export default {
     LOGIN_FORGET_PASSWORD: '忘记密码？',
     LOGIN_LOGIN_BTN: '登录',
     LOGIN_LOGINING_BTN: '登录中...',
+    LOGIN_INPUT_YOUR_ACCOUNT: '请输入您的账号',
+    LOGIN_INPUT_YOUR_PASSWORD: '账号您的密码',
     LOGIN_INPUT_ACCOUNT: '请输入账号',
     LOGIN_INCORRECT_ACCOUNT: '账号不正确',
     LOGIN_INPUT_PASSWORD: '请输入密码',
@@ -31,6 +33,7 @@ export default {
     FORGET_CHECK_NUMBER_LETTER: '请输入6-16位数字+字母组合',
 
     // 首页
+    HOME_TITLE_HOMEPAGE: '首页',
     HOME_NOTICE_DETAILS: '公告详情',
     HOME_TEXT_BALANCE: '余额：',
     HOME_MONEY_YUAN: '元',

@@ -1,18 +1,5 @@
 // 皮肤
 export default {
-    // 淡蓝套装
-    blue: {
-        // 渐变背景
-        background: ['#81a8cb', '#4477FF'],
-        // 选项卡 背景，文字，被选中背景
-        tab: '#4477FF',
-        text: '#fff',
-        active: '#4477FF',
-        // svg颜色
-        fill: '#4477FF',
-        // 导航栏文字
-        navbarText: '#4477FF'
-    },
     // 艳红套装
     red: {
         // 渐变背景
@@ -22,9 +9,26 @@ export default {
         text: '#fff',
         active: '#D82741',
         // svg颜色
+        icon: 'skin_red',
         fill: '#D82741',
+        skinbg: '#D82741',
         // 导航栏文字
         navbarText: '#D82741'
+    },
+    // 天蓝套装
+    blue: {
+        // 渐变背景
+        background: ['#81a8cb', '#4477FF'],
+        // 选项卡 背景，文字，被选中背景
+        tab: '#4477FF',
+        text: '#fff',
+        active: '#4477FF',
+        // svg 名字，颜色，背景颜色
+        icon: 'skin_blue',
+        fill: '#4477FF',
+        skinbg: '#4477FF',
+        // 导航栏文字
+        navbarText: '#4477FF'
     },
     // 暗黑套装
     black: {
@@ -35,7 +39,9 @@ export default {
         text: '#fff',
         active: '#141414',
         // svg颜色
+        icon: 'skin_black',
         fill: '#141414',
+        skinbg: '#fff',
         // 导航栏文字
         navbarText: '#141414'
     },
@@ -48,7 +54,9 @@ export default {
         text: '#fff',
         active: '#f09c15',
         // svg颜色
+        icon: 'skin_gold',
         fill: '#f09c15',
+        skinbg: '#f09c15',
         // 导航栏文字
         navbarText: '#f09c15'
     },
@@ -61,7 +69,9 @@ export default {
         text: '#fff',
         active: '#428739',
         // svg颜色
+        icon: 'skin_green',
         fill: '#428739',
+        skinbg: '#428739',
         // 导航栏文字
         navbarText: '#428739'
     },
@@ -74,7 +84,9 @@ export default {
         text: '#fff',
         active: '#c5c5c5',
         // svg颜色
+        icon: 'skin_silver',
         fill: '#c5c5c5',
+        skinbg: '#000',
         // 导航栏文字
         navbarText: '#c5c5c5'
     },
@@ -87,7 +99,9 @@ export default {
         text: '#fff',
         active: '#6F50E7',
         // svg颜色
+        icon: 'skin_purple',
         fill: '#6F50E7',
+        skinbg: '#6F50E7',
         // 导航栏文字
         navbarText: '#6F50E7'
     }

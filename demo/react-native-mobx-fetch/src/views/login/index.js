@@ -88,8 +88,6 @@ export default class Login extends PureComponent {
     // 忘记密码
     forgetPassword = () => {
         this.setState({
-            username: '',
-            password: '', 
             usernameError: '',
             passwordError: ''
         });
@@ -178,7 +176,7 @@ export default class Login extends PureComponent {
                     />
                     <TextInput 
                         style={styles.input} 
-                        placeholder="请输入您的账号"
+                        placeholder={i18n.LOGIN_INPUT_YOUR_ACCOUNT}
                         maxLength={16}
                         onChangeText={val => this.handleInput(val, 'username')}
                         value={username}
@@ -186,7 +184,7 @@ export default class Login extends PureComponent {
                     <Text style={styles.error}>{usernameError}</Text>
                     <TextInput 
                         style={styles.input}
-                        placeholder="请输入您的密码"
+                        placeholder={i18n.LOGIN_INPUT_YOUR_PASSWORD}
                         maxLength={16}
                         secureTextEntry
                         onChangeText={val => this.handleInput(val, 'password')}

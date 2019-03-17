@@ -36,7 +36,6 @@ export default class LotteryTab extends PureComponent {
                 ></DashLine>
                 {/* 时时彩 分分彩 11选5 低频彩  PK10/赛马 其他 */}
                 <LotteryList navigator={navigator} />
-
             </View>
         )
     }

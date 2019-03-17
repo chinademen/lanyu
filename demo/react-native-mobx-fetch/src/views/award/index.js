@@ -20,7 +20,11 @@ export default class Award extends PureComponent {
         return (
             <View style={{flex: 1}}>
                 <WebView
+                    style={{ width:'100%', height:'100%' }}
                     source={{uri: awardUrl}}
+                    // renderLoading={???loading}
+                    // renderError={????}
+                    startInLoadingState={true}
                     javaScriptEnabled={true}
                     domStorageEnabled={true}
                     scalesPageToFit={true}

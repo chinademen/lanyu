@@ -31,9 +31,6 @@ const list = [
 })
 @observer
 export default class Report extends Component {
-
-    _onPressStaticCell = title => alert(title)
-
     // 报表tab列表渲染
     reportList = () => {
         return list.map(item => {

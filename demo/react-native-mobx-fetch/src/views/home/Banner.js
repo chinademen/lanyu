@@ -32,18 +32,26 @@ export default class Banner extends PureComponent {
             if (bannerList && bannerList.length > 0) {
                 // 网络获取
                 return (
-                    <Swiper containerStyle={styles.headerContainer} showsPagination={false}>
+                    <Swiper containerStyle={styles.headerContainer} 
+                            showsPagination={false}
+                            autoplay={true}
+                            autoplayTimeout={4}
+                    >
                         {toJS(bannerList).map((a, i) => {
-                            return <Image style={styles.headerContainer} source={{ uri: a.url }}></Image>;
+                            return <Image style={styles.headerContainer} source={{ uri: a.url }} resizeMode={'stretch'}></Image>;
                         })}
                     </Swiper>
                 )
             } else {
                 // 本地获取
                 return (
-                    <Swiper containerStyle={styles.headerContainer} showsPagination={false}>
+                    <Swiper containerStyle={styles.headerContainer} 
+                            showsPagination={false}
+                            autoplay={true}
+                            autoplayTimeout={4}   
+                    >
                         {imgSrc.bannerSrc.map((a, i) => {
-                            return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
+                            return <Image style={styles.slide} source={a} resizeMode={'stretch'}></Image>;
                         })}
                     </Swiper>
                 )
@@ -52,18 +60,26 @@ export default class Banner extends PureComponent {
             if (bannerList && bannerList.length > 0) {
                 // 网络获取
                 return (
-                    <Swiper style={styles.headerContainer} showsPagination={false}>
+                    <Swiper style={styles.headerContainer} 
+                            showsPagination={false}
+                            autoplay={true}
+                            autoplayTimeout={4}
+                    >
                         {toJS(bannerList).map((a, i) => {
-                            return <Image style={styles.headerContainer} source={{ uri: a.url }}></Image>;
+                            return <Image style={styles.headerContainer} source={{ uri: a.url }} resizeMode={'stretch'}></Image>;
                         })}
                     </Swiper>
                 )
             } else {
                 // 本地获取
                 return (
-                    <Swiper style={styles.headerContainer} showsPagination={false}>
+                    <Swiper style={styles.headerContainer} 
+                            showsPagination={false}
+                            autoplay={true}
+                            autoplayTimeout={4}   
+                    >
                         {imgSrc.bannerSrc.map((a, i) => {
-                            return <ImageBackground style={styles.slide} source={a}></ImageBackground>;
+                            return <Image style={styles.slide} source={a} resizeMode={'stretch'}></Image>;
                         })}
                     </Swiper>
                 )
@@ -75,15 +91,17 @@ export default class Banner extends PureComponent {
 
 const styles = StyleSheet.create({
     headerContainer: {
+        flex: 1,
         width: gScreen.width,
-        height: scaleSize(200),
-        alignItems: 'center'
+        height: scaleSize(gScreen.width * 0.4),
+        alignItems: 'center',
+        justifyContent:'center',
     },
     slide: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         width: gScreen.width,
-        height: scaleSize(200),
+        height: scaleSize(gScreen.width * 0.4),
     },
 })

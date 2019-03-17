@@ -46,7 +46,7 @@ export default class App extends Component {
                 {/* 设备顶部状态栏组件 */}
                 <StatusBar 
                     barStyle={barStyle} 
-                    animated  
+                    animated={'slide'}
                     hidden={false}
                     translucent={true}
                 />

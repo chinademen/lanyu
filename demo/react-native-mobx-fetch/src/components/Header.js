@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         fontSize: scaleSize(16),
     },
     leftItem: {
-        zIndex: 1,
+        zIndex: 999,
         position: 'absolute',
         top: !__IOS__ ? 0 : scaleSize(10),
         left: 0,

@@ -2,7 +2,6 @@
  * 底部导航
  */
 import React, { Component } from 'react'
-import { View } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import Feed from '@/views/award'

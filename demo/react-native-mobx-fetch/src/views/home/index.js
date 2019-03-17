@@ -5,9 +5,11 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
+    Text,
     ScrollView,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
+import LinearGradient from 'react-native-linear-gradient'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
 import CommonTab from '@/components/CommonTab'
 import ChangeSkin from '@/components/ChangeSkin'
@@ -31,8 +33,9 @@ const tabs = [
 ];
 
 @NetInfoDecorator
-@inject(({ homeStore, lotteryStore }) => {
+@inject(({ app, homeStore, lotteryStore }) => {
     return {
+        appSkin: app.appSkin,
         thirdGameList: homeStore.thirdGameList,
         workroomThirdgameList: homeStore.workroomThirdgameList,
         enterLottery: lotteryStore.enterLottery
@@ -48,10 +51,17 @@ export default class Home extends Component {
     }
 
     render() {
-        let { navigator } = this.props;
+        let { appSkin, navigator } = this.props;
         
         return (
             <View style={{flex: 1}}>
+                <LinearGradient
+                    start={{ x: 0.2, y: 0.2 }}
+                    end={{ x: 0.8, y: 0.8 }}
+                    colors={appSkin.background}
+                    style={styles.header}>
+                    <Text style={styles.headerText}>{i18n.HOME_TITLE_HOMEPAGE}</Text>
+                </LinearGradient>
                 <ScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
@@ -66,7 +76,7 @@ export default class Home extends Component {
                     <Notice navigator={navigator} />
                     {/* 余额 */}
                     <Balance navigator={navigator} />
-                   
+                
                     {/* 游戏 */}
                     <CommonTab tabs={tabs} navigator={navigator} />
                 </ScrollView>
@@ -78,5 +88,16 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-  
+    header: {
+        height: scaleSize(37.5),
+        width: gScreen.width,
+        marginTop: __IOS__ ? 20 : 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fb5458'
+    },
+    headerText: {
+        color: 'white', 
+        fontSize: scaleSize(16)
+    },
 })
