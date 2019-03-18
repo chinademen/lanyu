@@ -23,12 +23,12 @@ export default class FishTab extends PureComponent {
     }
 
     render() {
-        const { background } = this.props.appSkin;
+        const { pageBackground, background } = this.props.appSkin;
         const { fishItem } = styles;
 
         return (
             <View style={{flex: 1}}>
-                <View style={styles.fishList}>
+                <View style={[styles.fishList, { backgroundColor: pageBackground }]}>
                     <TouchableOpacity 
                         activeOpacity={0.75}
                         onPress={() => this.goBetPage()}>
@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         width: gScreen.width  * 1,
-        paddingTop: scaleSize(10)
-
+        paddingTop: scaleSize(10),
+        // backgroundColor: '#322b33'
     },
     fishItem: {
         width: gScreen.width * 0.28,

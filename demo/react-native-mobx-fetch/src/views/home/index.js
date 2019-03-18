@@ -15,6 +15,7 @@ import CommonTab from '@/components/CommonTab'
 import ChangeSkin from '@/components/ChangeSkin'
 import Banner from './Banner'
 import Notice from './Notice'
+import WinnerList from './WinnerList'
 import Balance from './Balance'
 import LotteryTab from './LotteryTab'
 import ChessTab from './ChessTab'
@@ -22,6 +23,7 @@ import VideoTab from './VideoTab'
 import SportTab from './SportTab'
 import ElectronTab from './ElectronTab'
 import FishTab from './FishTab'
+import Svg from '@/components/Svg'
 
 const tabs = [
     { name: i18n.HOME_TEXT_LOTTERY, component: LotteryTab },
@@ -63,23 +65,32 @@ export default class Home extends Component {
                     style={styles.header}>
                     <Text style={styles.headerText}>{i18n.HOME_TITLE_HOMEPAGE}</Text>
                 </LinearGradient> */}
+               
                 <ScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
                     automaticallyAdjustContentInsets={false}
                     removeClippedSubviews
                     style={{ width: gScreen.width, height: gScreen.height }}
-                    contentContainerStyle={{ alignItems: 'center', backgroundColor: '#fff', paddingBottom: 10 }}
+                    contentContainerStyle={{ alignItems: 'center', backgroundColor: appSkin.pageBackground, paddingBottom: 10 }}
                 >
-                    {/* banner轮播 */}
-                    <Banner />
+                    
                     {/* 公告 */}
                     <Notice navigator={navigator} />
-                    {/* 余额 */}
-                    <Balance navigator={navigator} />
-                
+
+                    {/* banner轮播 */}
+                    <Banner />
+                    
+                    <View style={[styles.container, { backgroundColor: appSkin.tab }]}>
+                        {/* 中奖公告 */}
+                        <WinnerList />
+                        {/* 余额 */}
+                        <Balance navigator={navigator} />
+                    </View>
+                    
                     {/* 游戏 */}
                     <CommonTab tabs={tabs} navigator={navigator} />
+
                 </ScrollView>
                 {/* 一键换肤 */}
                 <ChangeSkin />
@@ -89,6 +100,14 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        width: gScreen.width * 0.9468,
+        margin: gScreen.width * 0.0266,
+        // padding: scaleSize(10),
+        // backgroundColor: '#322b33',
+        top: scaleSize(-30),
+        borderRadius: scaleSize(8),
+    }
     // header: {
     //     height: scaleSize(57.5),
     //     width: gScreen.width,

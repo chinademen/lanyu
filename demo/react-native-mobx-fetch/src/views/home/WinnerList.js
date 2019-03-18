@@ -77,16 +77,18 @@ export default class WinnerList extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
+        width: gScreen.width * 0.9468,
         height: scaleSize(38),
-        backgroundColor: '#FFF', 
-        width: gScreen.width,
+        backgroundColor: '#FFF',
+        borderTopLeftRadius: scaleSize(8),
+        borderTopRightRadius: scaleSize(8),
         paddingHorizontal: gScreen.width * 0.05,
         flexDirection: 'row',
         alignItems: 'center', // 子元素上下居中
     },
     scrollBox: {
         height: scaleSize(38),
-        width: gScreen.width * 0.9,
+        width: gScreen.width * 0.9468,
     },
     scrollStyle: {
         flexWrap: 'nowrap', 

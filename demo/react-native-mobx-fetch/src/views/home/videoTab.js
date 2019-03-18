@@ -23,12 +23,12 @@ export default class VideoTab extends PureComponent {
     }
 
     render() {
-        const { background } = this.props.appSkin;
+        const { pageBackground, background } = this.props.appSkin;
         const { videoItem } = styles;
 
         return (
             <View style={{flex: 1}}>
-                <View style={styles.videoList}>
+                <View style={[styles.videoList, { backgroundColor: pageBackground }]}>
                     <TouchableOpacity 
                         activeOpacity={0.75}
                         onPress={() => this.goBetPage()}>
@@ -171,7 +171,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         width: gScreen.width  * 1,
-        paddingTop: scaleSize(10)
+        paddingTop: scaleSize(10),
+        // backgroundColor: '#322b33'
     },
     videoItem: {
         width: gScreen.width * 0.28,

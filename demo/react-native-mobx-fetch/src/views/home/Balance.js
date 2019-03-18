@@ -4,14 +4,14 @@
 import React, { PureComponent } from 'react'
 import {
     StyleSheet,
-    Image,
 } from 'react-native'
 import { View, Text } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
-import DashLine from '@/components/DashLine'
+import Svg from '@/components/Svg'
 
-@inject(({ homeStore }) => {
+@inject(({ app, homeStore }) => {
     return {
+        appSkin: app.appSkin,
         userInfo: homeStore.userInfo,
         getUserInfo: homeStore.getUserInfo,
     }
@@ -24,27 +24,25 @@ export default class Balance extends PureComponent {
     }
 
     render() {
-        let { userInfo } = this.props;
+        let { appSkin, userInfo } = this.props;
         let balance = userInfo && userInfo.balance || 0.0000;
         
         return (
-            <View style={styles.container}>
-                <View style={styles.card}>
+            // <View style={styles.container}>
+                <View style={[styles.card, { backgroundColor: appSkin.tab }]}>
                     <View style={styles.left}>
-                        <Text style={{fontSize: scaleSize(12)}}>{i18n.HOME_TEXT_BALANCE}</Text>
-                        <Text style={styles.balance}>{balance}</Text>
-                        <Text style={{fontSize: scaleSize(12)}}>{i18n.HOME_MONEY_YUAN}</Text>
+                        <Text style={[styles.text, { color: appSkin.text }]}>{i18n.HOME_TEXT_BALANCE}</Text>
+                        <Text style={[styles.balance, { color: appSkin.text }]}>{balance}</Text>
+                        <Text style={[styles.text, { color: appSkin.text }]}>{i18n.HOME_MONEY_YUAN}</Text>
                     </View>
-                    <DashLine type="vertical" backgroundColor='#d9d7ef' len={6} width={36}></DashLine>
-                    <View style={styles.item}>
-                        <Image style={styles.img} source={require('@/assets/dh/images/home/chrage.png')}></Image>
+                    <View style={styles.item} onPress={() => alert('敬请期待')}>
+                        <Svg icon={'cz'} size="36" color={appSkin.fill} />
                     </View>
-                    <DashLine type="vertical" backgroundColor='#d9d7ef' len={6} width={36}></DashLine>
-                    <View style={styles.item}>
-                        <Image style={styles.img} source={require('@/assets/dh/images/home/details.png')}></Image>
+                    <View style={styles.item} onPress={() => alert('敬请期待')}>
+                        <Svg icon={'search'} size="32" color={appSkin.fill} />
                     </View>
                 </View>
-            </View>
+            // </View>
         )
         
        
@@ -52,17 +50,20 @@ export default class Balance extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        width: gScreen.width,
-        padding: scaleSize(10),
-        backgroundColor: '#eff3f9',
-    },
+    // container: {
+    //     width: gScreen.width,
+    //     padding: scaleSize(10),
+    //     backgroundColor: '#322b33',
+    //     top: -50,
+    // },
     card: {
-        width: gScreen.width * 0.9,
-        backgroundColor: '#fff',
-        borderRadius: scaleSize(10),
+        width: gScreen.width * 0.9468,
+        borderBottomLeftRadius: scaleSize(8),
+        borderBottomRightRadius: scaleSize(8),
+        paddingHorizontal: scaleSize(20),
+        // backgroundColor: '#fff',
         overflow: 'hidden',
-        height: scaleSize(40),
+        height: scaleSize(80),
         flex: 1,
         flexDirection: 'row',
         elevation: 2,
@@ -72,22 +73,22 @@ const styles = StyleSheet.create({
         shadowRadius: scaleSize(5),
         alignSelf: 'center',
     },
-    line: {
-    
-    },
     left: {
         flex: 1,
         flexDirection: 'row',
         width: scaleSize(gScreen.width * 0.7),
-        paddingLeft: scaleSize(10),
-        height: scaleSize(40),
+        paddingHorizontal: scaleSize(30),
+        height: scaleSize(80),
         alignItems: 'center',
     },
-    balance: {
-        width: scaleSize(gScreen.width * 0.4),
-        color: '#ff4d4d',
+    text: {
         fontSize: scaleSize(16),
-        fontWeight: 'bold'
+    },
+    balance: {
+        // width: scaleSize(gScreen.width * 0.4),
+        fontWeight: 'bold',
+        fontSize: scaleSize(16),
+        paddingRight: scaleSize(5),
     },
     // right: {
     //     flex: 1,
@@ -97,12 +98,7 @@ const styles = StyleSheet.create({
     // },
     item: {
         width: scaleSize(50),
-        height: scaleSize(40),
-        paddingTop: scaleSize(3),
+        height: scaleSize(80),
+        paddingTop: scaleSize(24),
     },
-    img: {
-        width: scaleSize(34),
-        height: scaleSize(34),
-        alignSelf: 'center',
-    }
 })  

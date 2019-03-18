@@ -66,7 +66,7 @@ export default class LotteryList extends PureComponent {
 
     // 列表
     createLotteryList = (list) => {
-        const { background } = this.props.appSkin;
+        const { text, background } = this.props.appSkin;
         const { lotteryImg, lotteryItem, lotteryText } = styles;
         return list.map((item, index) => {
             const { isshow, cnname, lotteryid, tag } = item;
@@ -80,7 +80,7 @@ export default class LotteryList extends PureComponent {
                     key={lotteryid}>
                     <LinearGradient colors={background} style={lotteryItem}>
                         {newOrHot}
-                        <Text style={lotteryText} >{cnname}</Text>
+                        <Text style={[lotteryText, { color: text }]} >{cnname}</Text>
                     </LinearGradient>
                 </TouchableOpacity>
             )
@@ -110,9 +110,9 @@ export default class LotteryList extends PureComponent {
 
     
     render() {
-        let { newLotteryList } = this.props;
+        let { appSkin, newLotteryList } = this.props;
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, { backgroundColor: appSkin.pageBackground }]}>
                 {newLotteryList && newLotteryList.length > 0 && this.createLottery(newLotteryList) || this.createNoData()}
             </View>
         )
@@ -121,7 +121,7 @@ export default class LotteryList extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#FFF', 
+        // backgroundColor: '#322b33',
         width: gScreen.width,
     },
     noData: {
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: scaleSize(16),
-        color: '#333',
+        color: '#dea364',
     },
     lotteryList: {
         flex: 1,
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     lotteryText: {
         fontSize: scaleSize(16),
         fontWeight: 'bold',
-        color: '#fff',
+        // color: '#dea364',
     },
     lotteryImg: {
         position: 'absolute',

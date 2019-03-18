@@ -5,7 +5,6 @@ import React, { PureComponent } from 'react'
 import {
     StyleSheet,
     Image,
-    ImageBackground,
 } from 'react-native'
 import { toJS } from 'mobx'
 import { observer, inject } from 'mobx-react/native'
@@ -33,7 +32,10 @@ export default class Banner extends PureComponent {
                 // 网络获取
                 return (
                     <Swiper containerStyle={styles.headerContainer} 
-                            showsPagination={false}
+                            // showsPagination={false}
+                            dotColor='#5b4529'
+                            activeDotColor='#ca9c64'
+                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
                             autoplay={true}
                             autoplayTimeout={4}
                     >
@@ -46,7 +48,10 @@ export default class Banner extends PureComponent {
                 // 本地获取
                 return (
                     <Swiper containerStyle={styles.headerContainer} 
-                            showsPagination={false}
+                            // showsPagination={false}
+                            dotColor='#5b4529'
+                            activeDotColor='#ca9c64'
+                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
                             autoplay={true}
                             autoplayTimeout={4}   
                     >
@@ -61,7 +66,10 @@ export default class Banner extends PureComponent {
                 // 网络获取
                 return (
                     <Swiper style={styles.headerContainer} 
-                            showsPagination={false}
+                            // showsPagination={false}
+                            dotColor='#5b4529'
+                            activeDotColor='#ca9c64'
+                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
                             autoplay={true}
                             autoplayTimeout={4}
                     >
@@ -74,7 +82,10 @@ export default class Banner extends PureComponent {
                 // 本地获取
                 return (
                     <Swiper style={styles.headerContainer} 
-                            showsPagination={false}
+                            // showsPagination={false}
+                            dotColor='#5b4529'
+                            activeDotColor='#ca9c64'
+                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
                             autoplay={true}
                             autoplayTimeout={4}   
                     >
@@ -95,7 +106,7 @@ const styles = StyleSheet.create({
         width: gScreen.width,
         height: scaleSize(gScreen.width * 0.4),
         alignItems: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
     },
     slide: {
         flex: 1,

@@ -7,7 +7,7 @@ import skin from '@/assets/dh/skin'
 
 global.projectName = 'dh';
 global.i18n = i18n;
-global.skin = skin.red;
+global.skin = skin.brown;
 
 global.iphoneX = false;
 global.__IOS__ = false;

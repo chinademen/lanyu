@@ -23,12 +23,12 @@ export default class SportTab extends PureComponent {
     }
 
     render() {
-        const { background } = this.props.appSkin;
+        const { pageBackground, background } = this.props.appSkin;
         const { sportItem } = styles;
 
         return (
             <View style={{flex: 1}}>
-                <View style={styles.sportList}>
+                <View style={[styles.sportList, { backgroundColor: pageBackground }]}>
                     <TouchableOpacity 
                         activeOpacity={0.75}
                         onPress={() => this.goBetPage()}>
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         width: gScreen.width  * 1,
-        paddingTop: scaleSize(10)
-
+        paddingTop: scaleSize(10),
+        // backgroundColor: '#322b33'
     },
     sportItem: {
         width: gScreen.width * 0.28,

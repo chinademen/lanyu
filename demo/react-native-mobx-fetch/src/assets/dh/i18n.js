@@ -37,7 +37,7 @@ export default {
     HOME_NOTICE_DETAILS: '公告详情',
     HOME_TEXT_BALANCE: '余额：',
     HOME_MONEY_YUAN: '元',
-    HOME_TEXT_MORE: '更多>>',
+    HOME_TEXT_MORE: '更多',
     HOME_TEXT_WIN: '中奖：',
     HOME_TEXT_LOTTERY: '彩票',
     HOME_TEXT_CHESS: '棋牌',

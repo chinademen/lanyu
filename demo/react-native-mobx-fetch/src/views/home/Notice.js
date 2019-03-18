@@ -77,7 +77,7 @@ export default class Notice extends PureComponent {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.more} onPress={() => this.toNoticeList()}>
-                    <Text style={{fontSize: scaleSize(14)}}>{i18n.HOME_TEXT_MORE}</Text>
+                    <Text style={{fontSize: scaleSize(14), color: '#A39175' }}>{i18n.HOME_TEXT_MORE}</Text>
                 </TouchableOpacity>
                 
             </View>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     container: {
         height: scaleSize(30),
         paddingLeft: gScreen.width * 0.05,
-        backgroundColor: '#FFF', 
+        backgroundColor: '#FEF6E5', 
         width: gScreen.width,
         flexDirection: 'row',
         alignItems: 'center', // 子元素上下居中
@@ -106,19 +106,19 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         paddingLeft: 10, 
-        color: '#333', 
-        fontSize: scaleSize(14), 
-        backgroundColor: '#fff',
+        color: '#A39175', 
+        fontSize: scaleSize(14),
+        fontWeight: 'bold',
+        backgroundColor: '#FEF6E5',
         flexDirection:'row',
     },
     more: {
         height: scaleSize(30),
         paddingLeft: scaleSize(5),
         paddingRight: scaleSize(15),
-        color: '#333',
         alignItems:'center',
         justifyContent: 'center',
-        backgroundColor:'#fff', 
+        backgroundColor:'#FEF6E5', 
         position: 'absolute', 
         right: 0, 
         top: 0, 

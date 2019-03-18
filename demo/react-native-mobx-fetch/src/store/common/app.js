@@ -2,7 +2,7 @@ import {observable, action} from 'mobx'
 
 class App {
     @observable barStyle = 'light-content'  // 系统工具栏 主题样式
-    @observable appSkin = skin || 'red'        // 皮肤
+    @observable appSkin = skin || 'brown'        // 皮肤
     @observable submiting = false           // 按钮是否正在提交操作
     @observable token = null                // token
 

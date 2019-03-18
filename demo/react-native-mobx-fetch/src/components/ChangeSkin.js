@@ -46,6 +46,9 @@ export default class ChangeSkin extends PureComponent {
             >
                 {/* <Icon name="share" /> */}
                 <Svg icon={appSkin.icon} size="30" />
+                <Button style={{ backgroundColor: '#fff' }} onPress={() => this.changeAllSkin(skinStyle.brown)}>
+                    <Svg icon={'skin_brown'} size="30" />
+                </Button>
                 <Button style={{ backgroundColor: '#D82741' }} onPress={() => this.changeAllSkin(skinStyle.red)}>
                     <Svg icon={'skin_red'} size="30" />
                 </Button>

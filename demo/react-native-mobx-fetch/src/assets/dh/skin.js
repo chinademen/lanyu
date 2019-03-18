@@ -1,7 +1,26 @@
 // 皮肤
 export default {
+    // 褐色套装
+    brown: {
+        // 页面背景颜色
+        pageBackground: '#322b33',
+        // 渐变背景
+        background: ['#7a6a7b', '#4c424d'],
+        // 选项卡 背景，文字，被选中背景
+        tab: '#4c424d',
+        text: '#dea364',
+        active: '#4c424d',
+        // svg颜色
+        icon: 'skin_brown',
+        fill: '#ec7413',
+        skinbg: '#fff',
+        // 导航栏文字
+        navbarText: '#4c424d'
+    },
     // 艳红套装
     red: {
+        // 页面背景颜色
+        pageBackground: '#c11f37',
         // 渐变背景
         background: ['#E84B6E', '#D82741'],
         // 选项卡 背景，文字，被选中背景
@@ -17,6 +36,8 @@ export default {
     },
     // 天蓝套装
     blue: {
+        // 页面背景颜色
+        pageBackground: '#3464e2',
         // 渐变背景
         background: ['#81a8cb', '#4477FF'],
         // 选项卡 背景，文字，被选中背景
@@ -32,21 +53,25 @@ export default {
     },
     // 暗黑套装
     black: {
+        // 页面背景颜色
+        pageBackground: '#0a0a0a',
         // 渐变背景
         background: ['#656565', '#141414'],
         // 选项卡 背景，文字，被选中背景
         tab: '#141414',
-        text: '#fff',
+        text: '#dea364',
         active: '#141414',
         // svg颜色
         icon: 'skin_black',
         fill: '#141414',
-        skinbg: '#fff',
+        skinbg: '#dea364',
         // 导航栏文字
         navbarText: '#141414'
     },
     // 黄金套装
     gold: {
+        // 页面背景颜色
+        pageBackground: '#de8e0d',
         // 渐变背景
         background: ['#f8c939', '#f09c15'],
         // 选项卡 背景，文字，被选中背景
@@ -62,6 +87,8 @@ export default {
     },
     // 亮绿套装
     green: {
+        // 页面背景颜色
+        pageBackground: '#37752f',
         // 渐变背景
         background: ['#c8dd95', '#428739'],
         // 选项卡 背景，文字，被选中背景
@@ -77,6 +104,8 @@ export default {
     },
     // 银色套装
     silver: {
+        // 页面背景颜色
+        pageBackground: '#a7a1a1',
         // 渐变背景
         background: ['#eaeaea', '#c5c5c5'],
         // 选项卡 背景，文字，被选中背景
@@ -92,6 +121,8 @@ export default {
     },
     // 贵紫套装
     purple: {
+        // 页面背景颜色
+        pageBackground: '#5e41ce',
         // 渐变背景
         background: ['#B8A9F3', '#6F50E7'],
         // 选项卡 背景，文字，被选中背景
