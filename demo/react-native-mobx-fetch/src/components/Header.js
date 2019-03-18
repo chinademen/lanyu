@@ -94,9 +94,9 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
     header: {
         // height: !__IOS__ ? 50 : 64,
-        height: scaleSize(57.5),
-        // marginTop: __IOS__ ? 20 : 0,
-        paddingTop: scaleSize(30),
+        height: scaleSize(37.5),
+        marginTop: __IOS__ ? 20 : 0,
+        // paddingTop: scaleSize(30),
         width: gScreen.width,
         justifyContent: 'center',
         // alignItems: 'center',
@@ -112,9 +112,8 @@ const styles = StyleSheet.create({
     leftItem: {
         zIndex: 999,
         position: 'absolute',
-        // marginTop: scaleSize(20),
-        // top: !__IOS__ ? 0 : scaleSize(40),
-        top: scaleSize(25),
+        top: !__IOS__ ? 0 : scaleSize(10),
+        // top: scaleSize(25),
         left: 0,
         height: !__IOS__ ? scaleSize(37.5) : scaleSize(33),
         width: scaleSize(40),

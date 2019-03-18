@@ -11,7 +11,7 @@ import {
     ImageBackground,
 } from 'react-native'
 import {Navigator} from 'react-native-deprecated-custom-components'
-import LinearGradient from 'react-native-linear-gradient'
+// import LinearGradient from 'react-native-linear-gradient'
 import {observer, inject} from 'mobx-react/native'
 
 @inject('app')
@@ -40,13 +40,14 @@ export default class Profile extends Component {
 
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
-                <LinearGradient
+                {/* 沉侵式状态栏 */}
+                {/* <LinearGradient
                     start={{ x: 0.2, y: 0.2 }}
                     end={{ x: 0.8, y: 0.8 }}
                     colors={this.props.app.appSkin.background}
                     style={styles.header}>
                     <Text style={styles.headerText}>{i18n.PROFILE_TITLE_MY_CENTER}</Text>
-                </LinearGradient>
+                </LinearGradient> */}
                 <HeaderView settingAction={this._settingAction} loginAction={this._onLogin}/>
                 <View style={[styles.cellContainer, cellStyle]}>
                     <ProfileStaticCell
@@ -142,19 +143,19 @@ const ProfileStaticCell = ({
 }
 
 const styles = StyleSheet.create({
-    header: {
-        height: scaleSize(57.5),
-        width: gScreen.width,
-        marginTop: __IOS__ ? 20 : 0,
-        paddingTop: scaleSize(30),
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fb5458'
-    },
-    headerText: {
-        color: 'white', 
-        fontSize: scaleSize(16)
-    },
+    // header: {
+    //     height: scaleSize(57.5),
+    //     width: gScreen.width,
+    //     marginTop: __IOS__ ? 20 : 0,
+    //     paddingTop: scaleSize(30),
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     backgroundColor: '#fb5458'
+    // },
+    // headerText: {
+    //     color: 'white', 
+    //     fontSize: scaleSize(16)
+    // },
     header2: {
         height: __IOS__ ? 44 : 50,
         marginTop: __IOS__ ? 20 : 0,

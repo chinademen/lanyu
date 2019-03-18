@@ -9,7 +9,7 @@ import {
     ScrollView,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
-import LinearGradient from 'react-native-linear-gradient'
+// import LinearGradient from 'react-native-linear-gradient'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
 import CommonTab from '@/components/CommonTab'
 import ChangeSkin from '@/components/ChangeSkin'
@@ -55,13 +55,14 @@ export default class Home extends Component {
         
         return (
             <View style={{flex: 1}}>
-                <LinearGradient
+                {/* 沉侵式状态栏 */}
+                {/* <LinearGradient
                     start={{ x: 0.2, y: 0.2 }}
                     end={{ x: 0.8, y: 0.8 }}
                     colors={appSkin.background}
                     style={styles.header}>
                     <Text style={styles.headerText}>{i18n.HOME_TITLE_HOMEPAGE}</Text>
-                </LinearGradient>
+                </LinearGradient> */}
                 <ScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
@@ -88,17 +89,17 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-    header: {
-        height: scaleSize(57.5),
-        width: gScreen.width,
-        marginTop: __IOS__ ? 20 : 0,
-        paddingTop: scaleSize(30),
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fb5458'
-    },
-    headerText: {
-        color: 'white', 
-        fontSize: scaleSize(16)
-    },
+    // header: {
+    //     height: scaleSize(57.5),
+    //     width: gScreen.width,
+    //     marginTop: __IOS__ ? 20 : 0,
+    //     paddingTop: scaleSize(30),
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     backgroundColor: '#fb5458'
+    // },
+    // headerText: {
+    //     color: 'white', 
+    //     fontSize: scaleSize(16)
+    // },
 })
