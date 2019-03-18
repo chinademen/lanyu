@@ -112,8 +112,9 @@ const styles = StyleSheet.create({
     leftItem: {
         zIndex: 999,
         position: 'absolute',
-        marginTop: scaleSize(20),
-        top: !__IOS__ ? 0 : scaleSize(10),
+        // marginTop: scaleSize(20),
+        // top: !__IOS__ ? 0 : scaleSize(40),
+        top: scaleSize(25),
         left: 0,
         height: !__IOS__ ? scaleSize(37.5) : scaleSize(33),
         width: scaleSize(40),
