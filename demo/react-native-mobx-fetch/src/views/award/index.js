@@ -3,13 +3,17 @@
  */
 import React, { PureComponent } from 'react'
 import {
+    StyleSheet,
     View,
     WebView,
+    Text,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
+import LinearGradient from 'react-native-linear-gradient'
 
-@inject(({ lotteryStore }) => {
+@inject(({ app, lotteryStore }) => {
     return {
+        appSkin: app.appSkin,
         awardUrl: lotteryStore.awardUrl,
     }
 })
@@ -19,6 +23,13 @@ export default class Award extends PureComponent {
         const { awardUrl } = this.props;
         return (
             <View style={{flex: 1}}>
+                <LinearGradient
+                    start={{ x: 0.2, y: 0.2 }}
+                    end={{ x: 0.8, y: 0.8 }}
+                    colors={this.props.appSkin.background}
+                    style={styles.header}>
+                    {/* <Text style={styles.headerText}>{i18n.PROFILE_TITLE_MY_CENTER}</Text> */}
+                </LinearGradient>
                 <WebView
                     style={{ width:'100%', height:'100%' }}
                     source={{uri: awardUrl}}
@@ -33,3 +44,19 @@ export default class Award extends PureComponent {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    header: {
+        height: scaleSize(37.5),
+        width: gScreen.width,
+        marginTop: __IOS__ ? 20 : 0,
+        // paddingTop: scaleSize(20),
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fb5458'
+    },
+    // headerText: {
+    //     color: 'white', 
+    //     fontSize: scaleSize(16)
+    // },
+})

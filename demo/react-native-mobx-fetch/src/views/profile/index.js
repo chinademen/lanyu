@@ -11,6 +11,7 @@ import {
     ImageBackground,
 } from 'react-native'
 import {Navigator} from 'react-native-deprecated-custom-components'
+import LinearGradient from 'react-native-linear-gradient'
 import {observer, inject} from 'mobx-react/native'
 
 @inject('app')
@@ -39,6 +40,13 @@ export default class Profile extends Component {
 
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
+                <LinearGradient
+                    start={{ x: 0.2, y: 0.2 }}
+                    end={{ x: 0.8, y: 0.8 }}
+                    colors={this.props.app.appSkin.background}
+                    style={styles.header}>
+                    <Text style={styles.headerText}>{i18n.PROFILE_TITLE_MY_CENTER}</Text>
+                </LinearGradient>
                 <HeaderView settingAction={this._settingAction} loginAction={this._onLogin}/>
                 <View style={[styles.cellContainer, cellStyle]}>
                     <ProfileStaticCell
@@ -70,7 +78,7 @@ const HeaderView = ({settingAction, loginAction}) => {
             style={{width: gScreen.width, height: 200, alignItems: 'center', backgroundColor: 'transparent'}}
             source={require('@/assets/dh/images/resource/top.png')}
         >
-            <View style={[styles.header, {width: gScreen.width}]}>
+            <View style={[styles.header2, {width: gScreen.width}]}>
                 <Text style={{color: 'white', fontSize: 16, marginTop: 50}}>amao001</Text>
                 <Text style={{color: 'white', fontSize: 16}}>彩票余额(元)</Text>
                 <TouchableOpacity
@@ -135,6 +143,19 @@ const ProfileStaticCell = ({
 
 const styles = StyleSheet.create({
     header: {
+        height: scaleSize(57.5),
+        width: gScreen.width,
+        marginTop: __IOS__ ? 20 : 0,
+        paddingTop: scaleSize(30),
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fb5458'
+    },
+    headerText: {
+        color: 'white', 
+        fontSize: scaleSize(16)
+    },
+    header2: {
         height: __IOS__ ? 44 : 50,
         marginTop: __IOS__ ? 20 : 0,
         alignItems: 'center',

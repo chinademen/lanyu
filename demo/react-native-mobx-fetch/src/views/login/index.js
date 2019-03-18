@@ -9,6 +9,7 @@ import {
     TextInput,
     ImageBackground,
     Text,
+    StatusBar,
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import CheckBox from 'react-native-check-box'
@@ -163,11 +164,12 @@ export default class Login extends PureComponent {
                 left: __IOS__ ? 20 : 6,
             }
         };
-
+        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: StatusBar.currentHeight });
+        
         return (
             <ImageBackground
                 source={require('@/assets/dh/images/login/loginbg.png')}
-                style={styles.container}
+                style={[styles.container, navPaddingTop]}
             >
                 <View style={[styles.content, platStyle.content]}>
                     <Image  

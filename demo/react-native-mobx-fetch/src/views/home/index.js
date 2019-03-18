@@ -89,9 +89,10 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
     header: {
-        height: scaleSize(37.5),
+        height: scaleSize(57.5),
         width: gScreen.width,
         marginTop: __IOS__ ? 20 : 0,
+        paddingTop: scaleSize(30),
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fb5458'

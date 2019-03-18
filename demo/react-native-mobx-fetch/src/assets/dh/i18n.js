@@ -98,4 +98,7 @@ export default {
     REPORT_TAB_PROXY_USERLIST: '用户列表',
     REPORT_TAB_PROXY_REGIST: '推广注册',
 
+    // 个人中心
+    PROFILE_TITLE_MY_CENTER: '个人中心',
+
 }

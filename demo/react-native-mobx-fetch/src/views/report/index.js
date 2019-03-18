@@ -90,9 +90,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5'
     },
     header: {
-        height: scaleSize(37.5),
+        height: scaleSize(57.5),
         width: gScreen.width,
         marginTop: __IOS__ ? 20 : 0,
+        paddingTop: scaleSize(30),
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fb5458'
