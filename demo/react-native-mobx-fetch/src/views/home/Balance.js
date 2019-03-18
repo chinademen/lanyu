@@ -35,11 +35,11 @@ export default class Balance extends PureComponent {
                         <Text style={[styles.balance, { color: appSkin.text }]}>{balance}</Text>
                         <Text style={[styles.text, { color: appSkin.text }]}>{i18n.HOME_MONEY_YUAN}</Text>
                     </View>
-                    <View style={styles.item} onPress={() => alert('敬请期待')}>
+                    <View style={[styles.item, { paddingTop: scaleSize(22) }]}>
                         <Svg icon={'cz'} size="36" color={appSkin.fill} />
                     </View>
-                    <View style={styles.item} onPress={() => alert('敬请期待')}>
-                        <Svg icon={'search'} size="32" color={appSkin.fill} />
+                    <View style={[styles.item, { paddingTop: scaleSize(26) }]}>
+                        <Svg icon={'search'} size="28" color={appSkin.fill} />
                     </View>
                 </View>
             // </View>
@@ -99,6 +99,5 @@ const styles = StyleSheet.create({
     item: {
         width: scaleSize(50),
         height: scaleSize(80),
-        paddingTop: scaleSize(24),
     },
 })  
