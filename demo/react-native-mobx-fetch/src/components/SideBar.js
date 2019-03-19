@@ -1,46 +1,35 @@
 /**
- * 报表查询
+ * 侧边弹出栏
  */
-
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
     View,
-    TouchableOpacity,
     Text,
+    TouchableOpacity    
 } from 'react-native'
 import {observer, inject} from 'mobx-react/native'
 import LinearGradient from 'react-native-linear-gradient'
 import Svg from '@/components/Svg'
 
-const list = [
-    { key: 'overview', title: i18n.REPORT_MODULE_OVERVIEW, icon: 'item_top_all', page: 'Overview' },
-    { key: 'profitloss', title: i18n.REPORT_MODULE_PROFITLOSS, icon: 'item_top_yk', page: 'ProfitLoss' },
-    { key: 'accountchange', title: i18n.REPORT_MODULE_ACCOUNTCHANGE, icon: 'item_top_gg', page: 'AccountChange' },
-    { key: 'dayknot', title: i18n.REPORT_MODULE_DAYKNOT, icon: 'item_top_bank', page: 'DayKnot' },
-    { key: 'recharge', title: i18n.REPORT_MODULE_RECHARGE, icon: 'item_top_yk', page: 'Recharge' },
-    { key: 'bet', title: i18n.REPORT_MODULE_BET, icon: 'item_top_tz', page: 'Bet' },
-    { key: 'contract', title: i18n.REPORT_MODULE_CONTRACT, icon: 'item_top_xg', page: 'Contract' },
-    { key: 'proxy', title: i18n.REPORT_MODULE_PROXY, icon: 'item_top_dl', page: 'Proxy' },
-];
-
-@inject(({ app }) => {
+@inject(({ app, loginStore }) => {
     return {
-        appSkin: app.appSkin
+        appSkin: app.appSkin,
+        userLogout: loginStore.userLogout,
     }
 })
 @observer
-export default class Report extends Component {
-    // 报表tab列表渲染
-    reportList = () => {
+export default class SideBar extends Component {
+    // 功能列表渲染
+    sideList = (list) => {
         return list.map(item => {
             const { fill } = this.props.appSkin;
-            let { key, title, icon, page } = item;
+            let { key, title, icon, event } = item;
             return (
                 <TouchableOpacity
                     activeOpacity={0.75}
                     style={styles.staticCell}
-                    onPress={() => this.toPage(page)}
+                    onPress={event}
                     key={key}
                 >
                     <View style={styles.svgBox}>
@@ -54,30 +43,51 @@ export default class Report extends Component {
         })
     }
 
-    // 跳转事件
-    toPage = (page) => {
+    // 退出登录
+    logout = () => {
+        this.props.userLogout(res => {
+            this.props.navigator.replace({
+                id: 'Login'
+            })
+        })
+    } 
+
+    // 跳转切换皮肤页面
+    toChangeSkin = () => {
         this.props.navigator.push({
-            id: page
+            id: 'ChangeSkin'
+        })
+    }
+
+    // 跳转切换平台页面
+    toChangePlat = () => {
+        this.props.navigator.push({
+            id: 'ChangePlat'
         })
     }
 
     render() {
+        const list = [
+            { key: 'logout', title: i18n.SIDE_TEXT_LOGOUT, icon: 'logout', event: this.logout },
+            { key: 'changeSkin', title: i18n.SIDE_TEXT_CHANGESKIN, icon: 'east', event: this.toChangeSkin },
+            { key: 'changePlat', title: i18n.SIDE_TEXT_CHANGEPLAT, icon: 'skin_brown', event: this.toChangePlat },
+        ];
+
         let cellStyle = {
             borderTopWidth: gScreen.onePix,
             borderBottomWidth: gScreen.onePix,
-        }
+        };
 
-        return (
+
+        return(
             <View style={styles.container}>
                 <LinearGradient
-                    start={{ x: 0.2, y: 0.2 }}
-                    end={{ x: 0.8, y: 0.8 }}
                     colors={this.props.appSkin.background}
                     style={styles.header}>
-                    <Text style={styles.headerText}>{i18n.REPORT_TITLE_REPORT_SERCH}</Text>
+                    <Text style={styles.headerText}>{i18n.SIDE_TEXT_PLATNAME}</Text>
                 </LinearGradient>
                 <View style={[styles.cellContainer, cellStyle]}>
-                    {this.reportList()}
+                    {this.sideList(list)}
                 </View>
             </View>
         )
@@ -86,12 +96,11 @@ export default class Report extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
-        backgroundColor: '#f5f5f5'
+        flex: 1,
+        backgroundColor: '#fff',
     },
     header: {
-        height: scaleSize(37.5),
-        width: gScreen.width,
+        height: scaleSize(120),
         marginTop: __IOS__ ? 20 : 0,
         alignItems: 'center',
         justifyContent: 'center',
@@ -125,4 +134,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingRight: 15
     }
-});
+})

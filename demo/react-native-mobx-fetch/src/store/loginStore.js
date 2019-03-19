@@ -1,5 +1,5 @@
 import { observable, computed, action, runInAction } from 'mobx'
-import { userLogin, userCheckFundPassword, userFindPassword } from '@/services/login'
+import { userLogin, userLogout, userCheckFundPassword, userFindPassword } from '@/services/login'
 
 class LoginStore {
     @observable username = '';
@@ -10,7 +10,17 @@ class LoginStore {
         const res = await userLogin(params);
         runInAction(() => {
             if (!res) return;
-            callback(res)
+            if (callback) callback(res);
+        })
+    }
+
+    // 退出登录
+    @action.bound
+    async userLogout(callback) {
+        const res = await userLogout();
+        runInAction(() => {
+            if (!res) return;
+            if (callback) callback();
         })
     }
 
@@ -20,7 +30,7 @@ class LoginStore {
         const res = await userCheckFundPassword(params);
         runInAction(() => {
             if (!res) return;
-            callback(res)
+            if (callback) callback(res);
         })
     }
 
@@ -30,7 +40,7 @@ class LoginStore {
         const res = await userFindPassword(params);
         runInAction(() => {
             if (!res) return;
-            callback(res)
+            if (callback) callback(res);
         })
     }
 

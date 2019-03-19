@@ -70,7 +70,7 @@ const HeaderView = ({settingAction, loginAction}) => {
             style={{width: gScreen.width, height: 200, alignItems: 'center', backgroundColor: 'transparent'}}
             source={require('@/assets/dh/images/report/check.png')}
         >
-            <View style={[styles.header2, {width: gScreen.width}]}>
+            <View style={[styles.header, {width: gScreen.width}]}>
                 <Text style={{color: 'white', fontSize: 16, marginTop: 50}}>amao001</Text>
                 <Text style={{color: 'white', fontSize: 16}}>彩票余额(元)</Text>
                 <TouchableOpacity
@@ -134,20 +134,7 @@ const ProfileStaticCell = ({
 }
 
 const styles = StyleSheet.create({
-    // header: {
-    //     height: scaleSize(57.5),
-    //     width: gScreen.width,
-    //     marginTop: __IOS__ ? 20 : 0,
-    //     paddingTop: scaleSize(30),
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     backgroundColor: '#fb5458'
-    // },
-    // headerText: {
-    //     color: 'white', 
-    //     fontSize: scaleSize(16)
-    // },
-    header2: {
+    header: {
         height: __IOS__ ? 44 : 50,
         marginTop: __IOS__ ? 20 : 0,
         alignItems: 'center',
@@ -163,10 +150,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     avatarContainer: {
-        // width: 30,
         height: 30,
-        // borderRadius: 45,
-        // backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 15

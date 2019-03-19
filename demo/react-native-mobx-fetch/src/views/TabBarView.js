@@ -2,8 +2,10 @@
  * 底部导航
  */
 import React, { Component } from 'react'
+import { Drawer } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
+import SideBar from '@/components/SideBar'
 import Feed from '@/views/award'
 import Home from '@/views/home'
 import Report from '@/views/report'
@@ -43,23 +45,38 @@ export default class TabBarView extends Component {
         )
     }
 
+    closeDrawer = () => {
+        this.drawer._root.close()
+    }
+    
+    openDrawer = () => { 
+        this.drawer._root.open() 
+    }
+
     render() {
+        const { navigator } = this.props;
         let tabBottom = ifIphoneX({ paddingBottom: scaleSize(12) }, { paddingBottom: scaleSize(0) }, { paddingBottom: 0 })
 
         return (
-            <ScrollableTabView
-                style={tabBottom}
-                locked
-                scrollWithoutAnimation
-                renderTabBar={this.renderTabBar}
-                tabBarPosition='bottom'
-                onChangeTab={this.onChangeTab}
+            <Drawer 
+                ref={ref => { this.drawer = ref }}
+                content={<SideBar navigator={navigator} />} 
+                onClose={() => this.closeDrawer()} 
             >
-                <Home tabLabel="Home" navigator={this.props.navigator} />
-                <Feed tabLabel="Feed" navigator={this.props.navigator} />
-                <Report tabLabel="Report" navigator={this.props.navigator} />
-                <Profile tabLabel="Profile" navigator={this.props.navigator} />
-            </ScrollableTabView>
+                <ScrollableTabView
+                    style={tabBottom}
+                    locked
+                    scrollWithoutAnimation
+                    renderTabBar={this.renderTabBar}
+                    tabBarPosition='bottom'
+                    onChangeTab={this.onChangeTab}
+                >
+                    <Home tabLabel="Home" navigator={navigator} openDrawer={this.openDrawer} />
+                    <Feed tabLabel="Feed" navigator={navigator} openDrawer={this.openDrawer} />
+                    <Report tabLabel="Report" navigator={navigator} openDrawer={this.openDrawer} />
+                    <Profile tabLabel="Profile" navigator={navigator} openDrawer={this.openDrawer} />
+                </ScrollableTabView>
+            </Drawer>
         )
     }
 }

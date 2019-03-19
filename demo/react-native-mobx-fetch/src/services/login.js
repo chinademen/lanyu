@@ -11,6 +11,16 @@ export function userLogin(params = {}) {
     })
 }
 
+// 退出登录
+export function userLogout(params = {}) {
+    return request(api.login.userLogout, {
+        method: 'POST',
+        data: params,
+        dataType: 'FormData',
+        // noToken: true,
+    })
+}
+
 // 忘记密码1 ---> 账号验证
 export function userCheckFundPassword(params = {}) {
     return request(api.login.userCheckFundPassword, {

@@ -1,6 +1,6 @@
 // 皮肤
 export default {
-    // 褐色套装
+    // 都市灰
     brown: {
         // 页面背景颜色
         pageBackground: '#322b33',
@@ -18,7 +18,7 @@ export default {
         // 导航栏文字
         navbarText: '#4c424d'
     },
-    // 艳红套装
+    // 樱桃红
     red: {
         // 页面背景颜色
         pageBackground: '#c11f37',
@@ -36,7 +36,7 @@ export default {
         // 导航栏文字
         navbarText: '#D82741'
     },
-    // 天蓝套装
+    // 天空蓝
     blue: {
         // 页面背景颜色
         pageBackground: '#3464e2',
@@ -54,7 +54,7 @@ export default {
         // 导航栏文字
         navbarText: '#4477FF'
     },
-    // 暗黑套装
+    // 乌木黑
     black: {
         // 页面背景颜色
         pageBackground: '#0a0a0a',
@@ -72,7 +72,7 @@ export default {
         // 导航栏文字
         navbarText: '#141414'
     },
-    // 黄金套装
+    // 沙滩金
     gold: {
         // 页面背景颜色
         pageBackground: '#de8e0d',
@@ -90,7 +90,7 @@ export default {
         // 导航栏文字
         navbarText: '#f09c15'
     },
-    // 亮绿套装
+    // 典雅绿
     green: {
         // 页面背景颜色
         pageBackground: '#37752f',
@@ -108,7 +108,7 @@ export default {
         // 导航栏文字
         navbarText: '#428739'
     },
-    // 银色套装
+    // 香槟银
     silver: {
         // 页面背景颜色
         pageBackground: '#a7a1a1',
@@ -126,7 +126,7 @@ export default {
         // 导航栏文字
         navbarText: '#c5c5c5'
     },
-    // 贵紫套装
+    // 贵族紫
     purple: {
         // 页面背景颜色
         pageBackground: '#5e41ce',

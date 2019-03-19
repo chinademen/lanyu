@@ -12,6 +12,12 @@ const router = {
     'TabBarView': require('@/views/TabBarView'),
     'Test': require('@/views/test'),
 
+    // 侧边栏
+    // 切换皮肤
+    'ChangeSkin': require('@/views/sidebar/ChangeSkin'),
+    // 切换平台
+    'ChangePlat': require('@/views/sidebar/ChangePlat'),
+
     // home
     // 公告
     'NoticeList': require('@/views/notice/NoticeList'),
