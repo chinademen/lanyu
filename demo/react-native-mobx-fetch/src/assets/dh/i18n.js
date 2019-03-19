@@ -101,4 +101,12 @@ export default {
     // 个人中心
     PROFILE_TITLE_MY_CENTER: '个人中心',
 
+
+    // 东皇 east
+    EAST_HOME_TEXT_SSC: '时时彩',
+    EAST_HOME_TEXT_FFC: '分分彩',
+    EAST_HOME_TEXT_11X5: '11选5',
+    EAST_HOME_TEXT_DPC: '低频彩',
+    EAST_HOME_TEXT_PK10: 'PK10/赛马',
+
 }

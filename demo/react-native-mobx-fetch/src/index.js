@@ -30,13 +30,6 @@ export default class App extends Component {
     // 路由跳转 渲染场景
     renderScene = (route, navigator) => {
         let Component = Router[route.id].default;
-        // 沉侵式状态栏
-        // StatusBar.setBarStyle('dark-content', true);
-        // if (!__IOS__) {
-        //     StatusBar.setBackgroundColor('rgba(0,0,0,0)', true);
-        //     StatusBar.setTranslucent(true);
-        // }
-
         return <Component navigator={navigator} {...route.passProps}/>;
     }
 
@@ -45,7 +38,7 @@ export default class App extends Component {
         // 初始化登录页面  (ios自带过渡页，直接进入Login页)
         const initialPage = __IOS__ ? 'Login' : 'Splash';
         // const initialPage = 'Test';
-        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: StatusBar.currentHeight });
+        let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: scaleSize(StatusBar.currentHeight) });
         barStyle = __IOS__ ? 'dark-content' : barStyle;
         
         return (

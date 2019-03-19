@@ -4,13 +4,12 @@
 import React, {Component} from 'react'
 import {
     StyleSheet,
-    View,
     Text,
     TouchableOpacity,
     Image,
-    Platform
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+import Svg from '@/components/Svg'
 
 
 const LeftItem = ({onPress}) => {
@@ -20,10 +19,11 @@ const LeftItem = ({onPress}) => {
             style={styles.leftItem}
             onPress={onPress}
         >
-            <Image style={{width: scaleSize(20), height: scaleSize(20)}}
+            {/* <Image style={{width: scaleSize(20), height: scaleSize(20)}}
                    source={require('@/assets/dh/images/ic_back_dark.png')}
                    resizeMode={"contain"}
-            />
+            /> */}
+            <Svg icon='left' size='20' />
         </TouchableOpacity>
     )
 }

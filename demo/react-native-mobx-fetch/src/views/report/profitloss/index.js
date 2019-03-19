@@ -8,7 +8,7 @@ import {
 import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
-import CommonTab from '@/components/CommonTab'
+import CommonTab from '@/common/CommonTab'
 import LotteryPLReport from './LotteryPLReport'
 import AgPLReport from './AgPLReport'
 import PtPLReport from './PtPLReport'

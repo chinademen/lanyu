@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
 import Loading from '@/components/Loading'
+import Svg from '@/components/Svg'
 
 @inject(({ lotteryStore }) => {
     return {
@@ -49,11 +50,20 @@ export default class LotteryBet extends PureComponent {
         )
     }
 
-   
-
     render() {
         const { lotteryUrl } = this.props;
-
+        // 监听投注页是否登录失效
+        /** 
+            window.addEventListener('message', e => {
+                    const data = JSON.parse(e.data);
+                    if(data.type === 'DHlogin') {
+                        // 登录失效，跳转到登录页面
+                        this.props.navigator.replace({
+                            id: 'Login'
+                        })
+                    }
+            })
+        */
         return (
             <View style={{flex: 1}}>
                 <TouchableOpacity
@@ -61,10 +71,11 @@ export default class LotteryBet extends PureComponent {
                     style={styles.leftItem}
                     onPress={this.onBack}
                 >
-                    <Image style={{width: scaleSize(18), height: scaleSize(18)}}
+                    {/* <Image style={{width: scaleSize(18), height: scaleSize(18)}}
                         source={require('@/assets/dh/images/ic_back_dark.png')}
                         resizeMode={"contain"}
-                    />
+                    /> */}
+                    <Svg icon='left' size='20' />
                 </TouchableOpacity>
                 <WebView
                     source={{uri: lotteryUrl}}

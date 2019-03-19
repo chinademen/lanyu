@@ -11,7 +11,6 @@ import {
     ImageBackground,
 } from 'react-native'
 import {Navigator} from 'react-native-deprecated-custom-components'
-// import LinearGradient from 'react-native-linear-gradient'
 import {observer, inject} from 'mobx-react/native'
 
 @inject('app')
@@ -40,31 +39,23 @@ export default class Profile extends Component {
 
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
-                {/* 沉侵式状态栏 */}
-                {/* <LinearGradient
-                    start={{ x: 0.2, y: 0.2 }}
-                    end={{ x: 0.8, y: 0.8 }}
-                    colors={this.props.app.appSkin.background}
-                    style={styles.header}>
-                    <Text style={styles.headerText}>{i18n.PROFILE_TITLE_MY_CENTER}</Text>
-                </LinearGradient> */}
                 <HeaderView settingAction={this._settingAction} loginAction={this._onLogin}/>
                 <View style={[styles.cellContainer, cellStyle]}>
                     <ProfileStaticCell
                         title="充值取款"
                         style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/dh/images/resource/ic_my_photos.png')}
+                        imageName={require('@/assets/dh/images/report/check.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ProfileStaticCell
                         title="报表查询"
                         style={{borderBottomWidth: gScreen.onePix}}
-                        imageName={require('@/assets/dh/images/resource/ic_my_collect.png')}
+                        imageName={require('@/assets/dh/images/report/check.png')}
                         onPress={this._onPressStaticCell}
                     />
                     <ProfileStaticCell
                         title="契约分红"
-                        imageName={require('@/assets/dh/images/resource/ic_my_upload.png')}
+                        imageName={require('@/assets/dh/images/report/check.png')}
                         onPress={this._onPressStaticCell}
                     />
                 </View>
@@ -77,7 +68,7 @@ const HeaderView = ({settingAction, loginAction}) => {
     return (
         <ImageBackground
             style={{width: gScreen.width, height: 200, alignItems: 'center', backgroundColor: 'transparent'}}
-            source={require('@/assets/dh/images/resource/top.png')}
+            source={require('@/assets/dh/images/report/check.png')}
         >
             <View style={[styles.header2, {width: gScreen.width}]}>
                 <Text style={{color: 'white', fontSize: 16, marginTop: 50}}>amao001</Text>
@@ -89,7 +80,7 @@ const HeaderView = ({settingAction, loginAction}) => {
                 >
                     <Image
                         style={{width: 20, height: 20}}
-                        source={require('@/assets/dh/images/resource/ic_my_setting.png')}
+                        source={require('@/assets/dh/images/report/check.png')}
                     />
                 </TouchableOpacity>
             </View>
@@ -136,7 +127,7 @@ const ProfileStaticCell = ({
             <Image style={{width: 20, height: 20, marginHorizontal: 15}} source={imageName}/>
             <View style={[styles.cellStyle, style || style]}>
                 <Text style={{color: 'gray'}}>{title}</Text>
-                <Image style={{width: 20, height: 20}} source={require('@/assets/dh/images/resource/ic_my_right.png')}/>
+                <Image style={{width: 20, height: 20}} source={require('@/assets/dh/images/report/check.png')}/>
             </View>
         </TouchableOpacity>
     )

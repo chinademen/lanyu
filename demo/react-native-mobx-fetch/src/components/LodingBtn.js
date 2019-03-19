@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
         marginTop: scaleSize(10),
         height: scaleSize(45),
         borderRadius: scaleSize(22.5),
-        // backgroundColor: '-webkit-gradient(linear, 0 0, 0 bottom, from(#fb4d7e), to(rgba(255, 77, 79, 1)))!important',
         elevation: 2,
         shadowOffset: {width: 0, height: 0},
         shadowColor: '#bbbbb8',

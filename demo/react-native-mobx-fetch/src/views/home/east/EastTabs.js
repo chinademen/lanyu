@@ -1,7 +1,4 @@
-/**
- * 彩种列表
-*/ 
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import {
     StyleSheet,
     View,
@@ -9,10 +6,10 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native'
+import { Tab, Tabs, ScrollableTab } from 'native-base'
 import { observer, inject } from 'mobx-react/native'
 import {Navigator} from 'react-native-deprecated-custom-components'
 import LinearGradient from 'react-native-linear-gradient'
-import DashLine from '@/components/DashLine'
 
 @inject(({ app, homeStore, lotteryStore }) => {
     return {
@@ -23,43 +20,34 @@ import DashLine from '@/components/DashLine'
     }
 })
 @observer
-export default class LotteryList extends PureComponent {
+export default class EastTabs extends PureComponent {
     componentDidMount() {
         const { getUserLotteryList } = this.props;
         getUserLotteryList()
     }
 
-    // 彩种分类  (彩种分类，是否为新彩种，是否为热门彩种，是否显示该彩种)
-    createLottery = (newLotteryList) => {
-        return newLotteryList.map((item) => {
-            return this.createLotteryType(item);
+    // 渲染tab
+    createTab(newLotteryList) {
+        const { appSkin } = this.props;
+        return newLotteryList.map(item => {
+            return this.createLotteryType(item, appSkin);
         })
     }
 
     // 类型
-    createLotteryType = (item) => {
+    createLotteryType = (item, appSkin) => {
         if (item.list && item.list.length > 0) {
             return (
-                <Fragment>
-                    {/* 彩种分类 */}
-                    <View style={styles.lotteryType}>
-                        <View style={styles.point}></View>
-                        <View style={styles.title}>
-                            <Text style={styles.titleText}>{item.name}</Text>
-                        </View>
-                    </View>
-                    <DashLine 
-                        type="horizontal" 
-                        backgroundColor='#d9d7ef' 
-                        len={30} 
-                        width={gScreen.width}
-                        style={{paddingHorizontal: gScreen.width * 0.05}}
-                    ></DashLine>
+                <Tab heading={item.name}
+                    tabStyle={{ backgroundColor: appSkin.tab }} 
+                    textStyle={{ color: appSkin.text }}
+                    activeTabStyle={{ backgroundColor: appSkin.active }}
+                >
                     {/* 彩种列表 */}
-                    <View style={styles.lotteryList}>
+                    <View style={[styles.lotteryList, { backgroundColor: appSkin.pageBackground }]}>
                         {this.createLotteryList(item.list)}
                     </View>
-                </Fragment>
+                </Tab>
             )
         }
     }
@@ -99,59 +87,30 @@ export default class LotteryList extends PureComponent {
         })
     }
 
-    // 无数据
-    createNoData = () => {
-        return (
-            <View style={styles.noData}>
-                <Text style={{ color: '#fff' }}>暂无数据</Text>
-            </View> 
-        )
-    }
-
-    
     render() {
-        let { appSkin, newLotteryList } = this.props;
-        return (
-            <View style={[styles.container, { backgroundColor: appSkin.pageBackground }]}>
-                {newLotteryList && newLotteryList.length > 0 && this.createLottery(newLotteryList) || this.createNoData()}
-            </View>
-        )
+        const { appSkin, newLotteryList } = this.props;
+        
+        if (newLotteryList && newLotteryList.length > 0) {
+            return(
+                <Tabs renderTabBar={() => <ScrollableTab style={{ backgroundColor: appSkin.tab }} />}>
+                    {this.createTab(newLotteryList)}
+                </Tabs>
+            )
+        } else {
+            return (
+                <View style={styles.noData}>
+                    <Text style={{ color: '#fff' }}>暂无数据</Text>
+                </View>
+            )
+        }
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        width: gScreen.width,
-    },
     noData: {
         height: scaleSize(42),
         alignItems:'center',
         justifyContent: 'center',
-        color: '#fff'
-    },
-    lotteryType: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        height: scaleSize(42),
-        width: gScreen.width,
-        paddingHorizontal: gScreen.width * 0.05,
-    },
-    point: {
-        width: scaleSize(8),
-        height: scaleSize(8),
-        backgroundColor: '#c23d3b',
-        borderRadius: scaleSize(8),
-        marginHorizontal: scaleSize(10),
-    },
-    title: {
-        height: scaleSize(42),
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    titleText: {
-        fontSize: scaleSize(16),
-        color: '#dea364',
     },
     lotteryList: {
         flex: 1,
@@ -167,8 +126,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: scaleSize(46),
         margin: gScreen.width * 0.0266,
-        // borderWidth: scaleSize(1),
-        // borderColor: '#ec5355',
         borderRadius: scaleSize(9),
         overflow: 'hidden',
         elevation: 2,
@@ -180,7 +137,6 @@ const styles = StyleSheet.create({
     lotteryText: {
         fontSize: scaleSize(16),
         fontWeight: 'bold',
-        // color: '#dea364',
     },
     lotteryImg: {
         position: 'absolute',

@@ -5,14 +5,13 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    Text,
     ScrollView,
 } from 'react-native'
 import { observer, inject } from 'mobx-react/native'
-// import LinearGradient from 'react-native-linear-gradient'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
-import CommonTab from '@/components/CommonTab'
-import ChangeSkin from '@/components/ChangeSkin'
+import CommonTab from '@/common/CommonTab'
+import ChangeSkin from '@/common/ChangeSkin'
+import ChangePlat from '@/common/ChangePlat'
 import Banner from './Banner'
 import Notice from './Notice'
 import WinnerList from './WinnerList'
@@ -23,7 +22,8 @@ import VideoTab from './VideoTab'
 import SportTab from './SportTab'
 import ElectronTab from './ElectronTab'
 import FishTab from './FishTab'
-import Svg from '@/components/Svg'
+import LotteryList from './LotteryList'
+import EastTabs from './east/EastTabs'
 
 const tabs = [
     { name: i18n.HOME_TEXT_LOTTERY, component: LotteryTab },
@@ -38,6 +38,7 @@ const tabs = [
 @inject(({ app, homeStore, lotteryStore }) => {
     return {
         appSkin: app.appSkin,
+        appPlat: app.appPlat,
         thirdGameList: homeStore.thirdGameList,
         workroomThirdgameList: homeStore.workroomThirdgameList,
         enterLottery: lotteryStore.enterLottery
@@ -53,19 +54,14 @@ export default class Home extends Component {
     }
 
     render() {
-        let { appSkin, navigator } = this.props;
+        let { appSkin, navigator, appPlat } = this.props;
         
         return (
-            <View style={{flex: 1}}>
-                {/* 沉侵式状态栏 */}
-                {/* <LinearGradient
-                    start={{ x: 0.2, y: 0.2 }}
-                    end={{ x: 0.8, y: 0.8 }}
-                    colors={appSkin.background}
-                    style={styles.header}>
-                    <Text style={styles.headerText}>{i18n.HOME_TITLE_HOMEPAGE}</Text>
-                </LinearGradient> */}
-               
+            <View style={{flex: 1, backgroundColor: appSkin.pageBackground }}>
+
+                {/* 公告 */}
+                {platName !== 'east' && <Notice navigator={navigator} />}
+
                 <ScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
@@ -76,24 +72,31 @@ export default class Home extends Component {
                 >
                     
                     {/* 公告 */}
-                    <Notice navigator={navigator} />
+                    {platName === 'east' && <Notice navigator={navigator} />}
 
                     {/* banner轮播 */}
                     <Banner />
-                    
+
                     <View style={[styles.container, { backgroundColor: appSkin.tab }]}>
                         {/* 中奖公告 */}
                         <WinnerList />
                         {/* 余额 */}
                         <Balance navigator={navigator} />
                     </View>
-                    
+
                     {/* 游戏 */}
-                    <CommonTab tabs={tabs} navigator={navigator} />
+                    {platName === 'east' && <EastTabs navigator={navigator} />}
+                    {platName === 'weat' && <LotteryList navigator={navigator} />}
+                    {platName === 'south' && <CommonTab tabs={tabs} navigator={navigator} />}
+                    {platName === 'north' && <CommonTab tabs={tabs} navigator={navigator} />}
+                    {platName === 'middle' && <CommonTab tabs={tabs} navigator={navigator} />}
+                    
 
                 </ScrollView>
                 {/* 一键换肤 */}
                 <ChangeSkin />
+                {/* 一键换平台 */}
+                <ChangePlat />
             </View>
         )
     }
@@ -103,22 +106,7 @@ const styles = StyleSheet.create({
     container: {
         width: gScreen.width * 0.9468,
         margin: gScreen.width * 0.0266,
-        // padding: scaleSize(10),
-        // backgroundColor: '#322b33',
         top: scaleSize(-30),
         borderRadius: scaleSize(8),
     }
-    // header: {
-    //     height: scaleSize(57.5),
-    //     width: gScreen.width,
-    //     marginTop: __IOS__ ? 20 : 0,
-    //     paddingTop: scaleSize(30),
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     backgroundColor: '#fb5458'
-    // },
-    // headerText: {
-    //     color: 'white', 
-    //     fontSize: scaleSize(16)
-    // },
 })

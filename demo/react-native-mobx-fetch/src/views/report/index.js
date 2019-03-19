@@ -69,7 +69,6 @@ export default class Report extends Component {
 
         return (
             <View style={styles.container}>
-                {/* 沉侵式状态栏 */}
                 <LinearGradient
                     start={{ x: 0.2, y: 0.2 }}
                     end={{ x: 0.8, y: 0.8 }}
@@ -94,7 +93,6 @@ const styles = StyleSheet.create({
         height: scaleSize(37.5),
         width: gScreen.width,
         marginTop: __IOS__ ? 20 : 0,
-        // paddingTop: scaleSize(30),
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fb5458'

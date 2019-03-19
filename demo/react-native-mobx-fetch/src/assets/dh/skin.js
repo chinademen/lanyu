@@ -13,6 +13,7 @@ export default {
         // svg颜色
         icon: 'skin_brown',
         fill: '#ec7413',
+        fill2: '#dea364',
         skinbg: '#fff',
         // 导航栏文字
         navbarText: '#4c424d'
@@ -30,6 +31,7 @@ export default {
         // svg颜色
         icon: 'skin_red',
         fill: '#D82741',
+        fill2: '#fff',
         skinbg: '#D82741',
         // 导航栏文字
         navbarText: '#D82741'
@@ -47,6 +49,7 @@ export default {
         // svg 名字，颜色，背景颜色
         icon: 'skin_blue',
         fill: '#4477FF',
+        fill2: '#fff',
         skinbg: '#4477FF',
         // 导航栏文字
         navbarText: '#4477FF'
@@ -64,6 +67,7 @@ export default {
         // svg颜色
         icon: 'skin_black',
         fill: '#141414',
+        fill2: '#ec7413',
         skinbg: '#dea364',
         // 导航栏文字
         navbarText: '#141414'
@@ -81,6 +85,7 @@ export default {
         // svg颜色
         icon: 'skin_gold',
         fill: '#f09c15',
+        fill2: '#fff',
         skinbg: '#f09c15',
         // 导航栏文字
         navbarText: '#f09c15'
@@ -94,10 +99,11 @@ export default {
         // 选项卡 背景，文字，被选中背景
         tab: '#428739',
         text: '#fff',
-        active: '#428739',
+        active: '#fff',
         // svg颜色
         icon: 'skin_green',
         fill: '#428739',
+        fill2: '#ec7413',
         skinbg: '#428739',
         // 导航栏文字
         navbarText: '#428739'
@@ -115,6 +121,7 @@ export default {
         // svg颜色
         icon: 'skin_silver',
         fill: '#c5c5c5',
+        fill2: '#000',
         skinbg: '#000',
         // 导航栏文字
         navbarText: '#c5c5c5'
@@ -132,6 +139,7 @@ export default {
         // svg颜色
         icon: 'skin_purple',
         fill: '#6F50E7',
+        fill2: '#ec7413',
         skinbg: '#6F50E7',
         // 导航栏文字
         navbarText: '#6F50E7'

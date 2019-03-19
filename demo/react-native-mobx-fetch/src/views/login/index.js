@@ -164,9 +164,7 @@ export default class Login extends PureComponent {
                 left: __IOS__ ? 20 : 6,
             }
         };
-        /* 沉侵式状态栏 */
-        // let navPaddingTop = ifIphoneX({ paddingTop: scaleSize(30) }, { paddingTop: scaleSize(20) }, { paddingTop: StatusBar.currentHeight });
-        
+
         return (
             <ImageBackground
                 source={require('@/assets/dh/images/login/loginbg.png')}

@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around'
     },
-
     icon: {
         width: 26,
         height: 26,

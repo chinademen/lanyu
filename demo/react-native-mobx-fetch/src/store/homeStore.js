@@ -25,6 +25,7 @@ class HomeStore {
                     a.url = api.baseURL + url;
                 })
             }
+            this.bannerList = [];
             this.bannerList.splice(res.length, 0, ...res)
         })
     }

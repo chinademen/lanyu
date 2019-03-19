@@ -92,7 +92,7 @@ export default class NoticeDetails extends PureComponent {
     renderNoData() {
         return (
             <View style={styles.noData}>
-                <Text>暂无数据</Text>
+                <Text >暂无数据</Text>
             </View> 
         )
     }

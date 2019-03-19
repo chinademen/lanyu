@@ -26,75 +26,41 @@ export default class Banner extends PureComponent {
 
     render() {
         let { bannerList } = this.props;
+        // 网络获取 || 本地获取
+        let list = (bannerList && bannerList.length > 0) ? toJS(bannerList) : imgSrc.bannerSrc;
         //  ios中 Swiper 的 style需要换成 containerStyle
         if (__IOS__) {
-            if (bannerList && bannerList.length > 0) {
-                // 网络获取
-                return (
-                    <Swiper containerStyle={styles.headerContainer} 
-                            // showsPagination={false}
-                            dotColor='#5b4529'
-                            activeDotColor='#ca9c64'
-                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
-                            autoplay={true}
-                            autoplayTimeout={4}
-                    >
-                        {toJS(bannerList).map((a, i) => {
-                            return <Image style={styles.headerContainer} source={{ uri: a.url }} resizeMode={'stretch'}></Image>;
-                        })}
-                    </Swiper>
-                )
-            } else {
-                // 本地获取
-                return (
-                    <Swiper containerStyle={styles.headerContainer} 
-                            // showsPagination={false}
-                            dotColor='#5b4529'
-                            activeDotColor='#ca9c64'
-                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
-                            autoplay={true}
-                            autoplayTimeout={4}   
-                    >
-                        {imgSrc.bannerSrc.map((a, i) => {
-                            return <Image style={styles.slide} source={a} resizeMode={'stretch'}></Image>;
-                        })}
-                    </Swiper>
-                )
-            }
+            return(
+                <Swiper containerStyle={styles.headerContainer} 
+                        // showsPagination={false}
+                        dotColor='#5b4529'
+                        activeDotColor='#ca9c64'
+                        paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
+                        autoplay={true}
+                        autoplayTimeout={4}
+                >
+                    {list.map(a => {
+                        let source = (bannerList && bannerList.length > 0) ? { uri: a.url } : a;
+                        return <Image style={styles.headerContainer} source={source} resizeMode={'stretch'}></Image>;
+                    })}
+                </Swiper>
+            )
         } else {
-            if (bannerList && bannerList.length > 0) {
-                // 网络获取
-                return (
-                    <Swiper style={styles.headerContainer} 
-                            // showsPagination={false}
-                            dotColor='#5b4529'
-                            activeDotColor='#ca9c64'
-                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
-                            autoplay={true}
-                            autoplayTimeout={4}
-                    >
-                        {toJS(bannerList).map((a, i) => {
-                            return <Image style={styles.headerContainer} source={{ uri: a.url }} resizeMode={'stretch'}></Image>;
-                        })}
-                    </Swiper>
-                )
-            } else {
-                // 本地获取
-                return (
-                    <Swiper style={styles.headerContainer} 
-                            // showsPagination={false}
-                            dotColor='#5b4529'
-                            activeDotColor='#ca9c64'
-                            paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
-                            autoplay={true}
-                            autoplayTimeout={4}   
-                    >
-                        {imgSrc.bannerSrc.map((a, i) => {
-                            return <Image style={styles.slide} source={a} resizeMode={'stretch'}></Image>;
-                        })}
-                    </Swiper>
-                )
-            }
+            return(
+                <Swiper style={styles.headerContainer} 
+                        // showsPagination={false}
+                        dotColor='#5b4529'
+                        activeDotColor='#ca9c64'
+                        paginationStyle={{ width: gScreen.width, paddingLeft: gScreen.width * 0.7 }}
+                        autoplay={true}
+                        autoplayTimeout={4}
+                >
+                    {list.map(a => {
+                        let source = (bannerList && bannerList.length > 0) ? { uri: a.url } : a;
+                        return <Image style={styles.headerContainer} source={source} resizeMode={'stretch'}></Image>;
+                    })}
+                </Swiper>
+            )
         }
        
     }
@@ -107,12 +73,6 @@ const styles = StyleSheet.create({
         height: scaleSize(gScreen.width * 0.4),
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    slide: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: gScreen.width,
-        height: scaleSize(gScreen.width * 0.4),
+        backgroundColor: '#fff',
     },
 })
