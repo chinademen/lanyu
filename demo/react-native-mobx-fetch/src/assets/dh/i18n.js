@@ -1,7 +1,11 @@
 // 规则：国际化key最少三位, 第一位为页面名称或者COMMON
 export default {
     // 侧边栏
-    SIDE_TEXT_PLATNAME: '东皇娱乐',
+    SIDE_TEXT_PLATNAME_EAST: '东皇娱乐',
+    SIDE_TEXT_PLATNAME_WEAT: '西皇娱乐',
+    SIDE_TEXT_PLATNAME_SOUTH: '南皇娱乐',
+    SIDE_TEXT_PLATNAME_NORTH: '北皇娱乐',
+    SIDE_TEXT_PLATNAME_MIDDLE: '中皇娱乐',
     SIDE_TEXT_LOGOUT: '退出登录',
     SIDE_TEXT_CHANGESKIN: '更换皮肤',
     SIDE_TEXT_CHANGEPLAT: '更换平台',

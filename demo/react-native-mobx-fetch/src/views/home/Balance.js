@@ -51,7 +51,7 @@ export default class Balance extends PureComponent {
                     <Text style={[styles.text, { color: appSkin.text }]}>{i18n.HOME_MONEY_YUAN}</Text>
                     <TouchableOpacity
                         activeOpacity={0.75}
-                        style={{ position: 'absolute', right: 10 }}
+                        style={{ position: 'absolute', right: scaleSize(10) }}
                         onPress={() => this.toggle(visible)}>
                         <Svg icon={icon} size="24" color={appSkin.text} />
                     </TouchableOpacity>
@@ -96,11 +96,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        fontSize: scaleSize(16),
+        fontSize: scaleSize(14),
     },
     balance: {
         fontWeight: 'bold',
-        fontSize: scaleSize(16),
+        fontSize: scaleSize(14),
         paddingRight: scaleSize(5),
     },
     item: {

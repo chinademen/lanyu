@@ -15,6 +15,7 @@ import Svg from '@/components/Svg'
 @inject(({ app, loginStore }) => {
     return {
         appSkin: app.appSkin,
+        appPlat: app.appPlat,
         userLogout: loginStore.userLogout,
     }
 })
@@ -67,6 +68,8 @@ export default class SideBar extends Component {
     }
 
     render() {
+        const { appPlat } = this.props;
+
         const list = [
             { key: 'logout', title: i18n.SIDE_TEXT_LOGOUT, icon: 'logout', event: this.logout },
             { key: 'changeSkin', title: i18n.SIDE_TEXT_CHANGESKIN, icon: 'east', event: this.toChangeSkin },
@@ -78,13 +81,21 @@ export default class SideBar extends Component {
             borderBottomWidth: gScreen.onePix,
         };
 
+        let obj = {
+            east: i18n.SIDE_TEXT_PLATNAME_EAST,
+            weat: i18n.SIDE_TEXT_PLATNAME_WEAT,
+            south: i18n.SIDE_TEXT_PLATNAME_SOUTH,
+            morth: i18n.SIDE_TEXT_PLATNAME_NORTH,
+            middle: i18n.SIDE_TEXT_PLATNAME_MIDDLE,
+        };
+        let title = obj[appPlat];
 
         return(
             <View style={styles.container}>
                 <LinearGradient
                     colors={this.props.appSkin.background}
                     style={styles.header}>
-                    <Text style={styles.headerText}>{i18n.SIDE_TEXT_PLATNAME}</Text>
+                    <Text style={styles.headerText}>{title}</Text>
                 </LinearGradient>
                 <View style={[styles.cellContainer, cellStyle]}>
                     {this.sideList(list)}

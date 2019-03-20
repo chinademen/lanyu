@@ -99,7 +99,7 @@ export default {
         // 选项卡 背景，文字，被选中背景
         tab: '#428739',
         text: '#fff',
-        active: '#fff',
+        active: '#428739',
         // svg颜色
         icon: 'skin_green',
         fill: '#428739',

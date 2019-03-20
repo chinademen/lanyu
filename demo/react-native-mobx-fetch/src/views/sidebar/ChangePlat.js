@@ -33,7 +33,7 @@ export default class ChangePlat extends PureComponent {
         this.props.navigator.pop()
     }
 
-    changePlat(newPlat, defaultSkin) {
+    changePlat(newPlat) {
         // 切换静态global平台
         global.platName = newPlat;
         // 切换store中的平台
@@ -66,14 +66,6 @@ export default class ChangePlat extends PureComponent {
                         key={'weat'}>
                         <LinearGradient colors={background} style={lotteryItem}>
                             <Text style={[lotteryText, { color: text }]} >{'西皇娱乐'}</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        activeOpacity={0.75}
-                        onPress={() => this.changePlat('south')}
-                        key={'south'}>
-                        <LinearGradient colors={background} style={lotteryItem}>
-                            <Text style={[lotteryText, { color: text }]} >{'南皇娱乐'}</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                     <TouchableOpacity 
