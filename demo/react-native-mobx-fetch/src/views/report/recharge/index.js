@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import {
     StyleSheet,
 } from 'react-native'
-import { Container, Tab, Tabs, ScrollableTab } from 'native-base'
+import { Container } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import CommonHeader from '@/components/Header'
 import CommonTab from '@/common/CommonTab'

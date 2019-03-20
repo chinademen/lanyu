@@ -72,8 +72,8 @@ export default class SideBar extends Component {
 
         const list = [
             { key: 'logout', title: i18n.SIDE_TEXT_LOGOUT, icon: 'logout', event: this.logout },
-            { key: 'changeSkin', title: i18n.SIDE_TEXT_CHANGESKIN, icon: 'east', event: this.toChangeSkin },
-            { key: 'changePlat', title: i18n.SIDE_TEXT_CHANGEPLAT, icon: 'skin_brown', event: this.toChangePlat },
+            { key: 'changeSkin', title: i18n.SIDE_TEXT_CHANGESKIN, icon: 'skin_brown', event: this.toChangeSkin },
+            { key: 'changePlat', title: i18n.SIDE_TEXT_CHANGEPLAT, icon: 'east', event: this.toChangePlat },
         ];
 
         let cellStyle = {
