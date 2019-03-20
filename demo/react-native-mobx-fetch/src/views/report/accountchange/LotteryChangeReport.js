@@ -8,9 +8,10 @@ import {
     Text,
     ScrollView,
 } from 'react-native'
-import { Container } from 'native-base'
+import { Container, Picker } from 'native-base'
 import {observer, inject} from 'mobx-react/native'
 import LodingBtn from '@/components/LodingBtn'
+import Select from '@/components/Select'
 
 @inject(({ app }) => {
     return {
@@ -20,6 +21,31 @@ import LodingBtn from '@/components/LodingBtn'
 })
 @observer
 export default class LotteryChangeReport extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            lotteryid: 0,
+            mode: 0,
+            type: 0,
+            time: 'day1',
+            includesub: 1,
+        }
+    }
+
+    // 无数据
+    createNoData = () => {
+        return (
+            <View style={styles.noData}>
+                <Text style={{ color: '#fff' }}>暂无数据</Text>
+            </View> 
+        )
+    }
+
+    onValueChange(name, value) {
+        this.setState({
+            [name]: value
+        });
+    }
 
     render() {
         const { appSkin } = this.props;
@@ -28,7 +54,46 @@ export default class LotteryChangeReport extends Component {
             <View style={[styles.container, { backgroundColor: appSkin.pageBackground }]}>
                 {/* 查询条件 悬浮 */}
                 <View style={styles.searchBox}>
-                    <Text>查询条件区域</Text>
+                    <Select />
+                    {/* <Picker
+                        note
+                        mode="dialog"
+                        style={{ width: gScreen.width * 0.33 }}
+                        selectedValue={this.state.lotteryid}
+                        onValueChange={(value) => this.onValueChange('lotteryid', value)}
+                        >
+                        <Picker.Item label="所有彩种" value="0" />
+                        <Picker.Item label="重庆时时彩" value="1" />
+                        <Picker.Item label="北京PK10" value="2" />
+                        <Picker.Item label="腾讯分分彩" value="3" />
+                        <Picker.Item label="新疆时时彩" value="4" />
+                    </Picker>
+                    <Picker
+                        note
+                        mode="dropdown"
+                        style={{ width: gScreen.width * 0.33 }}
+                        selectedValue={this.state.mode}
+                        onValueChange={(value) => this.onValueChange('mode', value)}
+                        >
+                        <Picker.Item label="所有模式" value="0" />
+                        <Picker.Item label="1元" value="1" />
+                        <Picker.Item label="1角" value="2" />
+                        <Picker.Item label="1分" value="3" />
+                        <Picker.Item label="2元" value="4" />
+                    </Picker>
+                    <Picker
+                        note
+                        mode="dropdown"
+                        style={{ width: gScreen.width * 0.33 }}
+                        selectedValue={this.state.type}
+                        onValueChange={(value) => this.onValueChange('type', value)}
+                        >
+                        <Picker.Item label="所有类型" value="0" />
+                        <Picker.Item label="投注扣款" value="1" />
+                        <Picker.Item label="投注返点" value="2" />
+                        <Picker.Item label="奖金派送" value="3" />
+                        <Picker.Item label="创建追号扣款" value="4" />
+                    </Picker> */}
                 </View>
 
                 {/* 表格 滚动区 */}
@@ -40,7 +105,7 @@ export default class LotteryChangeReport extends Component {
                     style={{ width: gScreen.width, height: gScreen.height }}
                     contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 }}
                 >
-                    
+                    {this.createNoData()}
                 </ScrollView>
 
                 {/* 底部合计 */}
@@ -84,5 +149,11 @@ const styles = StyleSheet.create({
         color: '#333',
         height: scaleSize(25),
         fontSize: scaleSize(14)
-    }
+    },
+    noData: {
+        height: scaleSize(42),
+        alignItems:'center',
+        justifyContent: 'center',
+        color: '#fff'
+    },
 })
