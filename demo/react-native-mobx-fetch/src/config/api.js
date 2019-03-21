@@ -3,7 +3,6 @@ export default {
     baseURL: 'https://frontapi.donghuang918.com', // 正式环境
     // 公共接口
     common: {
-        getLotteryBetMode: 'lottery/get-lottery-bet-mode',              // 获取用户投注金额模式(元角分厘)
         getMethodList: '/lottery/get-method-list',                      // 获取彩种玩法
         getIssueList: '/lottery/get-issue-list',                        // 获取奖期
     },
@@ -25,6 +24,7 @@ export default {
         getUserInfo: '/user/get-user-info',                             // 得到用户信息
         getUserLotteryList: '/lottery/get-user-lottery-list',           // 获取彩种列表
         workroomThirdgameList: '/thirdgame/workroom-thirdgame-list',    // 第三方游戏列表
+        getLotteryBetMode: '/lottery/get-lottery-bet-mode',             // 获取用户投注金额模式(元角分厘)
     },
     // 彩票
     lottery: {

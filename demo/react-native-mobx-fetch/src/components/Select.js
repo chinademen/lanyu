@@ -88,16 +88,13 @@ export default class Select extends Component {
                                 {this.CacelBtn()}
                                 {this.OkBtn()}
                             </View>
-                            <View style={styles.header2}>
-                              
-                            </View>
                             <View style={styles.topModal}></View>
                             <ScrollView
                                 bounces={false}
                                 showsVerticalScrollIndicator={false}
                                 automaticallyAdjustContentInsets={false}
                                 removeClippedSubviews
-                                style={{ width: gScreen.width, height: scaleSize(200) }}
+                                style={{ width: gScreen.width, height: gScreen.height }}
                                 contentContainerStyle={{ alignItems: 'center' }}
                             >
                                 <Text>11111111111111111111111111</Text>

@@ -23,20 +23,19 @@ export default class LodingBtn extends PureComponent {
          * @param fontSize  [{fontSize}]    字体大小
          * @param color     [{color}]       字体颜色
          */ 
-        const { activeOpacity, style, onPress, submiting, fontSize, color, text } = this.props;
+        const { activeOpacity, style, submiting, fontSize, color, text } = this.props;
         let opacity = submiting ? 0.75 : 1;
         return (
-           
-                <TouchableOpacity
-                    activeOpacity={activeOpacity || 0.75}
-                    style={[style, { opacity: opacity }]}
-                    onPress={this.onPressThrottle}
-                >
-                    <LinearGradient colors={skin.background} style={styles.btn}>
-                        {submiting && <ActivityIndicator color="white" />}
-                        <Text style={{fontSize: fontSize || scaleSize(16), color: color || '#fff'}}>{text || '提交'}</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
+            <TouchableOpacity
+                activeOpacity={activeOpacity || 0.75}
+                style={[style, { opacity: opacity }]}
+                onPress={this.onPressThrottle}
+            >
+                <LinearGradient colors={skin.background} style={styles.btn}>
+                    {submiting && <ActivityIndicator color="white" />}
+                    <Text style={{fontSize: fontSize || scaleSize(16), color: color || '#fff'}}>{text || '提交'}</Text>
+                </LinearGradient>
+            </TouchableOpacity>
         )
     }
 }

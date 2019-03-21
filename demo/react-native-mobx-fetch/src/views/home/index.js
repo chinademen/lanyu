@@ -14,8 +14,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import Svg from '@/components/Svg'
 import NetInfoDecorator from '@/components/NetInfoDecorator'
 import CommonTab from '@/common/CommonTab'
-// import ChangeSkin from '@/common/ChangeSkin'
-// import ChangePlat from '@/common/ChangePlat'
 import Banner from './Banner'
 import Notice from './Notice'
 import WinnerList from './WinnerList'
@@ -57,15 +55,17 @@ const LeftItem = ({onPress}) => {
         appPlat: app.appPlat,
         thirdGameList: homeStore.thirdGameList,
         workroomThirdgameList: homeStore.workroomThirdgameList,
-        enterLottery: lotteryStore.enterLottery
+        enterLottery: lotteryStore.enterLottery,
+        getLotteryBetMode: homeStore.getLotteryBetMode,
     }
 })
 @observer
 export default class Home extends Component {
 
     componentDidMount() {
-        const {  workroomThirdgameList, enterLottery } = this.props;
+        const {  workroomThirdgameList, enterLottery, getLotteryBetMode } = this.props;
         enterLottery()
+        getLotteryBetMode()
         // workroomThirdgameList()
     }
 
@@ -114,13 +114,8 @@ export default class Home extends Component {
                     {platName === 'south' && <CommonTab tabs={tabs} navigator={navigator} />}
                     {platName === 'north' && <CommonTab tabs={tabs} navigator={navigator} />}
                     {platName === 'middle' && <CommonTab tabs={tabs} navigator={navigator} />}
-                    
 
                 </ScrollView>
-                {/* 一键换肤 */}
-                {/* <ChangeSkin /> */}
-                {/* 一键换平台 */}
-                {/* <ChangePlat /> */}
             </View>
         )
     }

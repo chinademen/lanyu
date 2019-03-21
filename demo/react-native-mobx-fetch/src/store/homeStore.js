@@ -1,6 +1,13 @@
 import { observable, computed, action, runInAction } from 'mobx'
 import api from '@/config/api'
-import { getBanner,  getNotice,  getUserInfo,  getUserLotteryList,  workroomThirdgameList } from '@/services/home'
+import { 
+    getBanner,
+    getNotice,  
+    getUserInfo,  
+    getUserLotteryList,  
+    workroomThirdgameList, 
+    getLotteryBetMode, 
+} from '@/services/home'
 
 class HomeStore {
     @observable bannerList = []      // banner数组
@@ -9,6 +16,7 @@ class HomeStore {
     @observable lotteryList = []     // 彩种列表
     @observable newLotteryList = []  // 处理彩种列表
     @observable thirdGameList = []   // 第三方游戏列表
+    @observable modes = []           // 模式
     @observable username = ''
 
 
@@ -110,6 +118,16 @@ class HomeStore {
         runInAction(() => {
             if (!res) return;
             this.thirdGameList = res;
+        })
+    }
+
+    // 获取用户投注金额模式(元角分厘) res=[{id,name}]
+    @action.bound
+    async getLotteryBetMode() {
+        const res = await getLotteryBetMode();
+        runInAction(() => {
+            if (!res) return;
+            this.modes = res;
         })
     }
 

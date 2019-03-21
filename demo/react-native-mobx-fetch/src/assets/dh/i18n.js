@@ -15,6 +15,11 @@ export default {
     COMMON_TEXT_WIN_NUMBER: '开奖',
     COMMON_TEXT_REPORT: '报表',
     COMMON_TEXT_MY: '我的',
+    COMMON_TEXT_USERNAME: '用户名',
+    COMMON_TEXT_SEARCH: '查询',
+    COMMON_TEXT_TOTAL: '合计：',
+    COMMON_TEXT_CAPITAL_CHANGE : '资金变动',
+    COMMON_TEXT_DATADELAY_WARING: '由于彩票数据同步存在延迟如需实时数据请咨询客服',
 
     // 登录
     LOGIN_REMEMBER_PASSWORD: '记住密码',
@@ -67,6 +72,7 @@ export default {
     REPORT_MODULE_BET: '投注记录',
     REPORT_MODULE_CONTRACT: '契约分红',
     REPORT_MODULE_PROXY: '代理中心',
+
     // 总览
     REPORT_TAB_OVERVIEW_PERSONAL: '个人',
     REPORT_TAB_OVERVIEW_TEAM: '团队',

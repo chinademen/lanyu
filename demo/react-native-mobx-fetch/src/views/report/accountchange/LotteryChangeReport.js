@@ -7,16 +7,66 @@ import {
     View,
     Text,
     ScrollView,
+    TouchableOpacity,
+    TextInput,
+    ActivityIndicator,
 } from 'react-native'
-import { Container, Picker } from 'native-base'
+import { Container, CheckBox } from 'native-base'
+import { Table, TableWrapper, Row, Cell } from 'react-native-table-component'
 import {observer, inject} from 'mobx-react/native'
-import LodingBtn from '@/components/LodingBtn'
-import Select from '@/components/Select'
+import Picker from 'react-native-picker'
+import Svg from '@/components/Svg'
+import LinearGradient from 'react-native-linear-gradient'
 
-@inject(({ app }) => {
+let data = [];
+for(var i=0;i<100;i++){
+    data.push(i);
+}
+
+let accountChangeType = [
+    { type: '3', name: '投注扣款' },
+    { type: '4', name: '投注返点' },
+    { type: '5', name: '奖金派送' },
+    { type: '6', name: '创建追号扣款' },
+    { type: '7', name: '当期追号返款' },
+    { type: '9', name: '撤单返款' },
+    { type: '11', name: '撤单返点' },
+    { type: '12', name: '撤销派奖' },
+];
+
+let pickerParams = {
+    pickerConfirmBtnText: '确定',
+    pickerCancelBtnText: '取消',
+    pickerConfirmBtnColor: [16,110,216,1],
+    pickerCancelBtnColor: [16,110,216,1],
+    pickerTitleText: '',
+    pickerToolBarBg: [255,255,255,1],
+    pickerBg: [255,255,255,0.3],
+    pickerToolBarFontSize: 16,
+    pickerFontSize: 16,
+};
+
+let timeZone = ['今天', '近三天', '近七天'];
+
+// 获取需要的
+function getDay(n) {
+    let date = new Date();
+    date.setDate(date.getDate() - n);
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    month = (month < 10 ) ? `0${month}` : month;
+    day = (day < 10) ? `0${day}` : day;
+    let result = `${year}-${month}-${day}`;
+    return result;
+}
+
+@inject(({ app, homeStore }) => {
     return {
         appSkin: app.appSkin,
         submiting: app.submiting,
+        lotteryList: homeStore.lotteryList,
+        modes: homeStore.modes,
     }
 })
 @observer
@@ -24,11 +74,21 @@ export default class LotteryChangeReport extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lotteryid: 0,
-            mode: 0,
-            type: 0,
-            time: 'day1',
-            includesub: 1,
+            lotteryid: null,    // 彩种
+            modeid: null,       // 模式
+            type: null,         // 账变类型
+            starttime: `${getDay(0)} 00:00:00`,    // 开始时间
+            endtime: `${getDay(0)} 23:59:59`,      // 结束时间
+            selectTime: 0,      // 选中时间
+            includesub: true,   // 是否包含下级
+            username: null,     // 用户名
+            tableHead: ['Head', 'Head2', 'Head3', 'Head4'],
+            tableData: [
+                ['1', '2', '3', '4'],
+                ['a', 'b', 'c', 'd'],
+                ['1', '2', '3', '4'],
+                ['a', 'b', 'c', 'd']
+            ],
         }
     }
 
@@ -47,75 +107,264 @@ export default class LotteryChangeReport extends Component {
         });
     }
 
+    // 选择彩种
+    selectLottery = (lotteryList) => {
+        let data = ['所有彩种'];
+        lotteryList.forEach(item => {
+            data.push(item.cnname)
+        });
+
+        Picker.init({
+            ...pickerParams,
+            pickerData: data,
+            selectedValue: [],
+            onPickerConfirm: (pickedValue, pickedIndex) => {
+                let lotteryid = ((pickedIndex - 0) !== 0) ? lotteryList[pickedIndex - 1].lotteryid : null;
+                this.setState({ lotteryid })
+            },
+            onPickerCancel: (pickedValue, pickedIndex) => {
+
+            },
+            onPickerSelect: (pickedValue, pickedIndex) => {
+            
+            }
+        });
+        Picker.show();
+    }
+
+    // 选择模式
+    selectMode = (modes) => {
+        let data = ['所有模式'];
+        modes.forEach(item => {
+            data.push(item.name)
+        });
+
+        Picker.init({
+            ...pickerParams,
+            pickerData: data,
+            selectedValue: [],
+            onPickerConfirm: (pickedValue, pickedIndex) => {
+                let modeid = ((pickedIndex - 0) !== 0) ? modes[pickedIndex - 1].id : null;
+                this.setState({ modeid })
+            },
+            onPickerCancel: (pickedValue, pickedIndex) => {
+               
+            },
+            onPickerSelect: (pickedValue, pickedIndex) => {
+               
+            }
+        });
+        Picker.show();
+    }
+
+    // 选择类型
+    selectType = (accountChangeType) => {
+        let data = ['所有类型'];
+        accountChangeType.forEach(item => {
+            data.push(item.name)
+        });
+
+        Picker.init({
+            ...pickerParams,
+            pickerData: data,
+            selectedValue: [],
+            onPickerConfirm: (pickedValue, pickedIndex) => {
+                let type = ((pickedIndex - 0) !== 0) ? accountChangeType[pickedIndex - 1].type : null;
+                this.setState({ type })
+            },
+            onPickerCancel: (pickedValue, pickedIndex) => {
+       
+            },
+            onPickerSelect: (pickedValue, pickedIndex) => {
+          
+            }
+        });
+        Picker.show();
+    }
+
+    // 选择日期
+    selectTime = () => {
+
+        Picker.init({
+            ...pickerParams,
+            pickerData: timeZone,
+            selectedValue: [],
+            onPickerConfirm: (pickedValue, pickedIndex) => {
+                let arr = [0, 2, 6];
+                let startDay = getDay(arr[pickedIndex - 0]);
+                let endDay =  getDay(0);
+                this.setState({ 
+                    starttime: `${startDay} 00:00:00`,
+                    endtime: `${endDay} 23:59:59`,
+                    selectTime: pickedIndex - 0,
+                })
+            },
+            onPickerCancel: (pickedValue, pickedIndex) => {
+       
+            },
+            onPickerSelect: (pickedValue, pickedIndex) => {
+          
+            }
+        });
+        Picker.show();
+    }
+
+    // 输入用户名
+    inputUsername = (val) => {
+        this.setState({
+            username: val
+        })
+    }
+
+    // 是否包含下级
+    selectIncludesub = (includesub) => {
+        this.setState({
+            includesub: !includesub
+        })
+    }
+
+    // 查询
+    searchData = () => {
+        // alert(this.state.username)
+    }
+
+    _alertIndex(index) {
+        alert(`This is row ${index + 1}`);
+    }
+
     render() {
-        const { appSkin } = this.props;
+        const { appSkin, lotteryList, modes, submiting } = this.props;
+        const { lotteryid, modeid, type, selectTime, starttime, endtime, username, includesub, tableHead, tableData } = this.state;
+
+        let cnname = '所有彩种';
+        if (lotteryList && lotteryList.length > 0) {
+            lotteryList.forEach(item => {
+                if (item.lotteryid === lotteryid) {
+                    cnname = item.cnname
+                }
+            })
+        }
+
+        let modeName = '所有模式';
+        if (modes && modes.length > 0) {
+            modes.forEach(item => {
+                if (item.id === modeid) {
+                    modeName = item.name
+                }
+            })
+        }
+
+        let typeName = '所有类型';
+        if (accountChangeType && accountChangeType.length > 0) {
+            accountChangeType.forEach(item => {
+                if (item.type === type) {
+                    typeName = item.name
+                }
+            })
+        }
+
+        const element = (data, index) => (
+            <TouchableOpacity onPress={() => this._alertIndex(index)}>
+              <View style={styles.tableBtn}>
+                <Text style={styles.tableBtnText}>button</Text>
+              </View>
+            </TouchableOpacity>
+        );
 
         return (
             <View style={[styles.container, { backgroundColor: appSkin.pageBackground }]}>
                 {/* 查询条件 悬浮 */}
                 <View style={styles.searchBox}>
-                    <Select />
-                    {/* <Picker
-                        note
-                        mode="dialog"
-                        style={{ width: gScreen.width * 0.33 }}
-                        selectedValue={this.state.lotteryid}
-                        onValueChange={(value) => this.onValueChange('lotteryid', value)}
-                        >
-                        <Picker.Item label="所有彩种" value="0" />
-                        <Picker.Item label="重庆时时彩" value="1" />
-                        <Picker.Item label="北京PK10" value="2" />
-                        <Picker.Item label="腾讯分分彩" value="3" />
-                        <Picker.Item label="新疆时时彩" value="4" />
-                    </Picker>
-                    <Picker
-                        note
-                        mode="dropdown"
-                        style={{ width: gScreen.width * 0.33 }}
-                        selectedValue={this.state.mode}
-                        onValueChange={(value) => this.onValueChange('mode', value)}
-                        >
-                        <Picker.Item label="所有模式" value="0" />
-                        <Picker.Item label="1元" value="1" />
-                        <Picker.Item label="1角" value="2" />
-                        <Picker.Item label="1分" value="3" />
-                        <Picker.Item label="2元" value="4" />
-                    </Picker>
-                    <Picker
-                        note
-                        mode="dropdown"
-                        style={{ width: gScreen.width * 0.33 }}
-                        selectedValue={this.state.type}
-                        onValueChange={(value) => this.onValueChange('type', value)}
-                        >
-                        <Picker.Item label="所有类型" value="0" />
-                        <Picker.Item label="投注扣款" value="1" />
-                        <Picker.Item label="投注返点" value="2" />
-                        <Picker.Item label="奖金派送" value="3" />
-                        <Picker.Item label="创建追号扣款" value="4" />
-                    </Picker> */}
+                    <TouchableOpacity
+                        activeOpacity={0.75}
+                        style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}
+                        onPress={() => this.selectLottery(lotteryList)}
+                    >
+                        <Text>{cnname}</Text>
+                        <Svg icon='down' size='18' />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        activeOpacity={0.75}
+                        style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}
+                        onPress={() => this.selectMode(modes)}
+                    >
+                        <Text>{modeName}</Text>
+                        <Svg icon='down' size='18' />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        activeOpacity={0.75}
+                        style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}
+                        onPress={() => this.selectType(accountChangeType)}
+                    >
+                        <Text>{typeName}</Text>
+                        <Svg icon='down' size='18' />
+                    </TouchableOpacity>
                 </View>
-
+                <View style={styles.searchBox}>
+                    <TouchableOpacity
+                        activeOpacity={0.75}
+                        style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}
+                        onPress={() => this.selectTime()}
+                    >
+                        <Text>{timeZone[selectTime]}</Text>
+                        <Svg icon='down' size='18' />
+                    </TouchableOpacity>
+                    <TextInput 
+                        style={[styles.input, { paddingVertical: 0, width: gScreen.width * 0.33, height: scaleSize(28) }]} 
+                        placeholder={i18n.COMMON_TEXT_USERNAME}
+                        maxLength={16}
+                        onChangeText={val => this.inputUsername(val)}
+                        value={username}
+                    ></TextInput>
+                    <View style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}>
+                        <CheckBox checked={includesub} onPress={() => this.selectIncludesub(includesub)} />
+                    </View>
+                </View>
+                <View style={[styles.searchBox, {  height: scaleSize(50), paddingVertical: scaleSize(10) }]}>
+                    <TouchableOpacity
+                        activeOpacity={0.75}
+                        onPress={this.searchData}
+                    >
+                        <LinearGradient colors={skin.background} style={styles.btn}>
+                            {submiting && <ActivityIndicator color="white" />}
+                            <Text style={{fontSize: scaleSize(14), color: '#fff'}}>{i18n.COMMON_TEXT_SEARCH}</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                </View>
                 {/* 表格 滚动区 */}
                 <ScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
                     automaticallyAdjustContentInsets={false}
                     removeClippedSubviews
-                    style={{ width: gScreen.width, height: gScreen.height }}
+                    style={{ flex: 1, width: gScreen.width, height: gScreen.height }}
                     contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 }}
                 >
-                    {this.createNoData()}
+                    <Table style={{ width: gScreen.width }} borderStyle={{borderColor: 'transparent' }}>
+                        <Row data={tableHead} style={styles.tableHead} textStyle={styles.tableText}/>
+                        {
+                            tableData.map((rowData, index) => (
+                            <TableWrapper key={index} style={styles.row}>
+                                {
+                                rowData.map((cellData, cellIndex) => (
+                                    <Cell key={cellIndex} data={cellIndex === 3 ? element(cellData, index) : cellData} textStyle={styles.tableText}/>
+                                ))
+                                }
+                            </TableWrapper>
+                            ))
+                        }
+                    </Table>
+                    {/* {this.createNoData()} */}
                 </ScrollView>
 
                 {/* 底部合计 */}
                 <View style={styles.footer}>
                     <Text style={[styles.footerText, { width: gScreen.width, borderBottomWidth: scaleSize(1), borderColor: '#f6f6f6', paddingLeft: scaleSize(10) }]}>
-                        合计：
+                        {i18n.COMMON_TEXT_TOTAL}
                     </Text>
-                    <Text style={styles.footerText}>资金变动</Text>
-                    <Text style={styles.footerText}>0.0000元</Text>
-                    <Text style={styles.footerText}>由于彩票数据同步存在延迟如需实时数据请咨询客服</Text>
+                    <Text style={styles.footerText}>{i18n.COMMON_TEXT_CAPITAL_CHANGE}</Text>
+                    <Text style={styles.footerText}>{0.000}{i18n.HOME_MONEY_YUAN}</Text>
+                    <Text style={styles.footerText}>{i18n.COMMON_TEXT_DATADELAY_WARING}</Text>
                 </View>
 
             </View>
@@ -128,11 +377,13 @@ const styles = StyleSheet.create({
         flex: 1
     },
     searchBox: {
-        height: scaleSize(30),
+        height: scaleSize(40),
         backgroundColor: '#fff', 
         width: gScreen.width,
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: scaleSize(5),
     },
     footer: {
         position: 'absolute',
@@ -156,4 +407,34 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: '#fff'
     },
+    input: { // 输入框
+        // height: scaleSize(45),
+        // width: gScreen.width * 0.8,
+        // marginTop: scaleSize(5),
+        borderColor: '#c0bebc',
+        borderWidth: scaleSize(1),
+        borderRadius: scaleSize(5),
+        overflow: 'hidden',
+        alignSelf: 'center', // 自身居中
+        paddingHorizontal: scaleSize(5), // paddingLeft + paddingRight
+    },
+    btn: {
+        flexDirection: 'row',
+        width: gScreen.width * 0.8,
+        height: scaleSize(30),
+        borderRadius: scaleSize(15),
+        elevation: 2,
+        shadowOffset: {width: 0, height: 0},
+        shadowColor: '#bbbbb8',
+        shadowOpacity: 1,
+        shadowRadius: scaleSize(8),
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+    tableHead: { height: 40, backgroundColor: '#808B97' },
+    tableText: { margin: 6 },
+    row: { flexDirection: 'row', backgroundColor: '#FFF1C1' },
+    tableBtn: { width: 58, height: 18, backgroundColor: '#78B7BB',  borderRadius: 2 },
+    tableBtnText: { textAlign: 'center', color: '#fff' }
 })

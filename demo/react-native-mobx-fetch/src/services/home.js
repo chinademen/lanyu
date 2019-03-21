@@ -45,3 +45,12 @@ export function workroomThirdgameList(params = {}) {
         dataType: 'FormData'
     })
 }
+
+// 获取用户投注金额模式(元角分厘)
+export function getLotteryBetMode(params = {}) {
+    return request(api.home.getLotteryBetMode, {
+        method: 'POST',
+        data: params,
+        dataType: 'FormData'
+    })
+}
