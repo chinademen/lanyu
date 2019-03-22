@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -64,6 +63,8 @@
 		EF681B7380904A2982CE312C /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBB6C4384288492EBAB9CB88 /* Entypo.ttf */; };
 		F69A269C63D940468B61DD93 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFF7BA2D233B4C07AD0544B5 /* AntDesign.ttf */; };
 		FBB70F951EAD46B4884274DA /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57C3703D392B42B881FBE647 /* FontAwesome5_Solid.ttf */; };
+		B35290CD5B7E4B4D99F0A2D2 /* antfill.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95BDC7D4F724912B61435F2 /* antfill.ttf */; };
+		89F94D39AC294DB0918B0DBA /* antoutline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 862F90E8CEF546B7BE6C8305 /* antoutline.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -464,6 +465,8 @@
 		FA25F67153824A0690919319 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		FBB6C4384288492EBAB9CB88 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		FFF7BA2D233B4C07AD0544B5 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		C95BDC7D4F724912B61435F2 /* antfill.ttf */ = {isa = PBXFileReference; name = "antfill.ttf"; path = "../node_modules/@ant-design/icons-react-native/fonts/antfill.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		862F90E8CEF546B7BE6C8305 /* antoutline.ttf */ = {isa = PBXFileReference; name = "antoutline.ttf"; path = "../node_modules/@ant-design/icons-react-native/fonts/antoutline.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -827,6 +830,8 @@
 				0A424E7D3FA4463D88451FA3 /* rubicon-icon-font.ttf */,
 				6478A7AC328A44CD84934BF1 /* SimpleLineIcons.ttf */,
 				FA25F67153824A0690919319 /* Zocial.ttf */,
+				C95BDC7D4F724912B61435F2 /* antfill.ttf */,
+				862F90E8CEF546B7BE6C8305 /* antoutline.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1385,6 +1390,8 @@
 				8510E3D71D424582B62FBBF1 /* rubicon-icon-font.ttf in Resources */,
 				8EC3C7D60D0340A3BBBB8FE1 /* SimpleLineIcons.ttf in Resources */,
 				1052011628D54C73A4A31B6A /* Zocial.ttf in Resources */,
+				B35290CD5B7E4B4D99F0A2D2 /* antfill.ttf in Resources */,
+				89F94D39AC294DB0918B0DBA /* antoutline.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
