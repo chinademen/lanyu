@@ -41,7 +41,7 @@ let pickerParams = {
     pickerCancelBtnColor: [16,110,216,1],
     pickerTitleText: '',
     pickerToolBarBg: [255,255,255,1],
-    pickerBg: [255,255,255,0.3],
+    pickerBg: [255,255,255,1],
     pickerToolBarFontSize: 16,
     pickerFontSize: 16,
 };
