@@ -64,7 +64,6 @@ function getDay(n) {
 @inject(({ app, homeStore }) => {
     return {
         appSkin: app.appSkin,
-        submiting: app.submiting,
         lotteryList: homeStore.lotteryList,
         modes: homeStore.modes,
     }
@@ -87,7 +86,8 @@ export default class LotteryChangeReport extends Component {
                 ['1', '2', '3', '4'],
                 ['a', 'b', 'c', 'd'],
                 ['1', '2', '3', '4'],
-                ['a', 'b', 'c', 'd']
+                ['a', 'b', 'c', 'd'],
+                ['1', '2', '3', '4'],
             ],
         }
     }
@@ -233,7 +233,7 @@ export default class LotteryChangeReport extends Component {
     }
 
     render() {
-        const { appSkin, lotteryList, modes, submiting } = this.props;
+        const { appSkin, lotteryList, modes } = this.props;
         const { lotteryid, modeid, type, selectTime, starttime, endtime, username, includesub, tableHead, tableData } = this.state;
 
         let cnname = '所有彩种';
@@ -265,8 +265,8 @@ export default class LotteryChangeReport extends Component {
 
         const element = (data, index) => (
             <TouchableOpacity onPress={() => this._alertIndex(index)}>
-              <View style={styles.tableBtn}>
-                <Text style={styles.tableBtnText}>button</Text>
+              <View style={[styles.tableBtn, { backgroundColor: appSkin.tBodyBtnBackground }]}>
+                <Text style={[styles.tableBtnText, { color: appSkin.tBodyBtnText }]}>详情</Text>
               </View>
             </TouchableOpacity>
         );
@@ -317,7 +317,8 @@ export default class LotteryChangeReport extends Component {
                         value={username}
                     ></TextInput>
                     <View style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}>
-                        <CheckBox checked={includesub} onPress={() => this.selectIncludesub(includesub)} />
+                        <CheckBox checked={includesub} onPress={() => this.selectIncludesub(includesub)} style={{ marginRight: scaleSize(15) }} />
+                        <Text>包含下级</Text>
                     </View>
                 </View>
                 <View style={[styles.searchBox, {  height: scaleSize(50), paddingVertical: scaleSize(10) }]}>
@@ -326,7 +327,6 @@ export default class LotteryChangeReport extends Component {
                         onPress={this.searchData}
                     >
                         <LinearGradient colors={skin.background} style={styles.btn}>
-                            {submiting && <ActivityIndicator color="white" />}
                             <Text style={{fontSize: scaleSize(14), color: '#fff'}}>{i18n.COMMON_TEXT_SEARCH}</Text>
                         </LinearGradient>
                     </TouchableOpacity>
@@ -337,23 +337,90 @@ export default class LotteryChangeReport extends Component {
                     showsVerticalScrollIndicator={false}
                     automaticallyAdjustContentInsets={false}
                     removeClippedSubviews
-                    style={{ flex: 1, width: gScreen.width, height: gScreen.height }}
+                    style={{ flex: 1, width: gScreen.width }}
                     contentContainerStyle={{ alignItems: 'center', paddingBottom: 10 }}
                 >
-                    <Table style={{ width: gScreen.width }} borderStyle={{borderColor: 'transparent' }}>
-                        <Row data={tableHead} style={styles.tableHead} textStyle={styles.tableText}/>
+                    <Table style={{ width: gScreen.width }} borderStyle={{borderColor: '#fff' }}>
+                        {/* thead */}
+                        <Row 
+                            data={tableHead} 
+                            style={[styles.tableHead, { backgroundColor: appSkin.tHeadBackground }]} 
+                            textStyle={[styles.tableText, { color: appSkin.tHeadText } ]}
+                        />
+                        {/* tbody */}
                         {
                             tableData.map((rowData, index) => (
-                            <TableWrapper key={index} style={styles.row}>
+                            <TableWrapper key={index} style={[styles.row, { backgroundColor: appSkin.tBodyBackgound }]}>
                                 {
                                 rowData.map((cellData, cellIndex) => (
-                                    <Cell key={cellIndex} data={cellIndex === 3 ? element(cellData, index) : cellData} textStyle={styles.tableText}/>
+                                    <Cell 
+                                        key={cellIndex}
+                                        data={cellIndex === 3 ? element(cellData, index) : cellData} 
+                                        textStyle={styles.tableText}
+                                    />
                                 ))
                                 }
                             </TableWrapper>
                             ))
                         }
                     </Table>
+                    {/* 分页 */}
+                    <View style={[styles.pagination, { backgroundColor: appSkin.paginationBackground }]}>
+                        <TouchableOpacity
+                            activeOpacity={0.75}
+                            onPress={this.searchData}
+                            style={{ width: gScreen.width * 0.1, marginHorizontal: scaleSize(5) }}
+                        >
+                            <LinearGradient colors={skin.background} style={styles.pageBtn}>
+                                <Svg icon='left' size='12' />
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.75}
+                            onPress={this.searchData}
+                            style={{ width: gScreen.width * 0.1, marginHorizontal: scaleSize(5) }}
+                        >
+                            <LinearGradient colors={skin.background} style={styles.pageBtn}>
+                                <Text style={{fontSize: scaleSize(12), color: '#fff'}}>1</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.75}
+                            onPress={this.searchData}
+                            style={{ width: gScreen.width * 0.1, marginHorizontal: scaleSize(5) }}
+                        >
+                            <LinearGradient colors={skin.background} style={styles.pageBtn}>
+                                <Text style={{fontSize: scaleSize(12), color: '#fff'}}>2</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.75}
+                            onPress={this.searchData}
+                            style={{ width: gScreen.width * 0.1, marginHorizontal: scaleSize(5) }}
+                        >
+                            <LinearGradient colors={skin.background} style={styles.pageBtn}>
+                                <Text style={{fontSize: scaleSize(12), color: '#fff'}}>...</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.75}
+                            onPress={this.searchData}
+                            style={{ width: gScreen.width * 0.1, marginHorizontal: scaleSize(5) }}
+                        >
+                            <LinearGradient colors={skin.background} style={styles.pageBtn}>
+                                <Text style={{fontSize: scaleSize(12), color: '#fff'}}>100</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.75}
+                            onPress={this.searchData}
+                            style={{ width: gScreen.width * 0.1, marginHorizontal: scaleSize(5) }}
+                        >
+                            <LinearGradient colors={skin.background} style={styles.pageBtn}>
+                                <Svg icon='right' size='12' />
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    </View>
                     {/* {this.createNoData()} */}
                 </ScrollView>
 
@@ -408,15 +475,12 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     input: { // 输入框
-        // height: scaleSize(45),
-        // width: gScreen.width * 0.8,
-        // marginTop: scaleSize(5),
         borderColor: '#c0bebc',
         borderWidth: scaleSize(1),
         borderRadius: scaleSize(5),
         overflow: 'hidden',
-        alignSelf: 'center', // 自身居中
-        paddingHorizontal: scaleSize(5), // paddingLeft + paddingRight
+        alignSelf: 'center',
+        paddingHorizontal: scaleSize(5),
     },
     btn: {
         flexDirection: 'row',
@@ -432,9 +496,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center'
     },
-    tableHead: { height: 40, backgroundColor: '#808B97' },
-    tableText: { margin: 6 },
-    row: { flexDirection: 'row', backgroundColor: '#FFF1C1' },
-    tableBtn: { width: 58, height: 18, backgroundColor: '#78B7BB',  borderRadius: 2 },
-    tableBtnText: { textAlign: 'center', color: '#fff' }
+    tableHead: { height: 40 },
+    tableText: { margin: 6, textAlign: 'center' },
+    row: { flexDirection: 'row' },
+    tableBtn: { width: 58, height: 18, borderRadius: 2, alignSelf: 'center', justifyContent: 'center' },
+    tableBtnText: { textAlign: 'center' },
+    pagination: {
+        flex: 1, 
+        flexDirection: 'row', 
+        alignSelf: 'center', 
+        justifyContent: 'center',
+        width: gScreen.width,
+        height: scaleSize(40),
+        paddingVertical: scaleSize(5),
+    },
+    pageBtn: { 
+        flexDirection: 'row', 
+        width: gScreen.width * 0.1, 
+        height: scaleSize(30), 
+        borderRadius: scaleSize(2), 
+        elevation: 2,
+        shadowOffset: {width: 0, height: 0},
+        shadowColor: '#bbbbb8',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        paddingHorizontal: scaleSize(5),
+    }
 })
