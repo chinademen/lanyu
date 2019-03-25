@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { inject, observer } from 'mobx-react';
 import Header from '@/components/Header';
+import Fabs from '@/components/Fabs';
 import Msg from '@/components/Msg';
-import BasicCarousel from '@/components/BasicCarousel';
+// import BasicCarousel from '@/components/BasicCarousel';
 import img0 from '@/assets/images/carousel/img0.png';
 import img1 from '@/assets/images/carousel/img1.png';
 import img2 from '@/assets/images/carousel/img2.png';
@@ -58,13 +59,14 @@ class Home extends Component {
         return (
             <div>
                 <Header />
-                <BasicCarousel
+                <Fabs />
+                {/* <BasicCarousel
                     list={imgArr}
                     control={true}
-                    // width={600}
-                    // height={600}
+                    width={600}
+                    height={600}
                     showItems={3}
-                />
+                /> */}
                 {/* <Msg msgInfo={this.state.msgInfo} /> */}
             </div>
         )
