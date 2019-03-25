@@ -17,6 +17,7 @@ export default {
     COMMON_TEXT_MY: '我的',
     COMMON_TEXT_USERNAME: '用户名',
     COMMON_TEXT_SEARCH: '查询',
+    COMMON_TEXT_INCLUDESUB: '包含下级',
     COMMON_TEXT_TOTAL: '合计：',
     COMMON_TEXT_CAPITAL_CHANGE : '资金变动',
     COMMON_TEXT_DATADELAY_WARING: '由于彩票数据同步存在延迟如需实时数据请咨询客服',

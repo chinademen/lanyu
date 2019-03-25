@@ -318,6 +318,7 @@ export default class LotteryChangeReport extends Component {
                     ></TextInput>
                     <View style={{ flex: 1, flexDirection: 'row', width: gScreen.width * 0.33, height: scaleSize(40), alignItems:'center', justifyContent: 'center' }}>
                         <CheckBox checked={includesub} onPress={() => this.selectIncludesub(includesub)} />
+                        <Text>{i18n.COMMON_TEXT_INCLUDESUB}</Text>
                     </View>
                 </View>
                 <View style={[styles.searchBox, {  height: scaleSize(50), paddingVertical: scaleSize(10) }]}>
