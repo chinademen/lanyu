@@ -16,7 +16,15 @@ export default {
         fill2: '#dea364',
         skinbg: '#fff',
         // 导航栏文字
-        navbarText: '#4c424d'
+        navbarText: '#4c424d',
+        // 表格
+        tHeadBackground: '#322b33',
+        tHeadText: '#dea364',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 樱桃红
     red: {
@@ -34,7 +42,15 @@ export default {
         fill2: '#fff',
         skinbg: '#D82741',
         // 导航栏文字
-        navbarText: '#D82741'
+        navbarText: '#D82741',
+        // 表格
+        tHeadBackground: '#c11f37',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 天空蓝
     blue: {
@@ -52,7 +68,15 @@ export default {
         fill2: '#fff',
         skinbg: '#4477FF',
         // 导航栏文字
-        navbarText: '#4477FF'
+        navbarText: '#4477FF',
+        // 表格
+        tHeadBackground: '#3464e2',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 乌木黑
     black: {
@@ -70,7 +94,15 @@ export default {
         fill2: '#ec7413',
         skinbg: '#dea364',
         // 导航栏文字
-        navbarText: '#141414'
+        navbarText: '#141414',
+        // 表格
+        tHeadBackground: '#0a0a0a',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 沙滩金
     gold: {
@@ -88,7 +120,15 @@ export default {
         fill2: '#fff',
         skinbg: '#f09c15',
         // 导航栏文字
-        navbarText: '#f09c15'
+        navbarText: '#f09c15',
+        // 表格
+        tHeadBackground: '#de8e0d',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 典雅绿
     green: {
@@ -106,7 +146,15 @@ export default {
         fill2: '#ec7413',
         skinbg: '#428739',
         // 导航栏文字
-        navbarText: '#428739'
+        navbarText: '#428739',
+        // 表格
+        tHeadBackground: '#37752f',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 香槟银
     silver: {
@@ -124,7 +172,15 @@ export default {
         fill2: '#000',
         skinbg: '#000',
         // 导航栏文字
-        navbarText: '#c5c5c5'
+        navbarText: '#c5c5c5',
+        // 表格
+        tHeadBackground: '#a7a1a1',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     },
     // 贵族紫
     purple: {
@@ -142,6 +198,14 @@ export default {
         fill2: '#ec7413',
         skinbg: '#6F50E7',
         // 导航栏文字
-        navbarText: '#6F50E7'
+        navbarText: '#6F50E7',
+        // 表格
+        tHeadBackground: '#5e41ce',
+        tHeadText: '#fff',
+        tBodyBackgound: '#fff',
+        tBodyText: '#333',
+        tBodyBtnBackground: '#78B7BB',
+        tBodyBtnText: '#fff',
+        paginationBackground: '#fff',
     }
 }
