@@ -59,7 +59,12 @@ class Home extends Component {
         return (
             <div>
                 <Header />
-                <Fabs />
+                <Fabs 
+                    style={{ 
+                        backgroundImage: `url(${require('@/assets/images/carousel/img0.png')})`
+                        
+                    }}
+                />
                 {/* <BasicCarousel
                     list={imgArr}
                     control={true}

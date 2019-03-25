@@ -30,12 +30,12 @@ export default class Fabs extends Component {
     }
 
     render() {
-        const { boxStyle, iconStyle, btnStyle } = this.props;
+        const { style, iconStyle, btnStyle } = this.props;
         const { boxAnimation, btnAnimation } = this.state;
 
         return (
             <Fragment>
-                <div className={`cm-fabs-box ${boxAnimation}`} style={boxStyle || null}>
+                <div className={`cm-fabs-box ${boxAnimation}`} style={style || null}>
                     <span className="cm-fabs-icon" onClick={this.collapse} style={[iconStyle || null]}>{'<'}</span>
                 </div>
                 <div className={`cm-fabs-btn ${btnAnimation}`} onClick={this.expand} style={btnStyle || null}></div>
