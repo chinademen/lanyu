@@ -3,10 +3,9 @@
     position: fixed;
     z-index: 99999;
     top: calc(50% - 150px);
-    left: 0;
+    // left: 0;
     width: 300px;
     height: 300px;
-    background: #333;
     background-repeat: no-repeat;
     background-size: 100% 100%; 
 }
@@ -14,7 +13,7 @@
 .cm-fabs-icon {
     display: inline-block;
     position: absolute;
-    top: 224px;
+    top: 237px;
     left: 224px;
     width: 18px;
     height: 18px;
@@ -23,58 +22,116 @@
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 18px;
 }
 
-.fabBoxHide {
-    animation: fabBoxHide 0.5s ease 1 forwards;
+// 盒子类动画
+.fabBoxHide_left {
+    animation: fabBoxHide_left 0.5s ease 1 forwards;
 }
 
-.fabBoxShow {
-    animation: fabBoxShow 1.1s ease 0.4s 1 backwards;
+.fabBoxShow_left {
+    animation: fabBoxShow_left 1.1s ease 0.4s 1 backwards;
 }
 
-@keyframes fabBoxHide
-{
-    0% {
-        left: 0;
-    }
-    100% {
-        left: -300px;
-    }
+.fabBoxHide_right {
+    animation: fabBoxHide_right 0.5s ease 1 forwards;
 }
 
-@keyframes fabBoxShow
-{
-    0% {
-        left: -300px;
-    }
-    100% {
-        left: 0;
-    }
+.fabBoxShow_right {
+    animation: fabBoxShow_right 1.1s ease 0.4s 1 backwards;
 }
-
 
 // btn
 .cm-fabs-btn {
     position: fixed;
     z-index: 99999;
     top: calc(50% - 6px);
-    left: -36px;
+    // left: -36px;
     width: 36px;
     height: 120px;
-    background: green;
+    background-image: linear-gradient(0deg, #f4d692 0%, #d47d0d 100%);
+    // border-radius: 0px 6px 6px 0px;
+    text-align: center;
+    cursor: pointer;
 }
 
-.fabBtnShow {
-    animation: fabBtnShow 0.5s ease 0.6s 1 forwards;
+.cm-task-title {
+    display: block;
+    margin-top: 7px;
+    margin-left: 10px;
+    width: 16px;
+    height: 78px;
+    font-family: Noto Sans CJK SC;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 18px;
+    letter-spacing: 0px;
+    color: #1b0a03;
 }
 
-.fabBtnHide {
-    animation: fabBtnHide 0.3s ease 1 forwards;
+.cm-task-btn>i {
+    font-size: 18px;
 }
 
-@keyframes fabBtnHide
+// 按钮动画类
+.fabBtnShow_left {
+    animation: fabBtnShow_left 0.5s ease 0.6s 1 forwards;
+}
+
+.fabBtnHide_left {
+    animation: fabBtnHide_left 0.3s ease 1 forwards;
+}
+
+.fabBtnShow_right {
+    animation: fabBtnShow_right 0.5s ease 0.6s 1 forwards;
+}
+
+.fabBtnHide_right {
+    animation: fabBtnHide_right 0.3s ease 1 forwards;
+}
+
+// 位置类
+.cm_left_0 {
+    left: 0;
+}
+
+.cm_left_36 {
+    left: -36px;
+    border-radius: 0px 6px 6px 0px;
+}
+
+.cm_right_0 {
+    right: 0;
+}
+
+.cm_right_36 {
+    right: -36px;
+    border-radius: 6px 0px 0px 6px;
+}
+
+// 左侧广告栏动画
+@keyframes fabBoxHide_left
+{
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -300px;
+    }
+}
+
+@keyframes fabBoxShow_left
+{
+    0% {
+        left: -300px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes fabBtnHide_left
 {
     0% {
         left: 0;
@@ -84,7 +141,7 @@
     }
 }
 
-@keyframes fabBtnShow
+@keyframes fabBtnShow_left
 {
     0% {
         left: -36px;
@@ -94,3 +151,43 @@
     }
 }
 
+// 右侧广告栏动画
+@keyframes fabBoxHide_right
+{
+    0% {
+        right: 0;
+    }
+    100% {
+        right: -300px;
+    }
+}
+
+@keyframes fabBoxShow_right
+{
+    0% {
+        right: -300px;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+@keyframes fabBtnHide_right
+{
+    0% {
+        right: 0;
+    }
+    100% {
+        right: -36px;
+    }
+}
+
+@keyframes fabBtnShow_right
+{
+    0% {
+        right: -36px;
+    }
+    100% {
+        right: 0;
+    }
+}
