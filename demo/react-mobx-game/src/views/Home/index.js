@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
-import { inject, observer } from 'mobx-react';
-import Header from '@/components/Header';
+import React, { Component } from 'react'
+import _ from 'lodash'
+import { inject, observer } from 'mobx-react'
+import Nav from '@/components/Nav'
+import NavTab from '@/components/NavTab'
+import logo from '@/assets/images/carousel/img0.png'
+import bg from '@/assets/images/bg.jpg';
+import './index.less'
 
 @inject('commonStore', 'homeStore', 'lotteryStore')
 @observer
@@ -20,8 +24,13 @@ class Home extends Component {
     render() {
 
         return (
-            <div>
-                <Header />
+            <div className='home'
+                style={{ backgroundImage: `url(${bg})` }}
+            >
+                <div className='header'>
+                    <Nav />
+                    <NavTab />
+                </div>
             </div>
         )
     }
