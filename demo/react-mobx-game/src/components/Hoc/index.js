@@ -1,13 +1,20 @@
 /* 高阶组件, 可用于动态生成组件 */
 import React, { Component, Fragment } from 'react'
-import throttle from 'lodash.throttle'
+import { throttle, debounce } from 'lodash'
 
 const HightComponent = (MiddeleComponent) => {
     return class extends Component {
         constructor(props) {
             super(props);
             this.onClick = this.onClick.bind(this);
-            this.onClickThrottle = throttle(this.onClick, 3000);
+            this.onClickThrottle = throttle(this.onClick, 3000, {
+                leading: true,
+                trailing: false,
+            });
+            this.onClickDebounce = debounce(this.onClick, 3000, {
+                leading: true,
+                trailing: false,
+            });
         }
 
         // 节流
