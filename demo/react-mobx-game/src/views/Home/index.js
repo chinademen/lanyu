@@ -4,7 +4,8 @@ import { inject, observer } from 'mobx-react'
 import Nav from '@/components/Nav'
 import NavTab from '@/components/NavTab'
 import logo from '@/assets/images/carousel/img0.png'
-import bg from '@/assets/images/bg.jpg';
+import bg from '@/assets/images/bg.jpg'
+import Test from './Test'
 import './index.less'
 
 @inject('commonStore', 'homeStore', 'lotteryStore')
@@ -22,7 +23,6 @@ class Home extends Component {
     }
 
     render() {
-
         return (
             <div className='home'
                 style={{ backgroundImage: `url(${bg})` }}
@@ -31,6 +31,7 @@ class Home extends Component {
                     <Nav />
                     <NavTab />
                 </div>
+                <Test />
             </div>
         )
     }
