@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ssr</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style:none;
+        }
+
+        #root {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script>
+        var root = document.getElementById('root');
+       
+
+        ajax({
+            method: 'POST',
+            url: 'http://localhost:9000/test',
+            success: function (res) {
+                if (!res) return;
+                var result = JSON.parse(res);
+                root.innerHTML = result.data.template;
+            }
+        })
+
+
+        function ajax(opt) {
+            opt = opt || {};
+            opt.method = opt.method || 'POST';
+            opt.url = opt.url || '';
+            opt.async = opt.async || true;
+            opt.data = opt.data || null;
+            opt.dataType = opt.dataType || 'JSON';
+            opt.success = opt.success || function () {};
+
+            var xmlHttp = null;
+            if (XMLHttpRequest) {
+                xmlHttp = new XMLHttpRequest();
+            } else {
+                xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+
+            var params = [];
+            for (var key in opt.data) {
+                params.push(key + '=' + opt.data[key]);
+            }  
+
+            var postData = params.join('&');
+            if (opt.dataType === 'JSONP') {
+                createScript(opt.url, postData);
+            } else {
+                if (opt.method.toUpperCase() === 'POST') {
+                    xmlHttp.open(opt.method, opt.url, opt.async);
+                    xmlHttp.setRequestHeader('Content-Type', 'application/x-www/form-urlencoded;charset=utf-8');
+                    xmlHttp.send(postData);
+                }else if(opt.method.toUpperCase() === 'GET'){
+                    xmlHttp.open(opt.method, opt.url + '?' + postData, opt.async);
+                    xmlHttp.send(null);
+                }
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        if (opt.dataType === 'JSON') {
+                            JSON.parse(xmlHttp.response);
+                            opt.success(xmlHttp.response);
+                        }
+                    }
+                }
+            }
+        }
+
+        function createScript(url, data) {
+            document.body.removeChild(document.body.lastChild);
+            var oScript = document.createElement('script');
+            oScript.src = url + '?' + data + '&callback=getEn';
+            document.body.appendChild(oScript);
+        }
+
+    </script>
+
+</body>
+</html>
