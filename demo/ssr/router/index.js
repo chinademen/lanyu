@@ -22,6 +22,6 @@ const Test = (req, res) => {
 
 
 // 验证码
-router.post('/test', Test);
+router.get('/test', Test);
 
 module.exports = router;
