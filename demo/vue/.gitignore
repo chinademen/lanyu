@@ -1,0 +1,11 @@
+# nodejs
+/node_modules
+/package-lock.json
+
+# build
+/dist/*.*
+/dist/src
+/bundle
+release-*
+/index.html
+/release.txt
