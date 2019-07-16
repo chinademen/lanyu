@@ -1,7 +1,0 @@
-{
-	"presets": ["env", "react"],
-	"plugins": ["transform-object-rest-spread", "babel-plugin-syntax-dynamic-import",["import", {
-		"libraryName": "iview",
-		"libraryDirectory": "src/components"
-	  }]]
-}
